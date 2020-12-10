@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,9 +7,57 @@
     <title>Document</title>
 </head>
 <body>
-<h1>HEj</h1>
+
+
+<!---2: Skapa funktion för att kunna registrera sig--->
+<form onsubmit="register()">
+    <input type ="text" placeholder="Ange ett användarnamn" id="username"><br>
+    <input type ="text" placeholder="Ange ett lösenord" id="password" ><br>
+
+    <!----
+    <p>Ange om du är arbetare eller arbetsgivare:</p>
+    <input type ="radio" id="worker" name="worker">
+    <label for ="worker">Arbetare</label><br>
+    <input type ="radio" id="workgiver" name ="workgiver">
+    <label for ="worker">Arbetsgivare</label><br>-->
+
+
+    <input type ="submit" value="Skicka">
+
+</form>
+
 </body>
 
-<script></script>
+<script>
+    function register() {
+
+        //Samla alla element
+        let username = document.getElementById('username').value
+        let password = document.getElementById('password').value
+
+        //let worker = document.getElementById('worker').value
+       //let workgiver = document.getElementById('workgiver').value
+
+        //Skapa data som ska skickas
+        const data = {username, password}
+
+        //Skapa opitons som ska skickas
+        const options ={
+            method: 'POST',
+            headers: {'Content-Type': 'application/json;charset=utf8'},
+            body: JSON.stringify(data)
+        }
+
+        fetch('/worker', options)
+
+
+        //If worker = on skicka detta api:
+        //If workgiver = on skicka detta api:
+
+        //de får olika endpoints.
+
+        //alert(password + name + worker + workgiver);
+    }
+</script>
 <style></style>
 </html>
