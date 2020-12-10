@@ -13,15 +13,11 @@
 <form onsubmit="register()">
     <input type ="text" placeholder="Ange ett användarnamn" id="username"><br>
     <input type ="text" placeholder="Ange ett lösenord" id="password" ><br>
-
-    <!----
     <p>Ange om du är arbetare eller arbetsgivare:</p>
     <input type ="radio" id="worker" name="worker">
     <label for ="worker">Arbetare</label><br>
     <input type ="radio" id="workgiver" name ="workgiver">
-    <label for ="worker">Arbetsgivare</label><br>-->
-
-
+    <label for ="worker">Arbetsgivare</label><br>
     <input type ="submit" value="Skicka">
 
 </form>
@@ -29,34 +25,27 @@
 </body>
 
 <script>
+
+    //2:Skapa Funktion för att kunna registrera sig
     function register() {
 
-        //Samla alla element
         let username = document.getElementById('username').value
         let password = document.getElementById('password').value
 
-        //let worker = document.getElementById('worker').value
-       //let workgiver = document.getElementById('workgiver').value
-
-        //Skapa data som ska skickas
         const data = {username, password}
 
-        //Skapa opitons som ska skickas
         const options ={
             method: 'POST',
             headers: {'Content-Type': 'application/json;charset=utf8'},
             body: JSON.stringify(data)
         }
 
-        fetch('/worker', options)
+        if(document.getElementById('worker').checked){
+            fetch('/worker', options)
+        }else if(document.getElementById('workgiver').checked){
+            fetch('/workgiver', options)
+        }
 
-
-        //If worker = on skicka detta api:
-        //If workgiver = on skicka detta api:
-
-        //de får olika endpoints.
-
-        //alert(password + name + worker + workgiver);
     }
 </script>
 <style></style>
