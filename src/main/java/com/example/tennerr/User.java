@@ -12,15 +12,6 @@ abstract class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     String username;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
     String password;
     String name;
     String email;
@@ -28,6 +19,14 @@ abstract class User {
     String description;
 
     public User() {
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getUsername() {
