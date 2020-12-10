@@ -12,9 +12,15 @@ public class EntityController {
     @Autowired
     private EntityService entityService;
 
+    //2:Skapa Funktion för att kunna registrera sig
     @PostMapping("/worker")
     public void createWorker(@RequestBody Worker worker){
         entityService.addWorker(worker);
+    }
 
+    //2:Skapa Funktion för att kunna registrera sig
+    @PostMapping("/workgiver")
+    public void createWorkgiver(@RequestBody Workgiver workgiver){
+        entityService.addWorkgiver(workgiver);
     }
 }

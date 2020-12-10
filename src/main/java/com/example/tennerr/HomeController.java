@@ -17,11 +17,4 @@ public class HomeController {
         return "index";
     }
 
-    //2:Skapa Funktion för att kunna registrera sig
-    @PostMapping("/register")
-    public void register(@RequestParam("username") String username, @RequestParam("password") String password) {
-
-            entityService.registerWorker(username, password);
-
-    }
 }
