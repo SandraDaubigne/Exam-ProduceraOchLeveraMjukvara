@@ -13,7 +13,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(){
-        return "index";
+        return "register";
     }
 
     //2:Skapa Funktion för att kunna registrera sig
@@ -22,7 +22,7 @@ public class HomeController {
     public String createWorker(@RequestBody Worker worker)
     {
         entityService.addWorker(worker);
-        return "index";
+        return "register";
     }
 
     //2:Skapa Funktion för att kunna registrera sig
@@ -31,7 +31,7 @@ public class HomeController {
     public String createWorkgiver(@RequestBody Workgiver workgiver)
     {
         entityService.addWorkgiver(workgiver);
-        return "index";
+        return "register";
     }
 
 
