@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<h1>Skapa/Redigera profil</h1>
+<input type ="text" placeholder="Förnamn*" id="firstname">
+<input type ="text" placeholder="Efternamn*" id="lastname"><br>
+<input type="text" placeholder="Telefonnummer*" id="phone" style="width: 588px; height: 25px"><br>
+<input type="text" placeholder="Personbeskrivning" id="description" style="width: 588px; height: 100px;" ><br>
+
+<!-- <input type="text" placeholder="Arbeten du kan utföra" id="workerCategory">
+<input type="text" placeholder="Kategori" id="category" list="category1">
+<datalist id="category1">
+    <option value="Skönhet">
+    <option value="Städning">
+    <option value="VVS">
+    <option value="Hälsa">
+    <option value="Måleri"></option>
+</datalist><br>
+
+<button type="button" id="addButton">Lägg till fler</button><br> -->
+
+<div class="set-form">
+    <table class="table table-bordered">
+        <tbody>
+        <tr>
+            <td>
+                <input type="text" placeholder="Arbeten du kan utföra" th.field="${questionAnswerSet.question}" id="question">
+            </td>
+
+            <td>
+                <input type="text" placeholder="kategori" th:field="${questionAnswerSet.answer}" id="answer" list="category1">
+                <datalist id="category1">
+                    <option value="Skönhet">
+                    <option value="Städning">
+                    <option value="VVS">
+                    <option value="Hälsa">
+                    <option value="Måleri"></option>
+                </datalist>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="set-form">
+    <input type="button" id="addButton" onclick="add_fields();" value="Lägg till fler">
+</div>
+
+
+<label for="profileimg">Ladda upp profilbild</label>
+<input type="file" id="profileimg" name="profileimg"><br>
+
+<label for="certificateimg">Ladda upp certifikat och intyg</label>
+<input type="file" id="certificateimg" name="certificateimg"><br>
+
+<button type="button" id="button">Spara</button>
+
+</body>
+
+
+<script>
+function add_fields() {
+document.getElementsByClassName('table')[0].getElementsByTagName('tbody')[0].innerHTML +=
+'<tr><td><input type="text" placeholder="Arbeten du kan utföra" th.field="${questionAnswerSet.question}" id="question"></td><td><input type="text" placeholder="kategori" th:field="${questionAnswerSet.answer}" id="answer" list="category1">';
+}
+</script>
+
+<style>
+body {
+    font-family: Standard, Helvetica;
+    color: #6b7a8f;
+}
+
+h1 {
+    text-align: center;
+}
+
+input {
+    border: 2px solid #6b7a8f;
+}
+
+#firstname {
+    height: 25px;
+    width: 275px;
+    margin-left: 500px;
+    margin-top: 20px;
+}
+
+#lastname {
+    height: 25px;
+    width: 275px;
+    margin-left: 25px;
+    margin-top: 20px;
+}
+
+#phone {
+    margin-left: 500px;
+    margin-top: 20px;
+}
+
+#description {
+    margin-left: 500px;
+    margin-top: 20px;
+}
+
+#question {
+/*#workerCategory {*/
+    height: 25px;
+    width: 350px;
+    margin-left: 500px;
+    margin-top: 20px;
+}
+
+#answer {
+/*#category {*/
+
+    height: 25px;
+    width: 200px;
+    margin-left: 25px;
+    margin-top: 20px;
+}
+
+#addButton {
+    background-color: #fff;
+    color: #6b7a8f;
+    border: none;
+    margin-left: 1020px;
+    margin-top: 10px;
+}
+
+#button {
+    background-color: #6b7a8f;
+    color: #fff;
+    border: none;
+    padding: 10px 26px;
+    border-radius: 18px;
+    margin-left: 1015px;
+    margin-top: 40px;
+}
+
+#button:hover {
+    background-color: #4CAF50;
+}
+
+label {
+    margin-left: 500px;
+
+}
+
+
+
+
+</style>
+</html>
