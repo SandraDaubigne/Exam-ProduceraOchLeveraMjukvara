@@ -33,7 +33,7 @@
                 <img id="phone-symbol" src="https://cdn2.iconfinder.com/data/icons/font-awesome/1792/phone-512.png">
                 <p id="user-phone">0762-434242</p>
                 <img id="email-symbol" src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-email-512.png">
-                <p id="user-email">frida.hammarberg@hotmail com</p>
+                <p id="user-email">frida.hammarberg@hotmail.com</p>
                 <div id="description">
                     <h4>Beskrivning</h4>
                 <p id="user-description">
@@ -76,26 +76,47 @@
                         <header>
                             <h3>Redigera din profil</h3>
                         </header>
-                        <div id="input-div">
+                        <div id="firstName-lastname-div">
                             <label id="firstName">
-                                <input id="firstName-input" type="text" placeholder="Frida">
+                                <input id="firstName-input" type="text" size="30" placeholder="Frida">
                             </label>
                             <label id="lastName">
-                                <input id="lastName-input" type="text" placeholder="Hammarberg">
+                                <input id="lastName-input" type="text" size="30" placeholder="Hammarberg">
                             </label>
+                        </div>
+                        <div id="email-phoneNumber-div">
                             <label id="email">
-                                <input id="email-input" type="text" placeholder="frida.hammarberg@hotmail.om">
+                                <input id="email-input" type="text" size="30" placeholder="frida.hammarberg@hotmail.com">
                             </label>
                             <label id="phoneNumber">
-                                <input id="phoneNumber-input" type="text" placeholder="0762-434242">
+                                <input id="phoneNumber-input" type="text" size="30" placeholder="0762-434242">
                             </label>
-                            <label id="address">
-                                <input id="address-input" type="text" placeholder="Bergsslingan 109, Lerum">
+                        </div>
+                        <div id="streetName-div">
+                            <label id="streetName">
+                                <input id="streetName-input" type="text" size="71" placeholder="Bergsslingan 109">
                             </label>
+                        </div>
+                        <div id="postalCode-city-div">
+                            <label id="postalCode">
+                                <input id="postalCode-input" type="text" size="30" placeholder="443 36">
+                            </label>
+                            <label id="city">
+                                <input id="city-input" type="text" size="30" placeholder="Lerum">
+                            </label>
+                        </div>
+                        <div id="description-div">
                             <label id="description">
-                                <textarea id="description-box" cols="30" rows="10" placeholder="Hej! Mitt namn är Frida och jag är en uppdragsgivare"></textarea>
+                                <textarea id="description-box" cols="73" rows="5" placeholder="Hej! Mitt namn är Frida och jag är en uppdragsgivare"></textarea>
                             </label>
-                            <button id="save-profile" type="submit">Spara profil</button>
+                        </div>
+                        <div id="upload-picture-div">
+                            <span id="upload-span">Ladda upp profilbild:</span>
+                            <input id="upload-picture-input" type="file">
+                        </div>
+                        <div id="save-div">
+                            <button id="save-button" type="submit">Spara profil</button>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -134,9 +155,8 @@ body {
 }
 
 #profile-img #profile-picture {
-    border-radius: 50%;
-    height: 250px;
-    width: 200px;
+    height: 230px;
+    width: 150px;
     border: 4px solid #fff;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
     position: absolute;
@@ -225,7 +245,23 @@ body {
     background: rgba(265, 0, 70, 0.9);
 }
 
-#message-button:hover {
+#save-button {
+    border: 0;
+    padding: 10px;
+    border-radius: 3px;
+    background: var(--color);
+    font-family: sans-serif;
+    margin: 5px 2px;
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 10px;
+    transition: .3s ease-in-out;
+    box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.3);
+    color: #fff;
+    background: rgba(265, 0, 70, 0.9);
+}
+
+#message-button:hover, #save-button:hover {
     background: rgba(200, 0, 70, 0.9);
 }
 
@@ -279,16 +315,45 @@ body {
     padding: 1.5em;
 }
 
-#firstName, #lastName, #phoneNumber, #description {
-    display: block  ;
+#phoneNumber, #email {
+    display: inline-block;
 }
-input, #description-box, #work-categories {
+
+input, #description-box {
     margin: 1em;
     padding: 0.3em;
 }
 
+#description-box {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+#description {
+    display: block;
+}
+
 input, textarea {
     font-family: Arial, Helvetica, sans-serif;
+}
+
+#upload-picture-div {
+    padding-right: 10%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8em;
+}
+
+#upload-picture-input {
+    padding-left: 0;
+    margin-left: 0.1em;
+}
+
+#save-div {
+    padding-left: 50%;
+}
+
+#save-profile {
+    padding: 0.2em;
 }
 
 @media(max-width: 1100px) {
@@ -344,6 +409,14 @@ input, textarea {
         text-align: center;
         padding: 20px;
         margin: 5px 0;
+    }
+
+    #streetName-input {
+        width: 70%;
+    }
+
+    #description-box {
+        width: 80%;
     }
 }
 
