@@ -13,12 +13,13 @@ public class EntityController {
     @Autowired
     private EntityService entityService;
 
+    /*
     @RequestMapping(value = "/login/{username}",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public User loginUserByUsername(@PathVariable String username){
 
         return entityService.getUserByUsername(username);
         //return "userloggedin";
 
-    }
+    }*/
 
 }

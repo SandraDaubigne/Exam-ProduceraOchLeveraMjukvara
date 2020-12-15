@@ -44,15 +44,12 @@
     function login(){
         let username = document.getElementById('loginusername').value
 
-        const data = {username}
-
         const options ={
             method: 'POST',
             headers: {'Content-Type': 'application/json;charset=utf8'},
-            body: JSON.stringify(data)
         }
 
-        fetch('/login', options)
+        fetch('/login' + username, options)
 
 
         //alert(username);
