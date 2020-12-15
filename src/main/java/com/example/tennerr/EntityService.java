@@ -14,7 +14,11 @@ public class EntityService {
         entityRepository.save(user);
     }
 
-    //Skapa funktion för att kunna logga in
+
+    //2: Skapa funktion för att kunna logga in
+    public User getUserByUsername(String username){
+        return entityRepository.findByUsername(username);
+    }
 
 
 

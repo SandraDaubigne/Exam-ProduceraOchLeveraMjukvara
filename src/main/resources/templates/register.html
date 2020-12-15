@@ -11,6 +11,7 @@
 
 <!---2: Skapa funktion för att kunna registrera sig--->
 <form onsubmit="register()">
+    <h1>Registrera dig</h1>
     <input type ="text" placeholder="Ange ett användarnamn" id="username"><br>
     <input type ="text" placeholder="Ange ett lösenord" id="password" ><br>
     <p>Ange om du är arbetare eller arbetsgivare:</p>
@@ -22,12 +23,40 @@
     <label for ="workgiver">Arbetsgivare</label><br>
 
     <input type ="submit" value="Skicka">
-
 </form>
+
+<!---2: Skapa funktion för att kunna logga in--->
+<form onsubmit="login()">
+    <h1>Logga in</h1>
+    <input type ="text" placeholder="Ange ett användarnamn" id="loginusername"><br>
+    <input type ="text" placeholder="Ange ett lösenord" id="loginpassword" ><br>
+    <input type ="submit" value="Skicka">
+</form>
+
+
 
 </body>
 
 <script>
+
+    //2: Skapa en funktion för att kunna logga in:
+
+    function login(){
+        let username = document.getElementById('loginusername').value
+
+        const data = {username}
+
+        const options ={
+            method: 'POST',
+            headers: {'Content-Type': 'application/json;charset=utf8'},
+            body: JSON.stringify(data)
+        }
+
+        fetch('/login', options)
+
+
+        //alert(username);
+    }
 
     //2:Skapa Funktion för att kunna registrera sig
     function register() {
@@ -42,12 +71,6 @@
            role ="workgiver";
         }
 
-        /*
-        let worker = document.getElementById('worker').value
-        let workgiver = document.getElementById('workgiver').value
-        alert(worker + workgiver)
-        */
-
         const data = {username, password, role}
 
         const options ={
@@ -58,9 +81,11 @@
 
         fetch("/createuser", options)
 
-
-
     }
+
+
+
+
 </script>
 <style></style>
 </html>
