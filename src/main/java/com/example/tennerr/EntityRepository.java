@@ -1,6 +1,6 @@
 package com.example.tennerr;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface EntityRepository extends JpaRepository<User, Long> {
+public interface EntityRepository extends CrudRepository<User, Long> {
 }

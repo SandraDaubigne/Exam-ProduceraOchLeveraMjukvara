@@ -15,24 +15,15 @@ public class HomeController {
     public String home(){
         return "register";
     }
+    
+    @RequestMapping(value = "/createuser",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String createUser(@RequestBody User user){
 
-    //2:Skapa Funktion för att kunna registrera sig
-    //Registrera arbetare
-    @RequestMapping(value = "/createworker",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String createWorker(@RequestBody Worker worker)
-    {
-        entityService.addWorker(worker);
+        entityService.createUser(user);
         return "register";
     }
 
-    //2:Skapa Funktion för att kunna registrera sig
-    //registrera arbetsgivare
-    @RequestMapping(value = "/createworkgiver",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String createWorkgiver(@RequestBody Workgiver workgiver)
-    {
-        entityService.addWorkgiver(workgiver);
-        return "register";
-    }
+
 
 
 
