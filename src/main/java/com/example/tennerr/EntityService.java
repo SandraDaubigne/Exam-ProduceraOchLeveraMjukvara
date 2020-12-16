@@ -10,14 +10,16 @@ public class EntityService {
     private EntityRepository entityRepository;
 
     //2:Skapa Funktion för att kunna registrera sig
-    public void addWorker(Worker worker){
-        entityRepository.save(worker);
+    public void createUser(User user){
+        entityRepository.save(user);
     }
 
-    //2:Skapa Funktion för att kunna registrera sig
-    public void addWorkgiver(Workgiver workgiver){
-        entityRepository.save(workgiver);
+
+    //2: Skapa funktion för att kunna logga in
+    public User getUserByUsername(String username){
+        return entityRepository.findByUsername(username);
     }
+
 
 
 

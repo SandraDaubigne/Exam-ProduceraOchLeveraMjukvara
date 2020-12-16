@@ -11,15 +11,26 @@
 
 <!---2: Skapa funktion för att kunna registrera sig--->
 <form onsubmit="register()">
+    <h1>Registrera dig</h1>
     <input type ="text" placeholder="Ange ett användarnamn" id="username"><br>
     <input type ="text" placeholder="Ange ett lösenord" id="password" ><br>
     <p>Ange om du är arbetare eller arbetsgivare:</p>
-    <input type ="radio" id="worker" name="worker">
-    <label for ="worker">Arbetare</label><br>
-    <input type ="radio" id="workgiver" name ="workgiver">
-    <label for ="worker">Arbetsgivare</label><br>
-    <input type ="submit" value="Skicka">
 
+    <input type ="radio" id="worker" name="worker" value="worker">
+    <label for ="worker">Arbetare</label><br>
+
+    <input type ="radio" id="workgiver" name ="workgiver" value="workgiver">
+    <label for ="workgiver">Arbetsgivare</label><br>
+
+    <input type ="submit" value="Skicka">
+</form>
+
+<!-- 2: Skapa en funktion för att kunna logga in--->
+<form th:action = "@{/login}" method ="POST">
+    <h1>Logga in</h1>
+    <input type ="text" placeholder="Ange ett användarnamn" id="lu" name="username"><br>
+    <input type ="text" placeholder="Ange ett lösenord" id="pass" ><br>
+    <input type ="submit" value="Skicka">
 </form>
 
 </body>
@@ -31,8 +42,15 @@
 
         let username = document.getElementById('username').value
         let password = document.getElementById('password').value
+        let role;
 
-        const data = {username, password}
+        if(document.getElementById('worker').checked){
+           role = "worker";
+        }else if(document.getElementById('workgiver').checked){
+           role ="workgiver";
+        }
+
+        const data = {username, password, role}
 
         const options ={
             method: 'POST',
@@ -40,13 +58,10 @@
             body: JSON.stringify(data)
         }
 
-        if(document.getElementById('worker').checked){
-            fetch('/createworker', options)
-        }else if(document.getElementById('workgiver').checked){
-            fetch('/createworkgiver', options)
-        }
+        fetch("/createuser", options)
 
     }
+
 </script>
 <style></style>
 </html>
