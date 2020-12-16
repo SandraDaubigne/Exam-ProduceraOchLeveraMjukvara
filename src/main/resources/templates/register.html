@@ -27,7 +27,7 @@
 
 <!-- 2: Skapa en funktion för att kunna logga in--->
 
-<form th:action = "@{/login}" method ="POST">
+<form th:action = "@{/login/}" method ="POST">
     <h1>Test Logga in</h1>
     <input type ="text" placeholder="Ange ett användarnamn" id="lu" name="username"><br>
     <input type ="text" placeholder="Ange ett lösenord" id="pass" ><br>
@@ -62,7 +62,7 @@
         fetch("/createuser", options)
 
     }
-    
+
 </script>
 <style></style>
 </html>
