@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"></html>
 <html lang="en" id="show-profile-workgiver">
 
 <head>
@@ -38,9 +39,11 @@
             </div>
                 <div id="right-side">
                     <div id="profile-body">
+                        <!-- 2: Skapa en funktion för att kunna logga in--->
+                        <form th:action = "@{/login}" method ="POST">
                         <div id="input-div">
                             <label id="username">
-                                <input id="username-input" type="text" size="30" placeholder="Användarnamn">
+                                <input name="username" id="username-input" type="text" size="30" placeholder="Användarnamn">
                             </label>
                             <label id="password">
                                 <input id="password-input" type="text" size="30" placeholder="Lösenord">
@@ -51,6 +54,7 @@
                             <div id="login-button-div">
                                 <button id="login-button" type="submit">Logga in</button>
                             </div>
+                        </form>
                         </div>
                     </div>
                 </div>
@@ -99,7 +103,6 @@ body {
     height: 80px;
     width: 230px;
     border: 4px solid #fff;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
     position: absolute;
     left: 50px;
     top: 50px;
