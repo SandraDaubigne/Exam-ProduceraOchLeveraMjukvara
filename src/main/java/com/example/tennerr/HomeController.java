@@ -14,7 +14,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(){
-        return "register";
+        return "login";
     }
 
     //2: Skapa funktion för att kunna logga in
