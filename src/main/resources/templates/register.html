@@ -25,6 +25,15 @@
     <input type ="submit" value="Skicka">
 </form>
 
+<!-- Test logga in--->
+
+<form th:action = "@{/login}">
+    <h1>Test Logga in</h1>
+    <input type ="text" placeholder="Ange ett användarnamn" id="lu" ><br>
+    <input type ="text" placeholder="Ange ett lösenord" id="pass" ><br>
+    <input type ="submit" value="Skicka">
+</form>
+
 <!---2: Skapa funktion för att kunna logga in--->
 <form onsubmit="login()">
     <h1>Logga in</h1>
@@ -49,7 +58,7 @@
             headers: {'Content-Type': 'application/json;charset=utf8'},
         }
 
-        fetch('/login' + username, options)
+       // fetch('/login' + username, options)
 
 
         //alert(username);

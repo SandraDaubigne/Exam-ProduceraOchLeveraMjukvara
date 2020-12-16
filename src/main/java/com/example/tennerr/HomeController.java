@@ -16,13 +16,21 @@ public class HomeController {
         return "register";
     }
 
+    @PostMapping
+    public String login(){
+        return "userloggedin";
+    }
+
+    /*
     //RequestBody för att kunna ta emot JSON
     @RequestMapping(value = "/createuser",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public String createUser(@RequestBody User user){
 
         entityService.createUser(user);
         return "register";
-    }
+    }*/
+
+
 
 
     //@ResponseBody för att kunna skicka tillbaka JSON
