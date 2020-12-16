@@ -21,6 +21,9 @@ public class HomeController {
     @PostMapping("/login")
     public String login(@RequestParam("username") String username, Model model){
 
+        //Hämtar det valda objektet med hjälp av username
+        //Lagrar det i en variabel av samma typ
+        //Variabeln avnänds sedan till allt här inne för att hämta värden genom getmetoderna
         User user = entityService.getUserByUsername(username);
 
         if(user !=null && username.equals(user.getUsername())){
