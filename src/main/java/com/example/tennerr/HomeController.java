@@ -22,27 +22,15 @@ public class HomeController {
     public String login(@RequestParam("username") String username, Model model){
 
         User user = entityService.getUserByUsername(username);
-
-        model.addAttribute("user", user);
-
-        return "userloggedin";
-        /*
-
+        
         if(user !=null && username.equals(user.getUsername())){
-            if(user.getRole().equals("worker")){
-                model.addAttribute("name", user.getUsername());
-                model.addAttribute("role", user.getRole());
-                return "profileWorker";
-            }else if(user.getRole() == "workgiver"){
-                model.addAttribute("name", user.getUsername());
-                return "Workgiver";
-            }
-            return "register";
+            model.addAttribute("user", user);
+            return "userloggedin";
 
         }else if(user !=null && username.equals(user.getUsername())){
             return "register";
         }
-        return "register";*/
+        return "register";
     }
 
 
