@@ -12,36 +12,12 @@ public class HomeController {
     @Autowired
     private EntityService entityService;
 
+    /*******FÄRDIGA SIDOR*******/
     //Startvy
     @GetMapping("/")
     public String home(){
         return "login";
     }
-
-    //När man klickar på skapa konto från loginvy så kommer man hit
-    //VÄNTA
-    @GetMapping("/register")
-    public String register(){
-        return "register";
-    }
-
-    //När man trycker på "din profil" så kommer man hit
-    //Redigerar
-    @GetMapping("privateprofile")
-    public String privateProfile(){
-
-        //return "privateworkgiver";
-        return "privateworker";
-    }
-
-    //När man trycker på "visa profilt läge" inne i din profil så kommer man hit
-    @GetMapping("publicprofile")
-    public String publicProfile(){
-
-        //return "publicworkgiver";
-        return "publicworker";
-    }
-
 
 
     //Första vyn där man loggar in
@@ -70,13 +46,36 @@ public class HomeController {
     }
 
 
+    //När man klickar på skapa konto från loginvy så kommer man hit
+    //VÄNTA
     //2: Skapa funktion för att kunna registrera sig.
     //RequestBody för att kunna ta emot JSON
     @RequestMapping(value = "/createuser", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public String createUser(@RequestBody User user){
 
         entityService.createUser(user);
+        //Väntar på kod från Hanna
         return "register";
+    }
+
+
+    /**********INTE FÄRDIGA SIDOR*********/
+
+    //När man trycker på "din profil" så kommer man hit
+    //Redigerar
+    @GetMapping("privateprofile")
+    public String privateProfile(){
+
+        //return "privateworkgiver";
+        return "privateworker";
+    }
+
+    //När man trycker på "visa profilt läge" inne i din profil så kommer man hit
+    @GetMapping("publicprofile")
+    public String publicProfile(){
+
+        //return "publicworkgiver";
+        return "publicworker";
     }
 
 }
