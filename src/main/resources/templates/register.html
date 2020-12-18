@@ -133,10 +133,10 @@
     function register() {
         let username = document.getElementById('username').value
         let password = document.getElementById('password').value
-        let username = document.getElementById('firstname').value
-        let password = document.getElementById('lastname').value
-        let password = document.getElementById('phone').value
-        let password = document.getElementById('person-description').value
+        let name = document.getElementById('firstname').value
+        let lastname = document.getElementById('lastname').value
+        let phone = document.getElementById('phone').value
+        let description = document.getElementById('person-description').value
         let role;
         if(document.getElementById('worker').checked){
             role = "worker";
@@ -144,7 +144,7 @@
             role ="workgiver";
         }
 
-        
+
         const data = {username, password, role, name, phone, description}
         const options ={
             method: 'POST',
