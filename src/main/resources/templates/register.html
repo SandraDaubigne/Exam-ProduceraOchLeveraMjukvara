@@ -90,7 +90,7 @@
 
 
             <div id="register-button-div">
-                <input type="button" id="register-button" value="Skapa" onclick="showWorker()">
+                <input type="submit" id="register-button" value="Skapa">
             </div>
         </div>
     </form>
@@ -114,9 +114,9 @@
 
 
         let role;
-        if(document.getElementById('worker').checked){
+        if(document.getElementById('radio-worker').checked){
             role = "worker";
-        }else if(document.getElementById('workgiver').checked){
+        }else if(document.getElementById('radio-workgiver').checked){
             role ="workgiver";
         }
 
