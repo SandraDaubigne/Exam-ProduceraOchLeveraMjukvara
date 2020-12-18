@@ -12,11 +12,39 @@ public class HomeController {
     @Autowired
     private EntityService entityService;
 
+    //Startvy
     @GetMapping("/")
     public String home(){
-        return "Login";
+        return "login";
     }
 
+    //När man klickar på skapa konto från loginvy så kommer man hit
+    //VÄNTA
+    @GetMapping("/register")
+    public String register(){
+        return "register";
+    }
+
+    //När man trycker på "din profil" så kommer man hit
+    //Redigerar
+    @GetMapping("privateprofile")
+    public String privateProfile(){
+
+        //return "privateworkgiver";
+        return "privateworker";
+    }
+
+    //När man trycker på "visa profilt läge" inne i din profil så kommer man hit
+    @GetMapping("publicprofile")
+    public String publicProfile(){
+
+        //return "publicworkgiver";
+        return "publicworker";
+    }
+
+
+
+    //Första vyn där man loggar in
     //2: Skapa funktion för att kunna logga in
     @PostMapping("/login")
     public String login(@RequestParam("username") String username, Model model){
@@ -30,12 +58,12 @@ public class HomeController {
             if(user.getRole().equals("worker")){
 
                 model.addAttribute("user", user);
-                return "worker";
+                return "startpageworker";
 
             }else if(user.getRole().equals("workgiver")){
 
                 model.addAttribute("user", user);
-                return "workgiver2";
+                return "startpageworkgiver";
             }
         }
         return "error";
