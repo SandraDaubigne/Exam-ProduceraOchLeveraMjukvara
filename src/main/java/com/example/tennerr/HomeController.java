@@ -45,8 +45,13 @@ public class HomeController {
         return "error";
     }
 
-
     //När man klickar på skapa konto från loginvy så kommer man hit
+    @GetMapping("/register")
+    public String registerpage(){
+        return "register";
+    }
+
+    //När man är klar med sitt konto skickar man detta på submitknappen
     //VÄNTA
     //2: Skapa funktion för att kunna registrera sig.
     //RequestBody för att kunna ta emot JSON
