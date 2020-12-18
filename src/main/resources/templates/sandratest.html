@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+<!---2: Skapa funktion för att kunna registrera sig--->
+<form onsubmit="register()">
+    <h1>Registrera dig</h1>
+    <input type ="text" placeholder="Ange ett användarnamn" id="username"><br>
+    <input type ="text" placeholder="Ange ett lösenord" id="password" ><br>
+    <p>Ange om du är arbetare eller arbetsgivare:</p>
+
+    <input type ="radio" id="worker" name="worker" value="worker">
+    <label for ="worker">Arbetare</label><br>
+
+    <input type ="radio" id="workgiver" name ="workgiver" value="workgiver">
+    <label for ="workgiver">Arbetsgivare</label><br>
+
+    <input type ="submit" value="Skicka">
+</form>
+
+<!-- 2: Skapa en funktion för att kunna logga in--->
+<form th:action = "@{/login}" method ="POST">
+    <h1>Logga in</h1>
+    <input type ="text" placeholder="Ange ett användarnamn" id="lu" name="username"><br>
+    <input type ="text" placeholder="Ange ett lösenord" id="pass" ><br>
+    <input type ="submit" value="Skicka">
+</form>
+
+<!--
+<p>Välkommen:</p>
+<span th:text="${user.getUsername()}">Text</span>
+<span th:text="${user.getRole()}">Text</span>-->
+
+</body>
+
+<script>
+
+    //2:Skapa Funktion för att kunna registrera sig
+    function register() {
+
+        let username = document.getElementById('username').value
+        let password = document.getElementById('password').value
+        let role;
+
+        if(document.getElementById('worker').checked){
+            role = "worker";
+        }else if(document.getElementById('workgiver').checked){
+            role ="workgiver";
+        }
+
+        const data = {username, password, role}
+
+        const options ={
+            method: 'POST',
+            headers: {'Content-Type': 'application/json;charset=utf8'},
+            body: JSON.stringify(data)
+        }
+
+        fetch("/createuser", options)
+
+    }
+
+</script>
+<style></style>
+</html>
