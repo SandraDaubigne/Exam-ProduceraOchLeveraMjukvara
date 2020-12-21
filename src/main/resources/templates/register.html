@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
 <body>
 
 <header id="first-header"></header>
@@ -53,152 +52,152 @@
                 </div>
             </div>
         </div>
-
+        
         <div id="right-side">
             <div id="profile-body">
-                <!-- 2: Skapa funktion för att kunna registrera sig--->
-                <form th:action = "@{/}" method ="POST" >
-                    <div id="option-div">
-                        <h4 id="option h4">Registrera dig som arbetare eller uppdragsgivare:</h4>
-                    </div>
+                <!-- 2: Skapa funktion för att kunna registrera sig,--->
 
+                <div id="option-div">
+                    <h4 id="option h4">Registrera dig som arbetare eller uppdragsgivare:</h4>
+                </div>
+
+                <form onsubmit ="register()">
                     <div id="radio-div">
-                        <label id="worker" for ="worker">Arbetare</label>
-                        <input type ="radio" id="radio-worker" name="worker">
-                        <label id="workgiver" for ="workgiver">Uppdragsgivare</label>
-                        <input type ="radio" id="radio-workgiver" name ="workgiver">
+                        <input type ="radio" id="radio-worker" name="worker" onchange="showWorker()">
+                        <label id="worker" for ="radio-worker">Arbetare</label>
+                        <input type ="radio" id="radio-workgiver" name ="worker" onchange="showWorkgiver()">
+                        <label id="workgiver" for ="radio-workgiver">Uppdragsgivare</label>
+
+
+                        <input name="username" type="text" placeholder="Användarnamn*" id="username" style="width: 553px; height: 25px"><br>
+                        <input type="text" placeholder="Lösenord*" id="password" style="width: 275px; height: 25px">
+                        <input type="text" placeholder="Upprepa lösenord*" id="verify" style="width: 275px; height: 25px"><br>
+
+                        <input type ="text" placeholder="Förnamn*" id="firstname" style="width: 275px; height: 25px">
+                        <input type ="text" placeholder="Efternamn*" id="lastname" style="width: 275px; height: 25px"><br>
+                        <input type="text" placeholder="Telefonnummer*" id="phone" style="width: 553px; height: 25px"><br>
+
+                        <textarea id="person-description" name="Personbeskrivning" style="width: 553px; height: 100px">Personbeskrivning</textarea><br>
+
+
+                        <p id="category">Välj en eller flera kategorier:</p>
+                        <input type="checkbox" id="-checkbox-beauty" name="beauty" value="true">
+                        <label id="beauty" for="-checkbox-beauty">Skönhet</label>
+
+                        <input type="checkbox" id="checkbox-cleaning" name="cleaning" value="true">
+                        <label id="cleaning" for="checkbox-cleaning">Städning</label>
+
+                        <input type="checkbox" id="checkbox-vvs" name="vvs" value="true">
+                        <label id="vvs" for="checkbox-vvs">VVS</label>
+
+                        <input type="checkbox" id="checkbox-health" name="health" value="true">
+                        <label id="health" for="checkbox-health">Hälsa</label>
+
+                        <input type="checkbox" id="checkbox-painting" name="painting" value="true">
+                        <label id="painting" for="checkbox-painting">Måleri</label>
+                        <!--<input type="submit" value="Submit">-->
+
+
+                        <!--Workgiver-->
+                        <input type ="text" placeholder="E-mail*" id="e-mail" style="width: 553px; height: 25px">
+                        <input type="text" placeholder="Gatuadress*" id="street" style="width: 553px; height: 25px"><br>
+
+
+                        <!-- Laddar upp filer som väljs lokalt på datorn-->
+                        <label for="profileimg">Ladda upp profilbild</label>
+                        <input type="file" id="profileimg" name="profileimg"><br>
+
+                        <!-- ARBETARE, Laddar upp filer som väljs lokalt på datorn-->
+                        <label for="certificateimg" id="certificate-label">Ladda upp certifikat och intyg</label>
+                        <input type="file" id="certificateimg" name="certificateimg"><br>
+
 
                         <div id="register-button-div">
-                            <!--Test-->
-                            <input type="button" id="register-button" value="Skapa" onclick="showWorker()">
-                            <div id="workerRegister" style="display: none;">
-                                <input name="username" type="text" placeholder="Användarnamn*" id="username" style="width: 588px; height: 25px"><br>
-                                <input type="text" placeholder="Lösenord*" id="password">
-                                <input type="text" placeholder="Upprepa lösenord*" id="verify"><br>
-
-                                <input type ="text" placeholder="Förnamn*" id="firstname">
-                                <input type ="text" placeholder="Efternamn*" id="lastname"><br>
-                                <input type="text" placeholder="Telefonnummer*" id="phone" style="width: 588px; height: 25px"><br>
-
-                                <textarea id="person-description" name="Personbeskrivning">Personbeskrivning</textarea><br>
-
-                                <!--Input-fälten ligger i en tabell för att man ska kunna duplicera dem, "Lägg till fler"-->
-                                <div class="set-form">
-                                    <table class="table">
-                                        <tbody>
-                                        <tr>
-                                            <td>
-                                                <!--<input type="text" placeholder="Arbeten du kan utföra" th.field="${workCategorySet.work}" id="work">
-                                            </td>
-
-                                            <td>
-                                                <input type="text" placeholder="kategori" th:field="${workCategorySet.category}" id="category" list="category1">
-                                                <input type="text" placeholder="kategori" th:field="${questionAnswerSet.answer}" id="answer" list="category1">
-                                                --><datalist id="category1">
-                                                    <option value="Skönhet">
-                                                    <option value="Städning">
-                                                    <option value="VVS">
-                                                    <option value="Hälsa">
-                                                    <option value="Måleri"></option>
-                                                </datalist>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <div class="set-form">
-                                    <input type="button" id="addButton" onclick="add_fields();" value="Lägg till fler">
-                                </div>
-
-                                <!-- Laddar upp filer som väljs lokalt på datorn-->
-                                <label id="label1" for="profileimg">Ladda upp profilbild</label>
-                                <input type="file" id="profileimg" name="profileimg"><br>
-
-                                <label id="label2" for="certificateimg">Ladda upp certifikat och intyg</label>
-                                <input type="file" id="certificateimg" name="certificateimg"><br>
-                                <button type="button" id="button">Spara</button>
-                            </div>
+                            <input type="submit" id="register-button" value="Skapa">
                         </div>
                     </div>
                 </form>
+
             </div>
         </div>
+
     </div>
-
-
-
-
-    <!--Registrera arbetare-->
-    <form>
-        <input name="username" type="text" placeholder="Användarnamn*" id="username" style="width: 588px; height: 25px">
-        <input type="text" placeholder="Lösenord*" id="password">
-        <input type="text" placeholder="Upprepa lösenord*" id="verify">
-
-
-        <input type ="text" placeholder="Förnamn*" id="firstname">
-        <input type ="text" placeholder="Efternamn*" id="lastname"><br>
-        <input type="text" placeholder="Telefonnummer*" id="phone" style="width: 588px; height: 25px"><br>
-
-        <textarea id="person-description" name="Personbeskrivning">Personbeskrivning</textarea><br>
-
-        <!--Input-fälten ligger i en tabell för att man ska kunna duplicera dem, "Lägg till fler"-->
-        <div class="set-form">
-            <table class="table">
-                <tbody>
-                <tr>
-                    <td>
-                        <!--<input type="text" placeholder="Arbeten du kan utföra" th.field="${workCategorySet.work}" id="work">-->
-                        <!--<input type="text" placeholder="Arbeten du kan utföra" th.field="${questionAnswerSet.question}" id="question">-->
-                    </td>
-
-                    <td>
-                       <!-- <input type="text" placeholder="kategori" th:field="${workCategorySet.category}" id="category" list="category1"> -->
-                        <!--<input type="text" placeholder="kategori" th:field="${questionAnswerSet.answer}" id="answer" list="category1">-->
-                        <datalist id="category1">
-                            <option value="Skönhet">
-                            <option value="Städning">
-                            <option value="VVS">
-                            <option value="Hälsa">
-                            <option value="Måleri"></option>
-                        </datalist>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <!--</form>-->
-
-        <div class="set-form">
-            <input type="button" id="addButton" onclick="add_fields();" value="Lägg till fler">
-        </div>
-
-        <!-- Laddar upp filer som väljs lokalt på datorn-->
-        <label id="label1" for="profileimg">Ladda upp profilbild</label>
-        <input type="file" id="profileimg" name="profileimg"><br>
-
-        <label id="label2" for="certificateimg">Ladda upp certifikat och intyg</label>
-        <input type="file" id="certificateimg" name="certificateimg"><br>
-
-        <button type="button" id="button">Spara</button>
-    </form>
-
-</div>
-
 </body>
 
 
 <script>
-    //Kod för att skapa fler input-fält då man trycker på "Lgg till fler-knappen"
-    /*function add_fields() {
-    document.getElementsByClassName('table')[0].getElementsByTagName('tbody')[0].innerHTML +=
-    '<tr><td><input type="text" placeholder="Arbeten du kan utföra" th.field="${workCategorySet.work}" id="work"></td><td><input type="text" placeholder="kategori" th:field="${workCategorySet.category}" id="category" list="category1">';
-    }*/
+
+    //2:Skapa Funktion för att kunna registrera sig
+    function register() {
+        let username = document.getElementById('username').value
+        let password = document.getElementById('password').value
+        let name = document.getElementById('firstname').value
+        let lastname = document.getElementById('lastname').value
+        let phone = document.getElementById('phone').value
+        let description = document.getElementById('person-description').value
+
+        let email = document.getElementById('e-mail').value
+        let address = document.getElementById('street').value
+
+
+        /*Hanna har lagt till*/
+        let profileimg = document.getElementById('profileimg').value
+        let certificateimg = document.getElementById('certificateimg').value
+
+        let beauty = document.getElementById('checkbox-beauty').value
+        let cleaning = document.getElementById('checkbox-cleaning').value
+        let vvs = document.getElementById('checkbox-vvs').value
+        let health = document.getElementById('checkbox-health').value
+        let painting = document.getElementById('checkbox-painting').value
+
+
+
+        let role;
+        if(document.getElementById('radio-worker').checked){
+            role = "worker";
+        }else if(document.getElementById('radio-workgiver').checked){
+            role ="workgiver";
+        }
+
+
+        const data = {username, password, role, name, phone, description, email, address }
+        const options ={
+            method: 'POST',
+            headers: {'Content-Type': 'application/json;charset=utf8'},
+            body: JSON.stringify(data)
+        }
+        fetch("/createuser", options)
+    }
+
 
     function showWorker() {
-   document.getElementById('workerRegister').style.display = "block";
-}
- </script>
+        document.getElementById('street').style.display = "none";
+        document.getElementById('e-mail').style.display = "none";
+    }
+
+    function showWorkgiver() {
+        document.getElementById('certificate-label').style.display ="none";
+        document.getElementById('certificateimg').style.display ="none";
+
+        /*Checkboxes*/
+        document.getElementById('category').style.display ="none";
+        document.getElementById('checkbox-beauty').style.display ="none";
+        document.getElementById('beauty').style.display ="none";
+
+        document.getElementById('checkbox-cleaning').style.display ="none";
+        document.getElementById('cleaning').style.display ="none";
+
+        document.getElementById('checkbox-vvs').style.display ="none";
+        document.getElementById('vvs').style.display ="none";
+
+        document.getElementById('checkbox-health').style.display ="none";
+        document.getElementById('health').style.display ="none";
+
+        document.getElementById('checkbox-painting').style.display ="none";
+        document.getElementById('painting').style.display ="none";
+    }
+
+</script>
 
 
 <style>
@@ -208,7 +207,7 @@
     margin: 0;
     box-sizing: border-box;
 }
-/* No use case, show profile workgiver */
+
 body {
     background: #e9e9e9;
     overflow: hidden;
@@ -342,6 +341,120 @@ body {
 
 }
 
+
+
+/*Inputfält*/
+#username {
+    float: none;
+    /*display: block;*/
+    padding: 0.3em;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#password {
+    float: none;
+    /*display: table-row;*/
+    padding: 0.3em;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#verify {
+    float: none;
+    /*display: table-row;*/
+    padding: 0.3em;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#firstname {
+    float: none;
+    /*display: table-row;*/
+    padding: 0.3em;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#latname {
+    float: none;
+    /*display: table-row;*/
+    padding: 0.3em;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#phone {
+    float: none;
+    /*display: block;*/
+    padding: 0.3em;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#person-description {
+    font-family: Standard, Helvetica;
+    padding: 0.3em;
+    color: #6b7a8f;
+    /*margin-left: 500px;*/
+    margin-top: 20px;
+    /*width: 588px;
+    height: 100px;*/
+    resize: none;
+}
+
+#category {
+    float: none;
+    /*display: block;*/
+    padding: 0.3em;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+#checkbox-beauty, #checkbox-cleaning, #checkbox-vvs, #checkbox-health, #checkbox-painting {
+    margin-top: 10px;
+
+}
+
+#beauty, #cleaning, #vvs, #health, #painting {
+    padding: 0.3em;
+}
+
+
+#e-mail {
+    float: none;
+    /*display: block;*/
+    padding: 0.3em;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+#street {
+    float: none;
+    /*display: block;*/
+    padding: 0.3em;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+
+#profileimg {
+    float: none;
+    /*display: block;*/
+    padding: 0.3em;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+
+#certificateimg {}
+
+
+
+
+
+
+/*Submit-button*/
 #register-button {
     border: 0;
     padding: 10px 20px;
@@ -363,111 +476,89 @@ body {
 }
 
 #register-button-div {
-    padding-left: 10em;
+    padding-left: 30em;
 }
 
 
-/*Arbetare*/
-#username  {
-    margin-left: 500px;
-    margin-top: 20px;
+
+
+/*Responsivitet*/
+@media(max-width: 1100px) {
+    #profile-side {
+        width: 250px;
+        padding: 90px 15px 20px;
+    }
+
+    #profile-img #profile-picture {
+        left: 50px;
+        right: 50px;
+    }
 }
 
-#password {
-    height: 25px;
-    width: 275px;
-    margin-left: 500px;
-    margin-top: 20px;
+@media(max-width: 900px) {
+    body {
+        margin: 0 20px;
+    }
+
+    #profile-header {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        text-align: center;
+        padding-bottom: 20px;
+    }
+
+    #profile-header #address {
+        justify-content: center;
+    }
+
+    #profile-img {
+        float: left;
+        width: 100%;
+        height: 200px;
+    }
+
+    #profile-img #profile-picture {
+        position: relative;
+        left: 0;
+        top: 80px;
+    }
+
+    #main {
+        flex-direction: column;
+        padding-right: 0px;
+    }
+
+    #profile-side {
+        width: 100%;
+        text-align: center;
+        padding: 20px;
+        margin: 5px 0;
+    }
 }
 
-#verify {
-    height: 25px;
-    width: 275px;
-    margin-left: 25px;
-    margin-top: 20px;
+@media (max-width: 700px) {
+    #input-div {
+        padding-left: 30%;
+    }
 }
 
+@media (max-width: 462px) {
+    body {
+        margin: 0;
+    }
 
-#firstname {
-    height: 25px;
-    width: 275px;
-    margin-left: 500px;
-    margin-top: 20px;
+    #profile-header h3 {
+        font-size: 1.7rem;
+    }
+
+    #input-div {
+        padding-left: 20%;
+    }
 }
-
-#lastname {
-    height: 25px;
-    width: 275px;
-    margin-left: 25px;
-    margin-top: 20px;
-}
-
-#phone {
-    margin-left: 500px;
-    margin-top: 20px;
-}
-
-#person-description {
-    font-family: Standard, Helvetica;
-    color: #6b7a8f;
-
-    padding-top: 5px;
-    margin-left: 500px;
-    margin-top: 20px;
-    width: 588px;
-    height: 100px;
-    resize: none;
-}
-
-#work {
-    height: 25px;
-    width: 350px;
-    margin-left: 500px;
-    margin-top: 20px;
-}
-
-#category {
-    height: 25px;
-    width: 200px;
-    margin-left: 25px;
-    margin-top: 20px;
-}
-
-#addButton {
-    background-color: #fff;
-    color: #6b7a8f;
-    border: none;
-    margin-left: 1020px;
-    margin-top: 10px;
-}
-
-#button {
-    border: 0;
-    padding: 10px 20px;
-    border-radius: 3px;
-    background: var(--color);
-    font-family: sans-serif;
-    margin: 20px 1010px;
-    cursor: pointer;
-    outline: none;
-    margin-bottom: 10px;
-    transition: .3s ease-in-out;
-    box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.3);
-    color: #fff;
-    background: rgba(265, 0, 70, 0.9);
-}
-
-#button:hover {
-    background-color: #4CAF50;
-}
-
-#label1, #label2 {
-    margin-left: 500px;
-
-}
-
 
 
 
 </style>
+
 </html>
