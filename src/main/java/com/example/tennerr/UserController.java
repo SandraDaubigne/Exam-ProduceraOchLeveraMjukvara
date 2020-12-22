@@ -45,9 +45,11 @@ public class UserController {
         UserEntity user = userService.getUserById(id);
         model.addAttribute("user", user);
         return "userprofile";
-
-
     }
+
+    //U - Update User
+    //fortsätta här, nu används saveUser metoden här ovan
+    //felet blir att allt sätts till null vid ändring. 
 
     //Ta emot inloggningsuppgifter
     //Skicka användare till inloggad sida.

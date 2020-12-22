@@ -12,7 +12,8 @@
 
 <p> Ändra dina uppgifter här: </p>
 
-<form action ="#" th:action="@{/saveuser}" th:object="${user}" method="post">
+<form action ="#" th:action="@{/saveUser}" th:object="${user}" method="post">
+    <input type="hidden" name = "id" th:value="${user.id}">
     <span>Förnamn</span>
     <input type ="text" th:value="${user.firstname}"><br>
     <span>Efternamn</span>
