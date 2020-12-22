@@ -10,6 +10,11 @@
 
 <h1>PROFIL SIDA</h1>
 
+<form action ="#" th:action="@{/saveuser}" th:object="${user}" method="post">
+    <span>Förnamn</span>
+    <input type ="text" th:value="${user.firstname}">
+</form>
+
 </body>
 
 </html>
