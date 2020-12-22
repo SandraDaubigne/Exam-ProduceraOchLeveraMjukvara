@@ -30,9 +30,15 @@ public class UserController {
 
     //C - Create User
     @PostMapping("/saveUser")
-    public String saveUser(@ModelAttribute("user") UserEntity  userEntity, Model model){
+    public String saveUser(@ModelAttribute("user") UserEntity  userEntity){
         userService.saveUser(userEntity);
-        return "loggedin";
+        return "registerfeedback";
+    }
+
+    //Show Login Form
+    @GetMapping("/showLoginForm")
+    public String showLoginForm(){
+        return "userstart";
     }
 
 
