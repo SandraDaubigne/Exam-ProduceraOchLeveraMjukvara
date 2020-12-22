@@ -3,10 +3,7 @@ package com.example.tennerr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
@@ -42,10 +39,14 @@ public class UserController {
         return "userstart";
     }
 
-    //Show profile
-    @GetMapping("/showProfile")
-    public String showProfile(){
+    //Show form for update user
+    @GetMapping("/showformforupdate/{id}")
+    public String showFormForUpdate(@PathVariable (value= "id") long id, Model model){
+        UserEntity user = userService.getUserById(id);
+        model.addAttribute("user", user);
         return "profile";
+
+
     }
 
     //Ta emot inloggningsuppgifter

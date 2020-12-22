@@ -10,12 +10,7 @@
 
 <h1>INLOGGAD</h1>
 
-<form action ="#" th:action ="@{/showProfile}" th:object="${user}" method ="POST">
-    <input type ="hidden" th:value="${user.id}">
-    <input type ="text" th:value="${user.firstname}">
-    <button type = "submit">Visa din profil</button>
-</form>
-
+<td> <a th:href="@{/showformforupdate/{id}(id=${user.id})}">Visa din profil</a> </td>
 
 </body>
 
