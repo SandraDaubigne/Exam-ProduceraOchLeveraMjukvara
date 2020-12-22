@@ -44,7 +44,7 @@ public class UserController {
     public String showFormForUpdate(@PathVariable (value= "id") long id, Model model){
         UserEntity user = userService.getUserById(id);
         model.addAttribute("user", user);
-        return "profile";
+        return "userprofile";
 
 
     }

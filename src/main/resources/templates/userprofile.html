@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<h1>PROFIL SIDA</h1>
+
+<p> Ändra dina uppgifter här: </p>
+
+<form action ="#" th:action="@{/saveuser}" th:object="${user}" method="post">
+    <span>Förnamn</span>
+    <input type ="text" th:value="${user.firstname}"><br>
+    <span>Efternamn</span>
+    <input type ="text" th:value="${user.lastname}"><br>
+    <span>Adress</span>
+    <input type ="text" th:value="${user.address}"><br>
+    <span>Telefon</span>
+    <input type ="text" th:value="${user.phone}"><br>
+    <span>Email</span>
+    <input type ="text" th:value="${user.email}"><br>
+    <span>Beskrivning</span>
+    <input type ="textarea" th:value="${user.description}"><br>
+    <span>Skönhet</span>
+    <input type ="checkbox" th:checked="${user.beauty}"><br>
+    <span>Städning</span>
+    <input type ="checkbox" th:checked="${user.cleaning}"><br>
+    <span>VVS</span>
+    <input type ="checkbox" th:checked="${user.vvs}"><br>
+    <span>Hälsa</span>
+    <input type ="checkbox" th:checked="${user.health}"><br>
+    <span>Målning</span>
+    <input type ="checkbox" th:checked="${user.painting}"><br>
+
+    <button type ="submit">Spara ändringar</button>
+
+</form>
+
+</body>
+
+</html>
