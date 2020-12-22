@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
@@ -40,6 +41,40 @@ public class UserController {
     public String showLoginForm(){
         return "userstart";
     }
+
+    //Show profile
+    @GetMapping("/showProfile")
+    public String showProfile(){
+        return "profile";
+    }
+
+    //Ta emot inloggningsuppgifter
+    //Skicka användare till inloggad sida.
+    @PostMapping("/login")
+    public String login(@RequestParam("username") String username, Model model){
+
+        UserEntity user = userService.getUserByUsername(username);
+
+        if(user !=null && username.equals(user.getUsername())){
+
+            model.addAttribute("user", user);
+            return "userloggedin";
+
+            /*if(user.getRole().equals("worker")){
+
+                model.addAttribute("user", user);
+                return "startpageworker";
+
+            }else if(user.getRole().equals("workgiver")){
+
+                model.addAttribute("user", user);
+                return "startpageworkgiver";
+            }*/
+        }
+        return "error";
+    }
+
+
 
 
 }

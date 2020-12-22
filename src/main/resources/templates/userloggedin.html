@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<h1>INLOGGAD</h1>
+
+<form action ="#" th:action ="@{/showProfile}" th:object="${user}" method ="POST">
+    <input type ="hidden" th:value="${user.id}">
+    <input type ="text" th:value="${user.firstname}">
+    <button type = "submit">Visa din profil</button>
+</form>
+
+
+</body>
+
+</html>
