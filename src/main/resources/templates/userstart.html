@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<h1>STARTSIDA</h1>
+
+<form th:action = "@{/login}" method ="POST">
+    <a th:href="@{/showNewUserForm}">Registrera dig här!</a>
+
+            <input name="username" id="username-input" type="text" placeholder="Användarnamn">
+            <input id="password-input" type="text" placeholder="Lösenord">
+            <button id="login-button" type="submit">Logga in</button>
+</form>
+
+</body>
+
+</html>
