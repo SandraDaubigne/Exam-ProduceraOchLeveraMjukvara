@@ -15,27 +15,27 @@
 <form action ="#" th:action="@{/saveUser}" th:object="${user}" method="post">
     <input type="hidden" name = "id" th:value="${user.id}">
     <span>Förnamn</span>
-    <input type ="text" th:value="${user.firstname}"><br>
+    <input type ="text" th:field="*{firstname}" th:value="${user.firstname}"><br>
     <span>Efternamn</span>
-    <input type ="text" th:value="${user.lastname}"><br>
+    <input type ="text" th:field="*{lastname}" th:value="${user.lastname}"><br>
     <span>Adress</span>
-    <input type ="text" th:value="${user.address}"><br>
+    <input type ="text" th:field="*{address}" th:value="${user.address}"><br>
     <span>Telefon</span>
-    <input type ="text" th:value="${user.phone}"><br>
+    <input type ="text" th:field="*{phone}" th:value="${user.phone}"><br>
     <span>Email</span>
-    <input type ="text" th:value="${user.email}"><br>
+    <input type ="text" th:field="*{email}" th:value="${user.email}"><br>
     <span>Beskrivning</span>
-    <input type ="textarea" th:value="${user.description}"><br>
+    <input type ="textarea" th:field="*{description}" th:value="${user.description}"><br>
     <span>Skönhet</span>
-    <input type ="checkbox" th:checked="${user.beauty}"><br>
+    <input type ="checkbox" th:field="*{beauty}" th:checked="${user.beauty}"><br>
     <span>Städning</span>
-    <input type ="checkbox" th:checked="${user.cleaning}"><br>
+    <input type ="checkbox" th:field="*{cleaning}" th:checked="${user.cleaning}"><br>
     <span>VVS</span>
-    <input type ="checkbox" th:checked="${user.vvs}"><br>
+    <input type ="checkbox" th:field="*{vvs}" th:checked="${user.vvs}"><br>
     <span>Hälsa</span>
-    <input type ="checkbox" th:checked="${user.health}"><br>
+    <input type ="checkbox" th:field="*{health}" th:checked="${user.health}"><br>
     <span>Målning</span>
-    <input type ="checkbox" th:checked="${user.painting}"><br>
+    <input type ="checkbox" th:field="*{painting}" th:checked="${user.painting}"><br>
 
     <button type ="submit">Spara ändringar</button>
 
