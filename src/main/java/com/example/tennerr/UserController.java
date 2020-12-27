@@ -52,13 +52,26 @@ public class UserController {
     //U - Update User
     //fortsätta här, nu används saveUser metoden här ovan
     @PostMapping("/updateUser/{id}")
-    public String updateUser(@ModelAttribute("user") UserEntity  userEntity,@PathVariable (value= "id") long id, Model model){
+    public String updateUser(@ModelAttribute("user") UserEntity userEntity,
+                             @PathVariable (value= "id") long id,
+                             Model model){
         userService.saveUser(userEntity);
         UserEntity user = userService.getUserById(id);
         model.addAttribute("user", user);
         String message = "Dina uppgifter har ändrats!";
         model.addAttribute("msg", message);
-        return "userprofile";
+
+        if(user.isWorker()){
+            model.addAttribute("user", user);
+            return "3startpageworker";
+
+        }else if(user.isWorkgiver()){
+
+            model.addAttribute("user", user);
+            return "3startpageworkgiver";
+        }
+
+        return "error";
     }
 
     // Login function
@@ -78,7 +91,7 @@ public class UserController {
                     model.addAttribute("user", user);
                     return "3startpageworkgiver";
                 }
-                
+
             model.addAttribute("user", user);
             return "userloggedin";
         }
