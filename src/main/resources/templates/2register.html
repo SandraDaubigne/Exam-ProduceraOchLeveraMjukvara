@@ -69,6 +69,8 @@
                         <input type ="radio" id="radio-workgiver"  value="true" onchange="showWorkgiver()" th:field="*{workgiver}">
                         <label id="workgiver" for ="radio-workgiver">Uppdragsgivare</label>
 
+                        <input type="file" name = "file" th:field="*{profilepic}">
+
 
                         <input name="username" type="text" placeholder="Användarnamn*" id="username" style="width: 553px; height: 25px" th:field="*{username}" ><br>
                         <input type="text" placeholder="Lösenord*" id="password" style="width: 275px; height: 25px" th:field="*{password}">

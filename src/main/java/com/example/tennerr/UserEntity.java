@@ -1,9 +1,6 @@
 package com.example.tennerr;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class UserEntity {
@@ -27,11 +24,22 @@ public class UserEntity {
     private boolean health;
     private boolean painting;
 
+    @Lob
+    private byte[] profilepic;
+
     public UserEntity() {
     }
 
     public Long getId() {
         return id;
+    }
+
+    public byte[] getProfilepic() {
+        return profilepic;
+    }
+
+    public void setProfilepic(byte[] profilepic) {
+        this.profilepic = profilepic;
     }
 
     public void setId(Long id) {
