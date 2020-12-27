@@ -63,9 +63,10 @@
 
                 <form action ="#" th:action ="@{/saveUser}" th:object="${user}" method ="POST">
                     <div id="radio-div">
-                        <input type ="radio" id="radio-worker" name="worker" value="true" onchange="showWorker()" th:field="*{worker}">
+                        <!---value måste finnas här-->
+                        <input type ="radio" id="radio-worker" value="true" onchange="showWorker()" th:field="*{worker}">
                         <label id="worker" for ="radio-worker">Arbetare</label>
-                        <input type ="radio" id="radio-workgiver" name ="workgiver" value="true" onchange="showWorkgiver()" th:field="*{workgiver}">
+                        <input type ="radio" id="radio-workgiver"  value="true" onchange="showWorkgiver()" th:field="*{workgiver}">
                         <label id="workgiver" for ="radio-workgiver">Uppdragsgivare</label>
 
 
@@ -126,49 +127,6 @@
 
 
 <script>
-
-    //2:Skapa Funktion för att kunna registrera sig
-    function register() {
-        let username = document.getElementById('username').value
-        let password = document.getElementById('password').value
-        let name = document.getElementById('firstname').value
-        let lastname = document.getElementById('lastname').value
-        let phone = document.getElementById('phone').value
-        let description = document.getElementById('person-description').value
-
-        let email = document.getElementById('e-mail').value
-        let address = document.getElementById('street').value
-
-
-        /*Hanna har lagt till*/
-        let profileimg = document.getElementById('profileimg').value
-        let certificateimg = document.getElementById('certificateimg').value
-
-        let beauty = document.getElementById('checkbox-beauty').value
-        let cleaning = document.getElementById('checkbox-cleaning').value
-        let vvs = document.getElementById('checkbox-vvs').value
-        let health = document.getElementById('checkbox-health').value
-        let painting = document.getElementById('checkbox-painting').value
-
-
-
-        let role;
-        if(document.getElementById('radio-worker').checked){
-            role = "worker";
-        }else if(document.getElementById('radio-workgiver').checked){
-            role ="workgiver";
-        }
-
-
-        const data = {username, password, role, name, phone, description, email, address }
-        const options ={
-            method: 'POST',
-            headers: {'Content-Type': 'application/json;charset=utf8'},
-            body: JSON.stringify(data)
-        }
-        fetch("/createuser", options)
-    }
-
 
     function showWorker() {
         document.getElementById('street').style.display = "none";
