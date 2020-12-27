@@ -49,10 +49,18 @@ public class UserController {
 
     //U - Update User
     //fortsätta här, nu används saveUser metoden här ovan
-    //felet blir att allt sätts till null vid ändring. 
+    @PostMapping("/updateUser/{id}")
+    public String updateUser(@ModelAttribute("user") UserEntity  userEntity,@PathVariable (value= "id") long id, Model model){
+        userService.saveUser(userEntity);
+        UserEntity user = userService.getUserById(id);
+        model.addAttribute("user", user);
+        String message = "Dina uppgifter har ändrats!";
+        model.addAttribute("msg", message);
+        return "userprofile";
+    }
 
-    //Ta emot inloggningsuppgifter
-    //Skicka användare till inloggad sida.
+
+    // Login function
     @PostMapping("/login")
     public String login(@RequestParam("username") String username, Model model){
 

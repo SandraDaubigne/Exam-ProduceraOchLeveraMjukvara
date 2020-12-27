@@ -11,13 +11,18 @@
 <h1>PROFIL SIDA</h1>
 
 <p> Ändra dina uppgifter här: </p>
+<span th:text="${msg}"></span>
 
-<form action ="#" th:action="@{/saveUser}" th:object="${user}" method="post">
+<form action ="#" th:action="@{/updateUser/{id}(id=${user.id})}" th:object="${user}" method="post">
     <input type="hidden" name = "id" th:value="${user.id}">
     <span>Förnamn</span>
     <input type ="text" th:field="*{firstname}" th:value="${user.firstname}"><br>
     <span>Efternamn</span>
     <input type ="text" th:field="*{lastname}" th:value="${user.lastname}"><br>
+    <span>Användarnamn</span>
+    <input type ="text" th:field="*{username}" th:value="${user.username}"><br>
+    <span>Lösenord</span>
+    <input type ="text" th:field="*{password}" th:value="${user.password}"><br>
     <span>Adress</span>
     <input type ="text" th:field="*{address}" th:value="${user.address}"><br>
     <span>Telefon</span>
@@ -25,7 +30,7 @@
     <span>Email</span>
     <input type ="text" th:field="*{email}" th:value="${user.email}"><br>
     <span>Beskrivning</span>
-    <input type ="textarea" th:field="*{description}" th:value="${user.description}"><br>
+    <input type ="text" th:field="*{description}" th:value="${user.description}"><br>
     <span>Skönhet</span>
     <input type ="checkbox" th:field="*{beauty}" th:checked="${user.beauty}"><br>
     <span>Städning</span>
