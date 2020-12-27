@@ -63,9 +63,9 @@
 
                 <form action ="#" th:action ="@{/saveUser}" th:object="${user}" method ="POST">
                     <div id="radio-div">
-                        <input type ="radio" id="radio-worker" name="worker" onchange="showWorker()" th:checked="*{worker}">
+                        <input type ="radio" id="radio-worker" name="worker" value="true" onchange="showWorker()" th:field="*{worker}">
                         <label id="worker" for ="radio-worker">Arbetare</label>
-                        <input type ="radio" id="radio-workgiver" name ="worker" onchange="showWorkgiver()" th:checked="*{workgiver}">
+                        <input type ="radio" id="radio-workgiver" name ="workgiver" value="true" onchange="showWorkgiver()" th:field="*{workgiver}">
                         <label id="workgiver" for ="radio-workgiver">Uppdragsgivare</label>
 
 
