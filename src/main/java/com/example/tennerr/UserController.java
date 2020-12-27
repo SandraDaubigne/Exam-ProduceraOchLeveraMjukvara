@@ -32,7 +32,7 @@ public class UserController {
     @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute("user") UserEntity  userEntity){
         userService.saveUser(userEntity);
-        return "registerfeedback";
+        return "1login";
     }
 
     //Show Login Form
@@ -61,7 +61,6 @@ public class UserController {
         return "userprofile";
     }
 
-
     // Login function
     @PostMapping("/login")
     public String login(@RequestParam("username") String username, Model model){
@@ -70,19 +69,18 @@ public class UserController {
 
         if(user !=null && username.equals(user.getUsername())){
 
+                if(user.isWorker()){
+                    model.addAttribute("user", user);
+                    return "3startpageworker";
+
+                }else if(user.isWorkgiver()){
+
+                    model.addAttribute("user", user);
+                    return "3startpageworkgiver";
+                }
+                
             model.addAttribute("user", user);
             return "userloggedin";
-
-            /*if(user.getRole().equals("worker")){
-
-                model.addAttribute("user", user);
-                return "startpageworker";
-
-            }else if(user.getRole().equals("workgiver")){
-
-                model.addAttribute("user", user);
-                return "startpageworkgiver";
-            }*/
         }
         return "error";
     }
