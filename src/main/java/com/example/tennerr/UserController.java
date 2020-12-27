@@ -15,7 +15,8 @@ public class UserController {
     @GetMapping("/")
     public String startPage(Model model){
         model.addAttribute("list", userService.getAllUsers());
-        return "userstart";
+        return "1login";
+        //return "userstart";
     }
 
     //Show Form register
@@ -23,7 +24,8 @@ public class UserController {
     public String registerUser(Model model){
         UserEntity userEntity = new UserEntity();
         model.addAttribute("user", userEntity);
-        return "userform";
+        return "2register";
+        //return "userform";
     }
 
     //C - Create User

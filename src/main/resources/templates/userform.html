@@ -9,7 +9,7 @@
 <body>
 
 <h1>REGISTRERA DIG</h1>
-
+<!-----
 <form action ="#" th:action ="@{/saveUser}" th:object="${user}" method ="POST">
     <p>Ange om du är arbetare eller arbetsgivare:</p>
     <input type="checkbox" th:checked="*{worker}">
@@ -25,15 +25,15 @@
     <p>Ange dina uppgifter:</p>
     <input type="text" th:field="*{firstname}" placeholder="Förnamn">
     <input type="text" th:field="*{lastname}" placeholder="Efternamn">
-    <input type="text" th:field="*{address}" placeholder="Adress">
+    <input type="text"  placeholder="Adress">
     <input type="text" th:field="*{phone}" placeholder="Telefon">
     <input type="text" th:field="*{email}" placeholder="Email">
-    <input type="text" th:field="*{description}" placeholder="Beskrivning">
+    <input type="text" th:field="*{description}" placeholder=th:field="*{address}""Beskrivning">
 
     <p>Ange vilka kategorier du kan jobba med:</p>
     <input type="checkbox" th:field="*{beauty}">
     <span>Skönhet</span>
-    <input type="checkbox" th:field="*{cleaning}">
+    <input type="checkbox" th:field="*{beauty}">
     <span>Städning</span>
     <input type="checkbox" th:field="*{vvs}">
     <span>VVS</span>
@@ -44,7 +44,7 @@
 
         <button id="login-button" type="submit">Registrera dig!</button>
 
-</form>
+</form>--->
 
 </body>
 
