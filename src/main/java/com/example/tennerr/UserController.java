@@ -39,13 +39,34 @@ public class UserController {
         return "1login";
     }
 
+    //**********JOB***************//
+
+    //Förser POST login med Model för Job
+    @GetMapping
+    public String registerJob(ModelMap map){
+        Job job  = new Job();
+        List<Job> jobs = jobService.getAllJobs();
+        map.addAttribute("jobs", jobs );
+        map.addAttribute("job", job);
+        return "createJob";
+    }
+
+
+    //C - Create Job
+    @PostMapping("/saveJob")
+    public String saveJob(@ModelAttribute("job") Job job){
+        jobService.saveJob(job);
+        return "success";
+    }
+
+
     //*********************LOGIN***************************//
+    
     //Get förser sidan med model
     @GetMapping("login")
-    public String loginget(@RequestParam("username") String username, Model model){
+    public String loginget(@RequestParam("username") String username){
 
         UserEntity user = userService.getUserByUsername(username);
-        model.addAttribute("user", user);
 
         if(user !=null && username.equals(user.getUsername())){
 
@@ -55,7 +76,7 @@ public class UserController {
 
             }else if(user.isWorkgiver()){
 
-                model.addAttribute("user", user);
+
                 return "3startpageworkgiver";
             }
 
@@ -65,13 +86,15 @@ public class UserController {
 
     // Login function
     @PostMapping("/login")
-    public String login(@RequestParam("username") String username, Model model){
+    public String login(@RequestParam("username") String username, ModelMap model){
 
         UserEntity user = userService.getUserByUsername(username);
+        model.addAttribute("jobs", jobService.getAllJobs() );
 
         if(user !=null && username.equals(user.getUsername())){
 
                 if(user.isWorker()){
+
                     model.addAttribute("user", user);
                     return "3startpageworker";
 
@@ -149,27 +172,6 @@ public class UserController {
         return "error";
     }
 
-
-    //**********JOB***************//
-
-
-    //Show Form registerJob
-    //See all job
-    @GetMapping("/registerJob")
-    public String registerJob(ModelMap map){
-        Job job  = new Job();
-        List<Job> jobs = jobService.getAllJobs();
-        map.addAttribute("jobs", jobs );
-        map.addAttribute("job", job);
-        return "createJob";
-    }
-
-    //C - Create Job
-    @PostMapping("/saveJob")
-    public String saveJob(@ModelAttribute("job") Job job){
-        jobService.saveJob(job);
-        return "success";
-    }
 
 
 
