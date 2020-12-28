@@ -144,7 +144,7 @@ public class UserController {
         }else if(user.isWorkgiver()){
 
             model.addAttribute("user", user);
-            return "4profileworkgiver";
+            return "5publicworkgiver";
         }
         return "error";
     }
