@@ -61,7 +61,7 @@
                     <h4 id="option h4">Registrera dig som arbetare eller uppdragsgivare:</h4>
                 </div>
 
-                <form action ="#" th:action ="@{/saveUser}" th:object="${user}" method ="POST">
+                <form action ="#" th:action ="@{/saveUser}" th:object="${user}" method ="POST" enctype="multipart/form-data">
                     <div id="radio-div">
                         <!---value måste finnas här-->
                         <input type ="radio" id="radio-worker" value="true" onchange="showWorker()" th:field="*{worker}">

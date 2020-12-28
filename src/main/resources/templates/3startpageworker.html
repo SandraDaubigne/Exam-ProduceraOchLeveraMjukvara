@@ -44,10 +44,11 @@
     <span>Målning</span>
     <input type ="checkbox" th:field="*{painting}" th:checked="${user.painting}"><br>
 
+    <!--https://www.youtube.com/watch?v=oTJ89wcz5Ec&t=496s-->
     <button type ="submit">Spara ändringar</button>
 
 </form>
-
+<img alt="" th:src ="@{'data:image/jpeg; base 64,' +${T(org.springframework.util.Base64Utils).encodeToString(user.profilepic)}}" style ="width: 100px; height: 100px;">
 </body>
 
 </html>
