@@ -9,50 +9,6 @@
 </head>
 <body>
 
-<!--<h1>PROFILSIDA FÖR ARBETARE</h1>
-
-<p> Ändra dina uppgifter här: </p>
-<span th:text="${msg}"></span>
-
-<form action ="#" th:action="@{/updateUser/{id}(id=${user.id})}" th:object="${user}" method="post">-->
-    <!---name måste finnas på hidden för att värdena inte ska försvinna vid uppdatering--->
-    <!---Det spelar ingen roll vad namnen är förutom på id som ska tas emot i api:et som en variabel--->
-    <!---th:value måste finnas här för att det inte ska bli null vid uppdatering då nytt objekt sparas--->
-   <!-- <input type="hidden" th:value="${user.id}">
-    <input type="hidden" name ="worker" th:value="${user.worker}">
-    <input type="hidden"  name="workgiver" th:value="${user.workgiver}">
-    <span>Förnamn</span>
-    <input type ="text" th:field="*{firstname}" th:value="${user.firstname}"><br>
-    <span>Efternamn</span>
-    <input type ="text" th:field="*{lastname}" th:value="${user.lastname}"><br>
-    <span>Användarnamn</span>
-    <input type ="text" th:field="*{username}" th:value="${user.username}"><br>
-    <span>Lösenord</span>
-    <input type ="text" th:field="*{password}" th:value="${user.password}"><br>
-    <span>Adress</span>
-    <input type ="text" th:field="*{address}" th:value="${user.address}"><br>
-    <span>Telefon</span>
-    <input type ="text" th:field="*{phone}" th:value="${user.phone}"><br>
-    <span>Email</span>
-    <input type ="text" th:field="*{email}" th:value="${user.email}"><br>
-    <span>Beskrivning</span>
-    <input type ="text" th:field="*{description}" th:value="${user.description}"><br>
-    <span>Skönhet</span>
-    <input type ="checkbox" th:field="*{beauty}" th:checked="${user.beauty}"><br>
-    <span>Städning</span>
-    <input type ="checkbox" th:field="*{cleaning}" th:checked="${user.cleaning}"><br>
-    <span>VVS</span>
-    <input type ="checkbox" th:field="*{vvs}" th:checked="${user.vvs}"><br>
-    <span>Hälsa</span>
-    <input type ="checkbox" th:field="*{health}" th:checked="${user.health}"><br>
-    <span>Målning</span>
-    <input type ="checkbox" th:field="*{painting}" th:checked="${user.painting}"><br>
-
-    <button type ="submit">Spara ändringar</button>
-
-</form>-->
-
-
 <header id="first-header">
     <div id="logo-div">
         <img src="tennerr.png" id="logo">
@@ -68,7 +24,7 @@
             <img src="frida.jpg" width="200" id="profile-picture">
         </div>
         <div id="profile-info">
-            <h3 id="user-name">Namn...</h3>
+            <h3 th:text="${user.username}" id="user-name"></h3>
         </div>
     </div>
     <div id="profile-option">

@@ -9,51 +9,6 @@
 </head>
 <body>
 
-<h1>PROFILSIDA FÖR ARBETSGIVARE</h1>
-
-<p> Ändra dina uppgifter här: </p>
-<span th:text="${msg}"></span>
-
-<form action ="#" th:action="@{/updateUser/{id}(id=${user.id})}" th:object="${user}" method="post">
-    <!---name måste finnas på hidden för att värdena inte ska försvinna vid uppdatering--->
-    <!---Det spelar ingen roll vad namnen är förutom på id som ska tas emot i api:et som en variabel--->
-    <!---th:value måste finnas här för att det inte ska bli null vid uppdatering då nytt objekt sparas--->
-    <input type="hidden" name = "id" th:value="${user.id}">
-    <input type="hidden" name ="worker" th:value="${user.worker}">
-    <input type="hidden" name="workgiver" th:value="${user.workgiver}">
-
-    <span>Förnamn</span>
-    <input type ="text" th:field="*{firstname}" th:value="${user.firstname}"><br>
-    <span>Efternamn</span>
-    <input type ="text" th:field="*{lastname}" th:value="${user.lastname}"><br>
-    <span>Användarnamn</span>
-    <input type ="text" th:field="*{username}" th:value="${user.username}"><br>
-    <span>Lösenord</span>
-    <input type ="text" th:field="*{password}" th:value="${user.password}"><br>
-    <span>Adress</span>
-    <input type ="text" th:field="*{address}" th:value="${user.address}"><br>
-    <span>Telefon</span>
-    <input type ="text" th:field="*{phone}" th:value="${user.phone}"><br>
-    <span>Email</span>
-    <input type ="text" th:field="*{email}" th:value="${user.email}"><br>
-    <span>Beskrivning</span>
-    <input type ="text" th:field="*{description}" th:value="${user.description}"><br>
-    <span>Skönhet</span>
-    <input type ="checkbox" th:field="*{beauty}" th:checked="${user.beauty}"><br>
-    <span>Städning</span>
-    <input type ="checkbox" th:field="*{cleaning}" th:checked="${user.cleaning}"><br>
-    <span>VVS</span>
-    <input type ="checkbox" th:field="*{vvs}" th:checked="${user.vvs}"><br>
-    <span>Hälsa</span>
-    <input type ="checkbox" th:field="*{health}" th:checked="${user.health}"><br>
-    <span>Målning</span>
-    <input type ="checkbox" th:field="*{painting}" th:checked="${user.painting}"><br>
-
-    <button type ="submit">Spara ändringar</button>
-
-</form>
-
-</body>
 
 <header id="first-header">
     <div id="logo-div">
@@ -70,10 +25,10 @@
             <img src="frida.jpg" width="200" id="profile-picture">
         </div>
         <div id="profile-info">
-            <h3 id="user-name">Frida Hammarberg</h3>
+            <h3 th:text="${user.username}" id="user-name"></h3>
             <div id="address">
-                <p id="user-address">Bergsslingan 109</p>
-                <span id="user-city">Lerum</span>
+                <p th:text="${user.address}"id="user-address"></p>
+
             </div>
         </div>
         <div id="profile-option">
@@ -85,16 +40,10 @@
     <div id="main">
         <div id="left-side">
             <div id="profile-side">
-                <img id="phone-symbol" src="https://cdn2.iconfinder.com/data/icons/font-awesome/1792/phone-512.png">
-                <p id="user-phone">0762-434242</p>
-                <img id="email-symbol" src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-email-512.png">
-                <p id="user-email">frida.hammarberg@hotmail.com</p>
+
                 <div id="description">
                     <h4>Beskrivning</h4>
-                    <p id="user-description">
-                        Hej,
-                        Mitt namn är Frida och jag är en uppdragsgivare!
-                    </p>
+                    <span th:text="${user.description}" id="user-description"></span>
                 </div>
                 <div id="profile-button"></div>
                 <button id="message-button">Meddelande</button>
@@ -132,58 +81,46 @@
                         <!---name måste finnas på hidden för att värdena inte ska försvinna vid uppdatering--->
                         <!---Det spelar ingen roll vad namnen är förutom på id som ska tas emot i api:et som en variabel--->
                         <!---th:value måste finnas här för att det inte ska bli null vid uppdatering då nytt objekt sparas--->
-                        <input type="hidden" name = "id" th:value="${user.id}">
+                        <input type="hidden" th:value="${user.id}">
                         <input type="hidden" name ="worker" th:value="${user.worker}">
-                        <input type="hidden" name="workgiver" th:value="${user.workgiver}">
+                        <input type="hidden"  name="workgiver" th:value="${user.workgiver}">
+
+                        <div id="firstName-lastname-div">
+                            <label id="firstName">
+                                <input id="firstName-input" type="text" size="30" placeholder="Förnamn*" th:field="*{firstname}" th:value="${user.firstname}">
+                            </label>
+                            <label id="lastName">
+                                <input id="lastName-input" type="text" size="30" placeholder="Efternamn*" th:field="*{lastname}" th:value="${user.lastname}">
+                            </label>
+                        </div>
+
+                        <div>
+                            <input name="username" type="text" placeholder="Användarnamn*" id="username" size="30" th:field="*{username}" th:value="${user.username}">
+                            <input type="text" placeholder="Lösenord*" id="password" size="30" th:field="*{password}" th:value="${user.password}">
+                        </div>
+
+                        <div id="phoneNumber-div">
+                            <label id="phoneNumber">
+                                <input id="phoneNumber-input" type="text" size="71" placeholder="Telefonnummer*" th:field="*{phone}" th:value="${user.phone}">
+                            </label>
+                        </div>
+
+                        <div id="description-div">
+                            <label id="description-label">
+                                <textarea id="description-box" cols="73" rows="5" placeholder="Personbeskrivning*" th:field="*{description}" th:value="${user.description}"></textarea>
+                            </label>
+                        </div>
 
 
 
+                        <div id="upload-picture-certificate-div">
+                            <span id="upload-span-picture">Ladda upp profilbild:</span>
+                            <input id="upload-picture-input" type="file"><br>
+                        </div>
 
-                       
-
-
-
-                    <div id="firstName-lastname-div">
-                        <label id="firstName">
-                            <input id="firstName-input" type="text" size="30" placeholder="Frida" th:field="*{firstname}" th:value="${user.firstname}">
-                        </label>
-                        <label id="lastName">
-                            <input id="lastName-input" type="text" size="30" placeholder="Hammarberg" th:field="*{lastname}" th:value="${user.lastname}">
-                        </label>
-                    </div>
-                    <div id="email-phoneNumber-div">
-                        <label id="email">
-                            <input id="email-input" type="text" size="30" placeholder="frida.hammarberg@hotmail.com" th:field="*{email}" th:value="${user.email}">
-                        </label>
-                        <label id="phoneNumber">
-                            <input id="phoneNumber-input" type="text" size="30" placeholder="0762-434242" th:field="*{phone}" th:value="${user.phone}">
-                        </label>
-                    </div>
-                    <div id="streetName-div">
-                        <label id="streetName">
-                            <input id="streetName-input" type="text" size="71" placeholder="Bergsslingan 109">
-                        </label>
-                    </div>
-                    <div id="postalCode-city-div">
-                        <label id="postalCode">
-                            <input id="postalCode-input" type="text" size="30" placeholder="443 36">
-                        </label>
-                        <label id="city">
-                            <input id="city-input" type="text" size="30" placeholder="Lerum">
-                        </label>
-                    </div>
-                    <div id="description-div">
-                        <label id="description">
-                            <textarea id="description-box" cols="73" rows="5" placeholder="Hej! Mitt namn är Frida och jag är en uppdragsgivare"></textarea>
-                        </label>
-                    </div>
-                    <div id="upload-picture-div">
-                        <span id="upload-span">Ladda upp profilbild:</span>
-                        <input id="upload-picture-input" type="file">
-                    </div>
-                    <div id="save-div">
-                        <button id="save-button" type="submit">Spara profil</button>
-                    </div>
+                        <div id="save-div">
+                            <button id="save-button" type="submit">Spara profil</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -191,6 +128,7 @@
     </div>
 </div>
 </div>
+</body>
 <style>
         * {
     padding: 0;
@@ -300,10 +238,6 @@ body {
 
 }
 
-#phone-symbol, #email-symbol {
-    width: 1.5em;
-    height: 1.5em;
-}
 
 #description h4 {
     font-variant: small-caps;
@@ -409,6 +343,7 @@ body {
 input, #description-box {
     margin: 1em;
     padding: 0.3em;
+    resize: none;
 }
 
 #description-box {
