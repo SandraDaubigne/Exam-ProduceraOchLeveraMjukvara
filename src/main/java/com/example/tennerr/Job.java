@@ -14,7 +14,6 @@ public class Job {
     private String jobdescription;
     private String workgiver;
 
-
     public Job() {
     }
     public String getWorkgiver() {

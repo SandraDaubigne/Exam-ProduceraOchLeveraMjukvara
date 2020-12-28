@@ -16,6 +16,12 @@
     <button id="login-button" type="submit">Skapa annons!</button>
 </form>
 
+<!----Listar ut alla jobb som finns--->
+<span th:each="job: ${jobs}">
+    <span th:text="${job.jobdescription}"></span>
+    <span th:text="${job.workgiver}"></span>
+</span>
+
 </body>
 
 </html>
