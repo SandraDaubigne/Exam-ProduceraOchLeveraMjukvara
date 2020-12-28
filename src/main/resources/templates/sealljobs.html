@@ -8,11 +8,13 @@
 </head>
 <body>
 
-<h1>Du är nu registrerad</h1>
-
-<a th:href="@{/showLoginForm}">Klicka här för att logga in</a>
-
+<!----Listar ut alla jobb som finns--->
+<span th:each="job: ${jobs}">
+    <span th:text="${job.jobdescription}"></span>
+    <span th:text="${job.workgiver}"></span>
+</span>
 
 </body>
 
+<style></style>
 </html>
