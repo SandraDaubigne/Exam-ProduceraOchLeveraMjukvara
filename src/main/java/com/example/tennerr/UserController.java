@@ -33,24 +33,6 @@ public class UserController {
         return "1login";
     }
 
-    //Show form for update user
-    @GetMapping("/showformforupdate/{id}")
-    public String showFormForUpdate(@PathVariable (value= "id") long id, Model model){
-        UserEntity user = userService.getUserById(id);
-        model.addAttribute("user", user);
-
-        if(user.isWorker()){
-            model.addAttribute("user", user);
-            return "4profileworker";
-
-        }else if(user.isWorkgiver()){
-
-            model.addAttribute("user", user);
-            return "4profileworgiver";
-        }
-        return "error";
-    }
-
 
     // Login function
     @PostMapping("/login")
@@ -70,6 +52,24 @@ public class UserController {
                     return "3startpageworkgiver";
                 }
 
+        }
+        return "error";
+    }
+
+    //Show form for update user
+    @GetMapping("/showformforupdate/{id}")
+    public String showFormForUpdate(@PathVariable (value= "id") long id, Model model){
+        UserEntity user = userService.getUserById(id);
+        model.addAttribute("user", user);
+
+        if(user.isWorker()){
+            model.addAttribute("user", user);
+            return "4profileworker";
+
+        }else if(user.isWorkgiver()){
+
+            model.addAttribute("user", user);
+            return "4profileworkgiver";
         }
         return "error";
     }
