@@ -139,7 +139,7 @@ public class UserController {
 
         if(user.isWorker()){
             model.addAttribute("user", user);
-            return "4profileworker";
+            return "5publicWorker";
 
         }else if(user.isWorkgiver()){
 

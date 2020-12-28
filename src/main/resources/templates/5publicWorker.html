@@ -19,7 +19,7 @@
             <img src="frida.jpg" width="200" id="profile-picture">
         </div>
         <div id="profile-info">
-            <h3 id="user-name">Namn...</h3>
+            <h3 th:text="${user.firstname}" id="user-name"></h3>
         </div>
         <div id="profile-option">
             <div id="notification">
@@ -33,10 +33,7 @@
 
                 <div id="description">
                     <h4>Beskrivning</h4>
-                    <p id="user-description">
-                        Hej,
-                        Mitt namn är ... och jag är en arbetare.
-                    </p>
+                    <span th:text="${user.description}"></span>
                 </div>
                 <div id="profile-button"></div>
                 <button id="message-button">Meddelande</button>
