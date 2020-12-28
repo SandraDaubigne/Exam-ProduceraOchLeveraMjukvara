@@ -61,7 +61,7 @@ public class UserController {
 
 
     //*********************LOGIN***************************//
-    
+
     //Get förser sidan med model
     @GetMapping("login")
     public String loginget(@RequestParam("username") String username){
