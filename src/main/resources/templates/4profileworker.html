@@ -17,7 +17,7 @@
     <!---name måste finnas på hidden för att värdena inte ska försvinna vid uppdatering--->
     <!---Det spelar ingen roll vad namnen är förutom på id som ska tas emot i api:et som en variabel--->
     <!---th:value måste finnas här för att det inte ska bli null vid uppdatering då nytt objekt sparas--->
-    <input type="hidden" name = "id" th:value="${user.id}">
+    <input type="hidden" th:name="id"  th:value="${user.id}">
     <input type="hidden" name ="worker" th:value="${user.worker}">
     <input type="hidden"  name="workgiver" th:value="${user.workgiver}">
     <span>Förnamn</span>
