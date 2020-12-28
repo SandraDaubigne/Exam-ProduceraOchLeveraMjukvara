@@ -5,11 +5,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private JobService jobService;
 
     //Startvyn
     @GetMapping("/")
@@ -43,6 +48,8 @@ public class UserController {
         if(user !=null && username.equals(user.getUsername())){
 
                 if(user.isWorker()){
+                    List<Job> jobs = jobService.getAllJobs();
+                    model.addAttribute("jobs", jobs );
                     model.addAttribute("user", user);
                     return "3startpageworker";
 
@@ -99,6 +106,33 @@ public class UserController {
 
         return "error";
     }
+
+
+    //**********JOB***************//
+
+    //Show Form registerJob
+    @GetMapping("/registerJob")
+    public String registerJob(Model model){
+        Job job  = new Job();
+        model.addAttribute("job", job);
+        return "createJob";
+    }
+
+    //C - Create Job
+    @PostMapping("/saveJob")
+    public String saveJob(@ModelAttribute("job") Job job){
+        jobService.saveJob(job);
+        return "success";
+    }
+
+    //R - Read Show all jobs
+    @GetMapping("/allJobs")
+    public String allJobs(Model model){
+        List<Job> jobs = jobService.getAllJobs();
+        model.addAttribute("jobs", jobs );
+        return "sealljobs";
+    }
+
 
 
 
