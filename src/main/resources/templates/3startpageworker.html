@@ -20,7 +20,6 @@
 
 <body>
 
-<span th:text="${user.description}"></span>
 
 <div id="container">
     <header id="first-header">
@@ -52,11 +51,23 @@
             </div>
         </div>
     </div>
+
+    <!--LOOP FÖR ANNONSER--->
+    <tr th:each="job: ${jobs}">
+        <p>Jobbeskrivning</p>
+        <td th:text="${job.jobdescription}"></td>
+        <p>Uppdragsgivare</p>
+        <td th:text="${job.workgiver}"></td>
+    </tr>
+
     <div id="main">
         <div id="right-side">
             <div id="profile-body">
                 <div class="job-div">
                     <div class="title-div">
+
+
+
                         <h4>Altanbygge</h4>
                     </div>
                     <div class="workgiver-name-div">
