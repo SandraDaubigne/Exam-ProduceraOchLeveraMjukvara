@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <title>RegisterPage</title>
 </head>
 <body>
 
@@ -63,12 +64,13 @@
 
                 <form onsubmit ="register()">
                     <div id="radio-div">
-                        <input type ="radio" id="radio-worker" name="worker" onchange="showWorker()">
+
+                        <input type ="radio" id="radio-worker" name="worker" value="worker">
                         <label id="worker" for ="radio-worker">Arbetare</label>
-                        <input type ="radio" id="radio-workgiver" name ="worker" onchange="showWorkgiver()">
+                        <input type ="radio" id="radio-workgiver" name ="worker" value="workgiver">
                         <label id="workgiver" for ="radio-workgiver">Uppdragsgivare</label>
-
-
+                    </div>
+                    <div class="div worker" id="worker-div">
                         <input name="username" type="text" placeholder="Användarnamn*" id="username" style="width: 553px; height: 25px"><br>
                         <input type="text" placeholder="Lösenord*" id="password" style="width: 275px; height: 25px">
                         <input type="text" placeholder="Upprepa lösenord*" id="verify" style="width: 275px; height: 25px"><br>
@@ -76,6 +78,7 @@
                         <input type ="text" placeholder="Förnamn*" id="firstname" style="width: 275px; height: 25px">
                         <input type ="text" placeholder="Efternamn*" id="lastname" style="width: 275px; height: 25px"><br>
                         <input type="text" placeholder="Telefonnummer*" id="phone" style="width: 553px; height: 25px"><br>
+
 
                         <textarea id="person-description" name="Personbeskrivning" style="width: 553px; height: 100px">Personbeskrivning</textarea><br>
 
@@ -98,6 +101,27 @@
                         <!--<input type="submit" value="Submit">-->
 
 
+                        <label for="profileimg">Ladda upp profilbild</label>
+                        <input type="file" id="profileimg" name="profileimg"><br>
+
+                        <!-- ARBETARE, Laddar upp filer som väljs lokalt på datorn-->
+                        <label for="certificateimg" id="certificate-label">Ladda upp certifikat och intyg</label>
+                        <input type="file" id="certificateimg" name="certificateimg"><br>
+
+                        <input type="submit" id="register-button" value="Skapa">
+                        
+                    </div>
+
+                    <div class="div workgiver" id="workgiver-div">
+                        <input name="username" type="text" placeholder="Användarnamn*" id="username" style="width: 553px; height: 25px"><br>
+                        <input type="text" placeholder="Lösenord*" id="password" style="width: 275px; height: 25px">
+                        <input type="text" placeholder="Upprepa lösenord*" id="verify" style="width: 275px; height: 25px"><br>
+
+                        <input type ="text" placeholder="Förnamn*" id="firstname" style="width: 275px; height: 25px">
+                        <input type ="text" placeholder="Efternamn*" id="lastname" style="width: 275px; height: 25px"><br>
+                        <input type="text" placeholder="Telefonnummer*" id="phone" style="width: 553px; height: 25px"><br>
+
+                        <textarea id="person-description" name="Personbeskrivning" style="width: 553px; height: 100px">Personbeskrivning</textarea><br
                         <!--Workgiver-->
                         <input type ="text" placeholder="E-mail*" id="e-mail" style="width: 553px; height: 25px">
                         <input type="text" placeholder="Gatuadress*" id="street" style="width: 553px; height: 25px"><br>
@@ -107,102 +131,35 @@
                         <label for="profileimg">Ladda upp profilbild</label>
                         <input type="file" id="profileimg" name="profileimg"><br>
 
-                        <!-- ARBETARE, Laddar upp filer som väljs lokalt på datorn-->
-                        <label for="certificateimg" id="certificate-label">Ladda upp certifikat och intyg</label>
-                        <input type="file" id="certificateimg" name="certificateimg"><br>
 
-
-                        <div id="register-button-div">
-                            <input type="submit" id="register-button" value="Skapa">
-                        </div>
+                        <input type="submit" id="register-button" value="Skapa">
                     </div>
                 </form>
-
             </div>
         </div>
+
 
     </div>
 </body>
 
-
 <script>
+    document.querySelector("#worker-div").style.display = "none";
+    document.querySelector("#workgiver-div").style.display = "none";
 
-    //2:Skapa Funktion för att kunna registrera sig
-    function register() {
-        let username = document.getElementById('username').value
-        let password = document.getElementById('password').value
-        let name = document.getElementById('firstname').value
-        let lastname = document.getElementById('lastname').value
-        let phone = document.getElementById('phone').value
-        let description = document.getElementById('person-description').value
+    $(document).ready(function() {
 
-        let email = document.getElementById('e-mail').value
-        let address = document.getElementById('street').value
+        $('input[type="radio"]').click(function() {
+            var inputValue = $(this).attr("value");
+            var targetBox = $("." + inputValue);
+            $(".div").not(targetBox).hide();
+            $(targetBox).show();
+        });
+    });
 
-
-        /*Hanna har lagt till*/
-        let profileimg = document.getElementById('profileimg').value
-        let certificateimg = document.getElementById('certificateimg').value
-
-        let beauty = document.getElementById('checkbox-beauty').value
-        let cleaning = document.getElementById('checkbox-cleaning').value
-        let vvs = document.getElementById('checkbox-vvs').value
-        let health = document.getElementById('checkbox-health').value
-        let painting = document.getElementById('checkbox-painting').value
-
-
-
-        let role;
-        if(document.getElementById('radio-worker').checked){
-            role = "worker";
-        }else if(document.getElementById('radio-workgiver').checked){
-            role ="workgiver";
-        }
-
-
-        const data = {username, password, role, name, phone, description, email, address }
-        const options ={
-            method: 'POST',
-            headers: {'Content-Type': 'application/json;charset=utf8'},
-            body: JSON.stringify(data)
-        }
-        fetch("/createuser", options)
-    }
-
-
-    function showWorker() {
-        document.getElementById('street').style.display = "none";
-        document.getElementById('e-mail').style.display = "none";
-    }
-
-    function showWorkgiver() {
-        document.getElementById('certificate-label').style.display ="none";
-        document.getElementById('certificateimg').style.display ="none";
-
-        /*Checkboxes*/
-        document.getElementById('category').style.display ="none";
-        document.getElementById('checkbox-beauty').style.display ="none";
-        document.getElementById('beauty').style.display ="none";
-
-        document.getElementById('checkbox-cleaning').style.display ="none";
-        document.getElementById('cleaning').style.display ="none";
-
-        document.getElementById('checkbox-vvs').style.display ="none";
-        document.getElementById('vvs').style.display ="none";
-
-        document.getElementById('checkbox-health').style.display ="none";
-        document.getElementById('health').style.display ="none";
-
-        document.getElementById('checkbox-painting').style.display ="none";
-        document.getElementById('painting').style.display ="none";
-    }
 
 </script>
-
-
 <style>
-
-* {
+    * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -341,7 +298,9 @@ body {
 
 }
 
-
+#worker-div, #workgiver-div {
+    padding-left: 11em;
+}
 
 /*Inputfält*/
 #username {
@@ -414,6 +373,7 @@ body {
 #checkbox-beauty, #checkbox-cleaning, #checkbox-vvs, #checkbox-health, #checkbox-painting {
     margin-top: 10px;
 
+
 }
 
 #beauty, #cleaning, #vvs, #health, #painting {
@@ -446,14 +406,6 @@ body {
     justify-content: center;
 }
 
-
-#certificateimg {}
-
-
-
-
-
-
 /*Submit-button*/
 #register-button {
     border: 0;
@@ -478,9 +430,6 @@ body {
 #register-button-div {
     padding-left: 30em;
 }
-
-
-
 
 /*Responsivitet*/
 @media(max-width: 1100px) {
@@ -556,9 +505,7 @@ body {
         padding-left: 20%;
     }
 }
-
-
-
 </style>
+
 
 </html>
