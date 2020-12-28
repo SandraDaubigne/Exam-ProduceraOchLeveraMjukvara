@@ -130,6 +130,25 @@ public class UserController {
         return "error";
     }
 
+    //*********************SHOW PUBLIC VIEW***************************//
+    //Show form for update user
+    @GetMapping("/showPublicView/{id}")
+    public String showPublicView(@PathVariable (value= "id") long id, Model model){
+        UserEntity user = userService.getUserById(id);
+        model.addAttribute("user", user);
+
+        if(user.isWorker()){
+            model.addAttribute("user", user);
+            return "4profileworker";
+
+        }else if(user.isWorkgiver()){
+
+            model.addAttribute("user", user);
+            return "4profileworkgiver";
+        }
+        return "error";
+    }
+
 
     //**********JOB***************//
 
