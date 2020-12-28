@@ -142,6 +142,23 @@
 
     </div>
 </body>
+
+<script>
+    document.querySelector("#worker-div").style.display = "none";
+    document.querySelector("#workgiver-div").style.display = "none";
+
+    $(document).ready(function() {
+
+        $('input[type="radio"]').click(function() {
+            var inputValue = $(this).attr("value");
+            var targetBox = $("." + inputValue);
+            $(".div").not(targetBox).hide();
+            $(targetBox).show();
+        });
+    });
+
+
+</script>
 <style>
     * {
     padding: 0;
@@ -491,11 +508,7 @@ body {
 }
 </style>
 
-<script>
-    document.querySelector("#worker-div").style.display = "none";
-    document.querySelector("#workgiver-div").style.display = "none";
 
-    $(document).ready(function() {
 
         $('input[type="radio"]').click(function() {
             var inputValue = $(this).attr("value");
@@ -507,4 +520,6 @@ body {
 
    
 </script>
+</html>
+
 </html>

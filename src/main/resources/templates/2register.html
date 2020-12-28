@@ -63,10 +63,11 @@
 
                 <form action ="#" th:action ="@{/saveUser}" th:object="${user}" method ="POST">
                     <div id="radio-div">
+
                         <!---value måste finnas här-->
-                        <input type ="radio" id="radio-worker" value="true" onchange="showWorker()" th:field="*{worker}">
-                        <label id="worker" for ="radio-worker">Arbetare</label>
-                        <input type ="radio" id="radio-workgiver"  value="true" onchange="showWorkgiver()" th:field="*{workgiver}">
+                        <input type ="radio"  name="worker" id="radio-worker" value="true" onclick="showWorker()" th:field="*{worker}">
+                        <label id="worker"  for ="radio-worker">Arbetare</label>
+                        <input type ="radio" name="worker" id="radio-workgiver"  value="true" onchange="showWorkgiver()" th:field="*{workgiver}">
                         <label id="workgiver" for ="radio-workgiver">Uppdragsgivare</label>
 
 
@@ -129,30 +130,30 @@
 <script>
 
     function showWorker() {
-        document.getElementById('street').style.display = "none";
-        document.getElementById('e-mail').style.display = "none";
+        document.getElementById('street').style.display = "block";
+        document.getElementById('e-mail').style.display = "block";
     }
 
     function showWorkgiver() {
-        document.getElementById('certificate-label').style.display ="none";
-        document.getElementById('certificateimg').style.display ="none";
+        document.getElementById('certificate-label').style.display ="block";
+        document.getElementById('certificateimg').style.display ="block";
 
         /*Checkboxes*/
-        document.getElementById('category').style.display ="none";
-        document.getElementById('checkbox-beauty').style.display ="none";
-        document.getElementById('beauty').style.display ="none";
+        document.getElementById('category').style.display ="block";
+        document.getElementById('checkbox-beauty').style.display ="block";
+        document.getElementById('beauty').style.display ="block";
 
-        document.getElementById('checkbox-cleaning').style.display ="none";
-        document.getElementById('cleaning').style.display ="none";
+        document.getElementById('checkbox-cleaning').style.display ="block";
+        document.getElementById('cleaning').style.display ="block";
 
-        document.getElementById('checkbox-vvs').style.display ="none";
-        document.getElementById('vvs').style.display ="none";
+        document.getElementById('checkbox-vvs').style.display ="block";
+        document.getElementById('vvs').style.display ="block";
 
-        document.getElementById('checkbox-health').style.display ="none";
-        document.getElementById('health').style.display ="none";
+        document.getElementById('checkbox-health').style.display ="block";
+        document.getElementById('health').style.display ="block";
 
-        document.getElementById('checkbox-painting').style.display ="none";
-        document.getElementById('painting').style.display ="none";
+        document.getElementById('checkbox-painting').style.display ="block";
+        document.getElementById('painting').style.display ="block";
     }
 
 </script>
