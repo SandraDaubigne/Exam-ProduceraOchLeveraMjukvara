@@ -105,7 +105,7 @@
 
 
                         <!-- Laddar upp filer som väljs lokalt på datorn-->
-                        <label for="profileimg">Ladda upp profilbild</label>
+                        <label for="profileimg" id="profileimg-label">Ladda upp profilbild</label>
                         <input type="file" id="profileimg" name="profileimg"><br>
 
                         <!-- ARBETARE, Laddar upp filer som väljs lokalt på datorn-->
@@ -124,39 +124,122 @@
 
     </div>
 </body>
-
-
 <script>
 
+    const username = document.querySelector("#username");
+    const password = document.querySelector("#password");
+    const verifyPassword = document.querySelector("#verify");
+    const firstname = document.querySelector("#firstname");
+    const lastname = document.querySelector("#lastname");
+    const phone = document.querySelector("#phone");
+    const description = document.querySelector("#person-description");
+    const category = document.querySelector("#category");
+    const checkboxBeauty = document.querySelector("#-checkbox-beauty");
+    const beautyLabel = document.querySelector("#beauty");
+    const checkboxCleaning = document.querySelector("#checkbox-cleaning");
+    const cleaningLabel = document.querySelector("#cleaning");
+    const checkboxVVS = document.querySelector("#checkbox-vvs");
+    const VVSLabel = document.querySelector("#vvs");
+    const checkboxHealth = document.querySelector("#checkbox-health");
+    const healthLabel = document.querySelector("#health");
+    const checkboxPainting = document.querySelector("#checkbox-painting");
+    const paintingLabel = document.querySelector("#painting");
+    const email = document.querySelector("#e-mail");
+    const street = document.querySelector("#street");
+    const profileImg = document.querySelector("#profileimg");
+    const profileImgLabel = document.querySelector("#profileimg-label");
+    const certificateImg = document.querySelector("#certificateimg");
+    const certificateLabel = document.querySelector("#certificate-label");
+    const button = document.querySelector("#register-button");
+
+    username.style.display = "none";
+    password.style.display = "none";
+    verifyPassword.style.display = "none";
+    firstname.style.display = "none";
+    lastname.style.display = "none";
+    phone.style.display = "none";
+    description.style.display = "none";
+    category.style.display = "none";
+    checkboxBeauty.style.display = "none";
+    beautyLabel.style.display = "none";
+    checkboxCleaning.style.display = "none";
+    cleaningLabel.style.display = "none";
+    checkboxVVS.style.display = "none";
+    VVSLabel.style.display = "none";
+    checkboxHealth.style.display = "none";
+    healthLabel.style.display = "none";
+    checkboxPainting.style.display = "none";
+    paintingLabel.style.display = "none";
+    email.style.display = "none";
+    street.style.display = "none";
+    profileImg.style.display = "none";
+    profileImgLabel.style.display = "none";
+    certificateImg.style.display = "none";
+    certificateLabel.style.display = "none";
+    button.style.display = "none";
+
     function showWorker() {
-        document.getElementById('street').style.display = "block";
-        document.getElementById('e-mail').style.display = "block";
+
+        username.style.display = "inline";
+        password.style.display = "inline";
+        verifyPassword.style.display = "inline";
+        firstname.style.display = "inline";
+        lastname.style.display = "inline";
+        phone.style.display = "inline";
+        description.style.display = "inline ";
+        category.style.display = "inline";
+        checkboxBeauty.style.display = "inline";
+        beautyLabel.style.display = "inline";
+        checkboxCleaning.style.display = "inline";
+        cleaningLabel.style.display = "inline";
+        checkboxVVS.style.display = "inline";
+        VVSLabel.style.display = "inline";
+        checkboxHealth.style.display = "inline";
+        healthLabel.style.display = "inline";
+        checkboxPainting.style.display = "inline";
+        paintingLabel.style.display = "inline";
+        profileImg.style.display = "inline";
+        profileImgLabel.style.display = "inline";
+        certificateImg.style.display = "inline";
+        certificateLabel.style.display = "inline";
+        button.style.display = "block";
+
+        email.style.display = "none";
+        street.style.display = "none";
     }
 
     function showWorkgiver() {
-        document.getElementById('certificate-label').style.display ="block";
-        document.getElementById('certificateimg').style.display ="block";
 
-        /*Checkboxes*/
-        document.getElementById('category').style.display ="block";
-        document.getElementById('checkbox-beauty').style.display ="block";
-        document.getElementById('beauty').style.display ="block";
+        username.style.display = "inline";
+        password.style.display = "inline";
+        verifyPassword.style.display = "inline";
+        firstname.style.display = "inline";
+        lastname.style.display = "inline";
+        phone.style.display = "inline";
+        description.style.display = "inline ";
+        email.style.display = "inline";
+        street.style.display = "inline";
+        profileImg.style.display = "inline";
+        profileImgLabel.style.display = "inline";
+        button.style.display = "block";
 
-        document.getElementById('checkbox-cleaning').style.display ="block";
-        document.getElementById('cleaning').style.display ="block";
+        category.style.display = "none";
+        checkboxBeauty.style.display = "none";
+        beautyLabel.style.display = "none";
+        checkboxCleaning.style.display = "none";
+        cleaningLabel.style.display = "none";
+        checkboxVVS.style.display = "none";
+        VVSLabel.style.display = "none";
+        checkboxHealth.style.display = "none";
+        healthLabel.style.display = "none";
+        checkboxPainting.style.display = "none";
+        paintingLabel.style.display = "none";
 
-        document.getElementById('checkbox-vvs').style.display ="block";
-        document.getElementById('vvs').style.display ="block";
+        certificateImg.style.display = "none";
+        certificateLabel.style.display = "none";
 
-        document.getElementById('checkbox-health').style.display ="block";
-        document.getElementById('health').style.display ="block";
-
-        document.getElementById('checkbox-painting').style.display ="block";
-        document.getElementById('painting').style.display ="block";
     }
-
 </script>
-
 
 <style>
 
@@ -262,7 +345,7 @@
     }
 
     #option-div {
-        padding-left: 29%;
+        padding-left: 28%;
         padding-top: 8%;
     }
 
@@ -277,7 +360,7 @@
 
 
     #radio-div {
-        padding-left: 35%;
+        padding-left: 29%;
         padding-top: 3%;
     }
 
@@ -304,7 +387,6 @@
     /*Inputfält*/
     #username {
         float: none;
-        /*display: block;*/
         padding: 0.3em;
         justify-content: center;
         margin-top: 20px;
@@ -312,7 +394,6 @@
 
     #password {
         float: none;
-        /*display: table-row;*/
         padding: 0.3em;
         justify-content: center;
         margin-top: 20px;
