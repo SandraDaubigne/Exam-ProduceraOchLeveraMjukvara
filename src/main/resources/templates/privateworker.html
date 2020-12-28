@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"></html>
 <html lang="en" id="privateworker">
 
 <head>
@@ -9,127 +10,137 @@
 </head>
 
 <body>
-<header id="first-header">
-    <div id="logo-div">
-        <img src="tennerr.png" id="logo">
-    </div>
-    <div id="link-div">
-        <a id="header-home" href="">Hem</a>
-        <a id="header-dashboard" href="">Matchade uppdrag</a>
-    </div>
-</header>
-<div id="container">
-    <div id="profile-header">
-        <div id="profile-img">
-            <img src="frida.jpg" width="200" id="profile-picture">
+    <header id="first-header">
+        <div id="logo-div">
+            <img src="tennerr.png" id="logo">
         </div>
-        <div id="profile-info">
-            <h3 id="user-name">Namn...</h3>
+        <div id="link-div">
+            <a id="header-home" href="">Hem</a>
+            <a id="header-dashboard" href="">Matchade uppdrag</a>
         </div>
-    </div>
-    <div id="profile-option">
-        <div id="notification">
-            <span id="alert-message"></span>
-        </div>
-    </div>
-</div>
-<div id="main">
-    <div id="left-side">
-        <div id="profile-side">
-            <div id="description">
-                <h4>Beskrivning</h4>
-                <p id="user-description">
-                    Hej,
-                    Mitt namn är ... och jag är en arbetare.
-                </p>
+    </header>
+    <div id="container">
+        <div id="profile-header">
+            <div id="profile-img">
+                <img src="frida.jpg" width="200" id="profile-picture">
             </div>
-            <div id="profile-button"></div>
-            <button id="message-button">Meddelande</button>
-            <div id="user-rating">
-                <div id="rate">
-                    <div id="stars"></div>
-                </div>
+            <div id="profile-info">
+                <h3 id="user-name">Namn...</h3>
+            </div>
+        </div>
+        <div id="profile-option">
+            <div id="notification">
+                <span id="alert-message"></span>
             </div>
         </div>
     </div>
-    <div id="right-side">
-        <div id="navigation">
-            <ul>
-                <li onclick="tabs(0)" id="user-job" class="active">Aktuella uppdrag</li>
-                <li onclick="tabs(1)" id="user-review">Recensioner</li>
-                <li onclick="tabs(2)" id="user-settings">Profilinställningar</li>
-            </ul>
+    <div id="main">
+        <div id="left-side">
+            <div id="profile-side">
+                <div id="description">
+                    <h4>Beskrivning</h4>
+                    <p id="user-description">
+                        Hej,
+                        Mitt namn är ... och jag är en arbetare.
+                    </p>
+                </div>
+                <div id="profile-button"></div>
+                <button id="message-button">Meddelande</button>
+                <div id="user-rating">
+                    <div id="rate">
+                        <div id="stars"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="profile-body">
-            <div id="profile-jobs" class="tab">
-                <h1>Aktuella uppdrag</h1>
-                <p id="active-jobs">Här visas dina aktuella uppdrag</p>
+        <div id="right-side">
+            <div id="navigation">
+                <ul>
+                    <li onclick="tabs(0)" id="user-job" class="active">Aktuella uppdrag</li>
+                    <li onclick="tabs(1)" id="user-review">Recensioner</li>
+                    <li onclick="tabs(2)" id="user-settings">Profilinställningar</li>
+                </ul>
             </div>
-            <div id="profile-review" class="tab">
-                <h1>Recensioner</h1>
-                <p>Här visas dina recensioner som arbetare</p>
-            </div>
-            <div id="profile-settings" class="tab">
-                <h1>Profilinställningar</h1>
-                <header>
-                    <h3>Redigera din profil</h3>
-                </header>
-                <div id="firstName-lastname-div">
-                    <label id="firstName">
-                        <input id="firstName-input" type="text" size="30" placeholder="Förnamn*">
-                    </label>
-                    <label id="lastName">
-                        <input id="lastName-input" type="text" size="30" placeholder="Efternamn*">
-                    </label>
+            <div id="profile-body">
+                <div id="profile-jobs" class="tab">
+                    <h1>Aktuella uppdrag</h1>
+                    <p id="active-jobs">Här visas dina aktuella uppdrag</p>
                 </div>
-                <div id="phoneNumber-div">
-                    <label id="phoneNumber">
-                        <input id="phoneNumber-input" type="text" size="71" placeholder="Telefonnummer*">
-                    </label>
+                <div id="profile-review" class="tab">
+                    <h1>Recensioner</h1>
+                    <p>Här visas dina recensioner som arbetare</p>
                 </div>
 
-                <div id="description-div">
-                    <label id="description-label">
-                        <textarea id="description-box" cols="73" rows="5" placeholder="Personbeskrivning*"></textarea>
-                    </label>
-                </div>
 
-                <div id="category-div">
-                    <p id="category">Välj en eller flera kategorier:</p>
-                    <input type="checkbox" id="-checkbox-beauty" name="beauty" value="true">
-                    <label id="beauty" for="-checkbox-beauty">Skönhet</label>
+                <div id="profile-settings" class="tab">
+                    <h1>Profilinställningar</h1>
+                    <header>
+                        <h3>Redigera din profil</h3>
+                    </header>
 
-                    <input type="checkbox" id="checkbox-cleaning" name="cleaning" value="true">
-                    <label id="cleaning" for="checkbox-cleaning">Städning</label>
+                    <form action ="#" th:action="@{/updateUser/{id}(id=${user.id})}" th:object="${user}" method="post">
+                        <!---name måste finnas på hidden för att värdena inte ska försvinna vid uppdatering--->
+                        <!---Det spelar ingen roll vad namnen är förutom på id som ska tas emot i api:et som en variabel--->
+                        <!---th:value måste finnas här för att det inte ska bli null vid uppdatering då nytt objekt sparas--->
+                        <input type="hidden" th:value="${user.id}">
+                        <input type="hidden" name ="worker" th:value="${user.worker}">
+                        <input type="hidden"  name="workgiver" th:value="${user.workgiver}">
+                        <div id="firstName-lastname-div">
+                            <label id="firstName">
+                                <input id="firstName-input" type="text" size="30" placeholder="Förnamn*">
+                            </label>
+                            <label id="lastName">
+                                <input id="lastName-input" type="text" size="30" placeholder="Efternamn*">
+                            </label>
+                        </div>
+                        <div id="phoneNumber-div">
+                            <label id="phoneNumber">
+                                <input id="phoneNumber-input" type="text" size="71" placeholder="Telefonnummer*">
+                            </label>
+                        </div>
 
-                    <input type="checkbox" id="checkbox-vvs" name="vvs" value="true">
-                    <label id="vvs" for="checkbox-vvs">VVS</label>
+                        <div id="description-div">
+                            <label id="description-label">
+                                <textarea id="description-box" cols="73" rows="5" placeholder="Personbeskrivning*"></textarea>
+                            </label>
+                        </div>
 
-                    <input type="checkbox" id="checkbox-health" name="health" value="true">
-                    <label id="health" for="checkbox-health">Hälsa</label>
+                        <div id="category-div">
+                            <p id="category">Välj en eller flera kategorier:</p>
+                            <input type="checkbox" id="-checkbox-beauty" name="beauty" value="true">
+                            <label id="beauty" for="-checkbox-beauty">Skönhet</label>
 
-                    <input type="checkbox" id="checkbox-painting" name="painting" value="true">
-                    <label id="painting" for="checkbox-painting">Måleri</label>
-                    <!--<input type="submit" value="Submit">-->
-                </div>
+                            <input type="checkbox" id="checkbox-cleaning" name="cleaning" value="true">
+                            <label id="cleaning" for="checkbox-cleaning">Städning</label>
 
-                <div id="upload-picture-certificate-div">
-                    <span id="upload-span-picture">Ladda upp profilbild:</span>
-                    <input id="upload-picture-input" type="file"><br>
+                            <input type="checkbox" id="checkbox-vvs" name="vvs" value="true">
+                            <label id="vvs" for="checkbox-vvs">VVS</label>
 
-                    <span id="upload-span-certificate">Ladda upp certifikat och intyg:</span>
-                    <input id="upload-picture-certificate" type="file"><br>
-                </div>
+                            <input type="checkbox" id="checkbox-health" name="health" value="true">
+                            <label id="health" for="checkbox-health">Hälsa</label>
 
-                <div id="save-div">
-                    <button id="save-button" type="submit">Spara profil</button>
+                            <input type="checkbox" id="checkbox-painting" name="painting" value="true">
+                            <label id="painting" for="checkbox-painting">Måleri</label>
+                            <!--<input type="submit" value="Submit">-->
+                        </div>
+
+                        <div id="upload-picture-certificate-div">
+                            <span id="upload-span-picture">Ladda upp profilbild:</span>
+                            <input id="upload-picture-input" type="file"><br>
+
+                            <span id="upload-span-certificate">Ladda upp certifikat och intyg:</span>
+                            <input id="upload-picture-certificate" type="file"><br>
+                        </div>
+
+                        <div id="save-div">
+                            <button id="save-button" type="submit">Spara profil</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</div>
-</div>
+
 </body>
 
 <script>
@@ -148,25 +159,6 @@
     }
     tabs(0);
 
-        /* Usecase3: Update profile worker*/
-    const saveProfileButton = document.querySelector("#save-profile");
-
-    saveProfileButton.onclick = event => {
-
-        const worker= {
-        firstName: document.querySelector("#firstName").value,
-        lastName: document.querySelector("#lastName").value,
-        phoneNumber: document.querySelector("#phoneNumber").value,
-        address: document.querySelector("#address").value,
-        description: document.querySelector("#description-box").value
-        }
-        const options = {
-            method: 'PUT',
-            body: JSON.stringify(worker),
-            headers: {'Content-Type': 'application/json;charset=utf8'}
-        }
-        fetch("/updateworker", options)
-    }
 </script>
 
 <style>
