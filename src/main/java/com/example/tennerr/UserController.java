@@ -3,6 +3,7 @@ package com.example.tennerr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class UserController {
         model.addAttribute("list", userService.getAllUsers());
         return "1login";
     }
-
+    //*********************REGISTER**************************//
     //Show Form register
     @GetMapping("/showNewUserForm")
     public String registerUser(Model model){
@@ -38,6 +39,29 @@ public class UserController {
         return "1login";
     }
 
+    //*********************LOGIN***************************//
+    //Get förser sidan med model
+    @GetMapping("login")
+    public String loginget(@RequestParam("username") String username, Model model){
+
+        UserEntity user = userService.getUserByUsername(username);
+        model.addAttribute("user", user);
+
+        if(user !=null && username.equals(user.getUsername())){
+
+            if(user.isWorker()){
+
+                return "3startpageworker";
+
+            }else if(user.isWorkgiver()){
+
+                model.addAttribute("user", user);
+                return "3startpageworkgiver";
+            }
+
+        }
+        return "error";
+    }
 
     // Login function
     @PostMapping("/login")
@@ -48,8 +72,6 @@ public class UserController {
         if(user !=null && username.equals(user.getUsername())){
 
                 if(user.isWorker()){
-                    List<Job> jobs = jobService.getAllJobs();
-                    model.addAttribute("jobs", jobs );
                     model.addAttribute("user", user);
                     return "3startpageworker";
 
@@ -63,6 +85,7 @@ public class UserController {
         return "error";
     }
 
+    //*********************UPDATE***************************//
     //Show form for update user
     @GetMapping("/showformforupdate/{id}")
     public String showFormForUpdate(@PathVariable (value= "id") long id, Model model){
@@ -110,11 +133,15 @@ public class UserController {
 
     //**********JOB***************//
 
+
     //Show Form registerJob
+    //See all job
     @GetMapping("/registerJob")
-    public String registerJob(Model model){
+    public String registerJob(ModelMap map){
         Job job  = new Job();
-        model.addAttribute("job", job);
+        List<Job> jobs = jobService.getAllJobs();
+        map.addAttribute("jobs", jobs );
+        map.addAttribute("job", job);
         return "createJob";
     }
 
@@ -124,16 +151,6 @@ public class UserController {
         jobService.saveJob(job);
         return "success";
     }
-
-    //R - Read Show all jobs
-    @GetMapping("/allJobs")
-    public String allJobs(Model model){
-        List<Job> jobs = jobService.getAllJobs();
-        model.addAttribute("jobs", jobs );
-        return "sealljobs";
-    }
-
-
 
 
 
