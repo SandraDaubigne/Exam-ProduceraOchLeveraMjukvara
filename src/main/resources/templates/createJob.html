@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<h1>REGISTRERA JOBB</h1>
+
+<form action ="#" th:action ="@{/saveJob}" th:object="${job}" method ="POST">
+    <input type="text" th:field="*{jobdescription}" placeholder="Beskrivning">
+    <input type="text" th:field="*{workgiver}" placeholder="Uppdragsgivare">
+    <button id="login-button" type="submit">Skapa annons!</button>
+</form>
+
+<!----Listar ut alla jobb som finns--->
+<span th:each="job: ${jobs}">
+    <span th:text="${job.jobdescription}"></span>
+    <span th:text="${job.workgiver}"></span>
+</span>
+
+</body>
+
+</html>

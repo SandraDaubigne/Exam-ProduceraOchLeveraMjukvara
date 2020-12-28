@@ -3,7 +3,10 @@ package com.example.tennerr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -11,13 +14,16 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private JobService jobService;
+
     //Startvyn
     @GetMapping("/")
     public String startPage(Model model){
         model.addAttribute("list", userService.getAllUsers());
         return "1login";
     }
-
+    //*********************REGISTER**************************//
     //Show Form register
     @GetMapping("/showNewUserForm")
     public String registerUser(Model model){
@@ -33,24 +39,29 @@ public class UserController {
         return "1login";
     }
 
-    //Show form for update user
-    @GetMapping("/showformforupdate/{id}")
-    public String showFormForUpdate(@PathVariable (value= "id") long id, Model model){
-        UserEntity user = userService.getUserById(id);
+    //*********************LOGIN***************************//
+    //Get förser sidan med model
+    @GetMapping("login")
+    public String loginget(@RequestParam("username") String username, Model model){
+
+        UserEntity user = userService.getUserByUsername(username);
         model.addAttribute("user", user);
 
-        if(user.isWorker()){
-            model.addAttribute("user", user);
-            return "4profileworker";
+        if(user !=null && username.equals(user.getUsername())){
 
-        }else if(user.isWorkgiver()){
+            if(user.isWorker()){
 
-            model.addAttribute("user", user);
-            return "4profileworgiver";
+                return "3startpageworker";
+
+            }else if(user.isWorkgiver()){
+
+                model.addAttribute("user", user);
+                return "3startpageworkgiver";
+            }
+
         }
         return "error";
     }
-
 
     // Login function
     @PostMapping("/login")
@@ -70,6 +81,25 @@ public class UserController {
                     return "3startpageworkgiver";
                 }
 
+        }
+        return "error";
+    }
+
+    //*********************UPDATE***************************//
+    //Show form for update user
+    @GetMapping("/showformforupdate/{id}")
+    public String showFormForUpdate(@PathVariable (value= "id") long id, Model model){
+        UserEntity user = userService.getUserById(id);
+        model.addAttribute("user", user);
+
+        if(user.isWorker()){
+            model.addAttribute("user", user);
+            return "4profileworker";
+
+        }else if(user.isWorkgiver()){
+
+            model.addAttribute("user", user);
+            return "4profileworkgiver";
         }
         return "error";
     }
@@ -100,6 +130,27 @@ public class UserController {
         return "error";
     }
 
+
+    //**********JOB***************//
+
+
+    //Show Form registerJob
+    //See all job
+    @GetMapping("/registerJob")
+    public String registerJob(ModelMap map){
+        Job job  = new Job();
+        List<Job> jobs = jobService.getAllJobs();
+        map.addAttribute("jobs", jobs );
+        map.addAttribute("job", job);
+        return "createJob";
+    }
+
+    //C - Create Job
+    @PostMapping("/saveJob")
+    public String saveJob(@ModelAttribute("job") Job job){
+        jobService.saveJob(job);
+        return "success";
+    }
 
 
 
