@@ -14,6 +14,7 @@ public class Job {
     private String jobdescription;
     private String workgiver;
     private String titel;
+    private int price;
     private boolean beauty;
     private boolean cleaning;
     private boolean vvs;
@@ -22,6 +23,14 @@ public class Job {
 
     public String getTitel() {
         return titel;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public void setTitel(String titel) {

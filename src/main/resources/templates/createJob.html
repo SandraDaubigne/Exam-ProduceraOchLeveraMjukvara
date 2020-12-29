@@ -41,22 +41,23 @@
 <form action ="#" th:action ="@{/saveJob}" th:object="${job}" method ="POST">
     <input id="username" type="text" size="80" th:field="*{workgiver}" placeholder="Ditt användarnamn"><br>
     <input id="titel" type="text" size="80" th:field="*{titel}" placeholder="Titel"><br>
+    <input id="price" type="text" size="80" th:field="*{price}" placeholder="Titel"><br>
 
     <div id="category-div">
         <p id="category">Välj en kategori:</p>
-        <input type="checkbox" id="-checkbox-beauty" name="beauty" value="true" th:field="*{beauty}" th:checked="${job.beauty}">
+        <input type="checkbox" id="-checkbox-beauty" name="beauty" value="true" th:field="*{beauty}" >
         <label id="beauty" for="-checkbox-beauty">Skönhet</label>
 
-        <input type="checkbox" id="checkbox-cleaning" name="cleaning" value="true" th:field="*{cleaning}" th:checked="${job.cleaning}">
+        <input type="checkbox" id="checkbox-cleaning" name="cleaning" value="true" th:field="*{cleaning}">
         <label id="cleaning" for="checkbox-cleaning">Städning</label>
 
-        <input type="checkbox" id="checkbox-vvs" name="vvs" value="true" th:field="*{vvs}" th:checked="${job.vvs}">
+        <input type="checkbox" id="checkbox-vvs" name="vvs" value="true" th:field="*{vvs}">
         <label id="vvs" for="checkbox-vvs">VVS</label>
 
-        <input type="checkbox" id="checkbox-health" name="health" value="true" th:field="*{health}" th:checked="${job.health}">
+        <input type="checkbox" id="checkbox-health" name="health" value="true" th:field="*{health}">
         <label id="health" for="checkbox-health">Hälsa</label>
 
-        <input type="checkbox" id="checkbox-painting" name="painting" value="true" th:field="*{painting}" th:checked="${job.painting}">
+        <input type="checkbox" id="checkbox-painting" name="painting" value="true" th:field="*{painting}">
         <label id="painting" for="checkbox-painting">Måleri</label>
     </div>
 
