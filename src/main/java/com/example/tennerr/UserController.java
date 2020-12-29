@@ -42,7 +42,7 @@ public class UserController {
     //**********JOB***************//
 
     //Förser POST login med Model för Job
-    @GetMapping
+    @GetMapping("/registerJob")
     public String registerJob(ModelMap map){
         Job job  = new Job();
         List<Job> jobs = jobService.getAllJobs();
