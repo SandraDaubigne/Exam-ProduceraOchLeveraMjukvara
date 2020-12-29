@@ -13,6 +13,60 @@ public class Job {
     private Long id;
     private String jobdescription;
     private String workgiver;
+    private String titel;
+    private boolean beauty;
+    private boolean cleaning;
+    private boolean vvs;
+    private boolean health;
+    private boolean painting;
+
+    public String getTitel() {
+        return titel;
+    }
+
+    public void setTitel(String titel) {
+        this.titel = titel;
+    }
+
+    public boolean isBeauty() {
+        return beauty;
+    }
+
+    public void setBeauty(boolean beauty) {
+        this.beauty = beauty;
+    }
+
+    public boolean isCleaning() {
+        return cleaning;
+    }
+
+    public void setCleaning(boolean cleaning) {
+        this.cleaning = cleaning;
+    }
+
+    public boolean isVvs() {
+        return vvs;
+    }
+
+    public void setVvs(boolean vvs) {
+        this.vvs = vvs;
+    }
+
+    public boolean isHealth() {
+        return health;
+    }
+
+    public void setHealth(boolean health) {
+        this.health = health;
+    }
+
+    public boolean isPainting() {
+        return painting;
+    }
+
+    public void setPainting(boolean painting) {
+        this.painting = painting;
+    }
 
     public Job() {
     }
