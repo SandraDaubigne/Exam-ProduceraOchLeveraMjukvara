@@ -58,9 +58,50 @@
         <td th:text="${job.jobdescription}"></td>
         <p>Uppdragsgivare</p>
         <td th:text="${job.workgiver}"></td>
+        <p>Titel</p>
+        <td th:text="${job.titel}"></td>
+        <p>Pris</p>
+        <td th:text="${job.price}"></td>
+        <p>Kategori</p>
+        <td th:text="${job.beauty}"></td>
+        <td th:text="${job.cleaning}"></td>
+        <td th:text="${job.vvs}"></td>
+        <td th:text="${job.health}"></td>
+        <td th:text="${job.painting}"></td>
     </tr>
 
     <div id="main">
+        <div id="right-side">
+            <div id="profile-body">
+
+                <tr th:each="job: ${jobs}">
+                <div class="job-div">
+                    <div class="title-div">
+                        <h4 th:text="${job.titel}"></h4>
+                    </div>
+                    <div class="price-div">
+                        <p>Pris: </p>
+                        <p th:text="${job.price}"> </p>
+                    </div>
+
+                    <div class="workgiver-name-div">
+                        <p>Uppdragsgivare: </p>
+                        <p th:text="${job.workgiver}"> </p>
+                    </div>
+                    <div class="description-div">
+                        <p class="description">Beskrivning: </p>
+                        <p class="full-description" th:text="${job.jobdescription}"></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+    <!--Fridas kod-->
+    <!--<div id="main">
         <div id="right-side">
             <div id="profile-body">
                 <div class="job-div">
@@ -94,7 +135,7 @@
         </div>
     </div>
 </div>
-</div>
+</div>-->
 <style>
 
     * {
