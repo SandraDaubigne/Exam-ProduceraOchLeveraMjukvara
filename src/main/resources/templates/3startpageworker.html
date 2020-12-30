@@ -4,20 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< Updated upstream
-    <title>StartpageWorkgiver</title>
+
+    <title>StartpageWorker</title>
 </head>
 <body>
-    <div id="container">
-        <header id="first-header">
-            <div id="logo-div">
-                <img src="tennerr.png" id="logo">
-=======
-    <title>Document</title>
-</head>
-<body>
-
-
 <div id="container">
     <header id="first-header">
         <div id="logo-div">
@@ -29,19 +19,7 @@
             <a  th:href="@{/showPublicView/{id}(id=${user.id})}">Visa din profil som publik</a>
         </div>
     </header>
-    <div id="profile-header">
-        <div id="profile-info">
-            <h3 id="user-name">Du är nu inloggad i Tennerrs tjänsteportal</h3>
-            <div id="search-info-div">
-                <p>Sök uppdrag</p>
->>>>>>> Stashed changes
-            </div>
-            <div id="link-div">
-                <a id="header-dashboard" href="">Matchade uppdrag</a>
-                <a id="header-profile" th:href="@{/showformforupdate/{id}(id=${user.id})}">Din profil</a>
-                <a  th:href="@{/showPublicView/{id}(id=${user.id})}">Visa din profil som publik</a>
-            </div>
-        </header>
+
 
         <div id="profile-header">
             <div id="profile-info">
@@ -63,28 +41,7 @@
             </div>
         </div>
 
-    <!--LOOP FÖR ANNONSER--->
-<<<<<<< Updated upstream
-    <!--<tr th:each="job: ${jobs}">
-=======
-   <!--<tr th:each="job: ${jobs}">
->>>>>>> Stashed changes
-        <p>Jobbeskrivning</p>
-        <td th:text="${job.jobdescription}"></td>
-        <p>Uppdragsgivare</p>
-        <td th:text="${job.workgiver}"></td>
-<<<<<<< Updated upstream
-        <p>Titel</p>
-        <td th:text="${job.titel}"></td>
-        <p>Pris</p>
-        <td th:text="${job.price}"></td>
-        <p>Kategori</p>
-        <td th:text="${job.beauty}"></td>
-        <td th:text="${job.cleaning}"></td>
-        <td th:text="${job.vvs}"></td>
-        <td th:text="${job.health}"></td>
-        <td th:text="${job.painting}"></td>
-    </tr>-->
+
 
         <div id="main">
             <div id="right-side">
@@ -92,7 +49,7 @@
                     <tr th:each="job: ${jobs}">
                     <div class="job-div">
                         <div class="title-div">
-                            <!--<h4>Titel: </h4>-->
+
                             <h4 th:text="${job.titel}"></h4>
                         </div>
 
@@ -104,10 +61,7 @@
                         <div class="category-div">
                             <span>Kategori: </span>
                             <span th:text="${job.beauty}"> </span>
-                            <!--<span th:text="${job.cleaning}"> </span>
-                            <span th:text="${job.vvs}"> </span>
-                            <span th:text="${job.health}"> </span>
-                            <span th:text="${job.painting}"> </span>-->
+
                         </div>
 
                         <div class="workgiver-name-div">
@@ -128,9 +82,7 @@
         </div>
     </div>
 </body>
-=======
-    </tr>-->
->>>>>>> Stashed changes
+
 
     <!--Fridas kod-->
     <!--<div id="main">
