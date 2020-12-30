@@ -41,7 +41,7 @@
 <form action ="#" th:action ="@{/saveJob}" th:object="${job}" method ="POST">
     <input id="username" type="text" size="80" th:field="*{workgiver}" placeholder="Ditt användarnamn"><br>
     <input id="titel" type="text" size="80" th:field="*{titel}" placeholder="Titel"><br>
-    <input id="price" type="text" size="80" th:field="*{price}" placeholder="Titel"><br>
+    <input id="price" type="text" size="80" th:field="*{price}" placeholder="Pris"><br>
 
     <div id="category-div">
         <p id="category">Välj en kategori:</p>
