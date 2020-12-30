@@ -75,7 +75,7 @@ public class UserController {
 
     //Get förser sidan med model
     @GetMapping("login")
-    public String loginget(@RequestParam("username") String username){
+    public String loginget(@ModelAttribute("job")Job job, @RequestParam("username") String username){
 
         UserEntity user = userService.getUserByUsername(username);
 
