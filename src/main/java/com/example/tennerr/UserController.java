@@ -33,10 +33,19 @@ public class UserController {
     }
 
     //C - Create User - Register
+    //ModelAttribute här för att vi ska rendera 2register vid fel, den innehåller user attribut
     @PostMapping("/saveUser")
-    public String saveUser(UserEntity  userEntity, @RequestParam("password") String password){
-        System.out.println(password);
-        userService.saveUser(userEntity);
+    public String saveUser(@ModelAttribute("user") UserEntity  userEntity, @RequestParam("password") String password, @RequestParam("newpassword") String newpassword){
+
+        if(password.equals(newpassword)){
+            System.out.println(password);
+            userService.saveUser(userEntity);
+
+            //Denna else if fungerar inte just nu
+        }else if(!password.equals(newpassword)){
+            return "2register";
+        }
+
         return "1login";
     }
 
