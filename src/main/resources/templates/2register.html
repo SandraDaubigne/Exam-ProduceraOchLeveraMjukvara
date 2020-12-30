@@ -65,10 +65,12 @@
                     <div id="radio-div">
 
                         <!---value måste finnas här-->
-                        <input type ="radio"  name="worker" id="radio-worker" value="true" onclick="showWorker()" th:field="*{worker}">
-                        <label id="worker"  for ="radio-worker">Arbetare</label>
-                        <input type ="radio" name="worker" id="radio-workgiver"  value="true" onchange="showWorkgiver()" th:field="*{workgiver}">
-                        <label id="workgiver" for ="radio-workgiver">Uppdragsgivare</label>
+                        <label id="worker">
+                        <input type ="radio" name="radioButton" id="radio-worker" value="true" onclick="showWorker()" th:field="*{worker}">
+                        Arbetare</label>
+                        <label id="workgiver">
+                        <input type ="radio" name="radioButton" id="radio-workgiver"  value="true" onchange="showWorkgiver()" th:field="*{workgiver}">
+                        Uppdragsgivare</label>
 
 
                         <input required name="username" type="text" placeholder="Användarnamn*" id="username" style="width: 553px; height: 25px" th:field="*{username}" ><br>
@@ -125,6 +127,8 @@
 </body>
 <script>
 
+    const workerRadiobutton = document.querySelector("#radio-worker");
+    const workgiverRadiobutton = document.querySelector("#radio-workgiver");
     const username = document.querySelector("#username");
     const password = document.querySelector("#password");
     const verifyPassword = document.querySelector("#verify");
@@ -212,6 +216,7 @@
         certificateLabel.style.display = "inline";
         button.style.display = "block";
         button.disabled = true;
+        workgiverRadiobutton.checked = false;
 
         email.style.display = "none";
         street.style.display = "none";
@@ -231,6 +236,7 @@
         profileImg.style.display = "inline";
         profileImgLabel.style.display = "inline";
         button.style.display = "block";
+        workerRadiobutton.checked = false;
 
         category.style.display = "none";
         checkboxBeauty.style.display = "none";
