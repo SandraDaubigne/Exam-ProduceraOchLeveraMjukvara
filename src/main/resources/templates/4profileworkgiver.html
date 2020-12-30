@@ -9,7 +9,6 @@
 </head>
 <body>
 
-
 <header id="first-header">
     <div id="logo-div">
         <img src="tennerr.png" id="logo">
@@ -87,37 +86,34 @@
 
                         <div id="firstName-lastname-div">
                             <label id="firstName">
-                                <input id="firstName-input" type="text" size="30" placeholder="Förnamn*" th:field="*{firstname}" th:value="${user.firstname}">
+                                <input required id="firstName-input" type="text" size="30" placeholder="Förnamn*" th:field="*{firstname}" th:value="${user.firstname}">
                             </label>
                             <label id="lastName">
-                                <input id="lastName-input" type="text" size="30" placeholder="Efternamn*" th:field="*{lastname}" th:value="${user.lastname}">
+                                <input required id="lastName-input" type="text" size="30" placeholder="Efternamn*" th:field="*{lastname}" th:value="${user.lastname}">
                             </label>
                         </div>
 
                         <div>
-                            <input name="username" type="text" placeholder="Användarnamn*" id="username" size="30" th:field="*{username}" th:value="${user.username}">
-                            <input type="text" placeholder="Lösenord*" id="password" size="30" th:field="*{password}" th:value="${user.password}">
+                            <input required name="username" type="text" placeholder="Användarnamn*" id="username" size="30" th:field="*{username}" th:value="${user.username}">
+                            <input required type="text" placeholder="Lösenord*" id="password" size="30" th:field="*{password}" th:value="${user.password}">
                         </div>
 
                         <div id="email-phoneNumber-div">
                             <label id="email">
-                                <input id="email-input" type="text" size="30" placeholder="E-mail*" th:field="*{email}" th:value="${user.email}">
+                                <input required id="email-input" type="text" size="30" placeholder="E-mail*" th:field="*{email}" th:value="${user.email}">
                             </label>
                             <label id="phoneNumber">
-                                <input id="phoneNumber-input" type="text" size="30" placeholder="Telefonnummer*" th:field="*{phone}" th:value="${user.phone}">
+                                <input required id="phoneNumber-input" type="text" size="30" placeholder="Telefonnummer*" th:field="*{phone}" th:value="${user.phone}">
                             </label>
                         </div>
                         <div id="address">
-                            <input type="text" placeholder="Gatuadress*" id="street"  size="71" th:field="*{address}" th:value="${user.address}"><br>
+                            <input required type="text" placeholder="Gatuadress*" id="street"  size="71" th:field="*{address}" th:value="${user.address}"><br>
                         </div>
                         <div id="description-div">
                             <label id="description-label">
-                                <textarea id="description-box" cols="73" rows="5" placeholder="Personbeskrivning*" th:field="*{description}" th:value="${user.description}"></textarea>
+                                <textarea required id="description-box" cols="73" rows="5" placeholder="Personbeskrivning*" th:field="*{description}" th:value="${user.description}"></textarea>
                             </label>
                         </div>
-
-
-
                         <div id="upload-picture-certificate-div">
                             <span id="upload-span-picture">Ladda upp profilbild:</span>
                             <input id="upload-picture-input" type="file"><br>
@@ -134,6 +130,24 @@
 </div>
 </div>
 </body>
+<script>
+
+    $("#navigation ul li").click(function() {
+    $(this).addClass("active").siblings().removeClass("active");
+})
+
+const tabButton = document.querySelectorAll ("#navigation ul li");
+const tab = document.querySelectorAll(".tab");
+
+function tabs(panelIndex) {
+    tab.forEach(function(node) {
+        node.style.display = "none";
+    })
+    tab[panelIndex].style.display = "block";
+}
+tabs(0);
+
+</script>
 <style>
         * {
     padding: 0;
@@ -151,11 +165,11 @@ body {
 }
 
 #logo-div {
-    justify-content: left;
-}
+        padding-left: 2em;
+        float: left;
+    }
 
 #first-header {
-    float: right;
     padding-bottom: 1em;
     margin-top: 0;
 }
@@ -167,6 +181,13 @@ body {
 
 #first-header a {
     padding-left: 2em;
+}
+
+#link-div {
+    float: right;
+    padding-top: 1em;
+    padding-right: 2em;
+    padding-bottom: 1em;
 }
 
 #profile-header {
@@ -243,7 +264,6 @@ body {
 
 }
 
-
 #description h4 {
     font-variant: small-caps;
     font-family: Arial, Helvetica, sans-serif;
@@ -285,6 +305,11 @@ body {
     box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.3);
     color: #fff;
     background: rgba(265, 0, 70, 0.9);
+}
+
+#save-button:disabled {
+    background: lightgrey;
+        color: darkgrey;
 }
 
 #message-button:hover, #save-button:hover {
@@ -341,10 +366,6 @@ body {
     padding: 1.5em;
 }
 
-
-
-
-
 #street {
     float: none;
     /*display: block;*/
@@ -352,7 +373,6 @@ body {
     margin-top: 20px;
     justify-content: center;
 }
-
 
 input, #description-box {
     margin: 1em;
@@ -470,42 +490,4 @@ input, textarea {
     }
 }
 </style>
-<script>
-        $("#navigation ul li").click(function() {
-        $(this).addClass("active").siblings().removeClass("active");
-    })
-
-    const tabButton = document.querySelectorAll ("#navigation ul li");
-    const tab = document.querySelectorAll(".tab");
-
-    function tabs(panelIndex) {
-        tab.forEach(function(node) {
-            node.style.display = "none";
-        })
-        tab[panelIndex].style.display = "block";
-    }
-    tabs(0);
-
-        /* Usecase4: Update profile workgiver*/
-    const saveProfileButton = document.querySelector("#save-profile");
-
-    saveProfileButton.onclick = event => {
-
-        const workgiver= {
-        firstName: document.querySelector("#firstName").value,
-        lastName: document.querySelector("#lastName").value,
-        email: document.querySelector("#email").value,
-        phoneNumber: document.querySelector("#phoneNumber").value,
-        address: document.querySelector("#address").value,
-        description: document.querySelector("#description-box").value
-        }
-        const options = {
-            method: 'PUT',
-            body: JSON.stringify(workgiver),
-            headers: {'Content-Type': 'application/json;charset=utf8'}
-        }
-        fetch("/updateworkgiver", options)
-    }
-</script>
-
 </html>
