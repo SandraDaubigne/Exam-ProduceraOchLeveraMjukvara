@@ -17,21 +17,23 @@ public class UserController {
     @Autowired
     private JobService jobService;
 
+    /**************************VIEWS***********************************/
+
     //Startvyn
     @GetMapping("/")
-    public String startPage(Model model){
-        model.addAttribute("list", userService.getAllUsers());
+    public String startPage(){
+        //model.addAttribute("list", userService.getAllUsers());
         return "1login";
     }
-    //*********************REGISTER**************************//
+
+    //2Register
     //Show Form register
     @GetMapping("/showNewUserForm")
-    public String registerUser(Model model){
-        UserEntity userEntity = new UserEntity();
-        model.addAttribute("user", userEntity);
+    public String registerUser(@ModelAttribute("user") UserEntity user){
         return "2register";
     }
 
+    //*********************REGISTER**************************//
     //C - Create User - Register
     //ModelAttribute här för att vi ska rendera 2register vid fel, den innehåller user attribut
     @PostMapping("/saveUser")
