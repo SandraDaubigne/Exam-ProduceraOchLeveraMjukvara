@@ -57,6 +57,8 @@
             <div id="profile-body">
                 <!-- 2: Skapa funktion för att kunna registrera sig,--->
 
+                <p th:text="${error}"></p>
+
                 <div id="option-div">
                     <h4 id="option h4">Registrera dig som arbetare eller uppdragsgivare:</h4>
                 </div>
@@ -72,8 +74,8 @@
 
 
                         <input required name="username" type="text" placeholder="Användarnamn*" id="username" style="width: 553px; height: 25px" th:field="*{username}" ><br>
-                        <input required type="text" placeholder="Lösenord*" id="password" style="width: 275px; height: 25px" th:field="*{password}">
-                        <input required type="text" placeholder="Upprepa lösenord*" id="verify" style="width: 275px; height: 25px"><br>
+                        <input required type="text" th:name="password" placeholder="Lösenord*" id="password" style="width: 275px; height: 25px" th:field="*{password}">
+                        <input required type="text" th:name="newpassword" placeholder="Upprepa lösenord*" id="verify" style="width: 275px; height: 25px"><br>
 
                         <input required type ="text" placeholder="Förnamn*" id="firstname" style="width: 275px; height: 25px" th:field="*{firstname}">
                         <input required type ="text" placeholder="Efternamn*" id="lastname" style="width: 275px; height: 25px" th:field="*{lastname}"><br>
