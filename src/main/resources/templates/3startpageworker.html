@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< Updated upstream
     <title>StartpageWorkgiver</title>
 </head>
 <body>
@@ -11,6 +12,29 @@
         <header id="first-header">
             <div id="logo-div">
                 <img src="tennerr.png" id="logo">
+=======
+    <title>Document</title>
+</head>
+<body>
+
+
+<div id="container">
+    <header id="first-header">
+        <div id="logo-div">
+            <img src="tennerr.png" id="logo">
+        </div>
+        <div id="link-div">
+            <a id="header-dashboard" href="">Matchade uppdrag</a>
+            <a id="header-profile" th:href="@{/showformforupdate/{id}(id=${user.id})}">Din profil</a>
+            <a  th:href="@{/showPublicView/{id}(id=${user.id})}">Visa din profil som publik</a>
+        </div>
+    </header>
+    <div id="profile-header">
+        <div id="profile-info">
+            <h3 id="user-name">Du är nu inloggad i Tennerrs tjänsteportal</h3>
+            <div id="search-info-div">
+                <p>Sök uppdrag</p>
+>>>>>>> Stashed changes
             </div>
             <div id="link-div">
                 <a id="header-dashboard" href="">Matchade uppdrag</a>
@@ -40,11 +64,16 @@
         </div>
 
     <!--LOOP FÖR ANNONSER--->
+<<<<<<< Updated upstream
     <!--<tr th:each="job: ${jobs}">
+=======
+   <!--<tr th:each="job: ${jobs}">
+>>>>>>> Stashed changes
         <p>Jobbeskrivning</p>
         <td th:text="${job.jobdescription}"></td>
         <p>Uppdragsgivare</p>
         <td th:text="${job.workgiver}"></td>
+<<<<<<< Updated upstream
         <p>Titel</p>
         <td th:text="${job.titel}"></td>
         <p>Pris</p>
@@ -99,6 +128,9 @@
         </div>
     </div>
 </body>
+=======
+    </tr>-->
+>>>>>>> Stashed changes
 
     <!--Fridas kod-->
     <!--<div id="main">
