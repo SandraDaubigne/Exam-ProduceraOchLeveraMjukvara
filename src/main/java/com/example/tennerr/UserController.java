@@ -41,7 +41,7 @@ public class UserController {
             System.out.println(password);
             userService.saveUser(userEntity);
 
-           
+
         }else if(!password.equals(newpassword)){
             model.addAttribute("error", "Du har angett olika lösenord, var vänlig försök igen!");
             return "2register";

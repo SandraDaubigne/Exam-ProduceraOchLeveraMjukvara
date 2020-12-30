@@ -69,7 +69,7 @@
                         <!---value måste finnas här-->
                         <input type ="radio"  name="worker" id="radio-worker" value="true" onclick="showWorker()" th:field="*{worker}">
                         <label id="worker"  for ="radio-worker">Arbetare</label>
-                        <input type ="radio" name="worker" id="radio-workgiver"  value="true" onchange="showWorkgiver()" th:field="*{workgiver}">
+                        <input type ="radio" name="worker" id="radio-workgiver"  value="true" onclick="showWorkgiver()" th:field="*{workgiver}">
                         <label id="workgiver" for ="radio-workgiver">Uppdragsgivare</label>
 
 
@@ -124,6 +124,7 @@
             </div>
         </div>
     </div>
+</div>
 </body>
 <script>
 
