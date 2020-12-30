@@ -34,7 +34,8 @@ public class UserController {
 
     //C - Create User - Register
     @PostMapping("/saveUser")
-    public String saveUser(@ModelAttribute("user") UserEntity  userEntity){
+    public String saveUser(UserEntity  userEntity, @RequestParam("password") String password){
+        System.out.println(password);
         userService.saveUser(userEntity);
         return "1login";
     }
