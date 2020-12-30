@@ -15,7 +15,7 @@
             <img src="tennerr.png" id="logo">
         </div>
         <div id="link-div">
-            <a id="header-home" href="">Lägg in annons</a>
+            <a th:href="@{/registerJob}" id="header-home" href="">Lägg in annons</a>
             <a id="header-dashboard" href="">Matchade uppdrag</a>
             <a id="header-profile" th:href="@{/showformforupdate/{id}(id=${user.id})}">Din profil</a>
             <a  th:href="@{/showPublicView/{id}(id=${user.id})}">Visa din profil som publik</a>
@@ -40,38 +40,48 @@
             </div>
         </div>
     </div>
+
     <div id="main">
         <div id="right-side">
             <div id="profile-body">
-                <div class="job-div">
-                    <div class="title-div">
-                        <h4>Altanbygge</h4>
-                    </div>
-                    <div class="workgiver-name-div">
-                        <p>Uppdragsgivare: <a id="workgiver-name-one" href="">Frida Hammarberg</a></p>
-                    </div>
-                    <div class="description-div">
-                        <p class="description">Beskrivning: </p>
-                        <p class="full-description">Jag vill ha hjälp att bygga en altan</p>
-                    </div>
-                </div>
-                <div class="job-div">
-                    <div class="title-div">
-                        <h4>Gräsklippning</h4>
-                    </div>
-                    <div class="workgiver-name-div">
-                        <p>Uppdragsgivare: <a id="workgiver-name-two" href="">Karl Gustav</a></p>
-                    </div>
-                    <div class="description-div">
-                        <p class="description">Beskrivning: </p>
-                        <p class="full-description"> Jag vill ha hjälp att klippa gräset</p>
+                <tr th:each="job: ${jobs}">
+                    <div class="job-div">
+                        <div class="title-div">
+                            <!--<h4>Titel: </h4>-->
+                            <h4 th:text="${job.titel}"></h4>
+                        </div>
+
+                        <div class="price-div">
+                            <span>Pris:</span>
+                            <span th:text="${job.price}"> </span>
+                        </div>
+
+                        <div class="category-div">
+                            <span>Kategori: </span>
+                            <span th:text="${job.beauty}"> </span>
+                            <!--<span th:text="${job.cleaning}"> </span>
+                            <span th:text="${job.vvs}"> </span>
+                            <span th:text="${job.health}"> </span>
+                            <span th:text="${job.painting}"> </span>-->
+                        </div>
+
+                        <div class="workgiver-name-div">
+                            <span>Uppdragsgivare: </span>
+                            <span th:text="${job.workgiver}"> </span>
+                        </div>
+
+                        <div class="description-div">
+                            <span class="description">Beskrivning: </span>
+                        </div>
+
+                        <div class="full-description">
+                            <span th:text="${job.jobdescription}"></span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</div>
 <style>
 
     * {
@@ -206,7 +216,7 @@
     .job-div {
         background: #fff;
         margin: 2em;
-        height: 10em;
+        height: 12em;
     }
 
     #profile-body h4 {
@@ -216,31 +226,56 @@
         font-weight: bold;
     }
 
-    .title-div {
-        padding: 1em;
-    }
+  .title-div {
+    padding: 1em;
+}
 
-    .workgiver-name-div p {
-        font-size: 1em;
-        padding: 1em;
-        padding-top: 0;
-    }
+.price-div {
+    font-size: 1em;
+    padding-left: 1em;
+    padding-top: 0em;
 
-    .description {
-        padding-left: 1em;
-        font-variant: small-caps;
-        font-size: 1em;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: bold;
-    }
+    font-variant: small-caps;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
 
-    .full-description {
-        font-size: 1em;
-        padding-left: 1em;
-        padding-top: 0.5em;
-        font-variant: normal;
-        font-weight: normal;
-    }
+.category-div {
+    font-size: 1em;
+    padding-left: 1em;
+    padding-top: 0.5em;
+
+    font-variant: small-caps;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.workgiver-name-div {
+    font-size: 1em;
+    padding-left: 1em;
+    padding-top: 0.5em;
+
+    font-variant: small-caps;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.description-div {
+    font-size: 1em;
+    padding-left: 1em;
+    padding-top: 0.5em;
+    font-variant: small-caps;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.full-description {
+    font-size: 1em;
+    padding-left: 1em;
+    padding-top: 0;
+    font-variant: normal;
+    font-weight: normal;
+}
 
     @media(max-width: 1100px) {
         #profile-header {
