@@ -26,48 +26,45 @@ public class UserController {
         return "1login";
     }
 
-    //2Register
+    //Renderar: 2Register.html
     //Show Form register
     @GetMapping("/showNewUserForm")
     public String registerUser(@ModelAttribute("user") UserEntity user){
         return "2register";
     }
 
+    //Renderar: CreateJob.html
+    @GetMapping("/showFormRegisterJob")
+    public String registerJob(@ModelAttribute("job") Job job){
+        return "createJob";
+    }
+
+    /*************************FUNCTIONS*************************************/
+
     //*********************REGISTER**************************//
-    //C - Create User - Register
-    //ModelAttribute här för att vi ska rendera 2register vid fel, den innehåller user attribut
+    //Denna behöver ha @Modelattribute user för att return 2 register finns här pga felmeddelandet
     @PostMapping("/saveUser")
-    public String saveUser(@ModelAttribute("user") UserEntity  userEntity, Model model , @RequestParam("password") String password, @RequestParam("newpassword") String newpassword){
+    public String saveUser(@ModelAttribute("user") UserEntity userEntity,
+                           Model model,
+                           @RequestParam("password") String password,
+                           @RequestParam("newpassword") String newpassword){
 
         if(password.equals(newpassword)){
             System.out.println(password);
             userService.saveUser(userEntity);
-
 
         }else if(!password.equals(newpassword)){
             model.addAttribute("error", "Du har angett olika lösenord, var vänlig försök igen!");
             return "2register";
         }
 
-        return "1login";
+        return "redirect:/";
     }
 
-    //**********JOB***************//
-
-    //Förser POST login med Model för Job
-    @GetMapping("/registerJob")
-    public String registerJob(ModelMap map){
-        Job job  = new Job();
-        List<Job> jobs = jobService.getAllJobs();
-        map.addAttribute("jobs", jobs );
-        map.addAttribute("job", job);
-        return "createJob";
-    }
-
-
+    //*********************CREATE JOB**************************//
     //C - Create Job
     @PostMapping("/saveJob")
-    public String saveJob(@ModelAttribute("job") Job job){
+    public String saveJob(Job job){
         jobService.saveJob(job);
         return "success";
     }
@@ -77,7 +74,7 @@ public class UserController {
 
     //Get förser sidan med model
     @GetMapping("login")
-    public String loginget(@ModelAttribute("job")Job job, @RequestParam("username") String username){
+    public String login(@ModelAttribute("job")Job job, @RequestParam("username") String username){
 
         UserEntity user = userService.getUserByUsername(username);
 

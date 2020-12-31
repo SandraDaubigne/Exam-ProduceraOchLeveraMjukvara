@@ -43,10 +43,10 @@
                 <form th:action = "@{/login}" method ="POST">
                     <div id="input-div">
                         <label id="username">
-                            <input required name="username" id="username-input" type="text" size="30" placeholder="Användarnamn">
+                            <input name="username" id="username-input" type="text" size="30" placeholder="Användarnamn">
                         </label>
                         <label id="password">
-                            <input required id="password-input" type="text" size="30" placeholder="Lösenord">
+                            <input id="password-input" type="text" size="30" placeholder="Lösenord">
                         </label>
                         <div id="create-profile-div">
                             <a th:href="@{/showNewUserForm}">Skapa profil</a>
@@ -77,10 +77,6 @@
         font-family: Arial, Helvetica, sans-serif;
         margin: 0 100px;
         overflow: auto;
-    }
-    
-    #password-input {
-        -webkit-text-security: disc;
     }
 
     #first-header {
