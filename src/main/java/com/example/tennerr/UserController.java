@@ -112,6 +112,30 @@ public class UserController {
 
     //*********************LOGIN***************************//
 
+    /*
+    //Get förser sidan med model
+    @GetMapping("login")
+    public String loginget(@ModelAttribute("job")Job job, @RequestParam("username") String username){
+
+        UserEntity user = userService.getUserByUsername(username);
+
+        if(user !=null && username.equals(user.getUsername())){
+
+            if(user.isWorker()){
+
+                return "3startpageworker";
+
+            }else if(user.isWorkgiver()){
+
+
+                return "3startpageworkgiver";
+            }
+
+        }
+        return "error";
+    }*/
+
+
     // Create Login - Loggar in användaren
     //Hittar rätt användare med hjäp av username
     //Skickar användare till rätt view
