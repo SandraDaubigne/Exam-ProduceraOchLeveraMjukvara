@@ -22,7 +22,6 @@ public class UserController {
     //Startvyn
     @GetMapping("/")
     public String startPage(){
-        //model.addAttribute("list", userService.getAllUsers());
         return "1login";
     }
 
@@ -37,6 +36,47 @@ public class UserController {
     @GetMapping("/showFormRegisterJob")
     public String registerJob(@ModelAttribute("job") Job job){
         return "createJob";
+    }
+
+    //Renderar: 3startpageworker
+    @GetMapping("/loginWorker/{id}")
+    public String loginWorker(
+            @ModelAttribute("user") UserEntity user,
+            @ModelAttribute("job") Job job,
+            Model model)
+    {
+
+        model.addAttribute("jobs", jobService.getAllJobs() );
+        return "3startpageworker";
+    }
+
+    //Renderar: 3startpageworkgiver
+    @GetMapping("/loginWorkgiver/{id}")
+    public String loginWorkgiver(@ModelAttribute("user") UserEntity userEntity,
+                                 @ModelAttribute("job") Job job,
+                                 Model model)
+    {
+        model.addAttribute("jobs", jobService.getAllJobs() );
+        return "3startpageworkgiver";
+    }
+
+    //Renderar: 4Profileworker och 4profileworkgiver
+    @GetMapping("/showformforupdate/{id}")
+    public String showFormForUpdate(@PathVariable (value= "id") long id, Model model){
+
+        UserEntity user = userService.getUserById(id);
+        model.addAttribute("user", user);
+
+        if(user.isWorker()){
+            model.addAttribute("user", user);
+            return "4profileworker";
+
+        }else if(user.isWorkgiver()){
+
+            model.addAttribute("user", user);
+            return "4profileworkgiver";
+        }
+        return "error";
     }
 
     /*************************FUNCTIONS*************************************/
@@ -72,36 +112,11 @@ public class UserController {
 
     //*********************LOGIN***************************//
 
-    //view visa 3startpageworker
-    @GetMapping("/loginWorker/{id}")
-    public String loginWorker(@ModelAttribute("user") UserEntity userEntity,
-                              @ModelAttribute("job") Job job,
-                              Model model)
-    {
-        model.addAttribute("jobs", jobService.getAllJobs() );
-        return "3startpageworker";
-    }
-
-    @GetMapping("/loginWorkgiver/{id}")
-    public String loginWorkgiver(@ModelAttribute("user") UserEntity userEntity,
-                                 @ModelAttribute("job") Job job,
-                                 Model model)
-    {
-        model.addAttribute("jobs", jobService.getAllJobs() );
-        return "3startpageworkgiver";
-    }
-
-
-
-    //wiew visa 3startpageworkgiver
-
-    //tar emot post
-    //hitta användare
-    //skicka vidare till rätt vy, redirect + url + id
-
-    //Get förser sidan med model
+    // Create Login - Loggar in användaren
+    //Hittar rätt användare med hjäp av username
+    //Skickar användare till rätt view
     @PostMapping("login")
-    public String login(@RequestParam("username") String username){
+    public String login(@ModelAttribute("user") UserEntity userEntity, @RequestParam("username") String username){
 
         UserEntity user = userService.getUserByUsername(username);
         Long id = user.getId();
@@ -123,49 +138,8 @@ public class UserController {
         return "error";
     }
 
-    // Login function
-    /*
-    @PostMapping("/login")
-    public String login(@RequestParam("username") String username, ModelMap model){
-
-        UserEntity user = userService.getUserByUsername(username);
-        model.addAttribute("jobs", jobService.getAllJobs() );
-
-        if(user !=null && username.equals(user.getUsername())){
-
-                if(user.isWorker()){
-
-                    model.addAttribute("user", user);
-                    return "3startpageworker";
-
-                }else if(user.isWorkgiver()){
-
-                    model.addAttribute("user", user);
-                    return "3startpageworkgiver";
-                }
-
-        }
-        return "error";
-    }*/
-
     //*********************UPDATE***************************//
-    //Show form for update user
-    @GetMapping("/showformforupdate/{id}")
-    public String showFormForUpdate(@PathVariable (value= "id") long id, Model model){
-        UserEntity user = userService.getUserById(id);
-        model.addAttribute("user", user);
 
-        if(user.isWorker()){
-            model.addAttribute("user", user);
-            return "4profileworker";
-
-        }else if(user.isWorkgiver()){
-
-            model.addAttribute("user", user);
-            return "4profileworkgiver";
-        }
-        return "error";
-    }
 
 
     //U - Update User

@@ -14,7 +14,7 @@
         <img src="tennerr.png" id="logo">
     </div>
     <div id="link-div">
-        <a id="header-home" href="">Hem</a>
+        <a  th:href="@{/loginWorker/{id}(id=${user.id})}">Hem</a>
         <a id="header-dashboard" href="">Matchade uppdrag</a>
     </div>
 </header>
