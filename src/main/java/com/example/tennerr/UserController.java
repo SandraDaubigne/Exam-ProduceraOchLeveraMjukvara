@@ -7,7 +7,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @Controller
 public class UserController {
 
@@ -62,7 +61,8 @@ public class UserController {
 
     //Renderar: 4Profileworker och 4profileworkgiver
     @GetMapping("/showformforupdate/{id}")
-    public String showFormForUpdate(@PathVariable (value= "id") long id, Model model){
+    public String showFormForUpdate(@PathVariable(value= "id") long id,
+                                    Model model){
 
         UserEntity user = userService.getUserById(id);
         model.addAttribute("user", user);
