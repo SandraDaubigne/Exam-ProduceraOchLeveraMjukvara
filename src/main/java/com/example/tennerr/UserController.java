@@ -72,22 +72,51 @@ public class UserController {
 
     //*********************LOGIN***************************//
 
+    //view visa 3startpageworker
+    @GetMapping("/loginWorker/{id}")
+    public String loginWorker(@ModelAttribute("user") UserEntity userEntity,
+                              @ModelAttribute("job") Job job,
+                              Model model)
+    {
+        model.addAttribute("jobs", jobService.getAllJobs() );
+        return "3startpageworker";
+    }
+
+    @GetMapping("/loginWorkgiver/{id}")
+    public String loginWorkgiver(@ModelAttribute("user") UserEntity userEntity,
+                                 @ModelAttribute("job") Job job,
+                                 Model model)
+    {
+        model.addAttribute("jobs", jobService.getAllJobs() );
+        return "3startpageworkgiver";
+    }
+
+
+
+    //wiew visa 3startpageworkgiver
+
+    //tar emot post
+    //hitta användare
+    //skicka vidare till rätt vy, redirect + url + id
+
     //Get förser sidan med model
-    @GetMapping("login")
-    public String login(@ModelAttribute("job")Job job, @RequestParam("username") String username){
+    @PostMapping("login")
+    public String login(@RequestParam("username") String username){
 
         UserEntity user = userService.getUserByUsername(username);
+        Long id = user.getId();
 
         if(user !=null && username.equals(user.getUsername())){
 
             if(user.isWorker()){
 
-                return "3startpageworker";
+                //Urlen kommer att vara /login fortfarande även om den skickas vidare.
+                return "redirect:/loginWorker/" + id;
 
             }else if(user.isWorkgiver()){
 
-
-                return "3startpageworkgiver";
+                //Urlen kommer att vara /login fortfarande även om den skickas vidare.
+                return "redirect:/loginWorkgiver/" + id;
             }
 
         }
@@ -95,6 +124,7 @@ public class UserController {
     }
 
     // Login function
+    /*
     @PostMapping("/login")
     public String login(@RequestParam("username") String username, ModelMap model){
 
@@ -116,7 +146,7 @@ public class UserController {
 
         }
         return "error";
-    }
+    }*/
 
     //*********************UPDATE***************************//
     //Show form for update user
