@@ -15,7 +15,7 @@
             <img src="tennerr.png" id="logo">
         </div>
         <div id="link-div">
-            <a th:href="@{/registerJob}" id="header-home" href="">Lägg in annons</a>
+            <a th:href="@{/showFormRegisterJob/{id}(id=${user.id})}" id="header-home" href="">Lägg in annons</a>
             <a id="header-dashboard" href="">Matchade uppdrag</a>
             <a id="header-profile" th:href="@{/showformforupdate/{id}(id=${user.id})}">Din profil</a>
             <a  th:href="@{/showPublicView/{id}(id=${user.id})}">Visa din profil som publik</a>
@@ -72,7 +72,7 @@
 
                         <div class="workgiver-name-div">
                             <span>Uppdragsgivare: </span>
-                            <span th:text="${job.workgiver}"> </span>
+                            <span th:text="${job.jobWorkgiver}"> </span>
                         </div>
 
                         <div class="description-div">

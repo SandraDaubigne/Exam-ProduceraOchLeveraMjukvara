@@ -26,9 +26,9 @@
         <img src="tennerr.png" id="logo">
     </div>
     <div id="link-div">
-        <a id="header-home" href="">Hem</a>
+        <a  th:href="@{/loginWorkgiver/{id}(id=${user.id})}">Hem</a>
         <a id="header-dashboard" href="">Matchade uppdrag</a>
-        <a id="header-profile" href="">Din profil</a>
+        <a id="header-profile" th:href="@{/showformforupdate/{id}(id=${user.id})}">Din profil</a>
     </div>
 </header>
 
@@ -38,8 +38,8 @@
     </div>
 </div>
 
-<form action ="#" th:action ="@{/saveJob}" th:object="${job}" method ="POST">
-    <input id="username" type="text" size="80" th:field="*{workgiver}" placeholder="Ditt användarnamn"><br>
+<form action ="#" th:action="@{/saveJob/{id}(id=${user.id})}" th:object="${job}" method ="POST">
+    <input id="username" type="text" size="80" th:field="*{jobWorkgiver}" placeholder="Ditt användarnamn"><br>
     <input id="titel" type="text" size="80" th:field="*{titel}" placeholder="Titel"><br>
     <input id="price" type="text" size="80" th:field="*{price}" placeholder="Pris"><br>
 
