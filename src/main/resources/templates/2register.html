@@ -68,7 +68,7 @@
 
                         <!---value måste finnas här-->
                         <label id="worker">
-                        <input type ="radio" name="radioButton" id="radio-worker" value="true" onclick="showWorker()" th:field="*{worker}">
+                        <input type ="radio" name="radioButton" id="radio-worker" value="true" onchange="showWorker()" th:field="*{worker}">
                         Arbetare</label>
                         <label id="workgiver">
                         <input type ="radio" name="radioButton" id="radio-workgiver"  value="true" onchange="showWorkgiver()" th:field="*{workgiver}">
@@ -105,8 +105,8 @@
 
 
                         <!--Workgiver-->
-                        <input type ="text" placeholder="E-mail*" id="e-mail" style="width: 553px; height: 25px" th:field="*{email}">
-                        <input type="text" placeholder="Gatuadress*" id="street" style="width: 553px; height: 25px" th:field="*{address}"><br>
+                        <input type ="text" placeholder="E-mail*" id="e-mail" onchange="checkInputFieldWorkgiver()" style="width: 553px; height: 25px" th:field="*{email}">
+                        <input type="text" placeholder="Gatuadress*" id="street" onchange="checkInputFieldWorkgiver()" style="width: 553px; height: 25px" th:field="*{address}"><br>
 
 
                         <!-- Laddar upp filer som väljs lokalt på datorn-->
@@ -183,6 +183,7 @@
     certificateImg.style.display = "none";
     certificateLabel.style.display = "none";
     button.style.display = "none";
+    button.disabled = true;
 
     function disableButton() {
         if (checkboxBeauty.checked || checkboxCleaning.checked ||
@@ -190,6 +191,13 @@
             button.disabled = false;
         } else {
             button.disabled = true;
+        }
+    }
+
+    function checkInputFieldWorkgiver() {
+        if (username.value !== "" && password.value !== "" && verifyPassword.value !== "" && firstname.value !== "" &&
+        lastname.value !== "" && phone.value !== "" && description.value !== "" && email.value !== "" && street.value !== "") {
+            button.disabled = false;
         }
     }
 
@@ -239,6 +247,7 @@
         profileImg.style.display = "inline";
         profileImgLabel.style.display = "inline";
         button.style.display = "block";
+        button.disabled = true;
         workerRadiobutton.checked = false;
 
         category.style.display = "none";
@@ -258,8 +267,10 @@
 
         email.setAttribute("required", "required");
         street.setAttribute("required", "required");
-        button.disabled = false;
+
     }
+
+
 </script>
 
 <style>
