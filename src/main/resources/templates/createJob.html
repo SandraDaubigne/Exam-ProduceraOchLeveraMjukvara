@@ -40,10 +40,8 @@
 
     <form action ="#" th:action ="@{/saveJob}" th:object="${job}" method ="POST">
         <input id="username" type="text" size="80" th:field="*{workgiver}" placeholder="Ditt användarnamn"><br>
-
-        <!--********************Lägg in i databasen********************-->
-        <!--<input id="e-mail" type ="text" size="80" th:field="*{email}" placeholder="E-mail"><br>
-        <input id="phone" type="text" size="80" th:field="*{phone}" placeholder="Telefonnummer"><br>-->
+        <input id="e-mail" type ="text" size="80" th:field="*{email}" placeholder="E-mail"><br>
+        <input id="phone" type="text" size="80" th:field="*{phone}" placeholder="Telefonnummer"><br>
         <input id="titel" type="text" size="80" th:field="*{titel}" placeholder="Titel på uppdrag"><br>
         <input id="price" type="text" size="80" th:field="*{price}" placeholder="Pris"><br>
 
