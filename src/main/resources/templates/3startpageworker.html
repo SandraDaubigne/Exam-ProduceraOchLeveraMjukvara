@@ -84,6 +84,15 @@
                         <div class="full-description">
                             <span th:text="${job.jobdescription}"></span>
                         </div>
+
+                        <div class="contact">
+                            <span>Kontakta uppdragsgivaren:</span>
+                        </div>
+
+                        <div class="contact-div">
+                            <span th:text="*{email}"></span>
+                            <span th:text="*{phone}"></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -313,7 +322,7 @@ body {
 .job-div {
     background: #fff;
     margin: 2em;
-    height: 12em;
+    height: 14em;
 }
 
 #profile-body h4 {
@@ -367,6 +376,23 @@ body {
 }
 
 .full-description {
+    font-size: 1em;
+    padding-left: 1em;
+    padding-top: 0;
+    font-variant: normal;
+    font-weight: normal;
+}
+
+.contact {
+    font-size: 1em;
+    padding-left: 1em;
+    padding-top: 0.5em;
+    font-variant: small-caps;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.contact-div {
     font-size: 1em;
     padding-left: 1em;
     padding-top: 0;
@@ -458,6 +484,10 @@ body {
     }
 
     .full-description {
+        font-size: 0.9em;
+    }
+
+    .contact-div {
         font-size: 0.9em;
     }
 }
