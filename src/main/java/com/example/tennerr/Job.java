@@ -20,8 +20,26 @@ public class Job {
     private boolean vvs;
     private boolean health;
     private boolean painting;
+    private String jobEmail;
+    private String jobPhone;
 
     public Job() {
+    }
+
+    public String getJobEmail() {
+        return jobEmail;
+    }
+
+    public void setJobEmail(String jobEmail) {
+        this.jobEmail = jobEmail;
+    }
+
+    public String getJobPhone() {
+        return jobPhone;
+    }
+
+    public void setJobPhone(String jobPhone) {
+        this.jobPhone = jobPhone;
     }
 
     public String getJobWorkgiver() {
