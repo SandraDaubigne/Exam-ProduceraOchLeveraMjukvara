@@ -58,11 +58,16 @@
 
                         <div class="category-div">
                             <span>Kategori: </span>
-                            <span th:text="${job.beauty}"> </span>
-                            <!--<span th:text="${job.cleaning}"> </span>
-                            <span th:text="${job.vvs}"> </span>
-                            <span th:text="${job.health}"> </span>
-                            <span th:text="${job.painting}"> </span>-->
+                            <span class="beauty" th:text="${job.beauty}"> </span>
+                            <span class="cleaning" th:text="${job.cleaning}"> </span>
+                            <span class="vvs" th:text="${job.vvs}"> </span>
+                            <span class="health" th:text="${job.health}"> </span>
+                            <span class="painting" th:text="${job.painting}"> </span>
+                            <span class="outputBeauty">Skönhet</span>
+                            <span class="outputCleaning">Städning</span>
+                            <span class="outputVVS">VVS</span>
+                            <span class="outputHealth">Hälsa</span>
+                            <span class="outputPainting">Målning</span>
                         </div>
 
                         <div class="workgiver-name-div">
@@ -82,6 +87,93 @@
             </div>
         </div>
     </div>
+<script>
+
+    const beauty = document.querySelectorAll(".beauty");
+    const cleaning = document.querySelectorAll(".cleaning");
+
+    const vvs = document.querySelectorAll(".vvs");
+    const health = document.querySelectorAll(".health");
+
+    const painting = document.querySelectorAll(".painting");
+
+    let outputBeauty = document.querySelectorAll(".outputBeauty");
+    let outputCleaning = document.querySelectorAll(".outputCleaning");
+    let outputVVS = document.querySelectorAll(".outputVVS");
+    let outputHealth = document.querySelectorAll(".outputHealth");
+    let outputPainting = document.querySelectorAll(".outputPainting");
+
+
+    beauty.forEach(beautyItem => {
+        beautyItem.style.display = "none";
+    });
+
+    cleaning.forEach(cleaningItem => {
+        cleaningItem.style.display = "none";
+    });
+
+    vvs.forEach(vvsItem => {
+        vvsItem.style.display = "none";
+    });
+
+    health.forEach(healthItem => {
+        healthItem.style.display = "none";
+    });
+
+    painting.forEach(paintingItem => {
+        paintingItem.style.display = "none";
+    });
+
+    for (let i = 0; i < beauty.length; i++) {
+
+        if (beauty[i].textContent === "true") {
+            outputVVS[i].style.display = "none";
+            outputCleaning[i].style.display = "none";
+            outputHealth[i].style.display = "none";
+            outputPainting[i].style.display = "none";
+        }
+    }
+
+    for (let i = 0; i < cleaning.length; i++) {
+
+        if (cleaning[i].textContent === "true") {
+            outputBeauty[i].style.display = "none";
+            outputVVS[i].style.display = "none";
+            outputHealth[i].style.display = "none";
+            outputPainting[i].style.display = "none";
+        }
+    }
+
+    for (let i = 0; i < vvs.length; i++) {
+
+        if (vvs[i].textContent === "true") {
+            outputBeauty[i].style.display = "none";
+            outputCleaning[i].style.display = "none";
+            outputHealth[i].style.display = "none";
+            outputPainting[i].style.display = "none";
+        }
+    }
+
+    for (let i = 0; i < health.length; i++) {
+
+        if (health[i].textContent === "true") {
+            outputBeauty[i].style.display = "none";
+            outputCleaning[i].style.display = "none";
+            outputVVS[i].style.display = "none";
+            outputPainting[i].style.display = "none";
+        }
+    }
+
+    for (let i = 0; i < painting.length; i++) {
+
+        if (painting[i].textContent === "true") {
+            outputBeauty[i].style.display = "none";
+            outputCleaning[i].style.display = "none";
+            outputHealth[i].style.display = "none";
+            outputVVS[i].style.display = "none";
+        }
+    }
+</script>
 <style>
 
     * {
