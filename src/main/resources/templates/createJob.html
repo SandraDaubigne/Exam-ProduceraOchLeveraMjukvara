@@ -38,12 +38,26 @@
         </div>
     </div>
 
-    <form action ="#" th:action ="@{/saveJob}" th:object="${job}" method ="POST">
-        <input id="username" type="text" size="80" th:field="*{workgiver}" placeholder="Ditt användarnamn"><br>
-        <input id="e-mail" type ="text" size="80" th:field="*{email}" placeholder="E-mail"><br>
-        <input id="phone" type="text" size="80" th:field="*{phone}" placeholder="Telefonnummer"><br>
-        <input id="titel" type="text" size="80" th:field="*{titel}" placeholder="Titel på uppdrag"><br>
-        <input id="price" type="text" size="80" th:field="*{price}" placeholder="Pris"><br>
+    <div id="link-div">
+        <a  th:href="@{/loginWorkgiver/{id}(id=${user.id})}">Hem</a>
+        <a id="header-dashboard" href="">Matchade uppdrag</a>
+        <a id="header-profile" th:href="@{/showformforupdate/{id}(id=${user.id})}">Din profil</a>
+    </div>
+</header>
+
+<div id="profile-header">
+    <div id="profile-info">
+        <h1>Lägg in annons</h1>
+    </div>
+</div>
+
+<form action ="#" th:action="@{/saveJob/{id}(id=${user.id})}" th:object="${job}" method ="POST">
+    <input id="username" type="text" size="80" th:field="*{jobWorkgiver}" placeholder="Ditt användarnamn"><br>
+    <input id="e-mail" type ="text" size="80" th:field="*{jobEmail}" placeholder="E-mail"><br>
+    <input id="phone" type="text" size="80" th:field="*{jobPhone}" placeholder="Telefonnummer"><br>
+    <input id="titel" type="text" size="80" th:field="*{titel}" placeholder="Titel"><br>
+    <input id="price" type="text" size="80" th:field="*{price}" placeholder="Pris"><br>
+
 
         <div id="category-div">
             <p id="category">Välj en kategori:</p>

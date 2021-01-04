@@ -10,7 +10,7 @@
 
 <body>
 <header id="first-header">
-    <a id="header-home" href="">Hem</a>
+    <a  th:href="@{/loginWorker/{id}(id=${user.id})}">Hem</a>
     <a id="header-dashboard" href="">Matchade uppdrag</a>
 </header>
 <div id="container">

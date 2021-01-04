@@ -9,16 +9,26 @@
 </head>
 
 <body>
-    <div id="container">
-        <header id="first-header">
-            <div id="logo-div">
-                <img src="tennerr.png" id="logo">
-            </div>
-            <div id="link-div">
-                <a th:href="@{/registerJob}" id="header-home" href="">Lägg in annons</a>
-                <a id="header-dashboard" href="">Matchade uppdrag</a>
-                <a id="header-profile" th:href="@{/showformforupdate/{id}(id=${user.id})}">Din profil</a>
-                <a  th:href="@{/showPublicView/{id}(id=${user.id})}">Visa din profil som publik</a>
+
+
+<div id="container">
+    <header id="first-header">
+        <div id="logo-div">
+            <img src="tennerr.png" id="logo">
+        </div>
+        <div id="link-div">
+            <a th:href="@{/showFormRegisterJob/{id}(id=${user.id})}" id="header-home" href="">Lägg in annons</a>
+            <a id="header-dashboard" href="">Matchade uppdrag</a>
+            <a id="header-profile" th:href="@{/showformforupdate/{id}(id=${user.id})}">Din profil</a>
+            <a  th:href="@{/showPublicView/{id}(id=${user.id})}">Visa din profil som publik</a>
+        </div>
+    </header>
+    <div id="profile-header">
+        <div id="profile-info">
+            <h3 id="user-name">Du är nu inloggad i Tennerrs tjänsteportal</h3>
+            <div id="search-info-div">
+                <p>Sök uppdrag</p>
+
             </div>
         </header>
         <div id="profile-header">
@@ -40,6 +50,7 @@
                 </div>
             </div>
         </div>
+
 
         <div id="main">
             <div id="right-side">
@@ -90,6 +101,7 @@
                                 <span th:text="${jobEmail}"></span>
                                 <span th:text="${jobPhone}"></span>
                             </div>
+
                         </div>
                     </div>
                 </div>
