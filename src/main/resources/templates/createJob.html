@@ -21,10 +21,23 @@
 </html> -->
 
 <body>
-<header id="first-header">
-    <div id="logo-div">
-        <img src="tennerr.png" id="logo">
+    <header id="first-header">
+        <div id="logo-div">
+            <img src="tennerr.png" id="logo">
+        </div>
+        <div id="link-div">
+            <a id="header-home" href="">Hem</a>
+            <a id="header-dashboard" href="">Matchade uppdrag</a>
+            <a id="header-profile" href="">Din profil</a>
+        </div>
+    </header>
+
+    <div id="profile-header">
+        <div id="profile-info">
+            <h1>Lägg in annons</h1>
+        </div>
     </div>
+
     <div id="link-div">
         <a  th:href="@{/loginWorkgiver/{id}(id=${user.id})}">Hem</a>
         <a id="header-dashboard" href="">Matchade uppdrag</a>
@@ -40,32 +53,34 @@
 
 <form action ="#" th:action="@{/saveJob/{id}(id=${user.id})}" th:object="${job}" method ="POST">
     <input id="username" type="text" size="80" th:field="*{jobWorkgiver}" placeholder="Ditt användarnamn"><br>
+    <input id="e-mail" type ="text" size="80" th:field="*{jobEmail}" placeholder="E-mail"><br>
+    <input id="phone" type="text" size="80" th:field="*{jobPhone}" placeholder="Telefonnummer"><br>
     <input id="titel" type="text" size="80" th:field="*{titel}" placeholder="Titel"><br>
     <input id="price" type="text" size="80" th:field="*{price}" placeholder="Pris"><br>
 
-    <div id="category-div">
-        <p id="category">Välj en kategori:</p>
-        <input type="checkbox" id="-checkbox-beauty" name="beauty" value="true" th:field="*{beauty}" >
-        <label id="beauty" for="-checkbox-beauty">Skönhet</label>
 
-        <input type="checkbox" id="checkbox-cleaning" name="cleaning" value="true" th:field="*{cleaning}">
-        <label id="cleaning" for="checkbox-cleaning">Städning</label>
+        <div id="category-div">
+            <p id="category">Välj en kategori:</p>
+            <input type="checkbox" id="-checkbox-beauty" name="beauty" value="true" th:field="*{beauty}" >
+            <label id="beauty" for="-checkbox-beauty">Skönhet</label>
 
-        <input type="checkbox" id="checkbox-vvs" name="vvs" value="true" th:field="*{vvs}">
-        <label id="vvs" for="checkbox-vvs">VVS</label>
+            <input type="checkbox" id="checkbox-cleaning" name="cleaning" value="true" th:field="*{cleaning}">
+            <label id="cleaning" for="checkbox-cleaning">Städning</label>
 
-        <input type="checkbox" id="checkbox-health" name="health" value="true" th:field="*{health}">
-        <label id="health" for="checkbox-health">Hälsa</label>
+            <input type="checkbox" id="checkbox-vvs" name="vvs" value="true" th:field="*{vvs}">
+            <label id="vvs" for="checkbox-vvs">VVS</label>
 
-        <input type="checkbox" id="checkbox-painting" name="painting" value="true" th:field="*{painting}">
-        <label id="painting" for="checkbox-painting">Måleri</label>
-    </div>
+            <input type="checkbox" id="checkbox-health" name="health" value="true" th:field="*{health}">
+            <label id="health" for="checkbox-health">Hälsa</label>
 
-    <textarea id="description-box" cols="73" rows="6" placeholder="Beskrivning av uppdrag" th:field="*{jobdescription}"></textarea><br>
+            <input type="checkbox" id="checkbox-painting" name="painting" value="true" th:field="*{painting}">
+            <label id="painting" for="checkbox-painting">Måleri</label>
+        </div>
 
-    <button id="publish-button" type="submit">Publicera</button>
-</form>
-</main>
+        <textarea id="description-box" cols="73" rows="6" placeholder="Beskrivning av uppdrag" th:field="*{jobdescription}"></textarea><br>
+
+        <button id="publish-button" type="submit">Publicera</button>
+    </form>
 </body>
 
 <style>
@@ -139,7 +154,7 @@ overflow: auto;
     padding: 0.3em;
 }
 
-#titel, #price {
+#titel, #price, #e-mail, #phone {
     display: block;
     margin-left: auto;
     margin-right: auto;
