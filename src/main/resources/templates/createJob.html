@@ -40,6 +40,8 @@
 
 <form action ="#" th:action="@{/saveJob/{id}(id=${user.id})}" th:object="${job}" method ="POST">
     <input id="username" type="text" size="80" th:field="*{jobWorkgiver}" placeholder="Ditt användarnamn"><br>
+    <input id="email" type="text" size="80" th:field="*{jobEmail}" placeholder="E-mail"><br>
+    <input id="phone" type="text" size="80" th:field="*{jobPhone}" placeholder="Telefonnummer"><br>
     <input id="titel" type="text" size="80" th:field="*{titel}" placeholder="Titel"><br>
     <input id="price" type="text" size="80" th:field="*{price}" placeholder="Pris"><br>
 
@@ -139,7 +141,7 @@ overflow: auto;
     padding: 0.3em;
 }
 
-#titel, #price {
+#titel, #price, #email, #phone {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -210,7 +212,7 @@ overflow: auto;
     width: 70%;
     }
 
-    #titel, #price {
+    #titel, #price, #email, #phone {
         width: 70%;
     }
 
