@@ -11,17 +11,19 @@
 
 <header id="first-header">
     <div id="logo-div">
-        <img src="tennerr.png" id="logo">
+        <img src="../images/Logo.png" width="200"  id="logo">
     </div>
     <div id="link-div">
-        <a id="header-home" href="">Hem</a>
+        <a  th:href="@{/loginWorker/{id}(id=${user.id})}">Hem</a>
         <a id="header-dashboard" href="">Matchade uppdrag</a>
     </div>
 </header>
 <div id="container">
     <div id="profile-header">
         <div id="profile-img">
+
             <img src="https://cdn2.iconfinder.com/data/icons/solid-glyphs-volume-2/256/user-unisex-512.png" width="200" id="profile-picture">
+
         </div>
         <div id="profile-info">
             <h3 th:text="${user.firstname}" id="user-name"></h3>

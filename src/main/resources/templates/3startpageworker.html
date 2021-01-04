@@ -11,9 +11,10 @@
 <div id="container">
     <header id="first-header">
         <div id="logo-div">
-            <img src="tennerr.png" id="logo">
+            <img src="../images/Logo.png" width="200" id="logo">
         </div>
         <div id="link-div">
+
             <a id="header-dashboard" href="">Matchade uppdrag</a>
             <a id="header-profile" th:href="@{/showformforupdate/{id}(id=${user.id})}">Din profil</a>
             <a  th:href="@{/showPublicView/{id}(id=${user.id})}">Visa din profil som publik</a>
@@ -74,7 +75,7 @@
 
                         <div class="workgiver-name-div">
                             <span>Uppdragsgivare: </span>
-                            <span th:text="${job.workgiver}"> </span>
+                            <span th:text="${job.jobWorkgiver}"> </span>
                         </div>
 
                         <div class="description-div">
@@ -83,6 +84,15 @@
 
                         <div class="full-description">
                             <span th:text="${job.jobdescription}"></span>
+                        </div>
+
+                        <div class="contact">
+                            <span>Kontakt:</span>
+                        </div>
+
+                        <div class="contact-div">
+                            <span th:text="${job.jobEmail}"></span><br>
+                            <span th:text="${job.jobPhone}"></span>
                         </div>
                     </div>
                 </div>
@@ -313,7 +323,7 @@ body {
 .job-div {
     background: #fff;
     margin: 2em;
-    height: 12em;
+    height: 15em;
 }
 
 #profile-body h4 {
@@ -367,6 +377,23 @@ body {
 }
 
 .full-description {
+    font-size: 1em;
+    padding-left: 1em;
+    padding-top: 0;
+    font-variant: normal;
+    font-weight: normal;
+}
+
+.contact {
+    font-size: 1em;
+    padding-left: 1em;
+    padding-top: 0.5em;
+    font-variant: small-caps;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.contact-div {
     font-size: 1em;
     padding-left: 1em;
     padding-top: 0;
