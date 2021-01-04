@@ -20,32 +20,27 @@ public class UserController {
 
     //Startvyn
     @GetMapping("/")
-    public String startPage(){
+    public String startPage() {
         return "1login";
     }
 
     //Renderar: 2Register.html
     //Show Form register
     @GetMapping("/showNewUserForm")
-    public String registerUser(@ModelAttribute("user") UserEntity user){
+    public String registerUser(@ModelAttribute("user") UserEntity user) {
         return "2register";
     }
 
-    //Renderar: CreateJob.html
-    @GetMapping("/showFormRegisterJob")
-    public String registerJob(@ModelAttribute("job") Job job){
-        return "createJob";
-    }
+
 
     //Renderar: 3startpageworker
     @GetMapping("/loginWorker/{id}")
     public String loginWorker(
             @ModelAttribute("user") UserEntity user,
             @ModelAttribute("job") Job job,
-            Model model)
-    {
+            Model model) {
 
-        model.addAttribute("jobs", jobService.getAllJobs() );
+        model.addAttribute("jobs", jobService.getAllJobs());
         return "3startpageworker";
     }
 
@@ -53,25 +48,24 @@ public class UserController {
     @GetMapping("/loginWorkgiver/{id}")
     public String loginWorkgiver(@ModelAttribute("user") UserEntity userEntity,
                                  @ModelAttribute("job") Job job,
-                                 Model model)
-    {
-        model.addAttribute("jobs", jobService.getAllJobs() );
+                                 Model model) {
+        model.addAttribute("jobs", jobService.getAllJobs());
         return "3startpageworkgiver";
     }
 
     //Renderar: 4Profileworker och 4profileworkgiver
     @GetMapping("/showformforupdate/{id}")
-    public String showFormForUpdate(@PathVariable(value= "id") long id,
-                                    Model model){
+    public String showFormForUpdate(@PathVariable(value = "id") long id,
+                                    Model model) {
 
         UserEntity user = userService.getUserById(id);
         model.addAttribute("user", user);
 
-        if(user.isWorker()){
+        if (user.isWorker()) {
             model.addAttribute("user", user);
             return "4profileworker";
 
-        }else if(user.isWorkgiver()){
+        } else if (user.isWorkgiver()) {
 
             model.addAttribute("user", user);
             return "4profileworkgiver";
@@ -79,21 +73,52 @@ public class UserController {
         return "error";
     }
 
+    //Renderar: 5publicWorker and 5publicworkgiver
+    // Show page with public view
+    @GetMapping("/showPublicView/{id}")
+    public String showPublicView(@PathVariable(value = "id") long id, Model model) {
+        UserEntity user = userService.getUserById(id);
+        model.addAttribute("user", user);
+
+        if (user.isWorker()) {
+            model.addAttribute("user", user);
+            return "5publicWorker";
+
+        } else if (user.isWorkgiver()) {
+
+            model.addAttribute("user", user);
+            return "5publicworkgiver";
+        }
+        return "error";
+    }
+
+    //Renderar: CreateJob.html
+    @GetMapping("/showFormRegisterJob/{id}")
+    public String showFormRegisterJob(@ModelAttribute("job") Job job,
+                                      @PathVariable(value = "id") long id,
+                                      Model model) {
+
+        UserEntity user = userService.getUserById(id);
+        model.addAttribute("user", user);
+
+        return "createJob";
+    }
+
     /*************************FUNCTIONS*************************************/
 
-    //*********************REGISTER**************************//
+    //Register User
     //Denna behöver ha @Modelattribute user för att return 2 register finns här pga felmeddelandet
     @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute("user") UserEntity userEntity,
                            Model model,
                            @RequestParam("password") String password,
-                           @RequestParam("newpassword") String newpassword){
+                           @RequestParam("newpassword") String newpassword) {
 
-        if(password.equals(newpassword)){
+        if (password.equals(newpassword)) {
             System.out.println(password);
             userService.saveUser(userEntity);
 
-        }else if(!password.equals(newpassword)){
+        } else if (!password.equals(newpassword)) {
             model.addAttribute("error", "Du har angett olika lösenord, var vänlig försök igen!");
             return "2register";
         }
@@ -101,88 +126,56 @@ public class UserController {
         return "redirect:/";
     }
 
-    //*********************CREATE JOB**************************//
+
     //C - Create Job
-    @PostMapping("/saveJob")
-    public String saveJob(Job job){
+    @PostMapping("/saveJob/{id}")
+    public String createJob(@ModelAttribute("job") Job job,
+                            @ModelAttribute("user") UserEntity userEntity,
+                            @PathVariable(value = "id") long id,
+                            Model model) {
         jobService.saveJob(job);
-        return "success";
+
+        UserEntity user = userService.getUserById(id);
+        model.addAttribute("user", user);
+
+        return "redirect:/loginWorkgiver/" + id;
     }
 
-
-    //*********************LOGIN***************************//
-
-    /*
-    //Get förser sidan med model
-    @GetMapping("login")
-    public String loginget(@ModelAttribute("job")Job job, @RequestParam("username") String username){
-
-        UserEntity user = userService.getUserByUsername(username);
-
-        if(user !=null && username.equals(user.getUsername())){
-
-            if(user.isWorker()){
-
-                return "3startpageworker";
-
-            }else if(user.isWorkgiver()){
-
-
-                return "3startpageworkgiver";
-            }
-
-        }
-        return "error";
-    }*/
-
-
-    // Create Login - Loggar in användaren
-    //Hittar rätt användare med hjäp av username
-    //Skickar användare till rätt view
+    //Login User
     @PostMapping("login")
-    public String login(@ModelAttribute("user") UserEntity userEntity, @RequestParam("username") String username){
+    public String login(@ModelAttribute("user") UserEntity userEntity, @RequestParam("username") String username) {
 
         UserEntity user = userService.getUserByUsername(username);
         Long id = user.getId();
 
-        if(user !=null && username.equals(user.getUsername())){
+        if (user != null && username.equals(user.getUsername())) {
 
-            if(user.isWorker()){
-
-                //Urlen kommer att vara /login fortfarande även om den skickas vidare.
+            if (user.isWorker()) {
                 return "redirect:/loginWorker/" + id;
 
-            }else if(user.isWorkgiver()){
-
-                //Urlen kommer att vara /login fortfarande även om den skickas vidare.
+            } else if (user.isWorkgiver()) {
                 return "redirect:/loginWorkgiver/" + id;
             }
-
         }
         return "error";
     }
 
-    //*********************UPDATE***************************//
-
-
-
     //U - Update User
-    //fortsätta här, nu används saveUser metoden här ovan
     @PostMapping("/updateUser/{id}")
     public String updateUser(@ModelAttribute("user") UserEntity userEntity,
-                             @PathVariable (value= "id") long id,
-                             Model model){
+                             @PathVariable(value = "id") long id,
+                             Model model) {
         userService.saveUser(userEntity);
         UserEntity user = userService.getUserById(id);
         model.addAttribute("user", user);
         String message = "Dina uppgifter har ändrats!";
         model.addAttribute("msg", message);
 
-        if(user.isWorker()){
+        if (user.isWorker()) {
             model.addAttribute("user", user);
             return "4profileworker";
 
-        }else if(user.isWorkgiver()){
+        } else if (user.isWorkgiver()) {
 
             model.addAttribute("user", user);
             return "4profileworkgiver";
@@ -191,24 +184,29 @@ public class UserController {
         return "error";
     }
 
-    //*********************SHOW PUBLIC VIEW***************************//
-    //Show form for update user
-    @GetMapping("/showPublicView/{id}")
-    public String showPublicView(@PathVariable (value= "id") long id, Model model){
-        UserEntity user = userService.getUserById(id);
-        model.addAttribute("user", user);
 
-        if(user.isWorker()){
-            model.addAttribute("user", user);
-            return "5publicWorker";
 
-        }else if(user.isWorkgiver()){
+    //Gammal kod - spara ett tag
+    //Renderar: CreateJob.html
+    /*
+    @GetMapping("/showFormRegisterJob")
+    public String registerJob(@ModelAttribute("job") Job job,
+                             @ModelAttribute("user") UserEntity userEntity) {
+        return "createJob";
+    }*/
 
-            model.addAttribute("user", user);
-            return "5publicworkgiver";
-        }
-        return "error";
-    }
+    //C - Create Job
+    /*
+    @PostMapping("/saveJob")
+    public String saveJob(Job job,
+                          @RequestParam("username") long ide) {
+
+        UserEntity user = userService.getUserById(ide);
+        Long id = user.getId();
+        jobService.saveJob(job);
+        return "redirect:/loginWorkgiver/" + id;
+    }*/
+
 
 
 

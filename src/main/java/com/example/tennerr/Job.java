@@ -12,7 +12,7 @@ public class Job {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String jobdescription;
-    private String workgiver;
+    private String jobWorkgiver;
     private String titel;
     private int price;
     private boolean beauty;
@@ -20,6 +20,17 @@ public class Job {
     private boolean vvs;
     private boolean health;
     private boolean painting;
+
+    public Job() {
+    }
+
+    public String getJobWorkgiver() {
+        return jobWorkgiver;
+    }
+
+    public void setJobWorkgiver(String jobWorkgiver) {
+        this.jobWorkgiver = jobWorkgiver;
+    }
 
     public String getTitel() {
         return titel;
@@ -77,15 +88,9 @@ public class Job {
         this.painting = painting;
     }
 
-    public Job() {
-    }
-    public String getWorkgiver() {
-        return workgiver;
-    }
 
-    public void setWorkgiver(String workgiver) {
-        this.workgiver = workgiver;
-    }
+
+
 
 
     public Long getId() {

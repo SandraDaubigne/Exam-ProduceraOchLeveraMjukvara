@@ -11,7 +11,7 @@
 
 <header id="first-header">
     <div id="logo-div">
-        <!---<img src="tennerr.png" id="logo">-->
+        <img src="tennerr.png" id="logo">
     </div>
     <div id="link-div">
         <a  th:href="@{/loginWorker/{id}(id=${user.id})}">Hem</a>
@@ -21,7 +21,7 @@
 <div id="container">
     <div id="profile-header">
         <div id="profile-img">
-           <!--- <img src="frida.jpg" width="200" id="profile-picture">--->
+           <img src="frida.jpg" width="200" id="profile-picture">
         </div>
         <div id="profile-info">
             <h3 th:text="${user.firstname}" id="user-name"></h3>
