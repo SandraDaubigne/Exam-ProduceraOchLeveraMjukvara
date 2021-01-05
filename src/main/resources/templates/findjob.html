@@ -10,6 +10,11 @@
 
 <p>Hitta alla jobb jag har gjort: </p>
 
+<span th:each ="job: ${jobs}">
+    <p th:text="${job.titel}"></p>
+</span>
+
+
 </body>
 
 <style></style>

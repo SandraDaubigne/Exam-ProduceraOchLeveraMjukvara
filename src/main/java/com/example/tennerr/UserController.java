@@ -117,18 +117,41 @@ public class UserController {
 
     //C - Create Job
     @PostMapping("/saveJob/{id}")
-    public String createJob(
+    public String createJob(@ModelAttribute("job")Job job,
+            @RequestParam(value = "titel") String titel,
                             @PathVariable(value = "id") long id,
                             Model model) {
 
         User user = userTwoService.getUserById(id);
         model.addAttribute("user", user);
-
-        Job job = new Job();
+        
         job.setUser(user);
         jobService.saveJob(job);
 
         return "redirect:/loginWorkgiver/" + id;
+    }
+
+    //Hitta alla jobb
+    //Renderar: 4Profileworker och 4profileworkgiver
+    @GetMapping("/showAllJobs/{id}")
+    public String showAllJobs(@PathVariable(value = "id") long id,
+                              Model model) {
+
+        List<Job> jobs= jobService.findAllJobs(id);
+        model.addAttribute("jobs", jobs);
+
+        /*
+        if (user.getRolesCategory().isWorker()) {
+            model.addAttribute("user", user);
+            return "4profileworker";
+
+        } else if (user.getRolesCategory().isWorkgiver()) {
+
+            model.addAttribute("user", user);
+            return "4profileworkgiver";
+        }*/
+
+        return "findjob";
     }
 
     //Login User
@@ -150,28 +173,7 @@ public class UserController {
         return "error";
     }
 
-    //Hitta alla jobb
-    //Renderar: 4Profileworker och 4profileworkgiver
-    @GetMapping("/showAllJobs/{id}")
-    public String showAllJobs(@PathVariable(value = "id") long id,
-                                    Model model) {
 
-        User user = userTwoService.getUserById(id);
-        model.addAttribute("user", user);
-
-        /*
-        if (user.getRolesCategory().isWorker()) {
-            model.addAttribute("user", user);
-            return "4profileworker";
-
-        } else if (user.getRolesCategory().isWorkgiver()) {
-
-            model.addAttribute("user", user);
-            return "4profileworkgiver";
-        }*/
-
-        return "findjob";
-    }
 
     //Renderar: 4Profileworker och 4profileworkgiver
     @GetMapping("/showformforupdate/{id}")

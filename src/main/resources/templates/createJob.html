@@ -40,7 +40,7 @@
 
 <form action ="#" th:action="@{/saveJob/{id}(id=${user.id})}" th:object="${job}" method ="POST">
     <input type="hidden" th:value="${user.id}" th:field="*{user.id}">
-    <input id="titel" type="text" size="80" th:field="*{titel}" placeholder="Titel"><br>
+    <input id="titel" type="text" size="80" name="titel" th:field="*{titel}" placeholder="Titel"><br>
     <input id="price" type="text" size="80" th:field="*{price}" placeholder="Pris"><br>
 
     <div id="category-div">

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class JobService {
@@ -18,4 +19,10 @@ public class JobService {
     public List<Job> getAllJobs(){
         return jobRepository.findAll();
     }
+
+
+    public List<Job> findAllJobs(Long id){
+        return jobRepository.findByUserId(id);
+    }
+
 }
