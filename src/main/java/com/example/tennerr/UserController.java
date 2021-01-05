@@ -202,9 +202,6 @@ public class UserController {
     public String showFormForUpdate(@PathVariable(value = "id") long id,
                                     Model model) {
 
-        List<Job> jobs= jobService.findAllJobs(id);
-        model.addAttribute("jobs", jobs);
-
         User user = userTwoService.getUserById(id);
         model.addAttribute("user", user);
 
@@ -222,20 +219,24 @@ public class UserController {
 
     //U - Update User
     @PostMapping("/updateUser/{id}")
-    public String updateUser(@ModelAttribute("user") UserEntity userEntity,
+    public String updateUser(@ModelAttribute("user") User user,
                              @PathVariable(value = "id") long id,
                              Model model) {
-        userService.saveUser(userEntity);
-        UserEntity user = userService.getUserById(id);
+
+
+        userTwoService.saveUser(user);
+
+        User users = userTwoService.getUserById(id);
         model.addAttribute("user", user);
+
         String message = "Dina uppgifter har ändrats!";
         model.addAttribute("msg", message);
 
-        if (user.isWorker()) {
+        if (users.getRolesCategory().isWorker()) {
             model.addAttribute("user", user);
             return "4profileworker";
 
-        } else if (user.isWorkgiver()) {
+        } else if (users.getRolesCategory().isWorkgiver()) {
 
             model.addAttribute("user", user);
             return "4profileworkgiver";

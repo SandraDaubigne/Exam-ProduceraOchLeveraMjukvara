@@ -84,8 +84,10 @@
                         <!---Det spelar ingen roll vad namnen är förutom på id som ska tas emot i api:et som en variabel--->
                         <!---th:value måste finnas här för att det inte ska bli null vid uppdatering då nytt objekt sparas--->
                         <input type="hidden" th:value="${user.id}">
-                        <input type="hidden" name ="worker" th:value="${user.rolesCategory.worker}">
-                        <input type="hidden"  name="workgiver" th:value="${user.rolesCategory.workgiver}">
+                        <input type="hidden"  name="workgiver" th:value="${user.rolesCategory.id}" th:field="*{rolesCategory.id}">
+                        <input type="hidden" name ="worker" th:value="${user.rolesCategory.worker}" th:field="*{rolesCategory.worker}">
+                        <input type="hidden"  name="workgiver" th:value="${user.rolesCategory.workgiver}" th:field="*{rolesCategory.workgiver}">
+
 
                         <div id="firstName-lastname-div">
                             <label id="firstName">
