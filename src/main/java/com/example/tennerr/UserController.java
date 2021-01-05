@@ -51,25 +51,7 @@ public class UserController {
         return "3startpageworkgiver";
     }
 
-    //Renderar: 4Profileworker och 4profileworkgiver
-    @GetMapping("/showformforupdate/{id}")
-    public String showFormForUpdate(@PathVariable(value = "id") long id,
-                                    Model model) {
 
-        UserEntity user = userService.getUserById(id);
-        model.addAttribute("user", user);
-
-        if (user.isWorker()) {
-            model.addAttribute("user", user);
-            return "4profileworker";
-
-        } else if (user.isWorkgiver()) {
-
-            model.addAttribute("user", user);
-            return "4profileworkgiver";
-        }
-        return "error";
-    }
 
     //Renderar: 5publicWorker and 5publicworkgiver
     // Show page with public view
@@ -88,18 +70,6 @@ public class UserController {
             return "5publicworkgiver";
         }
         return "error";
-    }
-
-    //Renderar: CreateJob.html
-    @GetMapping("/showFormRegisterJob/{id}")
-    public String showFormRegisterJob(@ModelAttribute("job") Job job,
-                                      @PathVariable(value = "id") long id,
-                                      Model model) {
-
-        UserEntity user = userService.getUserById(id);
-        model.addAttribute("user", user);
-
-        return "createJob";
     }
 
     /*************************FUNCTIONS*************************************/
@@ -133,35 +103,92 @@ public class UserController {
     }
 
 
+    //Renderar: CreateJob.html
+    @GetMapping("/showFormRegisterJob/{id}")
+    public String showFormRegisterJob(@ModelAttribute("user") User user,
+                                      @ModelAttribute("job") Job job,
+                                      @PathVariable(value = "id") long id,
+                                      Model model) {
+
+        return "createJob";
+    }
+
+
+
     //C - Create Job
     @PostMapping("/saveJob/{id}")
-    public String createJob(@ModelAttribute("job") Job job,
-                            @ModelAttribute("user") UserEntity userEntity,
+    public String createJob(
                             @PathVariable(value = "id") long id,
                             Model model) {
-        jobService.saveJob(job);
 
-        UserEntity user = userService.getUserById(id);
+        User user = userTwoService.getUserById(id);
         model.addAttribute("user", user);
+
+        Job job = new Job();
+        job.setUser(user);
+        jobService.saveJob(job);
 
         return "redirect:/loginWorkgiver/" + id;
     }
 
     //Login User
     @PostMapping("login")
-    public String login(@ModelAttribute("user") UserEntity userEntity, @RequestParam("username") String username) {
+    public String login(@RequestParam("username") String username) {
 
-        UserEntity user = userService.getUserByUsername(username);
+        User user = userTwoService.getUserByUsername(username);
         Long id = user.getId();
 
         if (user != null && username.equals(user.getUsername())) {
 
-            if (user.isWorker()) {
+            if (user.getRolesCategory().isWorker()) {
                 return "redirect:/loginWorker/" + id;
 
-            } else if (user.isWorkgiver()) {
+            } else if (user.getRolesCategory().isWorkgiver()) {
                 return "redirect:/loginWorkgiver/" + id;
             }
+        }
+        return "error";
+    }
+
+    //Hitta alla jobb
+    //Renderar: 4Profileworker och 4profileworkgiver
+    @GetMapping("/showAllJobs/{id}")
+    public String showAllJobs(@PathVariable(value = "id") long id,
+                                    Model model) {
+
+        User user = userTwoService.getUserById(id);
+        model.addAttribute("user", user);
+
+        /*
+        if (user.getRolesCategory().isWorker()) {
+            model.addAttribute("user", user);
+            return "4profileworker";
+
+        } else if (user.getRolesCategory().isWorkgiver()) {
+
+            model.addAttribute("user", user);
+            return "4profileworkgiver";
+        }*/
+
+        return "findjob";
+    }
+
+    //Renderar: 4Profileworker och 4profileworkgiver
+    @GetMapping("/showformforupdate/{id}")
+    public String showFormForUpdate(@PathVariable(value = "id") long id,
+                                    Model model) {
+
+        User user = userTwoService.getUserById(id);
+        model.addAttribute("user", user);
+
+        if (user.getRolesCategory().isWorker()) {
+            model.addAttribute("user", user);
+            return "4profileworker";
+
+        } else if (user.getRolesCategory().isWorkgiver()) {
+
+            model.addAttribute("user", user);
+            return "4profileworkgiver";
         }
         return "error";
     }

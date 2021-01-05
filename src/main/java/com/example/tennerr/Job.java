@@ -1,9 +1,6 @@
 package com.example.tennerr;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Job {
@@ -12,7 +9,6 @@ public class Job {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String jobdescription;
-    private String jobWorkgiver;
     private String titel;
     private int price;
     private boolean beauty;
@@ -20,34 +16,19 @@ public class Job {
     private boolean vvs;
     private boolean health;
     private boolean painting;
-    private String jobEmail;
-    private String jobPhone;
+
+    @OneToOne(cascade = {CascadeType.ALL})
+    private User user;
 
     public Job() {
     }
 
-    public String getJobEmail() {
-        return jobEmail;
+    public User getUser() {
+        return user;
     }
 
-    public void setJobEmail(String jobEmail) {
-        this.jobEmail = jobEmail;
-    }
-
-    public String getJobPhone() {
-        return jobPhone;
-    }
-
-    public void setJobPhone(String jobPhone) {
-        this.jobPhone = jobPhone;
-    }
-
-    public String getJobWorkgiver() {
-        return jobWorkgiver;
-    }
-
-    public void setJobWorkgiver(String jobWorkgiver) {
-        this.jobWorkgiver = jobWorkgiver;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getTitel() {

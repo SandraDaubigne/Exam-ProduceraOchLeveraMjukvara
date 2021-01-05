@@ -16,7 +16,7 @@
         </div>
         <div id="link-div">
             <a th:href="@{/showFormRegisterJob/{id}(id=${user.id})}" id="header-home" href="">Lägg in annons</a>
-            <a id="header-dashboard" href="">Matchade uppdrag</a>
+            <a id="header-dashboard" th:href="@{/showAllJobs/{id}(id=${user.id})}">Matchade uppdrag</a>
             <a id="header-profile" th:href="@{/showformforupdate/{id}(id=${user.id})}">Din profil</a>
             <a  th:href="@{/showPublicView/{id}(id=${user.id})}">Visa din profil som publik</a>
         </div>
@@ -70,10 +70,6 @@
                             <span class="outputPainting">Målning</span>
                         </div>
 
-                        <div class="workgiver-name-div">
-                            <span>Uppdragsgivare: </span>
-                            <span th:text="${job.jobWorkgiver}"> </span>
-                        </div>
 
                         <div class="description-div">
                             <span class="description">Beskrivning: </span>
@@ -87,10 +83,6 @@
                             <span>Kontakt:</span>
                         </div>
 
-                        <div class="contact-div">
-                            <span th:text="${job.jobEmail}"></span><br>
-                            <span th:text="${job.jobPhone}"></span>
-                        </div>
                     </div>
                 </div>
             </div>

@@ -39,9 +39,7 @@
 </div>
 
 <form action ="#" th:action="@{/saveJob/{id}(id=${user.id})}" th:object="${job}" method ="POST">
-    <input id="username" type="text" size="80" th:field="*{jobWorkgiver}" placeholder="Ditt användarnamn"><br>
-    <input id="email" type="text" size="80" th:field="*{jobEmail}" placeholder="E-mail"><br>
-    <input id="phone" type="text" size="80" th:field="*{jobPhone}" placeholder="Telefonnummer"><br>
+    <input type="hidden" th:value="${user.id}" th:field="*{user.id}">
     <input id="titel" type="text" size="80" th:field="*{titel}" placeholder="Titel"><br>
     <input id="price" type="text" size="80" th:field="*{price}" placeholder="Pris"><br>
 
