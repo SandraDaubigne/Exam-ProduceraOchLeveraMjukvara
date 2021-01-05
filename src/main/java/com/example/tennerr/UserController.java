@@ -16,6 +16,9 @@ public class UserController {
     @Autowired
     private JobService jobService;
 
+    @Autowired
+    private UserTwoService userTwoService;
+
     /**************************VIEWS***********************************/
 
     //Startvyn
@@ -24,12 +27,7 @@ public class UserController {
         return "1login";
     }
 
-    //Renderar: 2Register.html
-    //Show Form register
-    @GetMapping("/showNewUserForm")
-    public String registerUser(@ModelAttribute("user") UserEntity user) {
-        return "2register";
-    }
+
 
 
 
@@ -105,18 +103,26 @@ public class UserController {
     }
 
     /*************************FUNCTIONS*************************************/
+    //Renderar: 2Register.html
+    //Show Form register
+
+    @GetMapping("/showNewUserForm")
+    public String registerUser(@ModelAttribute("user") User user) {
+
+        return "2register";
+    }
 
     //Register User
     //Denna behöver ha @Modelattribute user för att return 2 register finns här pga felmeddelandet
     @PostMapping("/saveUser")
-    public String saveUser(@ModelAttribute("user") UserEntity userEntity,
+    public String saveUser(@ModelAttribute("user") User user,
                            Model model,
                            @RequestParam("password") String password,
                            @RequestParam("newpassword") String newpassword) {
 
         if (password.equals(newpassword)) {
             System.out.println(password);
-            userService.saveUser(userEntity);
+            userTwoService.saveUser(user);
 
         } else if (!password.equals(newpassword)) {
             model.addAttribute("error", "Du har angett olika lösenord, var vänlig försök igen!");
