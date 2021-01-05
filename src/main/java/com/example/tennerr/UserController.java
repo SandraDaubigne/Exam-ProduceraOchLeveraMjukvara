@@ -202,6 +202,9 @@ public class UserController {
     public String showFormForUpdate(@PathVariable(value = "id") long id,
                                     Model model) {
 
+        List<Job> jobs= jobService.findAllJobs(id);
+        model.addAttribute("jobs", jobs);
+
         User user = userTwoService.getUserById(id);
         model.addAttribute("user", user);
 
