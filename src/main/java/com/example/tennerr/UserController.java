@@ -129,52 +129,6 @@ public class UserController {
         return "redirect:/loginWorkgiver/" + id;
     }
 
-    /************NY HITTA ALLA JOBB SOM DU HAR SKAPAT***********/
-    @GetMapping("/showAllJobs/{id}")
-    public String showAllJobs(@ModelAttribute("job" )Job job,
-            @PathVariable(value = "id") long id,
-                              Model model) {
-
-        List<Job> jobs= jobService.findAllJobs(id);
-        model.addAttribute("jobs", jobs);
-
-        /*
-        if (user.getRolesCategory().isWorker()) {
-            model.addAttribute("user", user);
-            return "4profileworker";
-
-        } else if (user.getRolesCategory().isWorkgiver()) {
-
-            model.addAttribute("user", user);
-            return "4profileworkgiver";
-        }*/
-
-        return "findjob";
-    }
-
-    /************NY DASHBOARD***********/
-    @GetMapping("/showDaschboard/{id}")
-    public String showDashboard(@PathVariable(value = "id") long id,
-                              Model model) {
-
-        //List<Job> jobs= jobService.findAllJobs(id);
-        //model.addAttribute("jobs", jobs);
-
-        /*
-        if (user.getRolesCategory().isWorker()) {
-            model.addAttribute("user", user);
-            return "4profileworker";
-
-        } else if (user.getRolesCategory().isWorkgiver()) {
-
-            model.addAttribute("user", user);
-            return "4profileworkgiver";
-        }*/
-
-        return "daschboard";
-    }
-
-
 
     //Login User
     @PostMapping("login")
@@ -195,8 +149,7 @@ public class UserController {
         return "error";
     }
 
-
-
+    
     //Renderar: 4Profileworker och 4profileworkgiver
     @GetMapping("/showformforupdate/{id}")
     public String showFormForUpdate(@PathVariable(value = "id") long id,
@@ -248,6 +201,52 @@ public class UserController {
         return "error";
     }
 
+
+
+    /************NY HITTA ALLA JOBB SOM DU HAR SKAPAT***********/
+    @GetMapping("/showAllJobs/{id}")
+    public String showAllJobs(@ModelAttribute("job" )Job job,
+                              @PathVariable(value = "id") long id,
+                              Model model) {
+
+        List<Job> jobs= jobService.findAllJobs(id);
+        model.addAttribute("jobs", jobs);
+
+        /*
+        if (user.getRolesCategory().isWorker()) {
+            model.addAttribute("user", user);
+            return "4profileworker";
+
+        } else if (user.getRolesCategory().isWorkgiver()) {
+
+            model.addAttribute("user", user);
+            return "4profileworkgiver";
+        }*/
+
+        return "findjob";
+    }
+
+    /************NY DASHBOARD***********/
+    @GetMapping("/showDaschboard/{id}")
+    public String showDashboard(@PathVariable(value = "id") long id,
+                                Model model) {
+
+        //List<Job> jobs= jobService.findAllJobs(id);
+        //model.addAttribute("jobs", jobs);
+
+        /*
+        if (user.getRolesCategory().isWorker()) {
+            model.addAttribute("user", user);
+            return "4profileworker";
+
+        } else if (user.getRolesCategory().isWorkgiver()) {
+
+            model.addAttribute("user", user);
+            return "4profileworkgiver";
+        }*/
+
+        return "daschboard";
+    }
 
 
     //Gammal kod - spara ett tag
