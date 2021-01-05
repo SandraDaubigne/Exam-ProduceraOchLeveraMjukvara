@@ -24,7 +24,8 @@
             <img src="https://cdn2.iconfinder.com/data/icons/solid-glyphs-volume-2/256/user-unisex-512.png" width="200" id="profile-picture">
         </div>
         <div id="profile-info">
-            <h3 th:text="${user.firstname}" id="user-name"></h3>
+            <h3 th:text="${user.firstname} " id="user-name"></h3>
+            <h3 th:text=" ${user.lastname}" id="user-lastname"></h3>
             <div id="address">
                 <p th:text="${user.address}"id="user-address"></p>
 
@@ -233,6 +234,7 @@ body {
     font-size: 2rem;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
+    display: inline;
 }
 
 #profile-info #address {
