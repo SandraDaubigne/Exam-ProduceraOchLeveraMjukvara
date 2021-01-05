@@ -113,8 +113,6 @@ public class UserController {
         return "createJob";
     }
 
-
-
     //C - Create Job
     @PostMapping("/saveJob/{id}")
     public String createJob(@ModelAttribute("job")Job job,
@@ -124,17 +122,17 @@ public class UserController {
 
         User user = userTwoService.getUserById(id);
         model.addAttribute("user", user);
-        
+
         job.setUser(user);
         jobService.saveJob(job);
 
         return "redirect:/loginWorkgiver/" + id;
     }
 
-    //Hitta alla jobb
-    //Renderar: 4Profileworker och 4profileworkgiver
+    /************NY HITTA ALLA JOBB SOM DU HAR SKAPAT***********/
     @GetMapping("/showAllJobs/{id}")
-    public String showAllJobs(@PathVariable(value = "id") long id,
+    public String showAllJobs(@ModelAttribute("job" )Job job,
+            @PathVariable(value = "id") long id,
                               Model model) {
 
         List<Job> jobs= jobService.findAllJobs(id);
@@ -153,6 +151,30 @@ public class UserController {
 
         return "findjob";
     }
+
+    /************NY DASHBOARD***********/
+    @GetMapping("/showDaschboard/{id}")
+    public String showDashboard(@PathVariable(value = "id") long id,
+                              Model model) {
+
+        //List<Job> jobs= jobService.findAllJobs(id);
+        //model.addAttribute("jobs", jobs);
+
+        /*
+        if (user.getRolesCategory().isWorker()) {
+            model.addAttribute("user", user);
+            return "4profileworker";
+
+        } else if (user.getRolesCategory().isWorkgiver()) {
+
+            model.addAttribute("user", user);
+            return "4profileworkgiver";
+        }*/
+
+        return "daschboard";
+    }
+
+
 
     //Login User
     @PostMapping("login")
