@@ -81,6 +81,8 @@
                         <h3>Redigera din profil</h3>
                     </header>
 
+                    <h1 th:text="${msg}"></h1>
+
                     <form action ="#" th:action="@{/updateUser/{id}(id=${user.id})}" th:object="${user}" method="post">
                         <!---name måste finnas på hidden för att värdena inte ska försvinna vid uppdatering--->
                         <!---Det spelar ingen roll vad namnen är förutom på id som ska tas emot i api:et som en variabel--->

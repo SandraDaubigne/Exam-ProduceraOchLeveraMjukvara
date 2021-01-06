@@ -25,7 +25,7 @@ public class UserController {
     private JobService jobService;
 
 
-    /**************************VIEWS***********************************/
+    /**************************STARTPAGE***********************************/
 
     //Startvyn
     @GetMapping("/")
@@ -35,6 +35,7 @@ public class UserController {
 
 
     /*************************REGISTER*************************************/
+
     //Renderar: 2Register.html
     //Show Form register
     @GetMapping("/showNewUserForm")
@@ -65,6 +66,7 @@ public class UserController {
 
 
     /*************************LOGIN*************************************/
+
     //Renderar: 3startpageworker
     @GetMapping("/loginWorker/{id}")
     public String loginWorker(
@@ -106,6 +108,7 @@ public class UserController {
 
 
     /*************************CREATE JOB*************************************/
+
     //Renderar: CreateJob.html
     @GetMapping("/showFormRegisterJob/{id}")
     public String showFormRegisterJob(@ModelAttribute("user") User user,
@@ -133,10 +136,10 @@ public class UserController {
 
 
     /*************************UPDATE*************************************/
+
     //Renderar: 4Profileworker och 4profileworkgiver
     @GetMapping("/showformforupdate/{id}")
-    public String showFormForUpdate(
-                                        @PathVariable(value = "id") long id,
+    public String showFormForUpdate(@PathVariable(value = "id") long id,
                                     Model model) {
 
         List<Job> jobs = jobService.findAllJobs(id);
@@ -171,8 +174,8 @@ public class UserController {
         User users = userService.getUserById(id);
         model.addAttribute("user", user);
 
-        //String message = "Dina uppgifter har ändrats!";
-        //model.addAttribute("msg", message);
+        String message = "Dina uppgifter har ändrats!";
+        model.addAttribute("msg", message);
 
         if (users.getRoles().isWorker()) {
             model.addAttribute("user", user);
@@ -188,83 +191,19 @@ public class UserController {
     }
 
     /*************************PUBLIC VIEW************************************/
+
     //Renderar: 5publicWorker and 5publicworkgiver
-    // Show page with public view
     @GetMapping("/showPublicView/{id}")
     public String showPublicView(@PathVariable(value = "id") long id, Model model) {
         User user = userService.getUserById(id);
         model.addAttribute("user", user);
 
         if (user.getRoles().isWorker()) {
-            model.addAttribute("user", user);
             return "5publicWorker";
 
         } else if (user.getRoles().isWorkgiver()) {
-
-            model.addAttribute("user", user);
             return "5publicworkgiver";
         }
         return "error";
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*************************GAMMALT*************************************/
-    /************NY HITTA ALLA JOBB SOM DU HAR SKAPAT***********/
-    @GetMapping("/showAllJobs/{id}")
-    public String showAllJobs(@ModelAttribute("job" )Job job,
-                              @PathVariable(value = "id") long id,
-                              Model model) {
-
-        List<Job> jobs= jobService.findAllJobs(id);
-        model.addAttribute("jobs", jobs);
-
-        /*
-        if (user.getRolesCategory().isWorker()) {
-            model.addAttribute("user", user);
-            return "4profileworker";
-
-        } else if (user.getRolesCategory().isWorkgiver()) {
-
-            model.addAttribute("user", user);
-            return "4profileworkgiver";
-        }*/
-
-        return "findjob";
-    }
-
-
-
 }
