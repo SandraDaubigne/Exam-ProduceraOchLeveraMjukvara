@@ -1,4 +1,4 @@
-package com.example.tennerr;
+package com.example.tennerr.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,21 +6,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class RolesCategory {
+public class Categories {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    private boolean worker;
-    private boolean workgiver;
     private boolean beauty;
     private boolean cleaning;
     private boolean vvs;
     private boolean health;
     private boolean painting;
 
-    public RolesCategory() {
+    public Categories() {
     }
 
     public Long getId() {
@@ -29,22 +26,6 @@ public class RolesCategory {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public boolean isWorker() {
-        return worker;
-    }
-
-    public void setWorker(boolean worker) {
-        this.worker = worker;
-    }
-
-    public boolean isWorkgiver() {
-        return workgiver;
-    }
-
-    public void setWorkgiver(boolean workgiver) {
-        this.workgiver = workgiver;
     }
 
     public boolean isBeauty() {

@@ -1,9 +1,17 @@
-package com.example.tennerr;
+package com.example.tennerr.controller;
 
+//Entity
+import com.example.tennerr.entity.Job;
+import com.example.tennerr.entity.User;
+
+//Service
+import com.example.tennerr.service.JobService;
+import com.example.tennerr.service.UserService;
+
+//Annotations
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +24,6 @@ public class UserController {
     @Autowired
     private JobService jobService;
 
-    @Autowired
-    private UserTwoService userTwoService;
 
     /**************************VIEWS***********************************/
 
@@ -28,9 +34,37 @@ public class UserController {
     }
 
 
+    /*************************REGISTER*************************************/
+    //Renderar: 2Register.html
+    //Show Form register
+    @GetMapping("/showNewUserForm")
+    public String registerUser(@ModelAttribute("user") User user) {
+
+        return "2register";
+    }
+
+    //Register User
+    //Denna behöver ha @Modelattribute user för att return 2 register finns här pga felmeddelandet
+    @PostMapping("/saveUser")
+    public String saveUser(@ModelAttribute("user") User user,
+                           Model model,
+                           @RequestParam("password") String password,
+                           @RequestParam("newpassword") String newpassword) {
+
+        if (password.equals(newpassword)) {
+            System.out.println(password);
+            userService.saveUser(user);
+
+        } else if (!password.equals(newpassword)) {
+            model.addAttribute("error", "Du har angett olika lösenord, var vänlig försök igen!");
+            return "2register";
+        }
+
+        return "redirect:/";
+    }
 
 
-
+    /*************************LOGIN************************************
     //Renderar: 3startpageworker
     @GetMapping("/loginWorker/{id}")
     public String loginWorker(
@@ -51,58 +85,27 @@ public class UserController {
         return "3startpageworkgiver";
     }
 
+    //Login User
+    @PostMapping("login")
+    public String login(@RequestParam("username") String username) {
 
+        User user = userTwoService.getUserByUsername(username);
+        Long id = user.getId();
 
-    //Renderar: 5publicWorker and 5publicworkgiver
-    // Show page with public view
-    @GetMapping("/showPublicView/{id}")
-    public String showPublicView(@PathVariable(value = "id") long id, Model model) {
-        UserEntity user = userService.getUserById(id);
-        model.addAttribute("user", user);
+        if (user != null && username.equals(user.getUsername())) {
 
-        if (user.isWorker()) {
-            model.addAttribute("user", user);
-            return "5publicWorker";
+            if (user.getRolesCategory().isWorker()) {
+                return "redirect:/loginWorker/" + id;
 
-        } else if (user.isWorkgiver()) {
-
-            model.addAttribute("user", user);
-            return "5publicworkgiver";
+            } else if (user.getRolesCategory().isWorkgiver()) {
+                return "redirect:/loginWorkgiver/" + id;
+            }
         }
         return "error";
-    }
-
-    /*************************FUNCTIONS*************************************/
-    //Renderar: 2Register.html
-    //Show Form register
-
-    @GetMapping("/showNewUserForm")
-    public String registerUser(@ModelAttribute("user") User user) {
-
-        return "2register";
-    }
-
-    //Register User
-    //Denna behöver ha @Modelattribute user för att return 2 register finns här pga felmeddelandet
-    @PostMapping("/saveUser")
-    public String saveUser(@ModelAttribute("user") User user,
-                           Model model,
-                           @RequestParam("password") String password,
-                           @RequestParam("newpassword") String newpassword) {
-
-        if (password.equals(newpassword)) {
-            System.out.println(password);
-            userTwoService.saveUser(user);
-
-        } else if (!password.equals(newpassword)) {
-            model.addAttribute("error", "Du har angett olika lösenord, var vänlig försök igen!");
-            return "2register";
-        }
-
-        return "redirect:/";
-    }
+    }*/
 
 
+    /*************************CREATE JOB************************************
     //Renderar: CreateJob.html
     @GetMapping("/showFormRegisterJob/{id}")
     public String showFormRegisterJob(@ModelAttribute("user") User user,
@@ -127,29 +130,10 @@ public class UserController {
         jobService.saveJob(job);
 
         return "redirect:/loginWorkgiver/" + id;
-    }
+    }*/
 
 
-    //Login User
-    @PostMapping("login")
-    public String login(@RequestParam("username") String username) {
-
-        User user = userTwoService.getUserByUsername(username);
-        Long id = user.getId();
-
-        if (user != null && username.equals(user.getUsername())) {
-
-            if (user.getRolesCategory().isWorker()) {
-                return "redirect:/loginWorker/" + id;
-
-            } else if (user.getRolesCategory().isWorkgiver()) {
-                return "redirect:/loginWorkgiver/" + id;
-            }
-        }
-        return "error";
-    }
-
-    
+    /*************************UPDATE************************************
     //Renderar: 4Profileworker och 4profileworkgiver
     @GetMapping("/showformforupdate/{id}")
     public String showFormForUpdate(@PathVariable(value = "id") long id,
@@ -199,10 +183,63 @@ public class UserController {
         }
 
         return "error";
-    }
+    }*/
+
+    /*************************PUBLIC VIEW***********************************
+    //Renderar: 5publicWorker and 5publicworkgiver
+    // Show page with public view
+    @GetMapping("/showPublicView/{id}")
+    public String showPublicView(@PathVariable(value = "id") long id, Model model) {
+        UserEntity user = userService.getUserById(id);
+        model.addAttribute("user", user);
+
+        if (user.isWorker()) {
+            model.addAttribute("user", user);
+            return "5publicWorker";
+
+        } else if (user.isWorkgiver()) {
+
+            model.addAttribute("user", user);
+            return "5publicworkgiver";
+        }
+        return "error";
+    }*/
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*************************GAMMALT*************************************/
     /************NY HITTA ALLA JOBB SOM DU HAR SKAPAT***********/
     @GetMapping("/showAllJobs/{id}")
     public String showAllJobs(@ModelAttribute("job" )Job job,

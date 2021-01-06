@@ -1,16 +1,22 @@
-package com.example.tennerr;
+package com.example.tennerr.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.example.tennerr.entity.Categories;
+import com.example.tennerr.entity.Roles;
+import javax.persistence.*;
 
 @Entity
-public class UserEntity {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @OneToOne(cascade = {CascadeType.ALL})
+    private Roles roles;
+
+    @OneToOne(cascade = {CascadeType.ALL})
+    private Categories categories;
+
     private String firstname;
     private String lastname;
     private String username;
@@ -19,15 +25,8 @@ public class UserEntity {
     private String phone;
     private String email;
     private String description;
-    private boolean worker;
-    private boolean workgiver;
-    private boolean beauty;
-    private boolean cleaning;
-    private boolean vvs;
-    private boolean health;
-    private boolean painting;
 
-    public UserEntity() {
+    public User() {
     }
 
     public Long getId() {
@@ -37,6 +36,7 @@ public class UserEntity {
     public void setId(Long id) {
         this.id = id;
     }
+
 
     public String getFirstname() {
         return firstname;
@@ -102,59 +102,19 @@ public class UserEntity {
         this.description = description;
     }
 
-    public boolean isWorker() {
-        return worker;
+    public Roles getRoles() {
+        return roles;
     }
 
-    public void setWorker(boolean worker) {
-        this.worker = worker;
+    public void setRoles(Roles roles) {
+        this.roles = roles;
     }
 
-    public boolean isWorkgiver() {
-        return workgiver;
+    public Categories getCategories() {
+        return categories;
     }
 
-    public void setWorkgiver(boolean workgiver) {
-        this.workgiver = workgiver;
-    }
-
-    public boolean isBeauty() {
-        return beauty;
-    }
-
-    public void setBeauty(boolean beauty) {
-        this.beauty = beauty;
-    }
-
-    public boolean isCleaning() {
-        return cleaning;
-    }
-
-    public void setCleaning(boolean cleaning) {
-        this.cleaning = cleaning;
-    }
-
-    public boolean isVvs() {
-        return vvs;
-    }
-
-    public void setVvs(boolean vvs) {
-        this.vvs = vvs;
-    }
-
-    public boolean isHealth() {
-        return health;
-    }
-
-    public void setHealth(boolean health) {
-        this.health = health;
-    }
-
-    public boolean isPainting() {
-        return painting;
-    }
-
-    public void setPainting(boolean painting) {
-        this.painting = painting;
+    public void setCategories(Categories categories) {
+        this.categories = categories;
     }
 }
