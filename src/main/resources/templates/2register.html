@@ -57,10 +57,8 @@
             <div id="profile-body">
                 <!-- 2: Skapa funktion för att kunna registrera sig,--->
 
-                <p th:text="${error}"></p>
-
                 <div id="option-div">
-                    <h4 id="option h4">Registrera dig som arbetare eller uppdragsgivare:</h4>
+                    <h4 id="option-h4">Registrera dig som arbetare eller uppdragsgivare:</h4>
                 </div>
 
                 <form action ="#" th:action ="@{/saveUser}" th:object="${user}" method ="POST">
@@ -74,6 +72,7 @@
                         <input type ="radio" name="radioButton" id="radio-workgiver"  value="true" onchange="showWorkgiver()" th:field="*{workgiver}">
                         Uppdragsgivare</label>
 
+                        <p id="errorMsg" th:text="${error}"></p>
 
                         <input required name="username" type="text" placeholder="Användarnamn*" id="username" style="width: 553px; height: 25px" th:field="*{username}" ><br>
                         <input required type="text" th:name="password" placeholder="Lösenord*" id="password" style="width: 275px; height: 25px" th:field="*{password}">
@@ -132,6 +131,7 @@
 
     const workerRadiobutton = document.querySelector("#radio-worker");
     const workgiverRadiobutton = document.querySelector("#radio-workgiver");
+    const errorMsg = document.querySelector("#errorMsg");
     const username = document.querySelector("#username");
     const password = document.querySelector("#password");
     const verifyPassword = document.querySelector("#verify");
@@ -229,6 +229,7 @@
         button.disabled = true;
         workgiverRadiobutton.checked = false;
 
+        errorMsg.style.display = "none";
         email.style.display = "none";
         street.style.display = "none";
     }
@@ -250,6 +251,7 @@
         button.disabled = true;
         workerRadiobutton.checked = false;
 
+        errorMsg.style.display = "none";
         category.style.display = "none";
         checkboxBeauty.style.display = "none";
         beautyLabel.style.display = "none";
@@ -270,6 +272,12 @@
 
     }
 
+    button.onclick = event => {
+        if (password.value !== verifyPassword.value) {
+            workerRadiobutton.checked = false;
+            workgiverRadiobutton.checked = false;
+        }
+    }
 
 </script>
 
@@ -370,7 +378,6 @@
         padding-bottom: 1em;
     }
 
-
     #right-side {
         width: 100%;
     }
@@ -380,32 +387,40 @@
         z-index: -1;
     }
 
+    #errorMsg {
+        text-align: center;
+        font-variant: small-caps;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 1.5em;
+        padding: 10px;
+        padding-left: 0px;
+        padding-right: 150px;
+        margin-top: 20px;
+    }
+
     #option-div {
-        padding-left: 28%;
+        padding-left: 10em;
         padding-top: 8%;
     }
 
-    #option h4 {
+    #option-h4 {
         padding: 0.3em;
+        padding-left: 5em;
     }
-
-    #input-div {
-        padding-left: 35%;
-        padding-top: 8%;
-    }
-
 
     #radio-div {
-        padding-left: 29%;
         padding-top: 3%;
     }
 
     #worker {
         margin-right: 3px;
+        padding-left: 20em;
     }
 
     #radio-worker{
         margin-right: 3px;
+
     }
 
     #workgiver {
@@ -424,6 +439,7 @@
         padding: 0.3em;
         justify-content: center;
         margin-top: 20px;
+        margin-left: 15em;
     }
 
     #password {
@@ -431,6 +447,7 @@
         padding: 0.3em;
         justify-content: center;
         margin-top: 20px;
+        margin-left: 15em;
     }
 
     #verify {
@@ -442,15 +459,14 @@
 
     #firstname {
         float: none;
-        /*display: table-row;*/
         padding: 0.3em;
         justify-content: center;
         margin-top: 20px;
+        margin-left: 15em;
     }
 
     #lastname {
         float: none;
-        /*display: table-row;*/
         padding: 0.3em;
         justify-content: center;
         margin-top: 20px;
@@ -461,6 +477,7 @@
         padding: 0.3em;
         justify-content: center;
         margin-top: 20px;
+        margin-left: 15em;
     }
 
     #person-description {
@@ -469,6 +486,7 @@
         color: #6b7a8f;
         margin-top: 20px;
         resize: none;
+        margin-left: 15em;
     }
 
     #category {
@@ -476,23 +494,23 @@
         padding: 0.3em;
         margin-top: 20px;
         justify-content: center;
+        margin-left: 11em;
     }
 
-    #checkbox-beauty, #checkbox-cleaning, #checkbox-vvs, #checkbox-health, #checkbox-painting {
+    #-checkbox-beauty, #checkbox-cleaning, #checkbox-vvs, #checkbox-health, #checkbox-painting {
         margin-top: 10px;
-
     }
 
     #beauty, #cleaning, #vvs, #health, #painting {
         padding: 0.3em;
     }
 
-
     #e-mail {
         float: none;
         padding: 0.3em;
         margin-top: 20px;
         justify-content: center;
+        margin-left: 15em;
     }
 
     #street {
@@ -500,16 +518,18 @@
         padding: 0.3em;
         margin-top: 20px;
         justify-content: center;
+        margin-left: 15em;
     }
 
+    #profileimg-label, #certificate-label {
+        margin-left: 11em;
+    }
 
     #profileimg {
         float: none;
         padding: 0.3em;
         margin-top: 20px;
-        justify-content: center;
     }
-
 
     /*Submit-button*/
     #register-button {
@@ -518,7 +538,7 @@
         border-radius: 3px;
         background: var(--color);
         font-family: sans-serif;
-        margin: 20px 0px;
+        margin-left: 0.5em;
         cursor: pointer;
         outline: none;
         margin-bottom: 10px;
@@ -538,11 +558,19 @@
     }
 
     #register-button-div {
-        padding-left: 30em;
+        padding-left: 40em;
+        margin-bottom: 2em;
     }
 
 
     /*Responsivitet*/
+
+    @media (max-width: 1350px) {
+        #errorMsg {
+            margin-left: 10em;
+        }
+    }
+
     @media(max-width: 1100px) {
         #profile-side {
             width: 250px;
