@@ -105,7 +105,7 @@ public class UserController {
     }
 
 
-    /*************************CREATE JOB************************************
+    /*************************CREATE JOB*************************************/
     //Renderar: CreateJob.html
     @GetMapping("/showFormRegisterJob/{id}")
     public String showFormRegisterJob(@ModelAttribute("user") User user,
@@ -119,18 +119,17 @@ public class UserController {
     //C - Create Job
     @PostMapping("/saveJob/{id}")
     public String createJob(@ModelAttribute("job")Job job,
-            @RequestParam(value = "titel") String titel,
                             @PathVariable(value = "id") long id,
                             Model model) {
 
-        User user = userTwoService.getUserById(id);
+        User user = userService.getUserById(id);
         model.addAttribute("user", user);
 
         job.setUser(user);
         jobService.saveJob(job);
 
         return "redirect:/loginWorkgiver/" + id;
-    }*/
+    }
 
 
     /*************************UPDATE************************************
@@ -262,52 +261,6 @@ public class UserController {
 
         return "findjob";
     }
-
-    /************NY DASHBOARD***********/
-    @GetMapping("/showDaschboard/{id}")
-    public String showDashboard(@PathVariable(value = "id") long id,
-                                Model model) {
-
-        //List<Job> jobs= jobService.findAllJobs(id);
-        //model.addAttribute("jobs", jobs);
-
-        /*
-        if (user.getRolesCategory().isWorker()) {
-            model.addAttribute("user", user);
-            return "4profileworker";
-
-        } else if (user.getRolesCategory().isWorkgiver()) {
-
-            model.addAttribute("user", user);
-            return "4profileworkgiver";
-        }*/
-
-        return "daschboard";
-    }
-
-
-    //Gammal kod - spara ett tag
-    //Renderar: CreateJob.html
-    /*
-    @GetMapping("/showFormRegisterJob")
-    public String registerJob(@ModelAttribute("job") Job job,
-                             @ModelAttribute("user") UserEntity userEntity) {
-        return "createJob";
-    }*/
-
-    //C - Create Job
-    /*
-    @PostMapping("/saveJob")
-    public String saveJob(Job job,
-                          @RequestParam("username") long ide) {
-
-        UserEntity user = userService.getUserById(ide);
-        Long id = user.getId();
-        jobService.saveJob(job);
-        return "redirect:/loginWorkgiver/" + id;
-    }*/
-
-
 
 
 
