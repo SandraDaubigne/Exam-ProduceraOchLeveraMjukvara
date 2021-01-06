@@ -187,25 +187,25 @@ public class UserController {
         return "error";
     }
 
-    /*************************PUBLIC VIEW***********************************
+    /*************************PUBLIC VIEW************************************/
     //Renderar: 5publicWorker and 5publicworkgiver
     // Show page with public view
     @GetMapping("/showPublicView/{id}")
     public String showPublicView(@PathVariable(value = "id") long id, Model model) {
-        UserEntity user = userService.getUserById(id);
+        User user = userService.getUserById(id);
         model.addAttribute("user", user);
 
-        if (user.isWorker()) {
+        if (user.getRoles().isWorker()) {
             model.addAttribute("user", user);
             return "5publicWorker";
 
-        } else if (user.isWorkgiver()) {
+        } else if (user.getRoles().isWorkgiver()) {
 
             model.addAttribute("user", user);
             return "5publicworkgiver";
         }
         return "error";
-    }*/
+    }
 
 
 
