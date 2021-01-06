@@ -64,11 +64,11 @@ public class UserController {
     }
 
 
-    /*************************LOGIN************************************
+    /*************************LOGIN*************************************/
     //Renderar: 3startpageworker
     @GetMapping("/loginWorker/{id}")
     public String loginWorker(
-            @ModelAttribute("user") UserEntity user,
+            @ModelAttribute("user") User user,
             @ModelAttribute("job") Job job,
             Model model) {
 
@@ -78,7 +78,7 @@ public class UserController {
 
     //Renderar: 3startpageworkgiver
     @GetMapping("/loginWorkgiver/{id}")
-    public String loginWorkgiver(@ModelAttribute("user") UserEntity userEntity,
+    public String loginWorkgiver(@ModelAttribute("user") User userEntity,
                                  @ModelAttribute("job") Job job,
                                  Model model) {
         model.addAttribute("jobs", jobService.getAllJobs());
@@ -89,20 +89,20 @@ public class UserController {
     @PostMapping("login")
     public String login(@RequestParam("username") String username) {
 
-        User user = userTwoService.getUserByUsername(username);
+        User user = userService.getUserByUsername(username);
         Long id = user.getId();
 
         if (user != null && username.equals(user.getUsername())) {
 
-            if (user.getRolesCategory().isWorker()) {
+            if (user.getRoles().isWorker()) {
                 return "redirect:/loginWorker/" + id;
 
-            } else if (user.getRolesCategory().isWorkgiver()) {
+            } else if (user.getRoles().isWorkgiver()) {
                 return "redirect:/loginWorkgiver/" + id;
             }
         }
         return "error";
-    }*/
+    }
 
 
     /*************************CREATE JOB************************************
