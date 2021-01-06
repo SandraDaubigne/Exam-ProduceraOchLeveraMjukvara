@@ -165,7 +165,7 @@ public class UserController {
 
         List<Job> jobs = jobService.findAllJobs(id);
         model.addAttribute("jobs", jobs);
-        
+
         userService.saveUser(user);
 
         User users = userService.getUserById(id);
