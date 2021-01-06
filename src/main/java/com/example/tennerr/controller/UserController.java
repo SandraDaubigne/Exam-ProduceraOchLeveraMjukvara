@@ -132,23 +132,24 @@ public class UserController {
     }
 
 
-    /*************************UPDATE************************************
+    /*************************UPDATE*************************************/
     //Renderar: 4Profileworker och 4profileworkgiver
     @GetMapping("/showformforupdate/{id}")
-    public String showFormForUpdate(@PathVariable(value = "id") long id,
+    public String showFormForUpdate(
+                                        @PathVariable(value = "id") long id,
                                     Model model) {
 
-        List<Job> jobs= jobService.findAllJobs(id);
+        List<Job> jobs = jobService.findAllJobs(id);
         model.addAttribute("jobs", jobs);
 
-        User user = userTwoService.getUserById(id);
+        User user = userService.getUserById(id);
         model.addAttribute("user", user);
 
-        if (user.getRolesCategory().isWorker()) {
+        if (user.getRoles().isWorker()) {
             model.addAttribute("user", user);
             return "4profileworker";
 
-        } else if (user.getRolesCategory().isWorkgiver()) {
+        } else if (user.getRoles().isWorkgiver()) {
 
             model.addAttribute("user", user);
             return "4profileworkgiver";
@@ -162,27 +163,29 @@ public class UserController {
                              @PathVariable(value = "id") long id,
                              Model model) {
 
+        List<Job> jobs = jobService.findAllJobs(id);
+        model.addAttribute("jobs", jobs);
+        
+        userService.saveUser(user);
 
-        userTwoService.saveUser(user);
-
-        User users = userTwoService.getUserById(id);
+        User users = userService.getUserById(id);
         model.addAttribute("user", user);
 
-        String message = "Dina uppgifter har ändrats!";
-        model.addAttribute("msg", message);
+        //String message = "Dina uppgifter har ändrats!";
+        //model.addAttribute("msg", message);
 
-        if (users.getRolesCategory().isWorker()) {
+        if (users.getRoles().isWorker()) {
             model.addAttribute("user", user);
             return "4profileworker";
 
-        } else if (users.getRolesCategory().isWorkgiver()) {
+        } else if (users.getRoles().isWorkgiver()) {
 
             model.addAttribute("user", user);
             return "4profileworkgiver";
         }
 
         return "error";
-    }*/
+    }
 
     /*************************PUBLIC VIEW***********************************
     //Renderar: 5publicWorker and 5publicworkgiver

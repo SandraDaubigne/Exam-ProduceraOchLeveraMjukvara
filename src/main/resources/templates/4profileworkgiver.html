@@ -67,6 +67,8 @@
                     <p id="active-jobs">Här visas dina aktuella uppdrag</p>
                     <span th:each ="job: ${jobs}">
                         <p th:text="${job.titel}"></p>
+                        <p th:text="${job.jobdescription}"></p>
+                        <p th:text="${job.price}"></p>
                     </span>
                 </div>
                 <div id="profile-review" class="tab">
@@ -84,9 +86,11 @@
                         <!---Det spelar ingen roll vad namnen är förutom på id som ska tas emot i api:et som en variabel--->
                         <!---th:value måste finnas här för att det inte ska bli null vid uppdatering då nytt objekt sparas--->
                         <input type="hidden" th:value="${user.id}">
-                        <input type="hidden"  name="workgiver" th:value="${user.rolesCategory.id}" th:field="*{rolesCategory.id}">
-                        <input type="hidden" name ="worker" th:value="${user.rolesCategory.worker}" th:field="*{rolesCategory.worker}">
-                        <input type="hidden"  name="workgiver" th:value="${user.rolesCategory.workgiver}" th:field="*{rolesCategory.workgiver}">
+                        <input type="hidden"  name="workgiver" th:field="*{roles.id}" th:value="${user.roles.id}">
+                        <input type="hidden"  name="workgiver" th:field="*{categories.id}" th:value="${user.categories.id}">
+
+                        <input type="hidden" name ="worker" th:field="*{roles.worker}" th:value="${user.roles.worker}">
+                        <input type="hidden"  name="workgiver"  th:field="*{roles.workgiver}" th:value="${user.roles.workgiver}">
 
 
                         <div id="firstName-lastname-div">
