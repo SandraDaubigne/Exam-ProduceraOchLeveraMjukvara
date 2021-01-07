@@ -44,7 +44,7 @@ I denna applikation används följande:
 
 ### Installationsguide
 
-För att kunna köra programmet behöver du ladda ner Koden och sedan installera Maven i projektet om inte detta görs automatisk, det beror lite på vilket program du kör. Får du problem med detta följ denna manualen: 
+För att kunna köra programmet behöver du ladda ner koden och sedan installera Maven i projektet. Om inte detta görs automatisk, (det beror lite på vilken kodeditor och version av kodeditor du kör) så kan du in IntellJ IDEA följa denna manual för att installera Maven i ditt projekt: 
 
 **Gå till:**  
 ```
