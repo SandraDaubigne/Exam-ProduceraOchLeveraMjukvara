@@ -26,8 +26,8 @@
 
         </div>
         <div id="profile-info">
-            <h3 th:text="${user.firstname}" id="user-name"></h3>
-            <h3 th:text="${user.lastname}"></h3>
+            <h3 th:text="${user.firstname} " id="user-name"></h3>
+            <h3 th:text=" ${user.lastname}" id="user-lastname"></h3>
         </div>
     </div>
     <div id="profile-option">
@@ -159,7 +159,6 @@
         $(this).addClass("active").siblings().removeClass("active");
     })
 
-    const tabButton = document.querySelectorAll ("#navigation ul li");
     const tab = document.querySelectorAll(".tab");
 
     function tabs(panelIndex) {
@@ -171,15 +170,10 @@
     tabs(0);
 
     const checkboxBeauty = document.querySelector("#-checkbox-beauty");
-    const beautyLabel = document.querySelector("#beauty");
     const checkboxCleaning = document.querySelector("#checkbox-cleaning");
-    const cleaningLabel = document.querySelector("#cleaning");
     const checkboxVVS = document.querySelector("#checkbox-vvs");
-    const VVSLabel = document.querySelector("#vvs");
     const checkboxHealth = document.querySelector("#checkbox-health");
-    const healthLabel = document.querySelector("#health");
     const checkboxPainting = document.querySelector("#checkbox-painting");
-    const paintingLabel = document.querySelector("#painting");
     const button = document.querySelector("#save-button");
     button.disabled = true;
 
@@ -280,6 +274,7 @@ body {
     font-size: 2rem;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
+    display: inline;
 }
 
 #main {
