@@ -16,13 +16,13 @@ Beställargruppen (kunden) levereras denna applikation av leverantörgruppen (vi
 
 Beställargruppens önskan av applikation är en app där arbetsgivare och arbetstagare ska kunna matchas för att få kontakt för olika jobbuppdrag. 
 
-Kravlista har tagits fram och från detta har sedan use cases tagit fram och de är följande: 
-Användare ska kunna registrera sig som arbetare eller uppdragsgivare
-Användare ska kunna logga in
-Användare ska kunna ändra sin profil
-Inloggad användare ska se lista på alla jobb
-Uppdragsgivare ska kunna skapa jobbannons
-Uppdragsgivare ska se sina skapade jobb
+**Kravlista** har tagits fram och från detta har sedan use cases tagit fram och de är följande: 
+* Användare ska kunna registrera sig som arbetare eller uppdragsgivare
+* Användare ska kunna logga in
+* Användare ska kunna ändra sin profil
+* Inloggad användare ska se lista på alla jobb
+* Uppdragsgivare ska kunna skapa jobbannons
+* Uppdragsgivare ska se sina skapade jobb
  
 
 #### Teknisk specifikation
