@@ -45,19 +45,21 @@
 
     <div id="category-div">
         <p id="category">Välj en kategori:</p>
-        <input type="checkbox" id="-checkbox-beauty" name="beauty" value="true" th:field="*{categories.beauty}" >
+
+        <input type="checkbox" id="-checkbox-beauty" name="beauty" onclick="selectBeautyCheckbox()" value="true" th:field="*{categories.beauty}" >
         <label id="beauty" for="-checkbox-beauty">Skönhet</label>
 
-        <input type="checkbox" id="checkbox-cleaning" name="cleaning" value="true" th:field="*{categories.cleaning}">
+        <input type="checkbox" id="checkbox-cleaning" name="cleaning" value="true" onclick="selectCleaningCheckbox()" th:field="*{categories.cleaning}">
         <label id="cleaning" for="checkbox-cleaning">Städning</label>
 
-        <input type="checkbox" id="checkbox-vvs" name="vvs" value="true" th:field="*{categories.vvs}">
+        <input type="checkbox" id="checkbox-vvs" name="vvs" value="true" onclick="selectVvsCheckbox()" th:field="*{categories.vvs}">
         <label id="vvs" for="checkbox-vvs">VVS</label>
 
-        <input type="checkbox" id="checkbox-health" name="health" value="true" th:field="*{categories.health}">
+        <input type="checkbox" id="checkbox-health" name="health" value="true" onclick="selectVvsCheckbox()" th:field="*{categories.health}">
         <label id="health" for="checkbox-health">Hälsa</label>
 
-        <input type="checkbox" id="checkbox-painting" name="painting" value="true" th:field="*{categories.painting}">
+        <input type="checkbox" id="checkbox-painting" name="painting" value="true" onclick="selectPaintingCheckbox()"  th:field="*{categories.painting}">
+
         <label id="painting" for="checkbox-painting">Måleri</label>
     </div>
 
@@ -67,6 +69,62 @@
 </form>
 </main>
 </body>
+
+<script>
+
+    const beautyCheckbox = document.querySelector("#-checkbox-beauty");
+    const cleaningCheckbox = document.querySelector("#checkbox-cleaning");
+    const vvsCheckbox = document.querySelector("#checkbox-vvs");
+    const healthCheckbox = document.querySelector("#checkbox-health");
+    const paintingCheckbox = document.querySelector("#checkbox-painting");
+
+    function selectBeautyCheckbox() {
+
+        if (beautyCheckbox.checked) {
+            cleaningCheckbox.checked = false;
+            vvsCheckbox.checked = false;
+            healthCheckbox.checked = false;
+            paintingCheckbox.checked = false;
+        }
+    }
+
+    function selectCleaningCheckbox() {
+        if (cleaningCheckbox.checked) {
+            beautyCheckbox.checked = false;
+            vvsCheckbox.checked = false;
+            healthCheckbox.checked = false;
+            paintingCheckbox.checked = false;
+        }
+    }
+
+    function selectVvsCheckbox() {
+        if (vvsCheckbox.checked) {
+            cleaningCheckbox.checked = false;
+            beautyCheckbox.checked = false;
+            healthCheckbox.checked = false;
+            paintingCheckbox.checked = false;
+        }
+    }
+
+    function selectHealthCheckbox() {
+        if (healthCheckbox.checked) {
+            cleaningCheckbox.checked = false;
+            vvsCheckbox.checked = false;
+            beautyCheckbox.checked = false;
+            paintingCheckbox.checked = false;
+        }
+    }
+
+    function selectPaintingCheckbox() {
+        if (paintingCheckbox.checked) {
+            cleaningCheckbox.checked = false;
+            vvsCheckbox.checked = false;
+            healthCheckbox.checked = false;
+            beautyCheckbox.checked = false;
+        }
+    }
+
+</script>
 
 <style>
     * {
@@ -152,7 +210,7 @@ overflow: auto;
     margin-right: 30%;
 }
 
-#checkbox-beauty, #checkbox-cleaning, #checkbox-vvs, #checkbox-health, #checkbox-painting {
+#-checkbox-beauty, #checkbox-cleaning, #checkbox-vvs, #checkbox-health, #checkbox-painting {
     margin-top: 10px;
     margin-bottom: 20px;
 }
