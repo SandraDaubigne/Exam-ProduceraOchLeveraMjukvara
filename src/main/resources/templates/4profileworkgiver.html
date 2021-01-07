@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
-    <title>Document</title>
+    <title>Privat profil uppdragsgivare</title>
 </head>
 <body>
 
@@ -15,7 +15,7 @@
     </div>
     <div id="link-div">
         <a  th:href="@{/loginWorkgiver/{id}(id=${user.id})}">Hem</a>
-        <a id="header-dashboard" href="">Matchade uppdrag</a>
+        <a id="header-dashboard" th:href="@{/showAllJobs/{id}(id=${user.id})}">Matchade uppdrag</a>
     </div>
 </header>
 <div id="container">
@@ -65,6 +65,11 @@
                 <div id="profile-jobs" class="tab">
                     <h1>Aktuella uppdrag</h1>
                     <p id="active-jobs">Här visas dina aktuella uppdrag</p>
+                    <span th:each ="job: ${jobs}">
+                        <p th:text="${job.titel}"></p>
+                        <p th:text="${job.jobdescription}"></p>
+                        <p th:text="${job.price}"></p>
+                    </span>
                 </div>
                 <div id="profile-review" class="tab">
                     <h1>Recensioner</h1>
@@ -76,13 +81,16 @@
                         <h3>Redigera din profil</h3>
                     </header>
 
+                    <h1 th:text="${msg}"></h1>
+
                     <form action ="#" th:action="@{/updateUser/{id}(id=${user.id})}" th:object="${user}" method="post">
-                        <!---name måste finnas på hidden för att värdena inte ska försvinna vid uppdatering--->
-                        <!---Det spelar ingen roll vad namnen är förutom på id som ska tas emot i api:et som en variabel--->
-                        <!---th:value måste finnas här för att det inte ska bli null vid uppdatering då nytt objekt sparas--->
                         <input type="hidden" th:value="${user.id}">
-                        <input type="hidden" name ="worker" th:value="${user.worker}">
-                        <input type="hidden"  name="workgiver" th:value="${user.workgiver}">
+                        <input type="hidden"  name="workgiver" th:field="*{roles.id}" th:value="${user.roles.id}">
+                        <input type="hidden"  name="workgiver" th:field="*{categories.id}" th:value="${user.categories.id}">
+
+                        <input type="hidden" name ="worker" th:field="*{roles.worker}" th:value="${user.roles.worker}">
+                        <input type="hidden"  name="workgiver"  th:field="*{roles.workgiver}" th:value="${user.roles.workgiver}">
+
 
                         <div id="firstName-lastname-div">
                             <label id="firstName">
@@ -185,6 +193,7 @@ body {
 
 #first-header a {
     padding-left: 2em;
+    color: #333;
 }
 
 #link-div {

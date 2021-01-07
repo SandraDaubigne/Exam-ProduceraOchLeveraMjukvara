@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-    <title>StartpageWorkgiver</title>
+    <title>Startsida uppdragsgivare</title>
 </head>
 
 <body>
@@ -16,7 +16,7 @@
         </div>
         <div id="link-div">
             <a th:href="@{/showFormRegisterJob/{id}(id=${user.id})}" id="header-home" href="">Lägg in annons</a>
-            <a id="header-dashboard" href="">Matchade uppdrag</a>
+            <a id="header-dashboard" th:href="@{/showAllJobs/{id}(id=${user.id})}">Matchade uppdrag</a>
             <a id="header-profile" th:href="@{/showformforupdate/{id}(id=${user.id})}">Din profil</a>
             <a  th:href="@{/showPublicView/{id}(id=${user.id})}">Visa din profil som publik</a>
         </div>
@@ -58,11 +58,11 @@
 
                         <div class="category-div">
                             <span>Kategori: </span>
-                            <span class="beauty" th:text="${job.beauty}"> </span>
-                            <span class="cleaning" th:text="${job.cleaning}"> </span>
-                            <span class="vvs" th:text="${job.vvs}"> </span>
-                            <span class="health" th:text="${job.health}"> </span>
-                            <span class="painting" th:text="${job.painting}"> </span>
+                            <span class="beauty" th:text="${job.categories.beauty}"> </span>
+                            <span class="cleaning" th:text="${job.categories.cleaning}"> </span>
+                            <span class="vvs" th:text="${job.categories.vvs}"> </span>
+                            <span class="health" th:text="${job.categories.health}"> </span>
+                            <span class="painting" th:text="${job.categories.painting}"> </span>
                             <span class="outputBeauty">Skönhet</span>
                             <span class="outputCleaning">Städning</span>
                             <span class="outputVVS">VVS</span>
@@ -70,10 +70,6 @@
                             <span class="outputPainting">Målning</span>
                         </div>
 
-                        <div class="workgiver-name-div">
-                            <span>Uppdragsgivare: </span>
-                            <span th:text="${job.jobWorkgiver}"> </span>
-                        </div>
 
                         <div class="description-div">
                             <span class="description">Beskrivning: </span>
@@ -85,12 +81,9 @@
 
                         <div class="contact">
                             <span>Kontakt:</span>
+                            <span th:text="${job.user.username}"></span>
                         </div>
 
-                        <div class="contact-div">
-                            <span th:text="${job.jobEmail}"></span><br>
-                            <span th:text="${job.jobPhone}"></span>
-                        </div>
                     </div>
                 </div>
             </div>
