@@ -1,4 +1,4 @@
-## Dokumentation Tennerr applikation
+# Dokumentation Tennerr applikation
 
 Se applikationen köras på denna länk: 
 
@@ -8,7 +8,7 @@ Denna dokumentation berör följande punkter:
 * [Teknisk specifikation](#teknisk-specifikation)
 * [Installationsguide](#installationsguide)
 
-### Syfte och projekt
+## Syfte och projekt
 
 Syftet med detta projekt är att genom en kurs på Teknikhögskolan utbildning javautvecklare 2019-2021 i kursen “producera och leverera mjukvara” jobba mot kund i form av en grupp klasskamrater. 
 
@@ -25,7 +25,7 @@ Beställargruppens önskan av applikation är en app där arbetsgivare och arbet
 * Uppdragsgivare ska se sina skapade jobb
  
 
-### Teknisk specifikation
+## Teknisk specifikation
 
 I denna applikation används följande: 
 
@@ -42,7 +42,9 @@ I denna applikation används följande:
 * HTML
 * CSS
 
-### Installationsguide
+## Installationsguide
+
+### **Maven:**
 
 För att kunna köra programmet behöver du ladda ner koden och sedan installera Maven i projektet. Om inte detta görs automatisk, (det beror lite på vilken kodeditor och version av kodeditor du kör) så kan du in IntellJ IDEA följa denna manual för att installera Maven i ditt projekt: 
 
@@ -52,7 +54,7 @@ File > Settings > Build,Execution,Deployment> Build Tools > Maven > Importing .
 Ändra VM options for importer till  -Didea.maven3.use.compat.resolver
 ```
 
-**Databas och databashanterare:**
+### **Databas och databashanterare:**
 
 **Ansluta:**
 * Det allra enklaste är om du har MAMP databas med root som användarnamn och root som lösenord, samt att du har satt porten i MAMP till 3307. (Detta för att inte krocka med befintlig mySQL workbench eller liknande, då de körs på samma portar. 
