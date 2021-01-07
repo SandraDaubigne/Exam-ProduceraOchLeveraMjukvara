@@ -16,7 +16,10 @@
     <div id="link-div">
 
         <a th:href="@{/loginWorkgiver/{id}(id=${user.id})}">Hem</a>
-        <a id="header-dashboard">Matchade uppdrag</a>
+        <a id="header-dashboard" href="">Matchade uppdrag</a>
+        <a th:href="@{/showPublicView/{id}(id=${user.id})}">Visa din profil som publik</a>
+        <a th:href="@{/}">Logga ut</a>
+
     </div>
 </header>
 <div id="container">
@@ -45,7 +48,7 @@
 
                 <div id="description">
                     <h4>Beskrivning</h4>
-                    <span th:text="${user.description}" id="user-description"></span>
+                    <p th:text="${user.description}" id="user-description"></p>
                 </div>
                 <div id="profile-button"></div>
                 <button id="message-button">Meddelande</button>
@@ -59,9 +62,9 @@
         <div id="right-side">
             <div id="navigation">
                 <ul>
-                    <li onclick="tabs(0)" id="user-job" class="active">Aktuella uppdrag</li>
+                    <li onclick="tabs(0)" id="user-job">Aktuella uppdrag</li>
                     <li onclick="tabs(1)" id="user-review">Recensioner</li>
-                    <li onclick="tabs(2)" id="user-settings">Profilinställningar</li>
+                    <li onclick="tabs(2)" id="user-settings" class="active">Profilinställningar</li>
                 </ul>
             </div>
             <div id="profile-body">
@@ -159,7 +162,6 @@
         $(this).addClass("active").siblings().removeClass("active");
     })
 
-    const tabButton = document.querySelectorAll("#navigation ul li");
     const tab = document.querySelectorAll(".tab");
 
     function tabs(panelIndex) {
@@ -169,7 +171,92 @@
         tab[panelIndex].style.display = "block";
     }
 
-    tabs(0);
+    tabs(2);
+
+    const beauty = document.querySelectorAll(".beauty");
+    const cleaning = document.querySelectorAll(".cleaning");
+
+    const vvs = document.querySelectorAll(".vvs");
+    const health = document.querySelectorAll(".health");
+
+    const painting = document.querySelectorAll(".painting");
+
+    let outputBeauty = document.querySelectorAll(".outputBeauty");
+    let outputCleaning = document.querySelectorAll(".outputCleaning");
+    let outputVVS = document.querySelectorAll(".outputVVS");
+    let outputHealth = document.querySelectorAll(".outputHealth");
+    let outputPainting = document.querySelectorAll(".outputPainting");
+
+
+    beauty.forEach(beautyItem => {
+        beautyItem.style.display = "none";
+    });
+
+    cleaning.forEach(cleaningItem => {
+        cleaningItem.style.display = "none";
+    });
+
+    vvs.forEach(vvsItem => {
+        vvsItem.style.display = "none";
+    });
+
+    health.forEach(healthItem => {
+        healthItem.style.display = "none";
+    });
+
+    painting.forEach(paintingItem => {
+        paintingItem.style.display = "none";
+    });
+
+    for (let i = 0; i < beauty.length; i++) {
+
+        if (beauty[i].textContent === "true") {
+            outputVVS[i].style.display = "none";
+            outputCleaning[i].style.display = "none";
+            outputHealth[i].style.display = "none";
+            outputPainting[i].style.display = "none";
+        }
+    }
+
+    for (let i = 0; i < cleaning.length; i++) {
+
+        if (cleaning[i].textContent === "true") {
+            outputBeauty[i].style.display = "none";
+            outputVVS[i].style.display = "none";
+            outputHealth[i].style.display = "none";
+            outputPainting[i].style.display = "none";
+        }
+    }
+
+    for (let i = 0; i < vvs.length; i++) {
+
+        if (vvs[i].textContent === "true") {
+            outputBeauty[i].style.display = "none";
+            outputCleaning[i].style.display = "none";
+            outputHealth[i].style.display = "none";
+            outputPainting[i].style.display = "none";
+        }
+    }
+
+    for (let i = 0; i < health.length; i++) {
+
+        if (health[i].textContent === "true") {
+            outputBeauty[i].style.display = "none";
+            outputCleaning[i].style.display = "none";
+            outputVVS[i].style.display = "none";
+            outputPainting[i].style.display = "none";
+        }
+    }
+
+    for (let i = 0; i < painting.length; i++) {
+
+        if (painting[i].textContent === "true") {
+            outputBeauty[i].style.display = "none";
+            outputCleaning[i].style.display = "none";
+            outputHealth[i].style.display = "none";
+            outputVVS[i].style.display = "none";
+        }
+    }
 
 </script>
 <style>
@@ -540,7 +627,6 @@ input, textarea {
         color: #333;
         font-size: 14px;
         font-family: sans-serif;
-
     }
 
     #description h4 {
@@ -642,7 +728,7 @@ input, textarea {
     .tab p {
         padding-top: 5em;
     }
-    
+
     .job-div {
         background: #fff;
         margin: 2em;

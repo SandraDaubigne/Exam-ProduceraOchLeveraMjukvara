@@ -57,6 +57,10 @@
             <div id="profile-body">
                 <!-- 2: Skapa funktion för att kunna registrera sig,--->
 
+                <div id="login-div">
+                    <a th:href="@{/}">Logga in</a>
+                </div>
+
                 <div id="option-div">
                     <h4 id="option-h4">Registrera dig som arbetare eller uppdragsgivare:</h4>
                 </div>
@@ -117,7 +121,6 @@
                         <!-- ARBETARE, Laddar upp filer som väljs lokalt på datorn-->
                         <label for="certificateimg" id="certificate-label">Ladda upp certifikat och intyg</label>
                         <input type="file" id="certificateimg" name="certificateimg"><br>
-
 
                         <div id="register-button-div">
                             <input type="submit" id="register-button" value="Skapa">
@@ -389,6 +392,16 @@
         z-index: -1;
     }
 
+    #login-div a {
+        float: right;
+        color: #333;
+        font-size: 13px;
+        padding: 1em;
+        margin-right: 18em;
+        margin-top: 2em;
+        margin-bottom: 2em;
+    }
+
     #errorMsg {
         text-align: center;
         font-variant: small-caps;
@@ -422,7 +435,6 @@
 
     #radio-worker{
         margin-right: 3px;
-
     }
 
     #workgiver {
@@ -432,7 +444,6 @@
     #radio-workgiver {
         margin-left: 3px;
         margin-bottom: 30px;
-
     }
 
     /*Inputfält*/
@@ -564,9 +575,7 @@
         margin-bottom: 2em;
     }
 
-
     /*Responsivitet*/
-
     @media (max-width: 1350px) {
         #errorMsg {
             margin-left: 10em;

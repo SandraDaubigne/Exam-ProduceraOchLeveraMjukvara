@@ -12,7 +12,10 @@
 <body>
 <header id="first-header">
     <a th:href="@{/loginWorkgiver/{id}(id=${user.id})}">Hem</a>
-    <a id="header-dashboard" >Matchade uppdrag</a>
+
+    <a id="header-dashboard">Matchade uppdrag</a>
+    <a th:href="@{/}">Logga ut</a>
+
 </header>
 <div id="container">
     <div id="profile-header">
@@ -121,7 +124,109 @@
             </div>
         </div>
     </div>
+</div>
+</div>
+<script>
+    $("#navigation ul li").click(function () {
+        $(this).addClass("active").siblings().removeClass("active");
+    })
 
+    const tab = document.querySelectorAll(".tab");
+
+    function tabs(panelIndex) {
+        tab.forEach(function (node) {
+            node.style.display = "none";
+        })
+        tab[panelIndex].style.display = "block";
+    }
+
+    tabs(0);
+
+    const beauty = document.querySelectorAll(".beauty");
+    const cleaning = document.querySelectorAll(".cleaning");
+
+    const vvs = document.querySelectorAll(".vvs");
+    const health = document.querySelectorAll(".health");
+
+    const painting = document.querySelectorAll(".painting");
+
+    let outputBeauty = document.querySelectorAll(".outputBeauty");
+    let outputCleaning = document.querySelectorAll(".outputCleaning");
+    let outputVVS = document.querySelectorAll(".outputVVS");
+    let outputHealth = document.querySelectorAll(".outputHealth");
+    let outputPainting = document.querySelectorAll(".outputPainting");
+
+
+    beauty.forEach(beautyItem => {
+        beautyItem.style.display = "none";
+    });
+
+    cleaning.forEach(cleaningItem => {
+        cleaningItem.style.display = "none";
+    });
+
+    vvs.forEach(vvsItem => {
+        vvsItem.style.display = "none";
+    });
+
+    health.forEach(healthItem => {
+        healthItem.style.display = "none";
+    });
+
+    painting.forEach(paintingItem => {
+        paintingItem.style.display = "none";
+    });
+
+    for (let i = 0; i < beauty.length; i++) {
+
+        if (beauty[i].textContent === "true") {
+            outputVVS[i].style.display = "none";
+            outputCleaning[i].style.display = "none";
+            outputHealth[i].style.display = "none";
+            outputPainting[i].style.display = "none";
+        }
+    }
+
+    for (let i = 0; i < cleaning.length; i++) {
+
+        if (cleaning[i].textContent === "true") {
+            outputBeauty[i].style.display = "none";
+            outputVVS[i].style.display = "none";
+            outputHealth[i].style.display = "none";
+            outputPainting[i].style.display = "none";
+        }
+    }
+
+    for (let i = 0; i < vvs.length; i++) {
+
+        if (vvs[i].textContent === "true") {
+            outputBeauty[i].style.display = "none";
+            outputCleaning[i].style.display = "none";
+            outputHealth[i].style.display = "none";
+            outputPainting[i].style.display = "none";
+        }
+    }
+
+    for (let i = 0; i < health.length; i++) {
+
+        if (health[i].textContent === "true") {
+            outputBeauty[i].style.display = "none";
+            outputCleaning[i].style.display = "none";
+            outputVVS[i].style.display = "none";
+            outputPainting[i].style.display = "none";
+        }
+    }
+
+    for (let i = 0; i < painting.length; i++) {
+
+        if (painting[i].textContent === "true") {
+            outputBeauty[i].style.display = "none";
+            outputCleaning[i].style.display = "none";
+            outputHealth[i].style.display = "none";
+            outputVVS[i].style.display = "none";
+        }
+    }
+</script>
     <style>
         * {
     padding: 0;
@@ -665,43 +770,6 @@ body {
         }
     }
 </style>
-<script>
-    $("#navigation ul li").click(function () {
-        $(this).addClass("active").siblings().removeClass("active");
-    })
 
-    const tabButton = document.querySelectorAll("#navigation ul li");
-    const tab = document.querySelectorAll(".tab");
-
-    function tabs(panelIndex) {
-        tab.forEach(function (node) {
-            node.style.display = "none";
-        })
-        tab[panelIndex].style.display = "block";
-    }
-
-    tabs(0);
-
-    /* Usecase4: Update profile workgiver*/
-    const saveProfileButton = document.querySelector("#save-profile");
-
-    saveProfileButton.onclick = event => {
-
-        const workgiver = {
-            firstName: document.querySelector("#firstName").value,
-            lastName: document.querySelector("#lastName").value,
-            email: document.querySelector("#email").value,
-            phoneNumber: document.querySelector("#phoneNumber").value,
-            address: document.querySelector("#address").value,
-            description: document.querySelector("#description-box").value
-        }
-        const options = {
-            method: 'PUT',
-            body: JSON.stringify(workgiver),
-            headers: {'Content-Type': 'application/json;charset=utf8'}
-        }
-        fetch("/updateworkgiver", options)
-    }
-</script>
 </body>
 </html>

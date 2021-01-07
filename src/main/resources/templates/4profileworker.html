@@ -11,18 +11,22 @@
 
 <header id="first-header">
     <div id="logo-div">
-        <img src="../images/Logo.png" width="200"  id="logo">
+        <img src="../images/Logo.png" width="200" id="logo">
     </div>
     <div id="link-div">
-        <a  th:href="@{/loginWorker/{id}(id=${user.id})}">Hem</a>
-        <a id="header-dashboard" >Matchade uppdrag</a>
+
+        <a th:href="@{/loginWorker/{id}(id=${user.id})}">Hem</a>
+        <a id="header-dashboard">Matchade uppdrag</a>
+        <a th:href="@{/showPublicView/{id}(id=${user.id})}">Visa din profil som publik</a>
+        <a th:href="@{/}">Logga ut</a>
     </div>
 </header>
 <div id="container">
     <div id="profile-header">
         <div id="profile-img">
 
-            <img src="https://cdn2.iconfinder.com/data/icons/solid-glyphs-volume-2/256/user-unisex-512.png" width="200" id="profile-picture">
+            <img src="https://cdn2.iconfinder.com/data/icons/solid-glyphs-volume-2/256/user-unisex-512.png" width="200"
+                 id="profile-picture">
 
         </div>
         <div id="profile-info">
@@ -42,7 +46,7 @@
             <div id="description">
                 <h4>Beskrivning</h4>
 
-                <span th:text="${user.description}" id="user-description"></span>
+                <p th:text="${user.description}" id="user-description"></p>
 
             </div>
             <div id="profile-button"></div>
@@ -57,9 +61,9 @@
     <div id="right-side">
         <div id="navigation">
             <ul>
-                <li onclick="tabs(0)" id="user-job" class="active">Aktuella uppdrag</li>
+                <li onclick="tabs(0)" id="user-job">Aktuella uppdrag</li>
                 <li onclick="tabs(1)" id="user-review">Recensioner</li>
-                <li onclick="tabs(2)" id="user-settings">Profilinställningar</li>
+                <li onclick="tabs(2)" id="user-settings" class="active">Profilinställningar</li>
             </ul>
         </div>
         <div id="profile-body">
@@ -71,7 +75,6 @@
                 <h1>Recensioner</h1>
                 <p>Här visas dina recensioner som arbetare</p>
             </div>
-
 
             <div id="profile-settings" class="tab">
                 <h1>Profilinställningar</h1>
@@ -89,34 +92,42 @@
                     <input type="hidden" name ="worker" th:field="*{roles.worker}" th:value="${user.roles.worker}">
                     <input type="hidden"  name="workgiver"  th:field="*{roles.workgiver}" th:value="${user.roles.workgiver}">
 
+
                     <div id="firstName-lastname-div">
                         <label id="firstName">
-                            <input required id="firstName-input" type="text" size="30" placeholder="Förnamn*" th:field="*{firstname}" th:value="${user.firstname}">
+                            <input required id="firstName-input" type="text" size="30" placeholder="Förnamn*"
+                                   th:field="*{firstname}" th:value="${user.firstname}">
                         </label>
                         <label id="lastName">
-                            <input required id="lastName-input" type="text" size="30" placeholder="Efternamn*" th:field="*{lastname}" th:value="${user.lastname}">
+                            <input required id="lastName-input" type="text" size="30" placeholder="Efternamn*"
+                                   th:field="*{lastname}" th:value="${user.lastname}">
                         </label>
                     </div>
 
                     <div>
-                        <input required name="username" type="text" placeholder="Användarnamn*" id="username" size="30" th:field="*{username}" th:value="${user.username}">
-                        <input required type="text" placeholder="Lösenord*" id="password" size="30" th:field="*{password}" th:value="${user.password}">
+                        <input required name="username" type="text" placeholder="Användarnamn*" id="username" size="30"
+                               th:field="*{username}" th:value="${user.username}">
+                        <input required type="text" placeholder="Lösenord*" id="password" size="30"
+                               th:field="*{password}" th:value="${user.password}">
                     </div>
 
                     <div id="phoneNumber-div">
                         <label id="phoneNumber">
-                            <input required id="phoneNumber-input" type="text" size="71" placeholder="Telefonnummer*" th:field="*{phone}" th:value="${user.phone}">
+                            <input required id="phoneNumber-input" type="text" size="71" placeholder="Telefonnummer*"
+                                   th:field="*{phone}" th:value="${user.phone}">
                         </label>
                     </div>
 
                     <div id="description-div">
                         <label id="description-label">
-                            <textarea required id="description-box" cols="73" rows="5" placeholder="Personbeskrivning*" th:field="*{description}" th:value="${user.description}"></textarea>
+                            <textarea required id="description-box" cols="73" rows="5" placeholder="Personbeskrivning*"
+                                      th:field="*{description}" th:value="${user.description}"></textarea>
                         </label>
                     </div>
 
                     <div id="category-div">
                         <p id="category">Välj en eller flera kategorier:</p>
+
                         <input type="checkbox" id="-checkbox-beauty" name="beauty" value="true" onchange="disableButton()" th:field="*{categories.beauty}" th:checked="${user.categories.beauty}">
                         <label id="beauty" for="-checkbox-beauty">Skönhet</label>
 
@@ -130,6 +141,7 @@
                         <label id="health" for="checkbox-health">Hälsa</label>
 
                         <input type="checkbox" id="checkbox-painting" name="painting" value="true" onchange="disableButton()" th:field="*{categories.painting}" th:checked="${user.categories.painting}">
+
                         <label id="painting" for="checkbox-painting">Måleri</label>
                         <!--<input type="submit" value="Submit">-->
                     </div>
@@ -155,19 +167,20 @@
 
 <script>
 
-        $("#navigation ul li").click(function() {
+    $("#navigation ul li").click(function () {
         $(this).addClass("active").siblings().removeClass("active");
     })
 
     const tab = document.querySelectorAll(".tab");
 
     function tabs(panelIndex) {
-        tab.forEach(function(node) {
+        tab.forEach(function (node) {
             node.style.display = "none";
         })
         tab[panelIndex].style.display = "block";
     }
-    tabs(0);
+
+    tabs(2);
 
     const checkboxBeauty = document.querySelector("#-checkbox-beauty");
     const checkboxCleaning = document.querySelector("#checkbox-cleaning");
@@ -179,7 +192,7 @@
 
     function disableButton() {
         if (checkboxBeauty.checked || checkboxCleaning.checked ||
-        checkboxVVS.checked || checkboxHealth.checked || checkboxPainting.checked) {
+            checkboxVVS.checked || checkboxHealth.checked || checkboxPainting.checked) {
             button.disabled = false;
         } else {
             button.disabled = true;
@@ -484,77 +497,370 @@ input, textarea {
         padding: 90px 15px 20px;
     }
 
-    #profile-img #profile-picture {
-        left: 50px;
-        right: 50px;
-    }
-}
-
-@media(max-width: 900px) {
+    /* No use case, show profile worker */
     body {
-        margin: 0 20px;
+        background: #e9e9e9;
+        overflow: hidden;
+        padding-top: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0 100px;
+        overflow: auto;
+    }
+
+    #password {
+        -webkit-text-security: disc;
+    }
+
+    #logo-div {
+        padding-left: 2em;
+        float: left;
+    }
+
+    #first-header {
+        padding-bottom: 1em;
+        margin-top: 0;
+    }
+
+    #first-header img {
+        width: 130px;
+        height: 40px;
+    }
+
+    #first-header a {
+        padding-left: 2em;
+    }
+
+    #link-div {
+        float: right;
+        padding-top: 1em;
+        padding-right: 2em;
+        padding-bottom: 1em;
     }
 
     #profile-header {
+        background: #fff;
+        width: 100%;
         display: flex;
-        height: 100%;
-        flex-direction: column;
-        text-align: center;
-        padding-bottom: 20px;
-    }
-
-    #profile-header #address {
-        justify-content: center;
+        height: 190px;
+        position: relative;
+        box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
     }
 
     #profile-img {
         float: left;
-        width: 100%;
+        width: 340px;
         height: 200px;
     }
 
     #profile-img #profile-picture {
-        position: relative;
-        left: 0;
+        height: 200px;
+        width: 180px;
+        border: 4px solid #fff;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        position: absolute;
+        left: 50px;
+        top: 20px;
+        z-index: 5;
+        background: #fff;
+    }
+
+    #profile-info {
+        float: left;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 60px;
+    }
+
+    #profile-info h3 {
+        font-variant: small-caps;
+        font-size: 2rem;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        display: inline;
     }
 
     #main {
-        flex-direction: column;
-        padding-right: 0px;
+        width: 100%;
+        display: flex;
+        padding-right: 15px;
     }
 
     #profile-side {
-        width: 100%;
-        text-align: center;
-        padding: 20px;
-        margin: 5px 0;
+        width: 300px;
+        background: #fff;
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+        padding: 90px 30px 20px;
+        z-index: 99;
     }
 
-    #streetName-input {
-        width: 70%;
+    #profile-side p {
+        margin-bottom: 7px;
+        padding-bottom: 1em;
+        color: #333;
+        font-size: 14px;
+        font-family: sans-serif;
+
+    }
+
+    #description h4 {
+        font-variant: small-caps;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    #profile-button {
+        display: flex;
+    }
+
+    #message-button {
+        border: 0;
+        padding: 10px;
+        width: 100%;
+        border-radius: 3px;
+        background: var(--color);
+        font-family: sans-serif;
+        margin: 5px 2px;
+        cursor: pointer;
+        outline: none;
+        margin-bottom: 10px;
+        margin-top: 20px;
+        transition: .3s ease-in-out;
+        box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.3);
+        color: #fff;
+        background: rgba(265, 0, 70, 0.9);
+    }
+
+    #save-button {
+        border: 0;
+        padding: 10px;
+        border-radius: 3px;
+        background: var(--color);
+        font-family: sans-serif;
+        margin: 5px 2px;
+        cursor: pointer;
+        outline: none;
+        margin-bottom: 10px;
+        transition: .3s ease-in-out;
+        box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.3);
+        color: #fff;
+        background: rgba(265, 0, 70, 0.9);
+    }
+
+    #message-button:hover, #save-button:hover {
+        background: rgba(200, 0, 70, 0.9);
+    }
+
+    #save-button:disabled {
+        background: lightgrey;
+        color: darkgrey;
+    }
+
+    #right-side {
+        width: 100%;
+    }
+
+    #navigation {
+        width: 100%;
+        z-index: -1;
+    }
+
+    #navigation ul {
+        display: flex;
+        justify-content: center;
+        list-style-type: none;
+        height: 40px;
+        background: #fff;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    #navigation ul li {
+        padding: 10px;
+        width: 100%;
+        cursor: pointer;
+        text-align: center;
+        transition: all .2s ease-in-out;
+    }
+
+    .active, #navigation ul li:hover {
+        box-shadow: 0px -3px 0px rgba(200, 0, 70, 0.9) inset;
+    }
+
+    #profile-body {
+        width: 100%;
+        z-index: -1;
+    }
+
+    .tab {
+        padding: 20px;
+        width: 100%;
+        text-align: center;
+        display: none;
+    }
+
+    .tab p {
+        padding-top: 5em;
+    }
+
+    #profile-settings h3 {
+        padding: 1.5em;
+    }
+
+    #username {
+        float: none;
+        padding: 0.3em;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    #password {
+        float: none;
+        padding: 0.3em;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    #phoneNumber {
+        display: inline-block;
+    }
+
+    input, #description-box {
+        margin: 1em;
+        padding: 0.3em;
     }
 
     #description-box {
-        width: 80%;
+        padding-bottom: 0;
+        margin-bottom: 0;
+        resize: none;
     }
-}
 
-@media (max-width: 462px) {
-    body {
+    #description-label {
+        display: block;
+    }
+
+    input, textarea {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #category {
+        float: none;
+        padding-right: 10%;
+        padding: 0.3em;
+        margin-top: 20px;
+        justify-content: center;
+    }
+
+    #-checkbox-beauty, #checkbox-cleaning, #checkbox-vvs, #checkbox-health, #checkbox-painting {
+        margin-top: 10px;
+    }
+
+    #upload-picture-certificate-div {
+        padding-right: 10%;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.8em;
+        justify-content: left;
+    }
+
+    #upload-picture-input {
         margin: 0;
+        padding-top: 1em;
     }
 
-    #profile-header h3 {
-        font-size: 1.7rem;
+    #upload-picture-certificate {
+        margin: 0;
+        padding-top: 1em;
     }
 
-    #profile-header p, #profile-header span {
-        font-size: 0.9rem;
+    #save-div {
+        padding-left: 50%;
     }
-    #navigation ul li {
-        font-size: 0.8rem;
+
+    #profile-body h4 {
+        font-variant: small-caps;
+        font-size: 1.7em;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
     }
-}
+
+    @media (max-width: 1100px) {
+        #profile-side {
+            width: 250px;
+            padding: 90px 15px 20px;
+        }
+
+        #profile-img #profile-picture {
+            left: 50px;
+            right: 50px;
+        }
+    }
+
+    @media (max-width: 900px) {
+        body {
+            margin: 0 20px;
+        }
+
+        #profile-header {
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        #profile-header #address {
+            justify-content: center;
+        }
+
+        #profile-img {
+            float: left;
+            width: 100%;
+            height: 200px;
+        }
+
+        #profile-img #profile-picture {
+            position: relative;
+            left: 0;
+        }
+
+        #main {
+            flex-direction: column;
+            padding-right: 0px;
+        }
+
+        #profile-side {
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            margin: 5px 0;
+        }
+
+        #streetName-input {
+            width: 70%;
+        }
+
+        #description-box {
+            width: 80%;
+        }
+    }
+
+    @media (max-width: 462px) {
+        body {
+            margin: 0;
+        }
+
+        #profile-header h3 {
+            font-size: 1.7rem;
+        }
+
+        #profile-header p, #profile-header span {
+            font-size: 0.9rem;
+        }
+
+        #navigation ul li {
+            font-size: 0.8rem;
+        }
+    }
 </style>
 
 
