@@ -52,7 +52,7 @@ File > Settings > Build,Execution,Deployment> Build Tools > Maven > Importing .
 Ändra VM options for importer till  -Didea.maven3.use.compat.resolver
 ```
 
-**Databas och databashanterare: **
+**Databas och databashanterare:**
 
 **Ansluta:**
 * Det allra enklaste är om du har MAMP databas med root som användarnamn och root som lösenord, samt att du har satt porten i MAMP till 3307. (Detta för att inte krocka med befintlig mySQL workbench eller liknande, då de körs på samma portar. 
