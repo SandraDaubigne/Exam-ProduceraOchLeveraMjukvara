@@ -45,19 +45,19 @@
 
     <div id="category-div">
         <p id="category">Välj en kategori:</p>
-        <input type="checkbox" id="-checkbox-beauty" name="beauty" value="true" th:field="*{categories.beauty}" >
+        <input type="checkbox" id="-checkbox-beauty" name="beauty" value="true" onclick="selectBeautyCheckbox()" th:field="*{categories.beauty}" >
         <label id="beauty" for="-checkbox-beauty">Skönhet</label>
 
-        <input type="checkbox" id="checkbox-cleaning" name="cleaning" value="true" th:field="*{categories.cleaning}">
+        <input type="checkbox" id="checkbox-cleaning" name="cleaning" value="true" onclick="selectCleaningCheckbox()" th:field="*{categories.cleaning}">
         <label id="cleaning" for="checkbox-cleaning">Städning</label>
 
-        <input type="checkbox" id="checkbox-vvs" name="vvs" value="true" th:field="*{categories.vvs}">
+        <input type="checkbox" id="checkbox-vvs" name="vvs" value="true" onclick="selectVvsCheckbox()" th:field="*{categories.vvs}">
         <label id="vvs" for="checkbox-vvs">VVS</label>
 
-        <input type="checkbox" id="checkbox-health" name="health" value="true" th:field="*{categories.health}">
+        <input type="checkbox" id="checkbox-health" name="health" value="true" onclick="selectVvsCheckbox()" th:field="*{categories.health}">
         <label id="health" for="checkbox-health">Hälsa</label>
 
-        <input type="checkbox" id="checkbox-painting" name="painting" value="true" th:field="*{categories.painting}">
+        <input type="checkbox" id="checkbox-painting" name="painting" value="true" onclick="selectPaintingCheckbox()"  th:field="*{categories.painting}">
         <label id="painting" for="checkbox-painting">Måleri</label>
     </div>
 
