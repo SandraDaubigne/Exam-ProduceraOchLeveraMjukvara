@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>StartpageWorker</title>
+    <title>Startsida arbetare</title>
 </head>
 <body>
 <div id="container">
@@ -14,7 +14,9 @@
             <img src="../images/Logo.png" width="200" id="logo">
         </div>
         <div id="link-div">
-            <a id="header-dashboard" href="">Matchade uppdrag</a>
+
+            <a id="header-dashboard">Matchade uppdrag</a>
+
             <a id="header-profile" th:href="@{/showformforupdate/{id}(id=${user.id})}">Din profil</a>
             <a th:href="@{/}">Logga ut</a>
         </div>
@@ -56,11 +58,11 @@
 
                         <div class="category-div">
                             <span>Kategori: </span>
-                            <span class="beauty" th:text="${job.beauty}"> </span>
-                            <span class="cleaning" th:text="${job.cleaning}"> </span>
-                            <span class="vvs" th:text="${job.vvs}"> </span>
-                            <span class="health" th:text="${job.health}"> </span>
-                            <span class="painting" th:text="${job.painting}"> </span>
+                            <span class="beauty" th:text="${job.categories.beauty}"> </span>
+                            <span class="cleaning" th:text="${job.categories.cleaning}"> </span>
+                            <span class="vvs" th:text="${job.categories.vvs}"> </span>
+                            <span class="health" th:text="${job.categories.health}"> </span>
+                            <span class="painting" th:text="${job.categories.painting}"> </span>
                             <span class="outputBeauty">Skönhet</span>
                             <span class="outputCleaning">Städning</span>
                             <span class="outputVVS">VVS</span>
@@ -70,7 +72,7 @@
 
                         <div class="workgiver-name-div">
                             <span>Uppdragsgivare: </span>
-                            <span th:text="${job.jobWorkgiver}"> </span>
+                            <span th:text="${job.user.firstname}"> </span>
                         </div>
 
                         <div class="description-div">
@@ -86,8 +88,8 @@
                         </div>
 
                         <div class="contact-div">
-                            <span th:text="${job.jobEmail}"></span><br>
-                            <span th:text="${job.jobPhone}"></span>
+                            <span th:text="${job.user.email}"></span><br>
+                            <span th:text="${job.user.phone}"></span>
                         </div>
                         <div id="accept-div">
                             <button type="submit" id="accept-button">Acceptera uppdrag</button>
