@@ -57,7 +57,9 @@ File > Settings > Build,Execution,Deployment> Build Tools > Maven > Importing .
 ### **Databas och databashanterare:**
 
 **Ansluta:**
-* Det allra enklaste är om du använder MAMP databashanterare då den inte kräver lösenord. DU kan ladda ner MAMP här. Porten i koden är satt till 3307 så ändra din MAMP port till detta. (Detta för att inte krocka med eventuellt befintlig databashanterare på datorn, då de annars kan krocka då de körs på samma port.)
+* Det allra enklaste är om du använder MAMP databashanterare då den inte kräver lösenord. Du kan ladda ner MAMP här: https://www.mamp.info/en/downloads/
+
+* Porten i koden är satt till 3307 så ändra din MAMP port till detta. (Detta för att inte krocka med eventuellt befintlig databashanterare på datorn, då de annars kan krocka då de körs på samma port.)
 
 * Vill du kan du använda egen befintlig databashanterare med lösenord och användrarnamn, så ändrar du från root till ditt eget användarnamn och lösenord inne i application.properties filen:
 
