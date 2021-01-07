@@ -1,4 +1,4 @@
-### Dokumentation Tennerr applikation
+## Dokumentation Tennerr applikation
 
 Se applikationen köras på denna länk: 
 
@@ -8,7 +8,7 @@ Denna dokumentation berör följande punkter:
 * [Teknisk specifikation](#teknisk-specifikation)
 * [Installationsguide](#installationsguide)
 
-#### Syfte och projekt
+### Syfte och projekt
 
 Syftet med detta projekt är att genom en kurs på Teknikhögskolan utbildning javautvecklare 2019-2021 i kursen “producera och leverera mjukvara” jobba mot kund i form av en grupp klasskamrater. 
 
@@ -25,7 +25,7 @@ Beställargruppens önskan av applikation är en app där arbetsgivare och arbet
 * Uppdragsgivare ska se sina skapade jobb
  
 
-#### Teknisk specifikation
+### Teknisk specifikation
 
 I denna applikation används följande: 
 
@@ -42,7 +42,7 @@ I denna applikation används följande:
 * HTML
 * CSS
 
-#### Installationsguide
+### Installationsguide
 
 För att kunna köra programmet behöver du ladda ner Koden och sedan installera Maven i projektet om inte detta görs automatisk, det beror lite på vilket program du kör. Får du problem med detta följ denna manualen: 
 
