@@ -68,7 +68,7 @@
 
                         <!---value måste finnas här-->
                         <label id="worker">
-                        <input type ="radio" name="radioButton" id="radio-worker" value="true" onclick="showWorker()" th:field="*{roles.worker}">
+                        <input type ="radio" name="radioButton" id="radio-worker" value="true" onchange="showWorker()" th:field="*{roles.worker}">
                         Arbetare</label>
                         <label id="workgiver">
                         <input type ="radio" name="radioButton" id="radio-workgiver"  value="true" onchange="showWorkgiver()" th:field="*{roles.workgiver}">
