@@ -59,6 +59,14 @@
             <div id="profile-body">
                 <div id="profile-jobs" class="tab">
                     <h1>Aktuella uppdrag</h1>
+
+                    <p id="active-jobs">Här visas dina aktuella uppdrag</p>
+                    <span th:each ="job: ${jobs}">
+                        <p th:text="${job.titel}"></p>
+                        <p th:text="${job.jobdescription}"></p>
+                        <p th:text="${job.price}"></p>
+                    </span>
+
                     <div class="job-div">
                         <div class="title-div">
                             <h4>Titel</h4>

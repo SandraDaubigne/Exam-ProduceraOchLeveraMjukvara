@@ -195,6 +195,10 @@ public class UserController {
     //Renderar: 5publicWorker and 5publicworkgiver
     @GetMapping("/showPublicView/{id}")
     public String showPublicView(@PathVariable(value = "id") long id, Model model) {
+
+        List<Job> jobs = jobService.findAllJobs(id);
+        model.addAttribute("jobs", jobs);
+
         User user = userService.getUserById(id);
         model.addAttribute("user", user);
 
