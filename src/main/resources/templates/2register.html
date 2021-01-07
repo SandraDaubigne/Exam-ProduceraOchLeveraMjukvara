@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
-    <title>RegisterPage</title>
+    <title>Registrera dig</title>
 </head>
 <body>
 
@@ -68,10 +68,10 @@
 
                         <!---value måste finnas här-->
                         <label id="worker">
-                        <input type ="radio" name="radioButton" id="radio-worker" value="true" onclick="showWorker()" th:field="*{worker}">
+                        <input type ="radio" name="radioButton" id="radio-worker" value="true" onclick="showWorker()" th:field="*{roles.worker}">
                         Arbetare</label>
                         <label id="workgiver">
-                        <input type ="radio" name="radioButton" id="radio-workgiver"  value="true" onchange="showWorkgiver()" th:field="*{workgiver}">
+                        <input type ="radio" name="radioButton" id="radio-workgiver"  value="true" onchange="showWorkgiver()" th:field="*{roles.workgiver}">
                         Uppdragsgivare</label>
 
 
@@ -87,19 +87,19 @@
 
 
                         <p id="category">Välj en eller flera kategorier:</p>
-                        <input type="checkbox" id="-checkbox-beauty" name="beauty" value="true" onchange="disableButton()" th:field="*{beauty}">
+                        <input type="checkbox" id="-checkbox-beauty" name="beauty" value="true" onchange="disableButton()" th:field="*{categories.beauty}">
                         <label id="beauty" for="-checkbox-beauty">Skönhet</label>
 
-                        <input type="checkbox" id="checkbox-cleaning" name="cleaning" value="true" onchange="disableButton()" th:field="*{beauty}">
+                        <input type="checkbox" id="checkbox-cleaning" name="cleaning" value="true" onchange="disableButton()" th:field="*{categories.cleaning}">
                         <label id="cleaning" for="checkbox-cleaning">Städning</label>
 
-                        <input type="checkbox" id="checkbox-vvs" name="vvs" value="true" onchange="disableButton()" th:field="*{vvs}">
+                        <input type="checkbox" id="checkbox-vvs" name="vvs" value="true" onchange="disableButton()" th:field="*{categories.vvs}">
                         <label id="vvs" for="checkbox-vvs">VVS</label>
 
-                        <input type="checkbox" id="checkbox-health" name="health" value="true" onchange="disableButton()" th:field="*{health}">
+                        <input type="checkbox" id="checkbox-health" name="health" value="true" onchange="disableButton()" th:field="*{categories.health}">
                         <label id="health" for="checkbox-health">Hälsa</label>
 
-                        <input type="checkbox" id="checkbox-painting" name="painting" value="true" onchange="disableButton()" th:field="*{painting}">
+                        <input type="checkbox" id="checkbox-painting" name="painting" value="true" onchange="disableButton()" th:field="*{categories.painting}">
                         <label id="painting" for="checkbox-painting">Måleri</label>
                         <!--<input type="submit" value="Submit">-->
 
