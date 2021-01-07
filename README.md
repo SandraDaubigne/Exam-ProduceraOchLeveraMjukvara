@@ -61,7 +61,7 @@ File > Settings > Build,Execution,Deployment> Build Tools > Maven > Importing .
 
 * Porten i koden är satt till 3307 så ändra din MAMP port till detta. (Detta för att inte krocka med eventuellt befintlig databashanterare på datorn, då de annars kan krocka då de körs på samma port.)
 
-* Vill du kan du använda egen befintlig databashanterare med lösenord och användrarnamn, så ändrar du från root till ditt eget användarnamn och lösenord inne i application.properties filen:
+* Vill du kan du använda egen befintlig databashanterare med lösenord och användrarnamn, så ändrar du från root till ditt eget användarnamn och lösenord inne i application.properties filen. Där ändrar du även port från 3307 till den port din befintliga databashanterare har: 
 
 ```
 spring.datasource.url=jdbc:mysql://localhost:3307/tennerr?useSSL=false&serverTimezone=UTC
