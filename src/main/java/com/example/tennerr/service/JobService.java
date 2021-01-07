@@ -1,5 +1,7 @@
-package com.example.tennerr;
+package com.example.tennerr.service;
 
+import com.example.tennerr.entity.Job;
+import com.example.tennerr.repository.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,4 +20,10 @@ public class JobService {
     public List<Job> getAllJobs(){
         return jobRepository.findAll();
     }
+
+
+    public List<Job> findAllJobs(Long id){
+        return jobRepository.findByUserId(id);
+    }
+
 }

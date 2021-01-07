@@ -15,7 +15,7 @@
     </div>
     <div id="link-div">
         <a  th:href="@{/loginWorker/{id}(id=${user.id})}">Hem</a>
-        <a id="header-dashboard" href="">Matchade uppdrag</a>
+        <a id="header-dashboard" th:href="@{/showAllJobs/{id}(id=${user.id})}">Matchade uppdrag</a>
     </div>
 </header>
 <div id="container">
@@ -79,13 +79,15 @@
                     <h3>Redigera din profil</h3>
                 </header>
 
+                <h1 th:text="${msg}"></h1>
+
                 <form action ="#" th:action="@{/updateUser/{id}(id=${user.id})}" th:object="${user}" method="post">
-                    <!---name måste finnas på hidden för att värdena inte ska försvinna vid uppdatering--->
-                    <!---Det spelar ingen roll vad namnen är förutom på id som ska tas emot i api:et som en variabel--->
-                    <!---th:value måste finnas här för att det inte ska bli null vid uppdatering då nytt objekt sparas--->
                     <input type="hidden" th:value="${user.id}">
-                    <input type="hidden" name ="worker" th:value="${user.worker}">
-                    <input type="hidden"  name="workgiver" th:value="${user.workgiver}">
+                    <input type="hidden"  name="workgiver" th:field="*{roles.id}" th:value="${user.roles.id}">
+                    <input type="hidden"  name="workgiver" th:field="*{categories.id}" th:value="${user.categories.id}">
+
+                    <input type="hidden" name ="worker" th:field="*{roles.worker}" th:value="${user.roles.worker}">
+                    <input type="hidden"  name="workgiver"  th:field="*{roles.workgiver}" th:value="${user.roles.workgiver}">
 
                     <div id="firstName-lastname-div">
                         <label id="firstName">
@@ -115,19 +117,19 @@
 
                     <div id="category-div">
                         <p id="category">Välj en eller flera kategorier:</p>
-                        <input type="checkbox" id="-checkbox-beauty" name="beauty" value="true" onchange="disableButton()" th:field="*{beauty}" th:checked="${user.beauty}">
+                        <input type="checkbox" id="-checkbox-beauty" name="beauty" value="true" onchange="disableButton()" th:field="*{categories.beauty}" th:checked="${user.categories.beauty}">
                         <label id="beauty" for="-checkbox-beauty">Skönhet</label>
 
-                        <input type="checkbox" id="checkbox-cleaning" name="cleaning" value="true" onchange="disableButton()" th:field="*{cleaning}" th:checked="${user.cleaning}">
+                        <input type="checkbox" id="checkbox-cleaning" name="cleaning" value="true" onchange="disableButton()" th:field="*{categories.cleaning}" th:checked="${user.categories.cleaning}">
                         <label id="cleaning" for="checkbox-cleaning">Städning</label>
 
-                        <input type="checkbox" id="checkbox-vvs" name="vvs" value="true" onchange="disableButton()" th:field="*{vvs}" th:checked="${user.vvs}">
+                        <input type="checkbox" id="checkbox-vvs" name="vvs" value="true" onchange="disableButton()" th:field="*{categories.vvs}" th:checked="${user.categories.vvs}">
                         <label id="vvs" for="checkbox-vvs">VVS</label>
 
-                        <input type="checkbox" id="checkbox-health" name="health" value="true" onchange="disableButton()" th:field="*{health}" th:checked="${user.health}">
+                        <input type="checkbox" id="checkbox-health" name="health" value="true" onchange="disableButton()" th:field="*{categories.health}" th:checked="${user.categories.health}">
                         <label id="health" for="checkbox-health">Hälsa</label>
 
-                        <input type="checkbox" id="checkbox-painting" name="painting" value="true" onchange="disableButton()" th:field="*{painting}" th:checked="${user.painting}">
+                        <input type="checkbox" id="checkbox-painting" name="painting" value="true" onchange="disableButton()" th:field="*{categories.painting}" th:checked="${user.categories.painting}">
                         <label id="painting" for="checkbox-painting">Måleri</label>
                         <!--<input type="submit" value="Submit">-->
                     </div>
