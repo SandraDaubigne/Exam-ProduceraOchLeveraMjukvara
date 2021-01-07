@@ -63,7 +63,7 @@
     </div>
 
     <textarea id="description-box" cols="73" rows="6" placeholder="Beskrivning av uppdrag" th:field="*{jobdescription}"></textarea><br>
-
+    <p id="p-info">Användarnamn, mailadress och telefonnummer visas i annonsen.</p>
     <button id="publish-button" type="submit">Publicera</button>
 </form>
 </main>
@@ -131,7 +131,7 @@ overflow: auto;
     font-weight: bold;
 }
 
-#username {
+#titel {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -139,7 +139,7 @@ overflow: auto;
     padding: 0.3em;
 }
 
-#titel, #price, #email, #phone {
+#price, #email, #phone {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -163,6 +163,13 @@ overflow: auto;
     margin-right: auto;
     resize: none;
     padding: 0.3em;
+}
+
+#p-info {
+    display: block;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 12px;
 }
 
 #publish-button {
@@ -206,17 +213,22 @@ overflow: auto;
         justify-content: center;
     }
 
-    #username {
+    #titel {
     width: 70%;
     }
 
-    #titel, #price, #email, #phone {
+    #price, #email, #phone {
         width: 70%;
     }
 
     #description-box {
         width: 70%;
     }
+
+    #p-info {
+    font-size: 15px;
+    }
+
 }
 
 @media (max-width: 462px) {
@@ -226,6 +238,10 @@ overflow: auto;
 
     #profile-header h1 {
         font-size: 1.7rem;
+    }
+    
+    #p-info {
+    font-size: 10px;
     }
 }
 </style>
