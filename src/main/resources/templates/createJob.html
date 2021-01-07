@@ -7,17 +7,13 @@
     <title>Skapa annons</title>
 </head>
 <!--<body>
-
 <h1>Lägg in annons</h1>
-
 <form action ="#" th:action ="@{/saveJob}" th:object="${job}" method ="POST">
     <input type="text" th:field="*{jobdescription}" placeholder="Beskrivning">
     <input type="text" th:field="*{workgiver}" placeholder="Uppdragsgivare">
     <button id="login-button" type="submit">Skapa annons!</button>
 </form>
-
 </body>
-
 </html> -->
 
 <body>
@@ -26,10 +22,9 @@
         <img src="../images/Logo.png" width="200" id="logo">
     </div>
     <div id="link-div">
+        <a id="header-dashboard">Matchade uppdrag</a>
         <a  th:href="@{/loginWorkgiver/{id}(id=${user.id})}">Hem</a>
-        <a id="header-dashboard" href="">Matchade uppdrag</a>
         <a id="header-profile" th:href="@{/showformforupdate/{id}(id=${user.id})}">Din profil</a>
-        <a th:href="@{/}">Logga ut</a>
     </div>
 </header>
 
@@ -46,7 +41,8 @@
 
     <div id="category-div">
         <p id="category">Välj en kategori:</p>
-        <input type="checkbox" id="-checkbox-beauty" name="beauty" value="true" onclick="selectBeautyCheckbox()" th:field="*{categories.beauty}" >
+
+        <input type="checkbox" id="-checkbox-beauty" name="beauty" onclick="selectBeautyCheckbox()" value="true" th:field="*{categories.beauty}" >
         <label id="beauty" for="-checkbox-beauty">Skönhet</label>
 
         <input type="checkbox" id="checkbox-cleaning" name="cleaning" value="true" onclick="selectCleaningCheckbox()" th:field="*{categories.cleaning}">
@@ -55,10 +51,11 @@
         <input type="checkbox" id="checkbox-vvs" name="vvs" value="true" onclick="selectVvsCheckbox()" th:field="*{categories.vvs}">
         <label id="vvs" for="checkbox-vvs">VVS</label>
 
-        <input type="checkbox" id="checkbox-health" name="health" value="true" onclick="selectVvsCheckbox()" th:field="*{categories.health}">
+        <input type="checkbox" id="checkbox-health" name="health" value="true" onclick="selectHealthCheckbox()" th:field="*{categories.health}">
         <label id="health" for="checkbox-health">Hälsa</label>
 
         <input type="checkbox" id="checkbox-painting" name="painting" value="true" onclick="selectPaintingCheckbox()"  th:field="*{categories.painting}">
+
         <label id="painting" for="checkbox-painting">Måleri</label>
     </div>
 
@@ -69,165 +66,214 @@
 </main>
 </body>
 
+<script>
+
+    const beautyCheckbox = document.querySelector("#-checkbox-beauty");
+    const cleaningCheckbox = document.querySelector("#checkbox-cleaning");
+    const vvsCheckbox = document.querySelector("#checkbox-vvs");
+    const healthCheckbox = document.querySelector("#checkbox-health");
+    const paintingCheckbox = document.querySelector("#checkbox-painting");
+
+    function selectBeautyCheckbox() {
+
+        if (beautyCheckbox.checked) {
+            cleaningCheckbox.checked = false;
+            vvsCheckbox.checked = false;
+            healthCheckbox.checked = false;
+            paintingCheckbox.checked = false;
+        }
+    }
+
+    function selectCleaningCheckbox() {
+        if (cleaningCheckbox.checked) {
+            beautyCheckbox.checked = false;
+            vvsCheckbox.checked = false;
+            healthCheckbox.checked = false;
+            paintingCheckbox.checked = false;
+        }
+    }
+
+    function selectVvsCheckbox() {
+        if (vvsCheckbox.checked) {
+            cleaningCheckbox.checked = false;
+            beautyCheckbox.checked = false;
+            healthCheckbox.checked = false;
+            paintingCheckbox.checked = false;
+        }
+    }
+
+    function selectHealthCheckbox() {
+        if (healthCheckbox.checked) {
+            cleaningCheckbox.checked = false;
+            vvsCheckbox.checked = false;
+            beautyCheckbox.checked = false;
+            paintingCheckbox.checked = false;
+        }
+    }
+
+    function selectPaintingCheckbox() {
+        if (paintingCheckbox.checked) {
+            cleaningCheckbox.checked = false;
+            vvsCheckbox.checked = false;
+            healthCheckbox.checked = false;
+            beautyCheckbox.checked = false;
+        }
+    }
+
+</script>
+
 <style>
     * {
-padding: 0;
-margin: 0;
-box-sizing: border-box;
-}
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
 
-body {
-background: #e9e9e9;
-overflow: hidden;
-padding-top: 20px;
-font-family: Arial, Helvetica, sans-serif;
-margin: 0 100px;
-overflow: auto;
-}
-
-#first-header {
-    padding-bottom: 1em;
-    margin-top: 0;
-}
-
-#logo-div {
-    padding-left: 2em;
-    float: left;
-}
-
-#link-div {
-    float: right;
-    padding-top: 1em;
-    padding-right: 2em;
-    padding-bottom: 1em;
-}
-
-#first-header a {
-    padding-left: 2em;
-    color: #333;
-}
-
-#profile-header {
-    background: #fff;
-    width: 100%;
-    display: flex;
-    height: 230px;
-    position: relative;
-    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
-}
-
-#profile-info {
-    flex-direction: column;
-    justify-content: center;
-    padding-top: 90px;
-    padding-left: 40%;
-    padding-right: 40%;
-}
-
-#profile-info h1 {
-    font-variant: small-caps;
-    font-size: 2rem;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-}
-
-#username {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30px;
-    padding: 0.3em;
-}
-
-#titel, #price, #email, #phone {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0.3em;
-}
-
-#category-div {
-    display: block;
-    margin-left: 30%;
-    margin-right: 30%;
-}
-
-#-checkbox-beauty, #checkbox-cleaning, #checkbox-vvs, #checkbox-health, #checkbox-painting {
-    margin-top: 10px;
-    margin-bottom: 20px;
-}
-
-#description-box {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    resize: none;
-    padding: 0.3em;
-}
-
-#publish-button {
-    border: 0;
-    padding: 10px;
-    border-radius: 3px;
-    background: var(--color);
-    font-family: sans-serif;
-    margin: 5px 2px;
-    cursor: pointer;
-    outline: none;
-    margin-bottom: 10px;
-    transition: .3s ease-in-out;
-    box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.3);
-    color: #fff;
-    background: rgba(265, 0, 70, 0.9);
-    display: block;
-    margin-left: 65%;
-    margin-right: 35%;
-}
-
-#publish-button:hover {
-    background: rgba(200, 0, 70, 0.9);
-}
-
-
-@media(max-width: 900px) {
     body {
-        margin: 0 20px;
+        background: #e9e9e9;
+        overflow: hidden;
+        padding-top: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0 100px;
+        overflow: auto;
+    }
+
+    #first-header {
+        padding-bottom: 1em;
+        margin-top: 0;
+    }
+
+    #logo-div {
+        padding-left: 2em;
+        float: left;
+    }
+
+    #link-div {
+        float: right;
+        padding-top: 1em;
+        padding-right: 2em;
+        padding-bottom: 1em;
+    }
+
+    #first-header a {
+        padding-left: 2em;
+        color: #333;
     }
 
     #profile-header {
+        background: #fff;
+        width: 100%;
         display: flex;
-        height: 100%;
+        height: 230px;
+        position: relative;
+        box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    #profile-info {
         flex-direction: column;
-        text-align: center;
-        padding-bottom: 20px;
-    }
-
-    #profile-header {
         justify-content: center;
+        padding-top: 90px;
+        padding-left: 40%;
+        padding-right: 40%;
     }
 
-    #username {
-    width: 70%;
+    #profile-info h1 {
+        font-variant: small-caps;
+        font-size: 2rem;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+
     }
 
-    #titel, #price, #email, #phone {
-        width: 70%;
+    #titel, #price {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0.3em;
+    }
+
+    #category-div {
+        display: block;
+        margin-left: 30%;
+        margin-right: 30%;
+    }
+
+    #-checkbox-beauty, #checkbox-cleaning, #checkbox-vvs, #checkbox-health, #checkbox-painting {
+        margin-top: 10px;
+        margin-bottom: 20px;
     }
 
     #description-box {
-        width: 70%;
-    }
-}
-
-@media (max-width: 462px) {
-    body {
-        margin: 0;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        resize: none;
+        padding: 0.3em;
     }
 
-    #profile-header h1 {
-        font-size: 1.7rem;
+    #publish-button {
+        border: 0;
+        padding: 10px;
+        border-radius: 3px;
+        background: var(--color);
+        font-family: sans-serif;
+        margin: 5px 2px;
+        cursor: pointer;
+        outline: none;
+        margin-bottom: 10px;
+        transition: .3s ease-in-out;
+        box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.3);
+        color: #fff;
+        background: rgba(265, 0, 70, 0.9);
+        display: block;
+        margin-left: 65%;
+        margin-right: 35%;
     }
-}
+
+    #publish-button:hover {
+        background: rgba(200, 0, 70, 0.9);
+    }
+
+
+    @media(max-width: 900px) {
+        body {
+            margin: 0 20px;
+        }
+
+        #profile-header {
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        #profile-header {
+            justify-content: center;
+        }
+
+        #username {
+            width: 70%;
+        }
+
+        #titel, #price, #email, #phone {
+            width: 70%;
+        }
+
+        #description-box {
+            width: 70%;
+        }
+    }
+
+    @media (max-width: 462px) {
+        body {
+            margin: 0;
+        }
+
+        #profile-header h1 {
+            font-size: 1.7rem;
+        }
+    }
 </style>
 
 </html>
