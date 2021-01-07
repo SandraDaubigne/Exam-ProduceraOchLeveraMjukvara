@@ -57,9 +57,18 @@ File > Settings > Build,Execution,Deployment> Build Tools > Maven > Importing .
 ### **Databas och databashanterare:**
 
 **Ansluta:**
-* Det allra enklaste är om du har MAMP databas med root som användarnamn och root som lösenord, samt att du har satt porten i MAMP till 3307. (Detta för att inte krocka med befintlig mySQL workbench eller liknande, då de körs på samma portar. 
+* Det allra enklaste är om du använder MAMP databashanterare då den inte kräver lösenord. DU kan ladda ner MAMP här. Porten i koden är satt till 3307 så ändra din MAMP port till detta. (Detta för att inte krocka med eventuellt befintlig databashanterare på datorn, då de annars kan krocka då de körs på samma port.)
 
-* Vill du kan du använda din egen mySQL workbench och då går du in på application.properties filen och byter ut ditt användarnamn och lösenord till det du har och till den port du använder.
+* Vill du kan du använda egen befintlig databashanterare med lösenord och användrarnamn, så ändrar du från root till ditt eget användarnamn och lösenord inne i application.properties filen:
+
+```
+spring.datasource.url=jdbc:mysql://localhost:3307/tennerr?useSSL=false&serverTimezone=UTC
+
+spring.datasource.username=root
+spring.datasource.password=root
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect
+```
 
 **Setup:** 
 * Skapa sedan en databas i din databashanterare som hetter tennerr.
