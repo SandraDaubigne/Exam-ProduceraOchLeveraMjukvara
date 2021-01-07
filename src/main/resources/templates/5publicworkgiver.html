@@ -10,34 +10,35 @@
 </head>
 
 <body>
-    <header id="first-header">
-        <a  th:href="@{/loginWorkgiver/{id}(id=${user.id})}">Hem</a>
-        <a id="header-dashboard" href="">Matchade uppdrag</a>
-    </header>
-    <div id="container">
-        <div id="profile-header">
-            <div id="profile-img">
-                <img src="https://cdn2.iconfinder.com/data/icons/solid-glyphs-volume-2/256/user-unisex-512.png" width="200" id="profile-picture">
-            </div>
-            <div id="profile-info">
-                <h3 th:text="${user.firstname} " id="user-name"></h3>
-                <h3 th:text=" ${user.lastname}" id="user-lastname"></h3>
-                <div id="address">
-                    <p th:text="${user.address}"id="user-address"></p>
-                </div>
-            </div>
-            <div id="profile-option">
-                <div id="notification">
-                    <span id="alert-message"></span>
-                </div>
+<header id="first-header">
+    <a th:href="@{/loginWorkgiver/{id}(id=${user.id})}">Hem</a>
+    <a id="header-dashboard" href="">Matchade uppdrag</a>
+</header>
+<div id="container">
+    <div id="profile-header">
+        <div id="profile-img">
+            <img src="https://cdn2.iconfinder.com/data/icons/solid-glyphs-volume-2/256/user-unisex-512.png" width="200"
+                 id="profile-picture">
+        </div>
+        <div id="profile-info">
+            <h3 th:text="${user.firstname} " id="user-name"></h3>
+            <h3 th:text=" ${user.lastname}" id="user-lastname"></h3>
+            <div id="address">
+                <p th:text="${user.address}" id="user-address"></p>
             </div>
         </div>
+        <div id="profile-option">
+            <div id="notification">
+                <span id="alert-message"></span>
+            </div>
+        </div>
+    </div>
     <div id="main">
         <div id="left-side">
             <div id="profile-side">
                 <div id="description">
                     <h4>Beskrivning</h4>
-                <p th:text="${user.description}" id="user-description"></p>
+                    <p th:text="${user.description}" id="user-description"></p>
                 </div>
                 <div id="profile-button"></div>
                 <button id="message-button">Meddelande</button>
@@ -49,26 +50,70 @@
             </div>
         </div>
         <div id="right-side">
-                <div id="navigation">
-                    <ul>
-                        <li onclick="tabs(0)" id="user-job" class="active">Aktuella uppdrag</li>
-                        <li onclick="tabs(1)" id="user-review">Recensioner</li>
-                    </ul>
+            <div id="navigation">
+                <ul>
+                    <li onclick="tabs(0)" id="user-job" class="active">Aktuella uppdrag</li>
+                    <li onclick="tabs(1)" id="user-review">Recensioner</li>
+                </ul>
+            </div>
+            <div id="profile-body">
+                <div id="profile-jobs" class="tab">
+                    <h1>Aktuella uppdrag</h1>
+                    <div class="job-div">
+                        <div class="title-div">
+                            <h4>Titel</h4>
+                        </div>
+
+                        <div class="price-div">
+                            <span>Pris:</span>
+                            <span></span>
+                        </div>
+
+                        <div class="category-div">
+                            <span>Kategori: </span>
+                            <span class="beauty"></span>
+                            <span class="cleaning"></span>
+                            <span class="vvs"></span>
+                            <span class="health"></span>
+                            <span class="painting"></span>
+                            <span class="outputBeauty">Skönhet</span>
+                            <span class="outputCleaning">Städning</span>
+                            <span class="outputVVS">VVS</span>
+                            <span class="outputHealth">Hälsa</span>
+                            <span class="outputPainting">Målning</span>
+                        </div>
+
+                        <div class="workgiver-name-div">
+                            <span>Uppdragsgivare: </span>
+                            <span></span>
+                        </div>
+
+                        <div class="description-div">
+                            <span class="description">Beskrivning: </span>
+                        </div>
+
+                        <div class="full-description">
+                            <span></span>
+                        </div>
+
+                        <div class="contact">
+                            <span>Kontakt:</span>
+                        </div>
+
+                        <div class="contact-div">
+                            <span>frida@mail.com</span><br>
+                            <span>0762-434242</span>
+                        </div>
+                    </div>
                 </div>
-                <div id="profile-body">
-                    <div id="profile-jobs" class="tab">
-                        <h1>Aktuella uppdrag</h1>
-                        <p id="active-jobs">Här visas dina aktuella uppdrag</p>
-                    </div>
-                    <div id="profile-review" class="tab">
-                        <h1>Recensioner</h1>
-                        <p>Här visas dina recensioner som uppdragsgivare</p>
-                    </div>
-                    </div>
+                <div id="profile-review" class="tab">
+                    <h1>Recensioner</h1>
+                    <p>Här visas dina recensioner som uppdragsgivare</p>
                 </div>
             </div>
         </div>
     </div>
+
     <style>
         * {
     padding: 0;
@@ -270,111 +315,377 @@ body {
     #profile-side {
         width: 250px;
         padding: 90px 15px 20px;
+
     }
 
-    #profile-img #profile-picture {
-        height: 200px;
-        width: 200px;
-        left: 50px;
-        right: 50px;
-    }
-}
-
-@media(max-width: 900px) {
+    /* No use case, show profile workgiver */
     body {
-        margin: 0 20px;
+        background: #e9e9e9;
+        overflow: hidden;
+        padding-top: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0 100px;
+        overflow: auto;
+    }
+
+    #first-header {
+        float: right;
+        padding-bottom: 1em;
+        margin-top: 0;
+    }
+
+    #first-header a {
+        padding-left: 2em;
     }
 
     #profile-header {
+        background: #fff;
+        width: 100%;
         display: flex;
-        height: 100%;
-        flex-direction: column;
-        text-align: center;
-        padding-bottom: 20px;
-    }
-
-    #profile-header #address {
-        justify-content: center;
+        height: 190px;
+        position: relative;
+        box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
     }
 
     #profile-img {
         float: left;
-        width: 100%;
+        width: 340px;
         height: 200px;
     }
 
     #profile-img #profile-picture {
-        position: relative;
-        left: 0;
-        width: 170px;
+        height: 200px;
+        width: 180px;
+        border: 4px solid #fff;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        position: absolute;
+        left: 50px;
+        top: 20px;
+        z-index: 5;
+        background: #fff;
+    }
+
+    #profile-info {
+        float: left;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 60px;
+    }
+
+    #profile-info h3 {
+        font-variant: small-caps;
+        font-size: 2rem;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        display: inline;
+    }
+
+    #profile-info #address {
+        display: flex;
+        font-weight: bold;
+        color: #777;
+    }
+
+    #profile-info #address p {
+        margin-right: 5px;
     }
 
     #main {
-        flex-direction: column;
-        padding-right: 0px;
+        width: 100%;
+        display: flex;
+        padding-right: 15px;
     }
 
     #profile-side {
+        width: 300px;
+        background: #fff;
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+        padding: 90px 30px 20px;
+        z-index: 99;
+    }
+
+    #profile-side p {
+        margin-bottom: 7px;
+        padding-bottom: 1em;
+        color: #333;
+        font-size: 14px;
+        font-family: sans-serif;
+
+    }
+
+    #description h4 {
+        font-variant: small-caps;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    #profile-button {
+        display: flex;
+    }
+
+    #message-button {
+        border: 0;
+        padding: 10px;
+        width: 100%;
+        border-radius: 3px;
+        background: var(--color);
+        font-family: sans-serif;
+        margin: 5px 2px;
+        cursor: pointer;
+        outline: none;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        transition: .3s ease-in-out;
+        box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.3);
+        color: #fff;
+        background: rgba(265, 0, 70, 0.9);
+    }
+
+    #message-button:hover {
+        background: rgba(200, 0, 70, 0.9);
+    }
+
+    #right-side {
+        width: 100%;
+    }
+
+    #navigation {
+        width: 100%;
+        z-index: -1;
+    }
+
+    #navigation ul {
+        display: flex;
+        justify-content: center;
+        list-style-type: none;
+        height: 40px;
+        background: #fff;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    #navigation ul li {
+        padding: 10px;
+        width: 100%;
+        cursor: pointer;
+        text-align: center;
+        transition: all .2s ease-in-out;
+    }
+
+    .active, #navigation ul li:hover {
+        box-shadow: 0px -3px 0px rgba(200, 0, 70, 0.9) inset;
+    }
+
+    #profile-body {
+        width: 100%;
+        z-index: -1;
+    }
+
+    .tab {
+        padding: 20px;
         width: 100%;
         text-align: center;
-        padding: 20px;
-        margin: 5px 0;
+        display: none;
     }
 
-    #streetName-input {
-        width: 70%;
+    .tab p {
+        padding-top: 5em;
     }
 
-    #description-box {
-        width: 80%;
-    }
-}
-
-@media (max-width: 462px) {
-    body {
-        margin: 0;
+    .job-div {
+        background: #fff;
+        margin: 2em;
+        height: 17em;
+        text-align: left;
     }
 
-    #profile-header h3 {
-        font-size: 1.7rem;
+    #profile-body h4 {
+        font-variant: small-caps;
+        font-size: 1.7em;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
     }
 
-    #profile-header p, #profile-header span {
-        font-size: 0.9rem;
+    .title-div {
+        padding: 1em;
     }
-    #navigation ul li {
-        font-size: 0.8rem;
+
+    .price-div {
+        font-size: 1em;
+        padding-left: 1em;
+        padding-top: 0em;
+
+        font-variant: small-caps;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
     }
-}
+
+    .category-div {
+        font-size: 1em;
+        padding-left: 1em;
+        padding-top: 0.5em;
+
+        font-variant: small-caps;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+    }
+
+    .workgiver-name-div {
+        font-size: 1em;
+        padding-left: 1em;
+        padding-top: 0.5em;
+
+        font-variant: small-caps;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+    }
+
+    .description-div {
+        font-size: 1em;
+        padding-left: 1em;
+        padding-top: 0.5em;
+        font-variant: small-caps;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+    }
+
+    .full-description {
+        font-size: 1em;
+        padding-left: 1em;
+        padding-top: 0;
+        font-variant: normal;
+        font-weight: normal;
+    }
+
+    .contact {
+        font-size: 1em;
+        padding-left: 1em;
+        padding-top: 0.5em;
+        font-variant: small-caps;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+    }
+
+    .contact-div {
+        font-size: 1em;
+        padding-left: 1em;
+        padding-top: 0;
+        font-variant: normal;
+        font-weight: normal;
+    }
+
+
+    @media (max-width: 1100px) {
+        #profile-side {
+            width: 250px;
+            padding: 90px 15px 20px;
+        }
+
+        #profile-img #profile-picture {
+            height: 200px;
+            width: 200px;
+            left: 50px;
+            right: 50px;
+        }
+    }
+
+    @media (max-width: 900px) {
+        body {
+            margin: 0 20px;
+        }
+
+        #profile-header {
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        #profile-header #address {
+            justify-content: center;
+        }
+
+        #profile-img {
+            float: left;
+            width: 100%;
+            height: 200px;
+        }
+
+        #profile-img #profile-picture {
+            position: relative;
+            left: 0;
+            width: 170px;
+        }
+
+        #main {
+            flex-direction: column;
+            padding-right: 0px;
+        }
+
+        #profile-side {
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            margin: 5px 0;
+        }
+
+        #streetName-input {
+            width: 70%;
+        }
+
+        #description-box {
+            width: 80%;
+        }
+    }
+
+    @media (max-width: 462px) {
+        body {
+            margin: 0;
+        }
+
+        #profile-header h3 {
+            font-size: 1.7rem;
+        }
+
+        #profile-header p, #profile-header span {
+            font-size: 0.9rem;
+        }
+
+        #navigation ul li {
+            font-size: 0.8rem;
+        }
+    }
 </style>
-    <script>
-        $("#navigation ul li").click(function() {
+<script>
+    $("#navigation ul li").click(function () {
         $(this).addClass("active").siblings().removeClass("active");
     })
-       
-    const tabButton = document.querySelectorAll ("#navigation ul li");
+
+    const tabButton = document.querySelectorAll("#navigation ul li");
     const tab = document.querySelectorAll(".tab");
-        
+
     function tabs(panelIndex) {
-        tab.forEach(function(node) {
+        tab.forEach(function (node) {
             node.style.display = "none";
         })
         tab[panelIndex].style.display = "block";
     }
+
     tabs(0);
-        
-        /* Usecase4: Update profile workgiver*/      
+
+    /* Usecase4: Update profile workgiver*/
     const saveProfileButton = document.querySelector("#save-profile");
-      
+
     saveProfileButton.onclick = event => {
-            
-        const workgiver= {
-        firstName: document.querySelector("#firstName").value,
-        lastName: document.querySelector("#lastName").value,
-        email: document.querySelector("#email").value,
-        phoneNumber: document.querySelector("#phoneNumber").value,
-        address: document.querySelector("#address").value,
-        description: document.querySelector("#description-box").value
+
+        const workgiver = {
+            firstName: document.querySelector("#firstName").value,
+            lastName: document.querySelector("#lastName").value,
+            email: document.querySelector("#email").value,
+            phoneNumber: document.querySelector("#phoneNumber").value,
+            address: document.querySelector("#address").value,
+            description: document.querySelector("#description-box").value
         }
         const options = {
             method: 'PUT',
@@ -382,7 +693,7 @@ body {
             headers: {'Content-Type': 'application/json;charset=utf8'}
         }
         fetch("/updateworkgiver", options)
-    } 
+    }
 </script>
 </body>
 </html>
