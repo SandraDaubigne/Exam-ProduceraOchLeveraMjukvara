@@ -203,6 +203,7 @@ public class UserController {
 
         } else if (user.getRoles().isWorkgiver()) {
             return "5publicworkgiver";
+            //return "error";
         }
         return "error";
     }

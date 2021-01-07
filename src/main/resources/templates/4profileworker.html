@@ -82,9 +82,6 @@
                 <h1 th:text="${msg}"></h1>
 
                 <form action ="#" th:action="@{/updateUser/{id}(id=${user.id})}" th:object="${user}" method="post">
-                    <!---name måste finnas på hidden för att värdena inte ska försvinna vid uppdatering--->
-                    <!---Det spelar ingen roll vad namnen är förutom på id som ska tas emot i api:et som en variabel--->
-                    <!---th:value måste finnas här för att det inte ska bli null vid uppdatering då nytt objekt sparas--->
                     <input type="hidden" th:value="${user.id}">
                     <input type="hidden"  name="workgiver" th:field="*{roles.id}" th:value="${user.roles.id}">
                     <input type="hidden"  name="workgiver" th:field="*{categories.id}" th:value="${user.categories.id}">
@@ -111,10 +108,6 @@
                             <input required id="phoneNumber-input" type="text" size="71" placeholder="Telefonnummer*" th:field="*{phone}" th:value="${user.phone}">
                         </label>
                     </div>
-
-                    <!--Tillagda av Sandra-->
-                    <input required type="text" placeholder="Gatuadress*" id="street"  size="71" th:field="*{address}" th:value="${user.address}"><br>
-                    <input required id="email-input" type="text" size="30" placeholder="E-mail*" th:field="*{email}" th:value="${user.email}">
 
                     <div id="description-div">
                         <label id="description-label">
