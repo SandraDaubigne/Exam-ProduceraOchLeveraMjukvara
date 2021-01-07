@@ -75,4 +75,9 @@ spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect
 **Setup:** 
 * Skapa sedan en databas i din databashanterare som hetter tennerr.
 
+Tack för din läsning!
+
+Sandra, Frida och Hanna, 
+Teknikhögskolan Göteborg HT 2020.
+
  
