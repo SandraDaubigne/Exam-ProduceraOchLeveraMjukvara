@@ -62,6 +62,6 @@ File > Settings > Build,Execution,Deployment> Build Tools > Maven > Importing .
 * Vill du kan du använda din egen mySQL workbench och då går du in på application.properties filen och byter ut ditt användarnamn och lösenord till det du har och till den port du använder.
 
 **Setup:** 
-* Skapa sedan en databas i din databashanterare som hetter tennerr
+* Skapa sedan en databas i din databashanterare som hetter tennerr.
 
  
