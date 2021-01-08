@@ -60,7 +60,7 @@
     </div>
 
     <textarea id="description-box" cols="73" rows="6" placeholder="Beskrivning av uppdrag" th:field="*{jobdescription}"></textarea><br>
-
+    <p id="p-info">Användarnamn, mailadress och telefonnummer visas i annonsen.</p>
     <button id="publish-button" type="submit">Publicera</button>
 </form>
 </main>
@@ -124,10 +124,139 @@
 
 <style>
     * {
+
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+}
+
+body {
+background: #e9e9e9;
+overflow: hidden;
+padding-top: 20px;
+font-family: Arial, Helvetica, sans-serif;
+margin: 0 100px;
+overflow: auto;
+}
+
+#first-header {
+    padding-bottom: 1em;
+    margin-top: 0;
+}
+
+#logo-div {
+    padding-left: 2em;
+    float: left;
+}
+
+#link-div {
+    float: right;
+    padding-top: 1em;
+    padding-right: 2em;
+    padding-bottom: 1em;
+}
+
+#first-header a {
+    padding-left: 2em;
+    color: #333;
+}
+
+#profile-header {
+    background: #fff;
+    width: 100%;
+    display: flex;
+    height: 230px;
+    position: relative;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
+}
+
+#profile-info {
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 90px;
+    padding-left: 40%;
+    padding-right: 40%;
+}
+
+#profile-info h1 {
+    font-variant: small-caps;
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+#titel {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    padding: 0.3em;
+}
+
+#price, #email, #phone {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.3em;
+}
+
+#category-div {
+    display: block;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+#-checkbox-beauty, #checkbox-cleaning, #checkbox-vvs, #checkbox-health, #checkbox-painting {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#description-box {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    resize: none;
+    padding: 0.3em;
+}
+
+#p-info {
+    display: block;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 12px;
+}
+
+#publish-button {
+    border: 0;
+    padding: 10px;
+    border-radius: 3px;
+    background: var(--color);
+    font-family: sans-serif;
+    margin: 5px 2px;
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 10px;
+    transition: .3s ease-in-out;
+    box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.3);
+    color: #fff;
+    background: rgba(265, 0, 70, 0.9);
+    display: block;
+    margin-left: 65%;
+    margin-right: 35%;
+}
+
+#publish-button:hover {
+    background: rgba(200, 0, 70, 0.9);
+}
+
+
+@media(max-width: 900px) {
+
         padding: 0;
         margin: 0;
         box-sizing: border-box;
     }
+
 
     body {
         background: #e9e9e9;
@@ -192,6 +321,14 @@
         padding: 0.3em;
     }
 
+
+    #titel {
+    width: 70%;
+    }
+
+    #price, #email, #phone {
+        width: 70%;
+
     #category-div {
         display: block;
         margin-left: 30%;
@@ -201,6 +338,7 @@
     #-checkbox-beauty, #checkbox-cleaning, #checkbox-vvs, #checkbox-health, #checkbox-painting {
         margin-top: 10px;
         margin-bottom: 20px;
+
     }
 
     #description-box {
@@ -210,6 +348,15 @@
         resize: none;
         padding: 0.3em;
     }
+
+
+    #p-info {
+    font-size: 15px;
+    }
+
+}
+
+
 
     #publish-button {
         border: 0;
@@ -274,6 +421,13 @@
             font-size: 1.7rem;
         }
     }
+
+    
+    #p-info {
+    font-size: 10px;
+    }
+}
+
 </style>
 
 </html>
