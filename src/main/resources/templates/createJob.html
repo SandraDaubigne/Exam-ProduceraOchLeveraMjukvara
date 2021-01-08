@@ -6,15 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skapa annons</title>
 </head>
-<!--<body>
-<h1>Lägg in annons</h1>
-<form action ="#" th:action ="@{/saveJob}" th:object="${job}" method ="POST">
-    <input type="text" th:field="*{jobdescription}" placeholder="Beskrivning">
-    <input type="text" th:field="*{workgiver}" placeholder="Uppdragsgivare">
-    <button id="login-button" type="submit">Skapa annons!</button>
-</form>
-</body>
-</html> -->
+
 
 <body>
 <header id="first-header">
@@ -36,7 +28,8 @@
 
 <form action ="#" th:action="@{/saveJob/{id}(id=${user.id})}" th:object="${job}" method ="POST">
     <input type="hidden" th:value="${user.id}" th:field="*{user.id}">
-    <input id="titel" type="text" size="80" name="titel" th:field="*{titel}" placeholder="Titel"><br>
+
+    <input id="titel" type="text" size="80" th:field="*{titel}" placeholder="Titel"><br>
     <input id="price" type="text" size="80" th:field="*{price}" placeholder="Pris"><br>
 
     <div id="category-div">
@@ -67,59 +60,56 @@
 </body>
 
 <script>
+const beautyCheckbox = document.querySelector("#-checkbox-beauty");
+const cleaningCheckbox = document.querySelector("#checkbox-cleaning");
+const vvsCheckbox = document.querySelector("#checkbox-vvs");
+const healthCheckbox = document.querySelector("#checkbox-health");
+const paintingCheckbox = document.querySelector("#checkbox-painting");
 
-    const beautyCheckbox = document.querySelector("#-checkbox-beauty");
-    const cleaningCheckbox = document.querySelector("#checkbox-cleaning");
-    const vvsCheckbox = document.querySelector("#checkbox-vvs");
-    const healthCheckbox = document.querySelector("#checkbox-health");
-    const paintingCheckbox = document.querySelector("#checkbox-painting");
-
-    function selectBeautyCheckbox() {
-
-        if (beautyCheckbox.checked) {
-            cleaningCheckbox.checked = false;
-            vvsCheckbox.checked = false;
-            healthCheckbox.checked = false;
-            paintingCheckbox.checked = false;
-        }
+function selectBeautyCheckbox() {
+    if (beautyCheckbox.checked) {
+        cleaningCheckbox.checked = false;
+        vvsCheckbox.checked = false;
+        healthCheckbox.checked = false;
+        paintingCheckbox.checked = false;
     }
+}
 
-    function selectCleaningCheckbox() {
-        if (cleaningCheckbox.checked) {
-            beautyCheckbox.checked = false;
-            vvsCheckbox.checked = false;
-            healthCheckbox.checked = false;
-            paintingCheckbox.checked = false;
-        }
+function selectCleaningCheckbox() {
+    if (cleaningCheckbox.checked) {
+        beautyCheckbox.checked = false;
+        vvsCheckbox.checked = false;
+        healthCheckbox.checked = false;
+        paintingCheckbox.checked = false;
     }
+}
 
-    function selectVvsCheckbox() {
-        if (vvsCheckbox.checked) {
-            cleaningCheckbox.checked = false;
-            beautyCheckbox.checked = false;
-            healthCheckbox.checked = false;
-            paintingCheckbox.checked = false;
-        }
+function selectVvsCheckbox() {
+    if (vvsCheckbox.checked) {
+        cleaningCheckbox.checked = false;
+        beautyCheckbox.checked = false;
+        healthCheckbox.checked = false;
+        paintingCheckbox.checked = false;
     }
+}
 
-    function selectHealthCheckbox() {
-        if (healthCheckbox.checked) {
-            cleaningCheckbox.checked = false;
-            vvsCheckbox.checked = false;
-            beautyCheckbox.checked = false;
-            paintingCheckbox.checked = false;
-        }
+function selectHealthCheckbox() {
+    if (healthCheckbox.checked) {
+        cleaningCheckbox.checked = false;
+        vvsCheckbox.checked = false;
+        beautyCheckbox.checked = false;
+        paintingCheckbox.checked = false;
     }
+}
 
-    function selectPaintingCheckbox() {
-        if (paintingCheckbox.checked) {
-            cleaningCheckbox.checked = false;
-            vvsCheckbox.checked = false;
-            healthCheckbox.checked = false;
-            beautyCheckbox.checked = false;
-        }
+function selectPaintingCheckbox() {
+    if (paintingCheckbox.checked) {
+        cleaningCheckbox.checked = false;
+        vvsCheckbox.checked = false;
+        healthCheckbox.checked = false;
+        beautyCheckbox.checked = false;
     }
-
+}
 </script>
 
 <style>
@@ -193,7 +183,7 @@ overflow: auto;
     padding: 0.3em;
 }
 
-#price, #email, #phone {
+#price {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -251,180 +241,50 @@ overflow: auto;
 
 
 @media(max-width: 900px) {
-
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-    }
-
-
     body {
-        background: #e9e9e9;
-        overflow: hidden;
-        padding-top: 20px;
-        font-family: Arial, Helvetica, sans-serif;
-        margin: 0 100px;
-        overflow: auto;
-    }
-
-    #first-header {
-        padding-bottom: 1em;
-        margin-top: 0;
-    }
-
-    #logo-div {
-        padding-left: 2em;
-        float: left;
-    }
-
-    #link-div {
-        float: right;
-        padding-top: 1em;
-        padding-right: 2em;
-        padding-bottom: 1em;
-    }
-
-    #first-header a {
-        padding-left: 2em;
-        color: #333;
+        margin: 0 20px;
     }
 
     #profile-header {
-        background: #fff;
-        width: 100%;
         display: flex;
-        height: 230px;
-        position: relative;
-        box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
-    }
-
-    #profile-info {
+        height: 100%;
         flex-direction: column;
-        justify-content: center;
-        padding-top: 90px;
-        padding-left: 40%;
-        padding-right: 40%;
+        text-align: center;
+        padding-bottom: 20px;
     }
 
-    #profile-info h1 {
-        font-variant: small-caps;
-        font-size: 2rem;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: bold;
+    #profile-header h1 {
+        justify-content: center;
+    }
 
+    h1 {
+        font-size: 70%;
     }
 
     #titel, #price {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 0.3em;
-    }
-
-
-    #titel {
-    width: 70%;
-    }
-
-    #price, #email, #phone {
         width: 70%;
-
-    #category-div {
-        display: block;
-        margin-left: 30%;
-        margin-right: 30%;
-    }
-
-    #-checkbox-beauty, #checkbox-cleaning, #checkbox-vvs, #checkbox-health, #checkbox-painting {
-        margin-top: 10px;
-        margin-bottom: 20px;
-
     }
 
     #description-box {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        resize: none;
-        padding: 0.3em;
+        width: 70%;
     }
-
 
     #p-info {
-    font-size: 15px;
+        font-size: 70%;
     }
-
 }
 
-
-
-    #publish-button {
-        border: 0;
-        padding: 10px;
-        border-radius: 3px;
-        background: var(--color);
-        font-family: sans-serif;
-        margin: 5px 2px;
-        cursor: pointer;
-        outline: none;
-        margin-bottom: 10px;
-        transition: .3s ease-in-out;
-        box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.3);
-        color: #fff;
-        background: rgba(265, 0, 70, 0.9);
-        display: block;
-        margin-left: 65%;
-        margin-right: 35%;
+@media (max-width: 462px) {
+    body {
+        margin: 0;
     }
 
-    #publish-button:hover {
-        background: rgba(200, 0, 70, 0.9);
+    h1 {
+        font-size: 50%;
     }
 
-
-    @media(max-width: 900px) {
-        body {
-            margin: 0 20px;
-        }
-
-        #profile-header {
-            display: flex;
-            height: 100%;
-            flex-direction: column;
-            text-align: center;
-            padding-bottom: 20px;
-        }
-
-        #profile-header {
-            justify-content: center;
-        }
-
-        #username {
-            width: 70%;
-        }
-
-        #titel, #price, #email, #phone {
-            width: 70%;
-        }
-
-        #description-box {
-            width: 70%;
-        }
-    }
-
-    @media (max-width: 462px) {
-        body {
-            margin: 0;
-        }
-
-        #profile-header h1 {
-            font-size: 1.7rem;
-        }
-    }
-
-    
     #p-info {
-    font-size: 10px;
+        font-size: 50%;
     }
 }
 
