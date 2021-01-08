@@ -20,7 +20,7 @@ Kursen "Producera och leverera mjukvara" på Teknikhögskolan HT 2020 innefattar
 
  Vi jobbar med Agila metoder i form av Scrum med inslag av Kanban och XP (Extreme programming) 
  Se vår Kanbanboard här: https://github.com/SandraDaubigne/Team3/projects/1
-
+ 
 ## Syfte och projekt
 
 Syftet med detta github-projekt är att genom en kurs på Teknikhögskolan utbildning javautvecklare 2019-2021 i kursen “producera och leverera mjukvara” jobba mot kund i form av en grupp klasskamrater. 
@@ -92,7 +92,10 @@ spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect
 
 Tack för din läsning!
 
-Sandra, Frida och Hanna, 
+* [Sandra](https://github.com/SandraDaubigne)
+* [Frida](https://github.com/HFrida) 
+* [Hanna](https://github.com/HannaLeb)
+ 
 Teknikhögskolan Göteborg HT 2020.
 
  
