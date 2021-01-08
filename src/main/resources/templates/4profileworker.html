@@ -51,6 +51,7 @@
             </div>
             <div id="profile-button"></div>
             <button id="message-button">Meddelande</button>
+            <button id="review-button">Recensera</button>
             <div id="user-rating">
                 <div id="rate">
                     <div id="stars"></div>
@@ -73,7 +74,22 @@
             </div>
             <div id="profile-review" class="tab">
                 <h1>Recensioner</h1>
-                <p>Här visas dina recensioner som arbetare</p>
+                <div class="review-div">
+                    <div class="star-div">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Star_icon_stylized.svg/768px-Star_icon_stylized.svg.png">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Star_icon_stylized.svg/768px-Star_icon_stylized.svg.png">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Star_icon_stylized.svg/768px-Star_icon_stylized.svg.png">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Star_icon_stylized.svg/768px-Star_icon_stylized.svg.png">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Star_icon_stylized.svg/768px-Star_icon_stylized.svg.png">
+                    </div>
+                    <div class="contact">
+                        <span>Recensent: Frida Hammarberg</span>
+                    </div>
+                    <div id="text-div">
+                        <h4 id="title">Trevlig arbetare</h4>
+                        <p id="review-text">"Tillförlitlig och professionell arbetare som utför sina arbeten på ett skickligt sätt."</p>
+                    </div>
+                </div>
             </div>
 
             <div id="profile-settings" class="tab">
@@ -84,13 +100,14 @@
 
                 <h1 th:text="${msg}"></h1>
 
-                <form action ="#" th:action="@{/updateUser/{id}(id=${user.id})}" th:object="${user}" method="post">
+                <form action="#" th:action="@{/updateUser/{id}(id=${user.id})}" th:object="${user}" method="post">
                     <input type="hidden" th:value="${user.id}">
-                    <input type="hidden"  name="workgiver" th:field="*{roles.id}" th:value="${user.roles.id}">
-                    <input type="hidden"  name="workgiver" th:field="*{categories.id}" th:value="${user.categories.id}">
+                    <input type="hidden" name="workgiver" th:field="*{roles.id}" th:value="${user.roles.id}">
+                    <input type="hidden" name="workgiver" th:field="*{categories.id}" th:value="${user.categories.id}">
 
-                    <input type="hidden" name ="worker" th:field="*{roles.worker}" th:value="${user.roles.worker}">
-                    <input type="hidden"  name="workgiver"  th:field="*{roles.workgiver}" th:value="${user.roles.workgiver}">
+                    <input type="hidden" name="worker" th:field="*{roles.worker}" th:value="${user.roles.worker}">
+                    <input type="hidden" name="workgiver" th:field="*{roles.workgiver}"
+                           th:value="${user.roles.workgiver}">
 
 
                     <div id="firstName-lastname-div">
@@ -128,19 +145,28 @@
                     <div id="category-div">
                         <p id="category">Välj en eller flera kategorier:</p>
 
-                        <input type="checkbox" id="-checkbox-beauty" name="beauty" value="true" onchange="disableButton()" th:field="*{categories.beauty}" th:checked="${user.categories.beauty}">
+                        <input type="checkbox" id="-checkbox-beauty" name="beauty" value="true"
+                               onchange="disableButton()" th:field="*{categories.beauty}"
+                               th:checked="${user.categories.beauty}">
                         <label id="beauty" for="-checkbox-beauty">Skönhet</label>
 
-                        <input type="checkbox" id="checkbox-cleaning" name="cleaning" value="true" onchange="disableButton()" th:field="*{categories.cleaning}" th:checked="${user.categories.cleaning}">
+                        <input type="checkbox" id="checkbox-cleaning" name="cleaning" value="true"
+                               onchange="disableButton()" th:field="*{categories.cleaning}"
+                               th:checked="${user.categories.cleaning}">
                         <label id="cleaning" for="checkbox-cleaning">Städning</label>
 
-                        <input type="checkbox" id="checkbox-vvs" name="vvs" value="true" onchange="disableButton()" th:field="*{categories.vvs}" th:checked="${user.categories.vvs}">
+                        <input type="checkbox" id="checkbox-vvs" name="vvs" value="true" onchange="disableButton()"
+                               th:field="*{categories.vvs}" th:checked="${user.categories.vvs}">
                         <label id="vvs" for="checkbox-vvs">VVS</label>
 
-                        <input type="checkbox" id="checkbox-health" name="health" value="true" onchange="disableButton()" th:field="*{categories.health}" th:checked="${user.categories.health}">
+                        <input type="checkbox" id="checkbox-health" name="health" value="true"
+                               onchange="disableButton()" th:field="*{categories.health}"
+                               th:checked="${user.categories.health}">
                         <label id="health" for="checkbox-health">Hälsa</label>
 
-                        <input type="checkbox" id="checkbox-painting" name="painting" value="true" onchange="disableButton()" th:field="*{categories.painting}" th:checked="${user.categories.painting}">
+                        <input type="checkbox" id="checkbox-painting" name="painting" value="true"
+                               onchange="disableButton()" th:field="*{categories.painting}"
+                               th:checked="${user.categories.painting}">
 
                         <label id="painting" for="checkbox-painting">Måleri</label>
                         <!--<input type="submit" value="Submit">-->
@@ -202,299 +228,10 @@
 </script>
 
 <style>
-        * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-/* No use case, show profile worker */
-body {
-    background: #e9e9e9;
-    overflow: hidden;
-    padding-top: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0 100px;
-    overflow: auto;
-}
-
-#password {
-     -webkit-text-security: disc;
-}
-
-#logo-div {
-    padding-left: 2em;
-    float: left;
-}
-
-#first-header {
-    padding-bottom: 1em;
-    margin-top: 0;
-}
-
-#first-header img {
-    width: 130px;
-    height: 40px;
-}
-
-#first-header a {
-    padding-left: 2em;
-    color: #333;
-}
-
-#link-div {
-    float: right;
-    padding-top: 1em;
-    padding-right: 2em;
-    padding-bottom: 1em;
-}
-
-#profile-header {
-    background: #fff;
-    width: 100%;
-    display: flex;
-    height: 190px;
-    position: relative;
-    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
-}
-
-#profile-img {
-    float: left;
-    width: 340px;
-    height: 200px;
-}
-
-#profile-img #profile-picture {
-    height: 200px;
-    width: 180px;
-    border: 4px solid #fff;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-    position: absolute;
-    left: 50px;
-    top: 20px;
-    z-index: 5;
-    background: #fff;
-}
-
-#profile-info {
-    float: left;
-    flex-direction: column;
-    justify-content: center;
-    padding-top: 60px;
-}
-
-#profile-info h3 {
-    font-variant: small-caps;
-    font-size: 2rem;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    display: inline;
-}
-
-#main {
-    width: 100%;
-    display: flex;
-    padding-right: 15px;
-}
-
-#profile-side {
-    width: 300px;
-    background: #fff;
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
-    padding: 90px 30px 20px;
-    z-index: 99;
-}
-
-#profile-side p {
-    margin-bottom: 7px;
-    padding-bottom: 1em;
-    color: #333;
-    font-size: 14px;
-    font-family: sans-serif;
-
-}
-
-#description h4 {
-    font-variant: small-caps;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    margin-bottom: 8px;
-}
-
-#profile-button {
-    display: flex;
-}
-
-#message-button {
-    border: 0;
-    padding: 10px;
-    width: 100%;
-    border-radius: 3px;
-    background: var(--color);
-    font-family: sans-serif;
-    margin: 5px 2px;
-    cursor: pointer;
-    outline: none;
-    margin-bottom: 10px;
-    margin-top: 20px;
-    transition: .3s ease-in-out;
-    box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.3);
-    color: #fff;
-    background: rgba(265, 0, 70, 0.9);
-}
-
-#save-button {
-    border: 0;
-    padding: 10px;
-    border-radius: 3px;
-    background: var(--color);
-    font-family: sans-serif;
-    margin: 5px 2px;
-    cursor: pointer;
-    outline: none;
-    margin-bottom: 10px;
-    transition: .3s ease-in-out;
-    box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.3);
-    color: #fff;
-    background: rgba(265, 0, 70, 0.9);
-}
-
-#message-button:hover, #save-button:hover {
-    background: rgba(200, 0, 70, 0.9);
-}
-
-#save-button:disabled {
-    background: lightgrey;
-        color: darkgrey;
-}
-
-#right-side {
-    width: 100%;
-}
-
-#navigation {
-    width: 100%;
-    z-index: -1;
-}
-
-#navigation ul {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    height: 40px;
-    background: #fff;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-#navigation ul li {
-    padding: 10px;
-    width: 100%;
-    cursor: pointer;
-    text-align: center;
-    transition: all .2s ease-in-out;
-}
-
-.active, #navigation ul li:hover {
-    box-shadow: 0px -3px 0px rgba(200, 0, 70, 0.9) inset;
-}
-
-#profile-body {
-    width: 100%;
-    z-index: -1;
-}
-
-.tab {
-    padding: 20px;
-    width: 100%;
-    text-align: center;
-    display: none;
-}
-
-.tab p {
-    padding-top: 5em;
-}
-
-#profile-settings h3 {
-    padding: 1.5em;
-}
-
-#username {
-    float: none;
-    padding: 0.3em;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-#password {
-    float: none;
-    padding: 0.3em;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-#phoneNumber {
-    display: inline-block;
-}
-
-input, #description-box {
-    margin: 1em;
-    padding: 0.3em;
-}
-
-#description-box {
-    padding-bottom: 0;
-    margin-bottom: 0;
-    resize: none;
-}
-
-#description-label {
-    display: block;
-}
-
-input, textarea {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-#category {
-    float: none;
-    padding-right: 10%;
-    padding: 0.3em;
-    margin-top: 20px;
-    justify-content: center;
-}
-
-#checkbox-beauty, #checkbox-cleaning, #checkbox-vvs, #checkbox-health, #checkbox-painting {
-    margin-top: 10px;
-}
-
-#upload-picture-certificate-div {
-    padding-right: 10%;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.8em;
-    justify-content: left;
-}
-
-#upload-picture-input {
-    margin: 0;
-    padding-top: 1em;
-}
-
-#upload-picture-certificate {
-    margin: 0;
-    padding-top: 1em;
-}
-
-#save-div {
-    padding-left: 50%;
-}
-
-#save-profile {
-    padding: 0.2em;
-}
-
-@media(max-width: 1100px) {
-    #profile-side {
-        width: 250px;
-        padding: 90px 15px 20px;
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
     }
 
     /* No use case, show profile worker */
@@ -528,6 +265,7 @@ input, textarea {
 
     #first-header a {
         padding-left: 2em;
+        color: #333;
     }
 
     #link-div {
@@ -599,7 +337,6 @@ input, textarea {
         color: #333;
         font-size: 14px;
         font-family: sans-serif;
-
     }
 
     #description h4 {
@@ -613,7 +350,7 @@ input, textarea {
         display: flex;
     }
 
-    #message-button {
+    #message-button, #review-button {
         border: 0;
         padding: 10px;
         width: 100%;
@@ -624,7 +361,7 @@ input, textarea {
         cursor: pointer;
         outline: none;
         margin-bottom: 10px;
-        margin-top: 20px;
+        margin-top: 10px;
         transition: .3s ease-in-out;
         box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.3);
         color: #fff;
@@ -647,7 +384,7 @@ input, textarea {
         background: rgba(265, 0, 70, 0.9);
     }
 
-    #message-button:hover, #save-button:hover {
+    #message-button:hover, #save-button:hover, #review-button:hover {
         background: rgba(200, 0, 70, 0.9);
     }
 
@@ -700,6 +437,52 @@ input, textarea {
 
     .tab p {
         padding-top: 5em;
+    }
+
+    .review-div {
+        text-align: left;
+        background: #fff;
+        margin: 2em;
+        height: 15em;
+    }
+
+    #profile-body h4 {
+        font-variant: small-caps;
+        font-size: 1.7em;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        margin-left: 0.6em;
+        margin-top: 1.5em;
+    }
+
+    .star-div {
+        margin-top: 1em;
+        margin-left: 1em;
+    }
+
+    .star-div img {
+        margin-top: 1em;
+        width: 2em;
+        height: 2em;
+    }
+
+    .contact {
+        margin-top: 1em;
+        margin-right: 2em;
+    }
+
+    .contact span {
+        margin-left: 1em;
+        font-variant: small-caps;
+        font-size: 0.8em;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+    }
+
+    #text-div p {
+        font-style: italic;
+        padding-top: 1.5em;
+        margin-left: 1em;
     }
 
     #profile-settings h3 {
@@ -776,11 +559,8 @@ input, textarea {
         padding-left: 50%;
     }
 
-    #profile-body h4 {
-        font-variant: small-caps;
-        font-size: 1.7em;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: bold;
+    #save-profile {
+        padding: 0.2em;
     }
 
     @media (max-width: 1100px) {
@@ -789,78 +569,370 @@ input, textarea {
             padding: 90px 15px 20px;
         }
 
-        #profile-img #profile-picture {
-            left: 50px;
-            right: 50px;
-        }
-    }
-
-    @media (max-width: 900px) {
+        /* No use case, show profile worker */
         body {
-            margin: 0 20px;
+            background: #e9e9e9;
+            overflow: hidden;
+            padding-top: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0 100px;
+            overflow: auto;
+        }
+
+        #password {
+            -webkit-text-security: disc;
+        }
+
+        #logo-div {
+            padding-left: 2em;
+            float: left;
+        }
+
+        #first-header {
+            padding-bottom: 1em;
+            margin-top: 0;
+        }
+
+        #first-header img {
+            width: 130px;
+            height: 40px;
+        }
+
+        #first-header a {
+            padding-left: 2em;
+        }
+
+        #link-div {
+            float: right;
+            padding-top: 1em;
+            padding-right: 2em;
+            padding-bottom: 1em;
         }
 
         #profile-header {
+            background: #fff;
+            width: 100%;
             display: flex;
-            height: 100%;
-            flex-direction: column;
-            text-align: center;
-            padding-bottom: 20px;
-        }
-
-        #profile-header #address {
-            justify-content: center;
+            height: 190px;
+            position: relative;
+            box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
         }
 
         #profile-img {
             float: left;
-            width: 100%;
+            width: 340px;
             height: 200px;
         }
 
         #profile-img #profile-picture {
-            position: relative;
-            left: 0;
+            height: 200px;
+            width: 180px;
+            border: 4px solid #fff;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            left: 50px;
+            top: 20px;
+            z-index: 5;
+            background: #fff;
+        }
+
+        #profile-info {
+            float: left;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 60px;
+        }
+
+        #profile-info h3 {
+            font-variant: small-caps;
+            font-size: 2rem;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            display: inline;
         }
 
         #main {
-            flex-direction: column;
-            padding-right: 0px;
+            width: 100%;
+            display: flex;
+            padding-right: 15px;
         }
 
         #profile-side {
+            width: 300px;
+            background: #fff;
+            box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+            padding: 90px 30px 20px;
+            z-index: 99;
+        }
+
+        #profile-side p {
+            margin-bottom: 7px;
+            padding-bottom: 1em;
+            color: #333;
+            font-size: 14px;
+            font-family: sans-serif;
+
+        }
+
+        #description h4 {
+            font-variant: small-caps;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        #profile-button {
+            display: flex;
+        }
+
+        #message-button {
+            border: 0;
+            padding: 10px;
             width: 100%;
-            text-align: center;
-            padding: 20px;
-            margin: 5px 0;
+            border-radius: 3px;
+            background: var(--color);
+            font-family: sans-serif;
+            margin: 5px 2px;
+            cursor: pointer;
+            outline: none;
+            margin-bottom: 10px;
+            margin-top: 20px;
+            transition: .3s ease-in-out;
+            box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.3);
+            color: #fff;
+            background: rgba(265, 0, 70, 0.9);
         }
 
-        #streetName-input {
-            width: 70%;
+        #save-button {
+            border: 0;
+            padding: 10px;
+            border-radius: 3px;
+            background: var(--color);
+            font-family: sans-serif;
+            margin: 5px 2px;
+            cursor: pointer;
+            outline: none;
+            margin-bottom: 10px;
+            transition: .3s ease-in-out;
+            box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.3);
+            color: #fff;
+            background: rgba(265, 0, 70, 0.9);
         }
 
-        #description-box {
-            width: 80%;
-        }
-    }
-
-    @media (max-width: 462px) {
-        body {
-            margin: 0;
+        #message-button:hover, #save-button:hover {
+            background: rgba(200, 0, 70, 0.9);
         }
 
-        #profile-header h3 {
-            font-size: 1.7rem;
+        #save-button:disabled {
+            background: lightgrey;
+            color: darkgrey;
         }
 
-        #profile-header p, #profile-header span {
-            font-size: 0.9rem;
+        #right-side {
+            width: 100%;
+        }
+
+        #navigation {
+            width: 100%;
+            z-index: -1;
+        }
+
+        #navigation ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            height: 40px;
+            background: #fff;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
         }
 
         #navigation ul li {
-            font-size: 0.8rem;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+            text-align: center;
+            transition: all .2s ease-in-out;
         }
-    }
+
+        .active, #navigation ul li:hover {
+            box-shadow: 0px -3px 0px rgba(200, 0, 70, 0.9) inset;
+        }
+
+        #profile-body {
+            width: 100%;
+            z-index: -1;
+        }
+
+        .tab {
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            display: none;
+        }
+
+        .tab p {
+            padding-top: 5em;
+        }
+
+        #profile-settings h3 {
+            padding: 1.5em;
+        }
+
+        #username {
+            float: none;
+            padding: 0.3em;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        #password {
+            float: none;
+            padding: 0.3em;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        #phoneNumber {
+            display: inline-block;
+        }
+
+        input, #description-box {
+            margin: 1em;
+            padding: 0.3em;
+        }
+
+        #description-box {
+            padding-bottom: 0;
+            margin-bottom: 0;
+            resize: none;
+        }
+
+        #description-label {
+            display: block;
+        }
+
+        input, textarea {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #category {
+            float: none;
+            padding-right: 10%;
+            padding: 0.3em;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        #-checkbox-beauty, #checkbox-cleaning, #checkbox-vvs, #checkbox-health, #checkbox-painting {
+            margin-top: 10px;
+        }
+
+        #upload-picture-certificate-div {
+            padding-right: 10%;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.8em;
+            justify-content: left;
+        }
+
+        #upload-picture-input {
+            margin: 0;
+            padding-top: 1em;
+        }
+
+        #upload-picture-certificate {
+            margin: 0;
+            padding-top: 1em;
+        }
+
+        #save-div {
+            padding-left: 50%;
+        }
+
+        #profile-body h4 {
+            font-variant: small-caps;
+            font-size: 1.7em;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+        }
+
+        @media (max-width: 1100px) {
+            #profile-side {
+                width: 250px;
+                padding: 90px 15px 20px;
+            }
+
+            #profile-img #profile-picture {
+                left: 50px;
+                right: 50px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            body {
+                margin: 0 20px;
+            }
+
+            #profile-header {
+                display: flex;
+                height: 100%;
+                flex-direction: column;
+                text-align: center;
+                padding-bottom: 20px;
+            }
+
+            #profile-header #address {
+                justify-content: center;
+            }
+
+            #profile-img {
+                float: left;
+                width: 100%;
+                height: 200px;
+            }
+
+            #profile-img #profile-picture {
+                position: relative;
+                left: 0;
+            }
+
+            #main {
+                flex-direction: column;
+                padding-right: 0px;
+            }
+
+            #profile-side {
+                width: 100%;
+                text-align: center;
+                padding: 20px;
+                margin: 5px 0;
+            }
+
+            #streetName-input {
+                width: 70%;
+            }
+
+            #description-box {
+                width: 80%;
+            }
+        }
+
+        @media (max-width: 462px) {
+            body {
+                margin: 0;
+            }
+
+            #profile-header h3 {
+                font-size: 1.7rem;
+            }
+
+            #profile-header p, #profile-header span {
+                font-size: 0.9rem;
+            }
+
+            #navigation ul li {
+                font-size: 0.8rem;
+            }
+        }
 </style>
 
 
