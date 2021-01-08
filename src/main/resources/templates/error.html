@@ -7,12 +7,46 @@
     <title>Document</title>
 </head>
 <body>
-
-<img src="../images/error.JPG">
-
-<p>OOPS nåt gick fel</p>
+<div id="text-div">
+    <h1 id="error-text">OOPS något gick fel</h1>
+</div>
+<div id="img-div"></div>
+    <img id="img" src="../images/error.JPG">
+</div>
+<div id="link-div">
+    <a id="link" th:href="@{/}">Tillbaka till Tennerr</a>
+</div>
 
 </body>
 
-<style></style>
+<style>
+
+    #error-text {
+        margin-top: 2em;
+        text-align: center;
+        font-variant: small-caps;
+        font-size: 2rem;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+    }
+
+    #img {
+        display: block;
+        margin-top: 2em;
+        margin-left: auto;
+        margin-right: auto;
+        width: 35%;
+    }
+
+    #link-div {
+        text-align: center;
+        margin-top: 1em;
+    }
+
+    #link {
+        font-size: 1.5em;
+        font-variant: small-caps;
+    }
+
+</style>
 </html>
