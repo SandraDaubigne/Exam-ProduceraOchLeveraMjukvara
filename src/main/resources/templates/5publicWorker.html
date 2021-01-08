@@ -59,11 +59,70 @@
             <div id="profile-body">
                 <div id="profile-jobs" class="tab">
                     <h1>Aktuella uppdrag</h1>
-                    <p id="active-jobs">Här visas dina aktuella uppdrag</p>
+                    <p id="active-jobs">Du har för närvarande inga aktuella uppdrag</p>
                 </div>
                 <div id="profile-review" class="tab">
-                    <h1>Recensioner</h1>
-                    <p>Här visas dina recensioner som arbetare</p>
+                    <div id="top-div">
+                        <h1 class="header">Recensioner</h1>
+                    </div>
+                    <div id="button-div">
+                        <button id="review-button">Recensera</button>
+                    </div>
+                    <div class="review-div">
+                        <div class="star-div">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/StarIconGold.png">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/StarIconGold.png">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/StarIconGold.png">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/StarIconGold.png">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/StarIconGold.png">
+                        </div>
+                        <div class="contact">
+                            <span>Recensent: Frida Hammarberg</span>
+                        </div>
+                        <div class="text-div">
+                            <h4 class="title">Trevlig arbetare</h4>
+                            <p class="review-text">"Tillförlitlig och professionell arbetare som utför sina arbeten på
+                                ett
+                                skickligt sätt."</p>
+                        </div>
+                    </div>
+                    <div class="review-div">
+                        <div class="star-div">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/StarIconGold.png">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/StarIconGold.png">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/StarIconGold.png">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/StarIconGold.png">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/StarIconSilver.png">
+                        </div>
+                        <div class="contact">
+                            <span>Recensent: Hanna Lebeck</span>
+                        </div>
+                        <div class="text-div">
+                            <h4 class="title">Bra utfört arbete</h4>
+                            <p class="review-text">"Utförde mitt utannonserade arbete mycket bra. Verkar dock ha lite
+                                svårt
+                                att passa tider..."</p>
+                        </div>
+                    </div>
+                    <div class="review-div">
+                        <div class="star-div">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/StarIconGold.png">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/StarIconGold.png">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/StarIconGold.png">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/StarIconSilver.png">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/StarIconSilver.png">
+                        </div>
+                        <div class="contact">
+                            <span>Recensent: Sandra D'aubigné</span>
+                        </div>
+                        <div class="text-div">
+                            <h4 class="title">Helt okej, men inte direkt utmärkt</h4>
+                            <p class="review-text">"Trots att arbetaren utförde mitt utannonserade arbete kände jag
+                                inget
+                                förtroende för
+                                personen."</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -92,243 +151,10 @@
 
 <style>
 
-        * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-/* No use case, show profile workgiver */
-body {
-    background: #e9e9e9;
-    overflow: hidden;
-    padding-top: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0 100px;
-    overflow: auto;
-}
-
-#first-header {
-    float: right;
-    padding-bottom: 1em;
-    margin-top: 0;
-}
-
-#first-header a {
-    padding-left: 2em;
-    color: #333;
-}
-
-#profile-header {
-    background: #fff;
-    width: 100%;
-    display: flex;
-    height: 190px;
-    position: relative;
-    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
-}
-
-#profile-img {
-    float: left;
-    width: 340px;
-    height: 200px;
-}
-
-#profile-img #profile-picture {
-    height: 200px;
-    width: 180px;
-    border: 4px solid #fff;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-    position: absolute;
-    left: 50px;
-    top: 20px;
-    z-index: 5;
-    background: #fff;
-}
-
-#profile-info {
-    float: left;
-    flex-direction: column;
-    justify-content: center;
-    padding-top: 60px;
-}
-
-#profile-info h3 {
-    font-variant: small-caps;
-    font-size: 2rem;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    display: inline;
-}
-
-#main {
-    width: 100%;
-    display: flex;
-    padding-right: 15px;
-}
-
-#profile-side {
-    width: 300px;
-    background: #fff;
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
-    padding: 90px 30px 20px;
-    z-index: 99;
-}
-
-#profile-side p {
-    margin-bottom: 7px;
-    padding-bottom: 1em;
-    color: #333;
-    font-size: 14px;
-    font-family: sans-serif;
-
-}
-
-
-#description h4 {
-    font-variant: small-caps;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    margin-bottom: 8px;
-}
-
-#profile-button {
-    display: flex;
-}
-
-#message-button {
-    border: 0;
-    padding: 10px;
-    width: 100%;
-    border-radius: 3px;
-    background: var(--color);
-    font-family: sans-serif;
-    margin: 5px 2px;
-    cursor: pointer;
-    outline: none;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    transition: .3s ease-in-out;
-    box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.3);
-    color: #fff;
-    background: rgba(265, 0, 70, 0.9);
-}
-
-#save-button {
-    border: 0;
-    padding: 10px;
-    border-radius: 3px;
-    background: var(--color);
-    font-family: sans-serif;
-    margin: 5px 2px;
-    cursor: pointer;
-    outline: none;
-    margin-bottom: 10px;
-    transition: .3s ease-in-out;
-    box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.3);
-    color: #fff;
-    background: rgba(265, 0, 70, 0.9);
-}
-
-#message-button:hover, #save-button:hover {
-    background: rgba(200, 0, 70, 0.9);
-}
-
-#right-side {
-    width: 100%;
-}
-
-#navigation {
-    width: 100%;
-    z-index: -1;
-}
-
-#navigation ul {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    height: 40px;
-    background: #fff;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-#navigation ul li {
-    padding: 10px;
-    width: 100%;
-    cursor: pointer;
-    text-align: center;
-    transition: all .2s ease-in-out;
-}
-
-.active, #navigation ul li:hover {
-    box-shadow: 0px -3px 0px rgba(200, 0, 70, 0.9) inset;
-}
-
-#profile-body {
-    width: 100%;
-    z-index: -1;
-}
-
-.tab {
-    padding: 20px;
-    width: 100%;
-    text-align: center;
-    display: none;
-}
-
-.tab p {
-    padding-top: 5em;
-}
-
-#profile-settings h3 {
-    padding: 1.5em;
-}
-
-#phoneNumber, #email {
-    display: inline-block;
-}
-
-input, #description-box {
-    margin: 1em;
-    padding: 0.3em;
-}
-
-#description-box {
-    padding-bottom: 0;
-    margin-bottom: 0;
-}
-
-#description {
-    display: block;
-}
-
-input, textarea {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-#upload-picture-div {
-    padding-right: 10%;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.8em;
-}
-
-#upload-picture-input {
-    padding-left: 0;
-    margin-left: 0.1em;
-}
-
-#save-div {
-    padding-left: 50%;
-}
-
-#save-profile {
-    padding: 0.2em;
-}
-
-@media(max-width: 1100px) {
-    #profile-side {
-        width: 250px;
-        padding: 90px 15px 20px;
-
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
     }
 
     /* No use case, show profile workgiver */
@@ -349,6 +175,7 @@ input, textarea {
 
     #first-header a {
         padding-left: 2em;
+        color: #333;
     }
 
     #profile-header {
@@ -413,10 +240,9 @@ input, textarea {
         color: #333;
         font-size: 14px;
         font-family: sans-serif;
-
     }
 
-    #description h4 {
+    #description h4, .header {
         font-variant: small-caps;
         font-family: Arial, Helvetica, sans-serif;
         font-weight: bold;
@@ -427,7 +253,7 @@ input, textarea {
         display: flex;
     }
 
-    #message-button {
+    #message-button, #review-button {
         border: 0;
         padding: 10px;
         width: 100%;
@@ -445,23 +271,13 @@ input, textarea {
         background: rgba(265, 0, 70, 0.9);
     }
 
-    #save-button {
-        border: 0;
-        padding: 10px;
-        border-radius: 3px;
-        background: var(--color);
-        font-family: sans-serif;
-        margin: 5px 2px;
-        cursor: pointer;
-        outline: none;
-        margin-bottom: 10px;
-        transition: .3s ease-in-out;
-        box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.3);
-        color: #fff;
-        background: rgba(265, 0, 70, 0.9);
+    #review-button {
+        width: 80%;
+        float: right;
+        margin-right: 3em;
     }
 
-    #message-button:hover, #save-button:hover {
+    #message-button:hover, #review-button:hover {
         background: rgba(200, 0, 70, 0.9);
     }
 
@@ -511,22 +327,69 @@ input, textarea {
         padding-top: 5em;
     }
 
+    .review-div {
+        text-align: left;
+        background: #fff;
+        margin: 2em;
+        height: 15em;
+    }
+
+    #profile-body h4 {
+        font-variant: small-caps;
+        font-size: 1.7em;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        margin-left: 0.6em;
+        margin-top: 1.5em;
+    }
+
+    #top-div {
+        display: inline-block;
+        float: none;
+    }
+
+    #button-div {
+        display: inline-block;
+        float: right;
+    }
+
+    .star-div {
+        margin-top: 1em;
+        margin-left: 1em;
+    }
+
+    .star-div img {
+        margin-top: 1em;
+        width: 2em;
+        height: 2em;
+    }
+
+    .contact {
+        margin-top: 1em;
+        margin-right: 2em;
+    }
+
+    .contact span {
+        margin-left: 1em;
+        font-variant: small-caps;
+        font-size: 0.8em;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+    }
+
+    .text-div p {
+        font-style: italic;
+        padding-top: 1.5em;
+        margin-left: 1em;
+    }
+
     #profile-settings h3 {
         padding: 1.5em;
     }
 
-    #phoneNumber, #email {
-        display: inline-block;
-    }
-
-    input, #description-box {
+    input {
         margin: 1em;
         padding: 0.3em;
-    }
-
-    #description-box {
-        padding-bottom: 0;
-        margin-bottom: 0;
     }
 
     #description {
@@ -537,106 +400,320 @@ input, textarea {
         font-family: Arial, Helvetica, sans-serif;
     }
 
-    #upload-picture-div {
-        padding-right: 10%;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 0.8em;
-    }
-
-    #upload-picture-input {
-        padding-left: 0;
-        margin-left: 0.1em;
-    }
-
-    #save-div {
-        padding-left: 50%;
-    }
-
-    #save-profile {
-        padding: 0.2em;
-    }
 
     @media (max-width: 1100px) {
         #profile-side {
             width: 250px;
             padding: 90px 15px 20px;
+
         }
 
-        #profile-img #profile-picture {
-            height: 200px;
-            width: 200px;
-            left: 50px;
-            right: 50px;
-        }
-    }
-
-    @media (max-width: 900px) {
+        /* No use case, show profile workgiver */
         body {
-            margin: 0 20px;
+            background: #e9e9e9;
+            overflow: hidden;
+            padding-top: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0 100px;
+            overflow: auto;
+        }
+
+        #first-header {
+            float: right;
+            padding-bottom: 1em;
+            margin-top: 0;
+        }
+
+        #first-header a {
+            padding-left: 2em;
         }
 
         #profile-header {
+            background: #fff;
+            width: 100%;
             display: flex;
-            height: 100%;
-            flex-direction: column;
-            text-align: center;
-            padding-bottom: 20px;
-        }
-
-        #profile-header #address {
-            justify-content: center;
+            height: 190px;
+            position: relative;
+            box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
         }
 
         #profile-img {
             float: left;
-            width: 100%;
+            width: 340px;
             height: 200px;
         }
 
         #profile-img #profile-picture {
-            position: relative;
-            left: 0;
-            width: 170px;
+            height: 200px;
+            width: 180px;
+            border: 4px solid #fff;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            left: 50px;
+            top: 20px;
+            z-index: 5;
+            background: #fff;
+        }
+
+        #profile-info {
+            float: left;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 60px;
+        }
+
+        #profile-info h3 {
+            font-variant: small-caps;
+            font-size: 2rem;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            display: inline;
         }
 
         #main {
-            flex-direction: column;
-            padding-right: 0px;
+            width: 100%;
+            display: flex;
+            padding-right: 15px;
         }
 
         #profile-side {
+            width: 300px;
+            background: #fff;
+            box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+            padding: 90px 30px 20px;
+            z-index: 99;
+        }
+
+        #profile-side p {
+            margin-bottom: 7px;
+            padding-bottom: 1em;
+            color: #333;
+            font-size: 14px;
+            font-family: sans-serif;
+
+        }
+
+        #description h4 {
+            font-variant: small-caps;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        #profile-button {
+            display: flex;
+        }
+
+        #message-button {
+            border: 0;
+            padding: 10px;
             width: 100%;
-            text-align: center;
-            padding: 20px;
-            margin: 5px 0;
+            border-radius: 3px;
+            background: var(--color);
+            font-family: sans-serif;
+            margin: 5px 2px;
+            cursor: pointer;
+            outline: none;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            transition: .3s ease-in-out;
+            box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.3);
+            color: #fff;
+            background: rgba(265, 0, 70, 0.9);
         }
 
-        #streetName-input {
-            width: 70%;
+        #save-button {
+            border: 0;
+            padding: 10px;
+            border-radius: 3px;
+            background: var(--color);
+            font-family: sans-serif;
+            margin: 5px 2px;
+            cursor: pointer;
+            outline: none;
+            margin-bottom: 10px;
+            transition: .3s ease-in-out;
+            box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.3);
+            color: #fff;
+            background: rgba(265, 0, 70, 0.9);
         }
 
-        #description-box {
-            width: 80%;
-        }
-    }
-
-    @media (max-width: 462px) {
-        body {
-            margin: 0;
+        #message-button:hover, #save-button:hover {
+            background: rgba(200, 0, 70, 0.9);
         }
 
-        #profile-header h3 {
-            font-size: 1.7rem;
+        #right-side {
+            width: 100%;
         }
 
-        #profile-header p, #profile-header span {
-            font-size: 0.9rem;
+        #navigation {
+            width: 100%;
+            z-index: -1;
+        }
+
+        #navigation ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            height: 40px;
+            background: #fff;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
         }
 
         #navigation ul li {
-            font-size: 0.8rem;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+            text-align: center;
+            transition: all .2s ease-in-out;
         }
-    }
+
+        .active, #navigation ul li:hover {
+            box-shadow: 0px -3px 0px rgba(200, 0, 70, 0.9) inset;
+        }
+
+        #profile-body {
+            width: 100%;
+            z-index: -1;
+        }
+
+        .tab {
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            display: none;
+        }
+
+        .tab p {
+            padding-top: 5em;
+        }
+
+        #profile-settings h3 {
+            padding: 1.5em;
+        }
+
+        #phoneNumber, #email {
+            display: inline-block;
+        }
+
+        input, #description-box {
+            margin: 1em;
+            padding: 0.3em;
+        }
+
+        #description-box {
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        #description {
+            display: block;
+        }
+
+        input, textarea {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #upload-picture-div {
+            padding-right: 10%;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.8em;
+        }
+
+        #upload-picture-input {
+            padding-left: 0;
+            margin-left: 0.1em;
+        }
+
+        #save-div {
+            padding-left: 50%;
+        }
+
+        #save-profile {
+            padding: 0.2em;
+        }
+
+        @media (max-width: 1100px) {
+            #profile-side {
+                width: 250px;
+                padding: 90px 15px 20px;
+            }
+
+            #profile-img #profile-picture {
+                height: 200px;
+                width: 200px;
+                left: 50px;
+                right: 50px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            body {
+                margin: 0 20px;
+            }
+
+            #profile-header {
+                display: flex;
+                height: 100%;
+                flex-direction: column;
+                text-align: center;
+                padding-bottom: 20px;
+            }
+
+            #profile-header #address {
+                justify-content: center;
+            }
+
+            #profile-img {
+                float: left;
+                width: 100%;
+                height: 200px;
+            }
+
+            #profile-img #profile-picture {
+                position: relative;
+                left: 0;
+                width: 170px;
+            }
+
+            #main {
+                flex-direction: column;
+                padding-right: 0px;
+            }
+
+            #profile-side {
+                width: 100%;
+                text-align: center;
+                padding: 20px;
+                margin: 5px 0;
+            }
+
+            #streetName-input {
+                width: 70%;
+            }
+
+            #description-box {
+                width: 80%;
+            }
+        }
+
+        @media (max-width: 462px) {
+            body {
+                margin: 0;
+            }
+
+            #profile-header h3 {
+                font-size: 1.7rem;
+            }
+
+            #profile-header p, #profile-header span {
+                font-size: 0.9rem;
+            }
+
+            #navigation ul li {
+                font-size: 0.8rem;
+            }
+        }
 </style>
 
 

@@ -65,53 +65,70 @@
                     <h4 id="option-h4">Registrera dig som arbetare eller uppdragsgivare:</h4>
                 </div>
 
-                <form action ="#" th:action ="@{/saveUser}" th:object="${user}" method ="POST">
+                <form action="#" th:action="@{/saveUser}" th:object="${user}" method="POST">
                     <div id="radio-div">
 
                         <!---value måste finnas här-->
                         <label id="worker">
 
-                        <input type ="radio" name="radioButton" id="radio-worker" value="true" onchange="showWorker()" th:field="*{roles.worker}">
+                            <input type="radio" name="radioButton" id="radio-worker" value="true"
+                                   onchange="showWorker()" th:field="*{roles.worker}">
 
-                        Arbetare</label>
+                            Arbetare</label>
                         <label id="workgiver">
-                        <input type ="radio" name="radioButton" id="radio-workgiver"  value="true" onchange="showWorkgiver()" th:field="*{roles.workgiver}">
-                        Uppdragsgivare</label>
+                            <input type="radio" name="radioButton" id="radio-workgiver" value="true"
+                                   onchange="showWorkgiver()" th:field="*{roles.workgiver}">
+                            Uppdragsgivare</label>
 
                         <p id="errorMsg" th:text="${error}"></p>
 
-                        <input required name="username" type="text" placeholder="Användarnamn*" id="username" style="width: 553px; height: 25px" th:field="*{username}" ><br>
-                        <input required type="text" th:name="password" placeholder="Lösenord*" id="password" style="width: 275px; height: 25px" th:field="*{password}">
-                        <input required type="text" th:name="newpassword" placeholder="Upprepa lösenord*" id="verify" style="width: 275px; height: 25px"><br>
+                        <input required name="username" type="text" placeholder="Användarnamn*" id="username"
+                               style="width: 553px; height: 25px" th:field="*{username}"><br>
+                        <input required type="text" th:name="password" placeholder="Lösenord*" id="password"
+                               style="width: 275px; height: 25px" th:field="*{password}">
+                        <input required type="text" th:name="newpassword" placeholder="Upprepa lösenord*" id="verify"
+                               onchange="checkInputFieldWorkgiver()" style="width: 275px; height: 25px"><br>
 
-                        <input required type ="text" placeholder="Förnamn*" id="firstname" style="width: 275px; height: 25px" th:field="*{firstname}">
-                        <input required type ="text" placeholder="Efternamn*" id="lastname" style="width: 275px; height: 25px" th:field="*{lastname}"><br>
-                        <input required type="text" placeholder="Telefonnummer*" id="phone" style="width: 553px; height: 25px" th:field="*{phone}"><br>
+                        <input required type="text" placeholder="Förnamn*" id="firstname"
+                               style="width: 275px; height: 25px" th:field="*{firstname}">
+                        <input required type="text" placeholder="Efternamn*" id="lastname"
+                               style="width: 275px; height: 25px" th:field="*{lastname}"><br>
+                        <input required type="text" placeholder="Telefonnummer*" id="phone"
+                               style="width: 553px; height: 25px" th:field="*{phone}"><br>
 
-                        <textarea required placeholder="Personbeskrivning*" id="person-description" name="Personbeskrivning" style="width: 553px; height: 100px" th:field="*{description}"></textarea><br>
+                        <textarea required placeholder="Personbeskrivning*" id="person-description"
+                                  name="Personbeskrivning" style="width: 553px; height: 100px"
+                                  th:field="*{description}"></textarea><br>
 
 
                         <p id="category">Välj en eller flera kategorier:</p>
-                        <input type="checkbox" id="-checkbox-beauty" name="beauty" value="true" onchange="disableButton()" th:field="*{categories.beauty}">
+                        <input type="checkbox" id="-checkbox-beauty" name="beauty" value="true"
+                               onchange="disableButton()" th:field="*{categories.beauty}">
                         <label id="beauty" for="-checkbox-beauty">Skönhet</label>
 
-                        <input type="checkbox" id="checkbox-cleaning" name="cleaning" value="true" onchange="disableButton()" th:field="*{categories.cleaning}">
+                        <input type="checkbox" id="checkbox-cleaning" name="cleaning" value="true"
+                               onchange="disableButton()" th:field="*{categories.cleaning}">
                         <label id="cleaning" for="checkbox-cleaning">Städning</label>
 
-                        <input type="checkbox" id="checkbox-vvs" name="vvs" value="true" onchange="disableButton()" th:field="*{categories.vvs}">
+                        <input type="checkbox" id="checkbox-vvs" name="vvs" value="true" onchange="disableButton()"
+                               th:field="*{categories.vvs}">
                         <label id="vvs" for="checkbox-vvs">VVS</label>
 
-                        <input type="checkbox" id="checkbox-health" name="health" value="true" onchange="disableButton()" th:field="*{categories.health}">
+                        <input type="checkbox" id="checkbox-health" name="health" value="true"
+                               onchange="disableButton()" th:field="*{categories.health}">
                         <label id="health" for="checkbox-health">Hälsa</label>
 
-                        <input type="checkbox" id="checkbox-painting" name="painting" value="true" onchange="disableButton()" th:field="*{categories.painting}">
+                        <input type="checkbox" id="checkbox-painting" name="painting" value="true"
+                               onchange="disableButton()" th:field="*{categories.painting}">
                         <label id="painting" for="checkbox-painting">Måleri</label>
                         <!--<input type="submit" value="Submit">-->
 
 
                         <!--Workgiver-->
-                        <input type ="text" placeholder="E-mail*" id="e-mail" onchange="checkInputFieldWorkgiver()" style="width: 553px; height: 25px" th:field="*{email}">
-                        <input type="text" placeholder="Gatuadress*" id="street" onchange="checkInputFieldWorkgiver()" style="width: 553px; height: 25px" th:field="*{address}"><br>
+                        <input type="text" placeholder="E-mail*" id="e-mail" onchange="checkInputFieldWorkgiver()"
+                               style="width: 553px; height: 25px" th:field="*{email}">
+                        <input type="text" placeholder="Gatuadress*" id="street" onchange="checkInputFieldWorkgiver()"
+                               style="width: 553px; height: 25px" th:field="*{address}"><br>
 
 
                         <!-- Laddar upp filer som väljs lokalt på datorn-->
@@ -192,7 +209,7 @@
 
     function disableButton() {
         if (checkboxBeauty.checked || checkboxCleaning.checked ||
-        checkboxVVS.checked || checkboxHealth.checked || checkboxPainting.checked) {
+            checkboxVVS.checked || checkboxHealth.checked || checkboxPainting.checked) {
             button.disabled = false;
         } else {
             button.disabled = true;
@@ -201,7 +218,7 @@
 
     function checkInputFieldWorkgiver() {
         if (username.value !== "" && password.value !== "" && verifyPassword.value !== "" && firstname.value !== "" &&
-        lastname.value !== "" && phone.value !== "" && description.value !== "" && email.value !== "" && street.value !== "") {
+            lastname.value !== "" && phone.value !== "" && description.value !== "" && email.value !== "" && street.value !== "") {
             button.disabled = false;
         }
     }
@@ -433,7 +450,7 @@
         padding-left: 20em;
     }
 
-    #radio-worker{
+    #radio-worker {
         margin-right: 3px;
     }
 
@@ -582,7 +599,7 @@
         }
     }
 
-    @media(max-width: 1100px) {
+    @media (max-width: 1100px) {
         #profile-side {
             width: 250px;
             padding: 90px 15px 20px;
@@ -594,7 +611,7 @@
         }
     }
 
-    @media(max-width: 900px) {
+    @media (max-width: 900px) {
         body {
             margin: 0 20px;
         }
@@ -655,7 +672,6 @@
             padding-left: 20%;
         }
     }
-
 
 
 </style>
