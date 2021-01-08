@@ -10,13 +10,16 @@ Denna dokumentation berör följande punkter:
 * [Installationsguide](#installationsguide)
 
 ## Kursmål
-Kursen "Producera och leverera mjukvara" på Teknikhögskolan 2020 innefattar följande kursmål: 
+Kursen "Producera och leverera mjukvara" på Teknikhögskolan HT 2020 innefattar följande kursmål: 
 
 * Agila projekt-metoder
 * Ekonomiska verktyg
 * System-krav
 * Rapport
 * Producera och leverera mjukvara
+
+ Vi jobbar med Agila metoder i form av Scrum med inslag av Kanban och XP (Extreme programming) 
+ Se vår Kanbanboard här: https://github.com/SandraDaubigne/Team3/projects/1
 
 ## Syfte och projekt
 
@@ -35,8 +38,7 @@ Beställargruppens önskan av applikation är en app där arbetsgivare och arbet
 * Uppdragsgivare ska se sina skapade jobb
  
  
- Vi jobbar med Agila metoder i form av Scrum med inslag av Kanban och XP (Extreme programming) 
- Se vår Kanbanboard här: https://github.com/SandraDaubigne/Team3/projects/1
+
 
 ## Teknisk specifikation
 
