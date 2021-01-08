@@ -76,12 +76,16 @@
                         <div class="full-description">
                             <span th:text="${job.jobdescription}"></span>
                         </div>
-
-                        <div class="contact">
-                            <span>Kontakt:</span>
+                        <div class="workgiver-div">
+                            <span>Uppdragsgivare: </span>
                             <span th:text="${job.user.username}"></span>
-                            <span th:text="${job.user.email}"></span><br>
-                            <span th:text="${job.user.phone}"></span>
+                        </div>
+                        <div class="contact">
+                            <span>Kontakt:</span><br>
+                            <img id="phone-img" src="https://cdn3.iconfinder.com/data/icons/communication-1/100/phone-512.png">
+                            <span id="user-phone" th:text="${job.user.phone}"></span><br>
+                            <img id="mail-img" src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-email-512.png">
+                            <span id="user-email" th:text="${job.user.email}"></span>
                         </div>
                     </div>
             </div>
@@ -327,17 +331,15 @@
         font-size: 1em;
         padding-left: 1em;
         padding-top: 0em;
-
         font-variant: small-caps;
         font-family: Arial, Helvetica, sans-serif;
         font-weight: bold;
     }
 
-    .category-div {
+    .category-div, .workgiver-div {
         font-size: 1em;
         padding-left: 1em;
         padding-top: 0.5em;
-
         font-variant: small-caps;
         font-family: Arial, Helvetica, sans-serif;
         font-weight: bold;
@@ -362,11 +364,29 @@
 
     .contact {
         font-size: 1em;
-        padding-left: 1em;
         padding-top: 0.5em;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        margin-left: 0.9em;
         font-variant: small-caps;
         font-family: Arial, Helvetica, sans-serif;
         font-weight: bold;
+    }
+
+    .contact img {
+        width: 1em;
+        height: 1em;
+        margin-top: 0.3em;
+    }
+
+    .contact span {
+        margin-bottom: 0.5em;
+    }
+
+    #user-phone, #user-email {
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
     }
 
     @media (max-width: 1100px) {
