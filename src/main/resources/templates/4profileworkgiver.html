@@ -68,7 +68,7 @@
             </div>
             <div id="profile-body">
                 <div id="profile-jobs" class="tab">
-                    <h1>Aktuella uppdrag</h1>
+                    <h1 class="header">Aktuella uppdrag</h1>
                     <span th:each="job: ${jobs}">
                         <div class="job-div">
                             <div class="title-div">
@@ -101,15 +101,67 @@
                     </span>
                 </div>
                 <div id="profile-review" class="tab">
-                    <h1>Recensioner</h1>
-                    <p>Här visas dina recensioner som uppdragsgivare</p>
+                    <div id="top-div">
+                        <h1 class="header">Recensioner</h1>
+                    </div>
+                    <div id="button-div">
+                        <button id="review-button">Recensera</button>
+                    </div>
+                    <div class="review-div">
+                        <div class="star-div">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/StarIconGold.png">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/StarIconGold.png">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/StarIconGold.png">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/StarIconGold.png">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/StarIconSilver.png">
+                        </div>
+                        <div class="contact">
+                            <span>Recensent: Hanna Lebeck</span>
+                        </div>
+                        <div class="text-div">
+                            <h4 class="title">Snäll och trevlig uppdragsgivare</h4>
+                            <p class="review-text">"Härlig person, men dock aningens tråkiga uppdrag."</p>
+                        </div>
+                    </div>
+                    <div class="review-div">
+                        <div class="star-div">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/StarIconGold.png">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/StarIconGold.png">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/StarIconGold.png">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/StarIconSilver.png">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/StarIconSilver.png">
+                        </div>
+                        <div class="contact">
+                            <span>Recensent: Sandra D'aubigné</span>
+                        </div>
+                        <div class="text-div">
+                            <h4 class="title">Betalar bra, men inte särskillt trevlig</h4>
+                            <p class="review-text">"Denna uppdragsgivare är inte den trevligaste, men betalar bra för
+                                sina uppdrag"</p>
+                        </div>
+                    </div>
+                    <div class="review-div">
+                        <div class="star-div">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/StarIconGold.png">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/StarIconGold.png">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/StarIconGold.png">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/StarIconGold.png">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/StarIconGold.png">
+                        </div>
+                        <div class="contact">
+                            <span>Recensent: Frida Hammarberg</span>
+                        </div>
+                        <div class="text-div">
+                            <h4 class="title">Fantasktik uppdragsgivare</h4>
+                            <p class="review-text">"Väldigt trevlig uppdragsgivare som alltid bjuder på fika."</p>
+                        </div>
+                    </div>
                 </div>
                 <div id="profile-settings" class="tab">
-                    <h1>Profilinställningar</h1>
+                    <h1 class="header">Profilinställningar</h1>
                     <header>
                         <h3>Redigera din profil</h3>
                     </header>
-
 
                     <h1 th:text="${msg}"></h1>
 
@@ -402,10 +454,9 @@
         color: #333;
         font-size: 14px;
         font-family: sans-serif;
-
     }
 
-    #description h4 {
+    #description h4, .header {
         font-variant: small-caps;
         font-family: Arial, Helvetica, sans-serif;
         font-weight: bold;
@@ -416,7 +467,7 @@
         display: flex;
     }
 
-    #message-button {
+    #message-button, #review-button {
         border: 0;
         padding: 10px;
         width: 100%;
@@ -450,12 +501,18 @@
         background: rgba(265, 0, 70, 0.9);
     }
 
+    #review-button {
+        width: 80%;
+        float: right;
+        margin-right: 3em;
+    }
+
     #save-button:disabled {
         background: lightgrey;
         color: darkgrey;
     }
 
-    #message-button:hover, #save-button:hover {
+    #message-button:hover, #save-button:hover, review-button:hover {
         background: rgba(200, 0, 70, 0.9);
     }
 
@@ -519,13 +576,6 @@
         height: 12em;
     }
 
-    #profile-body h4 {
-        font-variant: small-caps;
-        font-size: 1.7em;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: bold;
-    }
-
     .title-div {
         padding: 1em;
     }
@@ -534,7 +584,6 @@
         font-size: 1em;
         padding-left: 1em;
         padding-top: 0em;
-
         font-variant: small-caps;
         font-family: Arial, Helvetica, sans-serif;
         font-weight: bold;
@@ -544,7 +593,6 @@
         font-size: 1em;
         padding-left: 1em;
         padding-top: 0.5em;
-
         font-variant: small-caps;
         font-family: Arial, Helvetica, sans-serif;
         font-weight: bold;
@@ -565,6 +613,62 @@
         padding-top: 0;
         font-variant: normal;
         font-weight: normal;
+    }
+
+    .review-div {
+        text-align: left;
+        background: #fff;
+        margin: 2em;
+        height: 15em;
+    }
+
+    #top-div {
+        display: inline-block;
+        float: none;
+    }
+
+    #button-div {
+        display: inline-block;
+        float: right;
+    }
+
+    .star-div {
+        margin-top: 1em;
+        margin-left: 1em;
+    }
+
+    .star-div img {
+        margin-top: 1em;
+        width: 2em;
+        height: 2em;
+    }
+
+    .contact {
+        margin-top: 1em;
+        margin-right: 2em;
+    }
+
+    .contact span {
+        margin-left: 1em;
+        font-variant: small-caps;
+        font-size: 0.8em;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+    }
+
+    .title {
+        font-variant: small-caps;
+        font-size: 1.7em;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        margin-left: 0.6em;
+        margin-top: 1.5em;
+    }
+
+    .text-div p {
+        font-style: italic;
+        padding-top: 1.5em;
+        margin-left: 1em;
     }
 
     #profile-settings h3 {
@@ -610,178 +714,76 @@
         #profile-side {
             width: 250px;
             padding: 90px 15px 20px;
-
         }
 
-        #first-header img {
-            width: 130px;
-            height: 40px;
+        #profile-img #profile-picture {
+            left: 50px;
+            right: 50px;
         }
+    }
 
-        #first-header a {
-            padding-left: 2em;
-        }
-
-        #link-div {
-            float: right;
-            padding-top: 1em;
-            padding-right: 2em;
-            padding-bottom: 1em;
+    @media (max-width: 900px) {
+        body {
+            margin: 0 20px;
         }
 
         #profile-header {
-            background: #fff;
-            width: 100%;
             display: flex;
-            height: 190px;
-            position: relative;
-            box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
+            height: 100%;
+            flex-direction: column;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        #profile-header #address {
+            justify-content: center;
         }
 
         #profile-img {
             float: left;
-            width: 340px;
+            width: 100%;
             height: 200px;
         }
 
         #profile-img #profile-picture {
-            height: 200px;
-            width: 180px;
-            border: 4px solid #fff;
-            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-            position: absolute;
-            left: 50px;
-            top: 20px;
-            z-index: 5;
-            background: #fff;
-        }
-
-        #profile-info {
-            float: left;
-            flex-direction: column;
-            justify-content: center;
-            padding-top: 60px;
-        }
-
-        #profile-info #address {
-            display: flex;
-            font-weight: bold;
-            color: #777;
-        }
-
-        #profile-info #address p {
-            margin-right: 5px;
+            position: relative;
+            left: 0;
         }
 
         #main {
-            width: 100%;
-            display: flex;
-            padding-right: 15px;
+            flex-direction: column;
+            padding-right: 0px;
         }
 
         #profile-side {
-            width: 300px;
-            background: #fff;
-            box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
-            padding: 90px 30px 20px;
-            z-index: 99;
-        }
-
-        #right-side {
             width: 100%;
+            text-align: center;
+            padding: 20px;
+            margin: 5px 0;
         }
 
-        #navigation {
-            width: 100%;
-            z-index: -1;
-        }
-
-        #profile-body {
-            width: 100%;
-            z-index: -1;
-        }
-
-        #profile-body h4 {
-            font-variant: small-caps;
-            font-size: 1.7em;
-            font-family: Arial, Helvetica, sans-serif;
-            font-weight: bold;
-        }
-
-        @media (max-width: 1100px) {
-            #profile-side {
-                width: 250px;
-                padding: 90px 15px 20px;
-            }
-
-            #profile-img #profile-picture {
-                left: 50px;
-                right: 50px;
-            }
-        }
-
-        @media (max-width: 900px) {
-            body {
-                margin: 0 20px;
-            }
-
-            #profile-header {
-                display: flex;
-                height: 100%;
-                flex-direction: column;
-                text-align: center;
-                padding-bottom: 20px;
-            }
-
-            #profile-header #address {
-                justify-content: center;
-            }
-
-            #profile-img {
-                float: left;
-                width: 100%;
-                height: 200px;
-            }
-
-            #profile-img #profile-picture {
-                position: relative;
-                left: 0;
-            }
-
-            #main {
-                flex-direction: column;
-                padding-right: 0px;
-            }
-
-            #profile-side {
-                width: 100%;
-                text-align: center;
-                padding: 20px;
-                margin: 5px 0;
-            }
-
-            #description-box {
-                width: 80%;
-            }
-        }
-
-        @media (max-width: 462px) {
-            body {
-                margin: 0;
-            }
-
-            #profile-header h3 {
-                font-size: 1.7rem;
-            }
-
-            #profile-header p, #profile-header span {
-                font-size: 0.9rem;
-            }
-
-            #navigation ul li {
-                font-size: 0.8rem;
-            }
+        #description-box {
+            width: 80%;
         }
     }
+
+    @media (max-width: 462px) {
+        body {
+            margin: 0;
+        }
+
+        #profile-header h3 {
+            font-size: 1.7rem;
+        }
+
+        #profile-header p, #profile-header span {
+            font-size: 0.9rem;
+        }
+
+        #navigation ul li {
+            font-size: 0.8rem;
+        }
+    }
+
 </style>
 </html>
