@@ -15,8 +15,8 @@
             <img src="../images/Logo.png" width="200" id="logo">
         </div>
         <div id="link-div">
-            <a th:href="@{/showFormRegisterJob/{id}(id=${user.id})}" id="header-home" >Lägg in annons</a>
-            <a id="header-dashboard" >Matchade uppdrag</a>
+            <a id="header-dashboard">Matchade uppdrag</a>
+            <a th:href="@{/showFormRegisterJob/{id}(id=${user.id})}" id="header-home">Lägg in annons</a>
             <a id="header-profile" th:href="@{/showformforupdate/{id}(id=${user.id})}">Din profil</a>
             <a th:href="@{/}">Logga ut</a>
         </div>
@@ -69,7 +69,6 @@
                             <span class="outputPainting">Målning</span>
                         </div>
 
-
                         <div class="description-div">
                             <span class="description">Beskrivning: </span>
                         </div>
@@ -84,7 +83,6 @@
                             <span th:text="${job.user.email}"></span><br>
                             <span th:text="${job.user.phone}"></span>
                         </div>
-
                     </div>
             </div>
         </div>
@@ -345,16 +343,6 @@
         font-weight: bold;
     }
 
-    .workgiver-name-div {
-        font-size: 1em;
-        padding-left: 1em;
-        padding-top: 0.5em;
-
-        font-variant: small-caps;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: bold;
-    }
-
     .description-div {
         font-size: 1em;
         padding-left: 1em;
@@ -379,14 +367,6 @@
         font-variant: small-caps;
         font-family: Arial, Helvetica, sans-serif;
         font-weight: bold;
-    }
-
-    .contact-div {
-        font-size: 1em;
-        padding-left: 1em;
-        padding-top: 0;
-        font-variant: normal;
-        font-weight: normal;
     }
 
     @media (max-width: 1100px) {
