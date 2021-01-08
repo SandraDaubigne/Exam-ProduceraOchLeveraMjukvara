@@ -1,16 +1,26 @@
-# Dokumentation Tennerr applikation
+# Dokumentation "Producera och leverera mjukvara 35 yhp Teknikhögskolan 2020"
 
 Se applikationen köras på denna länk: 
 
 Denna dokumentation berör följande punkter:
 
+* [Kursmål](#kursmål)
 * [Syfte och projekt](#syfte-och-projekt)
 * [Teknisk specifikation](#teknisk-specifikation)
 * [Installationsguide](#installationsguide)
 
+## Kursmål
+Kursen "Producera och leverera mjukvara" på Teknikhögskolan 2020 innefattar följande kursmål: 
+
+* Agila projekt-metoder
+* Ekonomiska verktyg
+* System-krav
+* Rapport
+* Producera och leverera mjukvara
+
 ## Syfte och projekt
 
-Syftet med detta projekt är att genom en kurs på Teknikhögskolan utbildning javautvecklare 2019-2021 i kursen “producera och leverera mjukvara” jobba mot kund i form av en grupp klasskamrater. 
+Syftet med detta github-projekt är att genom en kurs på Teknikhögskolan utbildning javautvecklare 2019-2021 i kursen “producera och leverera mjukvara” jobba mot kund i form av en grupp klasskamrater. 
 
 Beställargruppen (kunden) levereras denna applikation av leverantörgruppen (vi) enligt beställargruppens önskan av applikation. 
 
@@ -24,6 +34,9 @@ Beställargruppens önskan av applikation är en app där arbetsgivare och arbet
 * Uppdragsgivare ska kunna skapa jobbannons
 * Uppdragsgivare ska se sina skapade jobb
  
+ 
+ Vi jobbar med Agila metoder i form av Scrum med inslag av Kanban och XP (Extreme programming) 
+ Se vår Kanbanboard här: https://github.com/SandraDaubigne/Team3/projects/1
 
 ## Teknisk specifikation
 
