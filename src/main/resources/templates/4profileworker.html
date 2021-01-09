@@ -48,6 +48,14 @@
                 <p th:text="${user.description}" id="user-description"></p>
 
             </div>
+            <div id="user-categories">
+                <span id="category-text">Jag kan utföra arbeten inom följande kategorier: </span>
+                <span class="category" id="beauty-text" style="display: none">Skönhet</span>
+                <span class="category" id="cleaning-text" style="display: none">Städning</span>
+                <span class="category" id="vvs-text" style="display: none">VVS</span>
+                <span class="category" id="health-text" style="display: none">Hälsa</span>
+                <span class="category" id="painting-text" style="display: none">Målning</span>
+            </div>
             <div id="profile-button"></div>
             <button id="message-button">Meddelande</button>
             <div id="user-rating">
@@ -185,30 +193,28 @@
                         <p id="category">Välj en eller flera kategorier:</p>
 
                         <input type="checkbox" id="-checkbox-beauty" name="beauty" value="true"
-                               onchange="disableButton()" th:field="*{categories.beauty}"
+                               onchange="disableButton()" onclick="showCategory()" th:field="*{categories.beauty}"
                                th:checked="${user.categories.beauty}">
                         <label id="beauty" for="-checkbox-beauty">Skönhet</label>
 
                         <input type="checkbox" id="checkbox-cleaning" name="cleaning" value="true"
-                               onchange="disableButton()" th:field="*{categories.cleaning}"
+                               onchange="disableButton()" onclick="showCategory()" th:field="*{categories.cleaning}"
                                th:checked="${user.categories.cleaning}">
                         <label id="cleaning" for="checkbox-cleaning">Städning</label>
 
                         <input type="checkbox" id="checkbox-vvs" name="vvs" value="true" onchange="disableButton()"
-                               th:field="*{categories.vvs}" th:checked="${user.categories.vvs}">
+                               onclick="showCategory()" th:field="*{categories.vvs}" th:checked="${user.categories.vvs}">
                         <label id="vvs" for="checkbox-vvs">VVS</label>
 
                         <input type="checkbox" id="checkbox-health" name="health" value="true"
-                               onchange="disableButton()" th:field="*{categories.health}"
+                               onchange="disableButton()" onclick="showCategory()" th:field="*{categories.health}"
                                th:checked="${user.categories.health}">
                         <label id="health" for="checkbox-health">Hälsa</label>
 
                         <input type="checkbox" id="checkbox-painting" name="painting" value="true"
-                               onchange="disableButton()" th:field="*{categories.painting}"
+                               onchange="disableButton()" onclick="showCategory()" th:field="*{categories.painting}"
                                th:checked="${user.categories.painting}">
-
                         <label id="painting" for="checkbox-painting">Måleri</label>
-                        <!--<input type="submit" value="Submit">-->
                     </div>
 
                     <div id="upload-picture-certificate-div">
@@ -247,6 +253,11 @@
 
     tabs(2);
 
+    const beautyText = document.querySelector("#beauty-text");
+    const cleaningText = document.querySelector("#cleaning-text");
+    const vvsText = document.querySelector("#vvs-text");
+    const healthText = document.querySelector("#health-text");
+    const paintingText = document.querySelector("#painting-text");
     const checkboxBeauty = document.querySelector("#-checkbox-beauty");
     const checkboxCleaning = document.querySelector("#checkbox-cleaning");
     const checkboxVVS = document.querySelector("#checkbox-vvs");
@@ -254,6 +265,61 @@
     const checkboxPainting = document.querySelector("#checkbox-painting");
     const button = document.querySelector("#save-button");
     button.disabled = true;
+
+    window.onload = function printCategory() {
+
+        if (checkboxBeauty.checked) {
+            beautyText.style.display = "block";
+        }
+
+        if (checkboxCleaning.checked) {
+            cleaningText.style.display = "block";
+        }
+
+        if (checkboxVVS.checked) {
+            vvsText.style.display = "block";
+        }
+
+        if (checkboxHealth.checked) {
+            healthText.style.display = "block";
+        }
+
+        if (checkboxPainting.checked) {
+            paintingText.style.display = "block";
+        }
+    }
+
+    function showCategory() {
+        if (checkboxBeauty.checked) {
+            beautyText.style.display = "block";
+        } else if (!checkboxBeauty.checked){
+            beautyText.style.display = "none";
+        }
+
+        if (checkboxCleaning.checked) {
+            cleaningText.style.display = "block";
+        } else if (!checkboxCleaning.checked){
+            cleaningText.style.display = "none";
+        }
+
+        if (checkboxVVS.checked) {
+            vvsText.style.display = "block";
+        } else if (!checkboxVVS.checked) {
+            vvsText.style.display = "none";
+        }
+
+        if (checkboxHealth.checked) {
+            healthText.style.display = "block";
+        } else if (!checkboxHealth.checked) {
+            healthText.style.display = "none";
+        }
+
+        if (checkboxPainting.checked) {
+            paintingText.style.display = "block";
+        } else if (!checkboxPainting.checked) {
+            paintingText.style.display = "none";
+        }
+    }
 
     function disableButton() {
         if (checkboxBeauty.checked || checkboxCleaning.checked ||
@@ -312,6 +378,10 @@
         padding-top: 1em;
         padding-right: 2em;
         padding-bottom: 1em;
+    }
+
+    #link-div a {
+        font-variant: small-caps;
     }
 
     #profile-header {
@@ -374,8 +444,20 @@
         margin-bottom: 7px;
         padding-bottom: 1em;
         color: #333;
+        font-size: 13px;
+    }
+
+    #category-text {
+        font-variant: small-caps;
+        font-weight: bold;
         font-size: 14px;
-        font-family: sans-serif;
+        margin-bottom: 1em;
+    }
+
+    .category {
+        font-size: 14px;
+        font-variant: small-caps;
+        margin-bottom: 3px;
     }
 
     #description h4, .header {
@@ -462,6 +544,8 @@
         cursor: pointer;
         text-align: center;
         transition: all .2s ease-in-out;
+        font-variant: small-caps;
+        font-weight: bold;
     }
 
     .active, #navigation ul li:hover {
