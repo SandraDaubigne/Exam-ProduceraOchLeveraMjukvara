@@ -40,7 +40,7 @@
         <div id="right-side">
             <div id="profile-body">
                 <!-- 2: Skapa en funktion för att kunna logga in--->
-                <form th:action = "@{/login}" method ="POST">
+                <form th:action="@{/login}" method="POST">
                     <div id="input-div">
                         <label id="username">
                             <input name="username" id="username-input" type="text" size="30" placeholder="Användarnamn">
@@ -69,6 +69,7 @@
         margin: 0;
         box-sizing: border-box;
     }
+
     /* No use case, show profile workgiver */
     body {
         background: #e9e9e9;
@@ -128,12 +129,14 @@
         font-size: 2rem;
         font-family: Arial, Helvetica, sans-serif;
         font-weight: bold;
+        color: #333;
+        margin-bottom: 2em;
     }
 
-    #profile-info #address {
+    #profile-info {
         display: flex;
         font-weight: bold;
-        color: #777;
+        color: #333;
     }
 
     #profile-info #address p {
@@ -169,10 +172,6 @@
         padding-bottom: 1em;
     }
 
-    #profile-button {
-        display: flex;
-    }
-
     #right-side {
         width: 100%;
     }
@@ -181,10 +180,12 @@
         width: 100%;
         z-index: -1;
     }
+
     #input-div {
         padding-left: 35%;
         padding-top: 8%;
     }
+
     #username-input, #password-input {
         float: none;
         display: block;
@@ -225,7 +226,7 @@
         padding-left: 10em;
     }
 
-    @media(max-width: 1100px) {
+    @media (max-width: 1100px) {
         #profile-side {
             width: 250px;
             padding: 90px 15px 20px;
@@ -234,10 +235,12 @@
         #profile-img #profile-picture {
             left: 50px;
             right: 50px;
+            width: 190px;
+            height: 60px;
         }
     }
 
-    @media(max-width: 900px) {
+    @media (max-width: 900px) {
         body {
             margin: 0 20px;
         }
@@ -250,7 +253,7 @@
             padding-bottom: 20px;
         }
 
-        #profile-header #address {
+        #profile-header {
             justify-content: center;
         }
 
@@ -264,6 +267,8 @@
             position: relative;
             left: 0;
             top: 80px;
+            width: 230px;
+            height: 80px;
         }
 
         #main {

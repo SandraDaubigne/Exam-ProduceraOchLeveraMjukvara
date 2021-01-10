@@ -373,6 +373,7 @@
     #first-header a {
         padding-left: 2em;
         color: #333;
+        font-variant: small-caps;
     }
 
     #link-div {
@@ -553,13 +554,6 @@
         z-index: -1;
     }
 
-    #profile-body h4 {
-        font-variant: small-caps;
-        font-size: 1.7em;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: bold;
-    }
-
     .tab {
         padding: 20px;
         width: 100%;
@@ -580,6 +574,11 @@
 
     .title-div {
         padding: 1em;
+    }
+
+    .title-div h4 {
+        font-variant: small-caps;
+        font-weight: bold;
     }
 
     .price-div {
@@ -703,6 +702,11 @@
         font-family: Arial, Helvetica, sans-serif;
     }
 
+    #upload-span-picture {
+        font-variant: small-caps;
+        font-weight: bold;
+    }
+
     #upload-picture-input {
         padding-left: 0;
         margin-left: 0.1em;
@@ -784,6 +788,76 @@
 
         #navigation ul li {
             font-size: 0.8rem;
+        }
+    }
+
+    @media (max-width: 361px) {
+        #save-div {
+            padding-left: 0px;
+            padding-top: 2em;
+        }
+
+        #save-button {
+            margin: auto;
+            width: 80%;
+        }
+
+        #upload-span-picture {
+            float: left;
+        }
+
+        #upload-picture-input {
+            padding-top: 0px;
+            margin: auto;
+            width: 70%;
+            float: left;
+            padding-bottom: 1em;
+            float: left;
+        }
+
+        #link-div {
+            padding-top: 0px;
+            padding-right: 0.5em;
+        }
+
+        #link-div a {
+            display: block;
+            padding: 0.3em;
+            font-size: 0.7em;
+        }
+
+        #street {
+            width: 232px;
+        }
+
+        #upload-picture-certificate-div {
+            padding: 0px;
+        }
+
+        #button-div {
+            display: inline;
+            float: none;
+        }
+
+        #review-button {
+            margin-left: 5em;
+            width: 75%;
+        }
+
+        .review-div {
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 5em;
+        }
+
+        .title {
+            font-size: 1.2em;
+            padding-right: 1em;
+        }
+
+        .review-text {
+            font-size: 0.8em;
+            padding-right: 1em;
         }
     }
 

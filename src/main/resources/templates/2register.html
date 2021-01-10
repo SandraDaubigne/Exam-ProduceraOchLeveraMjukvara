@@ -16,7 +16,7 @@
             <img src="../images/Logo.png" width="200" id="profile-picture">
         </div>
         <div id="profile-info">
-            <h3 id="user-name">Registrera dig i tjänsteportalen</h3>
+            <h3 id="register-text">Registrera dig i tjänsteportalen</h3>
         </div>
         <div id="profile-option">
             <div id="notification">
@@ -70,11 +70,10 @@
 
                         <!---value måste finnas här-->
                         <label id="worker">
-
                             <input type="radio" name="radioButton" id="radio-worker" value="true"
                                    onchange="showWorker()" th:field="*{roles.worker}">
-
                             Arbetare</label>
+
                         <label id="workgiver">
                             <input type="radio" name="radioButton" id="radio-workgiver" value="true"
                                    onchange="showWorkgiver()" th:field="*{roles.workgiver}">
@@ -83,25 +82,24 @@
                         <p id="errorMsg" th:text="${error}"></p>
 
                         <input required name="username" type="text" placeholder="Användarnamn*" id="username"
-                               style="width: 553px; height: 25px" th:field="*{username}"><br>
+                               th:field="*{username}"><br>
                         <input required type="text" th:name="password" placeholder="Lösenord*" id="password"
-                               style="width: 275px; height: 25px" th:field="*{password}">
+                               th:field="*{password}">
                         <input required type="text" th:name="newpassword" placeholder="Upprepa lösenord*" id="verify"
-                               onchange="checkInputFieldWorkgiver()" style="width: 275px; height: 25px"><br>
+                               onchange="checkInputField()"><br>
 
                         <input required type="text" placeholder="Förnamn*" id="firstname"
-                               style="width: 275px; height: 25px" th:field="*{firstname}">
+                               th:field="*{firstname}">
                         <input required type="text" placeholder="Efternamn*" id="lastname"
-                               style="width: 275px; height: 25px" th:field="*{lastname}"><br>
+                               th:field="*{lastname}"><br>
                         <input required type="text" placeholder="Telefonnummer*" id="phone"
-                               style="width: 553px; height: 25px" th:field="*{phone}"><br>
+                               th:field="*{phone}"><br>
 
                         <textarea required placeholder="Personbeskrivning*" id="person-description"
-                                  name="Personbeskrivning" style="width: 553px; height: 100px"
-                                  th:field="*{description}"></textarea><br>
+                                  name="Personbeskrivning" th:field="*{description}"></textarea><br>
 
 
-                        <p id="category">Välj en eller flera kategorier:</p>
+                        <p id="category">Välj en eller flera kategorier:</p><br>
                         <input type="checkbox" id="-checkbox-beauty" name="beauty" value="true"
                                onchange="disableButton()" th:field="*{categories.beauty}">
                         <label id="beauty" for="-checkbox-beauty">Skönhet</label>
@@ -126,9 +124,9 @@
 
                         <!--Workgiver-->
                         <input type="text" placeholder="E-mail*" id="e-mail" onchange="checkInputFieldWorkgiver()"
-                               style="width: 553px; height: 25px" th:field="*{email}">
+                               th:field="*{email}">
                         <input type="text" placeholder="Gatuadress*" id="street" onchange="checkInputFieldWorkgiver()"
-                               style="width: 553px; height: 25px" th:field="*{address}"><br>
+                               th:field="*{address}"><br>
 
 
                         <!-- Laddar upp filer som väljs lokalt på datorn-->
@@ -213,6 +211,13 @@
             button.disabled = false;
         } else {
             button.disabled = true;
+        }
+    }
+
+    function checkInputField() {
+        if (username.value !== "" && password.value !== "" && verifyPassword.value !== "" && firstname.value !== "" &&
+            lastname.value !== "" && phone.value !== "" && description.value !== "") {
+            button.disabled = false;
         }
     }
 
@@ -311,8 +316,27 @@
         box-sizing: border-box;
     }
 
+    #password, #verify, #firstname, #lastname {
+        width: 275px;
+        height: 25px;
+    }
+
+    #username, #phone, #street, #e-mail {
+        width: 553px;
+        height: 25px;
+    }
+
+    #person-description {
+        width: 553px;
+        height: 100px;
+    }
+
     #password, #verify {
         -webkit-text-security: disc;
+    }
+
+    #-checkbox-beauty {
+        margin-left: 15em;
     }
 
     body {
@@ -414,9 +438,7 @@
         color: #333;
         font-size: 13px;
         padding: 1em;
-        margin-right: 18em;
-        margin-top: 2em;
-        margin-bottom: 2em;
+        margin: 2em;
     }
 
     #errorMsg {
@@ -432,22 +454,29 @@
     }
 
     #option-div {
-        padding-left: 10em;
-        padding-top: 8%;
+        padding-top: 10%;
+        justify-content: center;
+        margin: auto;
+        width: 80%;
     }
 
     #option-h4 {
-        padding: 0.3em;
-        padding-left: 5em;
+        text-align: center;
+        display: inline-block;
+        padding-left: 15%;
+        font-variant: small-caps;
+        font-weight: bold;
     }
 
     #radio-div {
-        padding-top: 3%;
+        padding-top: 2%;
+        justify-content: center;
+        margin: auto;
     }
 
     #worker {
         margin-right: 3px;
-        padding-left: 20em;
+        padding-left: 30%;
     }
 
     #radio-worker {
@@ -521,10 +550,12 @@
 
     #category {
         float: none;
-        padding: 0.3em;
+        padding: 0.5em;
         margin-top: 20px;
         justify-content: center;
-        margin-left: 11em;
+        margin-left: 12em;
+        font-weight: bold;
+        font-variant: small-caps;
     }
 
     #-checkbox-beauty, #checkbox-cleaning, #checkbox-vvs, #checkbox-health, #checkbox-painting {
@@ -553,6 +584,8 @@
 
     #profileimg-label, #certificate-label {
         margin-left: 11em;
+        font-variant: small-caps;
+        font-weight: bold;
     }
 
     #profileimg {
@@ -592,10 +625,41 @@
         margin-bottom: 2em;
     }
 
+    @media (max-width: 1400px) {
+        #worker {
+            padding-left: 31%;
+        }
+    }
+
     /*Responsivitet*/
     @media (max-width: 1350px) {
         #errorMsg {
             margin-left: 10em;
+        }
+
+        #category {
+            margin-left: 10em;
+        }
+
+        #-checkbox-beauty {
+            margin-left: 12em;
+        }
+
+        #profileimg-label, #certificate-label {
+            margin-left: 9em;
+        }
+
+        #worker {
+            padding-left: 32%;
+        }
+
+        #username, #password, #verify, #firstname, #lastname, #phone, #person-description, #street, #e-mail {
+            margin-left: 12em;
+            width: 350px;
+        }
+
+        #register-button-div {
+            justify-content: right;
         }
     }
 
@@ -609,11 +673,33 @@
             left: 50px;
             right: 50px;
         }
+
+        #worker {
+            padding-left: 33%;
+        }
     }
 
     @media (max-width: 900px) {
         body {
-            margin: 0 20px;
+            margin: auto;
+            width: 95%;
+        }
+
+        #username, #password, #verify, #firstname, #lastname, #phone, #person-description, #street, #e-mail {
+            margin-left: 15em;
+            width: 450px;
+        }
+
+        #category {
+            margin-left: 12em;
+        }
+
+        #-checkbox-beauty {
+            margin-left: 14em;
+        }
+
+        #profileimg-label, #certificate-label {
+            margin-left: 11em;
         }
 
         #profile-header {
@@ -622,9 +708,6 @@
             flex-direction: column;
             text-align: center;
             padding-bottom: 20px;
-        }
-
-        #profile-header #address {
             justify-content: center;
         }
 
@@ -640,6 +723,15 @@
             top: 80px;
         }
 
+        #profile-info {
+            padding-top: 0px;
+        }
+
+        #register-text {
+            padding: 1em;
+            padding-top: 0px;
+        }
+
         #main {
             flex-direction: column;
             padding-right: 0px;
@@ -651,28 +743,168 @@
             padding: 20px;
             margin: 5px 0;
         }
+
+        #company-description {
+            padding: 1em;
+        }
+
+        #option-h4 {
+            padding-left: 20%;
+        }
+
+        #worker {
+            padding-left: 35%;
+        }
+    }
+
+    @media (max-width: 760px) {
+        #username, #password, #verify, #firstname, #lastname, #phone, #person-description, #street, #e-mail {
+            margin-left: 15em;
+            width: 350px;
+        }
+    }
+
+    @media (max-width: 716px) {
+
+        #profileimg {
+            margin-left: 13em;
+            margin-top: 0px;
+            margin-bottom: 2px;
+        }
+
+        #certificateimg {
+            margin-left: 13em;
+            margin-top: 0px;
+        }
     }
 
     @media (max-width: 700px) {
-        #input-div {
+        #option-h4 {
+            padding-left: 17%;
+        }
+
+        #worker {
+            padding-left: 35%;
+        }
+    }
+
+    @media (max-width: 620px) {
+        #option-h4 {
+            padding-left: 8%;
+        }
+
+        #worker {
             padding-left: 30%;
+        }
+
+        #username, #password, #verify, #firstname, #lastname, #phone, #person-description, #street, #e-mail {
+            margin-left: 12em;
+            width: 350px;
+        }
+
+        #-checkbox-beauty {
+            margin-left: 9em;
+        }
+    }
+
+    @media (max-width: 560px) {
+        #option-h4 {
+            padding-left: 5%;
+        }
+    }
+
+    @media (max-width: 515px) {
+        #option-h4 {
+            padding-left: 0px;
+        }
+
+        #worker {
+            padding-left: 25%;
         }
     }
 
     @media (max-width: 462px) {
         body {
-            margin: 0;
+            margin: auto;
+            width: 95%;
         }
 
         #profile-header h3 {
             font-size: 1.7rem;
         }
 
-        #input-div {
-            padding-left: 20%;
+        #worker {
+            padding-left: 22%;
+        }
+
+        #username, #password, #verify, #firstname, #lastname, #phone, #person-description, #street, #e-mail {
+            margin-left: 6em;
+            width: 250px;
         }
     }
 
+    @media (max-width: 390px) {
+
+        body {
+            margin: auto;
+            width: 95%;
+        }
+    }
+
+    @media (max-width: 361px) {
+        body {
+            margin: auto;
+            width: 95%;
+        }
+
+        #option-h4 {
+            padding-left: 7%;
+        }
+
+        #worker {
+            padding-left: 20%;
+        }
+
+        #username, #password, #verify, #firstname, #lastname, #phone, #person-description, #street, #e-mail {
+            margin-left: 2em;
+            width: 300px;
+        }
+
+        #category {
+            margin: auto;
+        }
+
+        #-checkbox-beauty {
+            margin-left: 15px;
+        }
+
+        #checkbox-painting {
+            margin-left: 10em;
+            margin-bottom: 1.5em;
+        }
+
+        #profileimg-label, #certificate-label {
+            margin: auto;
+        }
+
+        #profileimg, #certificateimg {
+            margin-left: 0px;
+        }
+
+        #register-button-div {
+            padding-top: 2em;
+            padding-left: 0;
+        }
+
+        #register-button {
+            margin: auto;
+            width: 70%;
+        }
+
+        #errorMsg {
+            margin-left: 0px;
+        }
+    }
 
 </style>
 
