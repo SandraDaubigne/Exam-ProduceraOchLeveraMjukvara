@@ -203,7 +203,8 @@
                         <label id="cleaning" for="checkbox-cleaning">Städning</label>
 
                         <input type="checkbox" id="checkbox-vvs" name="vvs" value="true" onchange="disableButton()"
-                               onclick="showCategory()" th:field="*{categories.vvs}" th:checked="${user.categories.vvs}">
+                               onclick="showCategory()" th:field="*{categories.vvs}"
+                               th:checked="${user.categories.vvs}">
                         <label id="vvs" for="checkbox-vvs">VVS</label>
 
                         <input type="checkbox" id="checkbox-health" name="health" value="true"
@@ -292,13 +293,13 @@
     function showCategory() {
         if (checkboxBeauty.checked) {
             beautyText.style.display = "block";
-        } else if (!checkboxBeauty.checked){
+        } else if (!checkboxBeauty.checked) {
             beautyText.style.display = "none";
         }
 
         if (checkboxCleaning.checked) {
             cleaningText.style.display = "block";
-        } else if (!checkboxCleaning.checked){
+        } else if (!checkboxCleaning.checked) {
             cleaningText.style.display = "none";
         }
 
@@ -368,11 +369,6 @@
         height: 40px;
     }
 
-    #first-header a {
-        padding-left: 2em;
-        color: #333;
-    }
-
     #link-div {
         float: right;
         padding-top: 1em;
@@ -382,6 +378,8 @@
 
     #link-div a {
         font-variant: small-caps;
+        padding-left: 2em;
+        color: #333;
     }
 
     #profile-header {
@@ -575,7 +573,7 @@
         height: 15em;
     }
 
-    #profile-body h4 {
+    .title {
         font-variant: small-caps;
         font-size: 1.7em;
         font-family: Arial, Helvetica, sans-serif;
@@ -671,10 +669,22 @@
         padding: 0.3em;
         margin-top: 20px;
         justify-content: center;
+        font-variant: small-caps;
+        font-weight: bold;
     }
 
     #-checkbox-beauty, #checkbox-cleaning, #checkbox-vvs, #checkbox-health, #checkbox-painting {
         margin-top: 10px;
+    }
+
+    #upload-span-picture {
+        font-variant: small-caps;
+        font-weight: bold;
+    }
+
+    #upload-span-certificate {
+        font-variant: small-caps;
+        font-weight: bold;
     }
 
     #upload-picture-certificate-div {
@@ -770,6 +780,88 @@
 
         #navigation ul li {
             font-size: 0.8rem;
+        }
+    }
+
+    @media (max-width: 361px) {
+        #link-div a {
+            display: block;
+            padding: 0.3em;
+        }
+
+        #link-div a {
+            font-size: 0.7em;
+        }
+
+        #phoneNumber-input {
+            width: 232px;
+        }
+
+        #upload-span-picture {
+            float: left;
+        }
+
+        #upload-span-certificate {
+            float: left;
+        }
+
+        #upload-picture-certificate-div {
+            padding: 0px;
+        }
+
+        #upload-picture-input {
+            padding-top: 0px;
+            margin: auto;
+            width: 70%;
+            float: left;
+            padding-bottom: 1em;
+        }
+
+        #upload-picture-certificate {
+            float: left;
+            padding-top: 0px;
+            margin-bottom: 2em;
+        }
+
+        #save-div {
+            padding-left: 0px;
+            padding-top: 2em;
+        }
+
+        #save-button {
+            margin: auto;
+            width: 80%;
+        }
+
+        #button-div {
+            display: inline;
+            float: none;
+        }
+
+        #review-button {
+            margin-left: 5em;
+            width: 75%;
+        }
+
+        .review-div {
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 5em;
+        }
+
+        .title {
+            margin-top: 1em;
+            font-size: 1.2em;
+        }
+
+        .review-text {
+            font-size: 0.8em;
+            padding-right: 1em;
+        }
+
+        #link-div {
+            padding-top: 0px;
+            padding-right: 0.5em;
         }
     }
 

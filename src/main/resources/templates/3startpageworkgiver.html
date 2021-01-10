@@ -82,9 +82,11 @@
                         </div>
                         <div class="contact">
                             <span>Kontakt:</span><br>
-                            <img id="phone-img" src="https://cdn3.iconfinder.com/data/icons/communication-1/100/phone-512.png">
+                            <img id="phone-img"
+                                 src="https://cdn3.iconfinder.com/data/icons/communication-1/100/phone-512.png">
                             <span id="user-phone" th:text="${job.user.phone}"></span><br>
-                            <img id="mail-img" src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-email-512.png">
+                            <img id="mail-img"
+                                 src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-email-512.png">
                             <span id="user-email" th:text="${job.user.email}"></span>
                         </div>
                     </div>
@@ -434,10 +436,6 @@
     }
 
     @media (max-width: 700px) {
-        #input-div {
-            padding-left: 30%;
-        }
-
         #link-div a {
             font-size: 0.7em;
         }
@@ -457,10 +455,6 @@
         #profile-header h3 {
             font-size: 1.7rem;
         }
-
-        #input-div {
-            padding-left: 20%;
-        }
     }
 
     @media (max-width: 430px) {
@@ -477,6 +471,20 @@
             font-size: 0.9em;
         }
     }
+
+    @media (max-width: 361px) {
+
+        #link-div a {
+            display: block;
+            padding: 0.3em;
+        }
+
+        #link-div {
+            padding-top: 0px;
+            padding-right: 0.5em;
+        }
+    }
+
 </style>
 </body>
 </html>
